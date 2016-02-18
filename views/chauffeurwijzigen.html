@@ -2,11 +2,12 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Metronic | Material Design Form Controls</title>
+        <title>Taxi admin panel</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="" name="description" />
         <meta content="" name="author" />
+        <link href="http://fonts.googleapis.com/css?family=Oswald:400,300,700" rel="stylesheet" type="text/css" />
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
         <link href="../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <link href="../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
@@ -26,7 +27,6 @@
         
         <link href="../assets/layouts/layout5/css/custom.css" rel="stylesheet" type="text/css" />
         <link rel="shortcut icon" href="favicon.ico" /> 
-    </head>
 
     <body class="page-header-fixed page-sidebar-closed-hide-logo page-md">
         <!-- BEGIN CONTAINER -->
@@ -44,64 +44,21 @@
                                     <span class="icon-bar"></span>
                                 </span>
                             </button>
-                            <a id="index" class="page-logo" href="index.html">
-                                <img src="../assets/pages/img/logo.png" alt="Logo" /> 
-                            </a>
-                                <div class="nav-collapse collapse navbar-collapse navbar-responsive-collapse">
-                            <ul class="nav navbar-nav">
-                                <li class="dropdown dropdown-fw">
-                                    <a href="index.html" class="text-uppercase">
-                                        <i class="fa fa-home"></i> Dashboard
-                                    </a>
-                                </li>
-                                <li class="dropdown dropdown-fw  ">
-                                    <a href="javascript:;" class="text-uppercase">
-                                        <i class="fa fa-taxi"></i> Taxi's
-                                    </a>
-                                </li>
-                                <li class="dropdown dropdown-fw  ">
-                                    <a href="javascript:;" class="text-uppercase">
-                                        <i class="fa fa-location-arrow"></i> Routes
-                                    </a>
-                                </li>
-                                <li class="dropdown dropdown-fw  ">
-                                    <a href="javascript:;" class="text-uppercase">
-                                        <i class="fa fa-comments-o"></i> Opmerking 
-                                    </a>
-                                </li>
-                                <li class="dropdown more-dropdown">
-                                    <a href="javascript:;" class="text-uppercase"> 
-                                        <i class="fa fa-briefcase" ></i>  Overzichten
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="#">Chauffeurs</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Tablets</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Medewerkers</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="topbar-actions">
+                            <div class="topbar-actions">
                                 <div class="btn-group-img btn-group">
                                     <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                                         <span>Hi, Marcus</span>
                                         <img src="../assets/layouts/layout5/img/avatar1.jpg" alt=""> </button>
                                     <ul class="dropdown-menu-v2" role="menu">
                                         <li>
-                                            <a href="page_user_profile_1.html">
+                                            <a href="profiel.html">
                                                 <i class="icon-user"></i> Mijn profiel
                                                 <span class="badge badge-danger">1</span>
                                             </a>
                                         </li>
                                        
                                         <li>
-                                            <a href="app_inbox.html">
+                                            <a href="noodsignaal.html">
                                                 <i class="icon-envelope-open"></i> Noodsignalen
                                                 <span class="badge badge-danger"> 3 </span>
                                             </a>
@@ -116,7 +73,57 @@
                                     </ul>
                                 </div>
                             </div>
-                        </div>  
+                        </div>
+                        <div class="nav-collapse collapse navbar-collapse navbar-responsive-collapse">
+                         <a id="index" class="page-logo" href="index.html">
+                               <img src="../assets/pages/img/logo.png" alt="Logo"> </a>
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown dropdown-fw  active open selected">
+                                    <a href="index.html" class="text-uppercase">
+                                        <i class="fa fa-home"></i> Dashboard
+                                    </a>
+                                </li>
+                                 <li class="dropdown more-dropdown">
+                                    <a href="taxilocatie.html" class="text-uppercase"> 
+                                        <i class="fa fa-briefcase" ></i> Taxi's
+                                    </a>
+                                    <ul class="dropdown-menu taxi_dropdown">
+                                        <li>
+                                            <a href="#">Overzicht</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown dropdown-fw  ">
+                                    <a href="javascript:;" class="text-uppercase">
+                                        <i class="fa fa-location-arrow"></i> Routes
+                                    </a>
+                                </li>
+                                <li class="dropdown dropdown-fw  ">
+                                    <a href="javascript:;" class="text-uppercase">
+                                        <i class="fa fa-comments-o"></i> Opmerking 
+                                    </a>
+                                </li>
+                                <li class="dropdown more-dropdown">
+                                    <a href="javascript:;" class="text-uppercase"> 
+                                        <i class="fa fa-briefcase" ></i> Overzichten
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="chauffeurs.html">Chauffeurs</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Tablets</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Medewerkers</a>
+                                        </li>
+                                         <li>
+                                            <a href="#">Reclames</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </nav>
             </header>
@@ -139,35 +146,35 @@
                                 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 													<div class="form-group">
 														<label for="bedrijfsnaam">E-mail</label>
-														<input type="text" class="form-control no-border-radius" name="email" placeholder="email">
+														<input type="text" class="form-control no-border-radius" name="email" placeholder="Email" value="richard@moodles.nl">
 													</div>
 												</div>
-												<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-													<div class="form-group">
-														<label for="bedrijfsnaam">Gebruikersnaam</label>
-														<input type="text" class="form-control no-border-radius" name="gebruikersnaam" placeholder="Gebruikersnaam">
-													</div>
-												</div>
+                                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                    <div class="form-group has-info">
+                                                        <label for="form_control_1">Telefoonnummer</label>
+                                                        <input type="text" class="form-control no-border-radius" required="true" maxlength="10" name="telefoonnummer" value="1234567890">
+                                                    </div>
+                                                </div>
                                            </div>
                                             <div class="row">
                                 				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 					<div class="form-group has-info">
                                                 		<label for="form_control_1">Huidig wachtwoord</label>
-                                                		<input type="password" class="form-control no-border-radius" id="form_control_1" placeholder="x">
+                                                		<input type="password" class="form-control no-border-radius" id="form_control_1" placeholder="x" value="gfbvcvcvbgfc">
                                                 		
                                             		</div>
                                             	</div>	
                                             	<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 					<div class="form-group has-info">
                                                 		<label for="form_control_1">Nieuw wachtwoord</label>
-                                                		<input type="password" class="form-control no-border-radius" id="form_control_1" placeholder="x">
+                                                		<input type="password" class="form-control no-border-radius" id="form_control_1" placeholder="x" value="gfbvcvcvbgfc">
                                                 		
                                             		</div>
                                 				</div>
                                 				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 					<div class="form-group has-info">
                                                 		<label for="form_control_1">Herhaal nieuw wachtwoord</label>
-                                                		<input type="password" class="form-control no-border-radius" id="form_control_1" placeholder="x">
+                                                		<input type="password" class="form-control no-border-radius" id="form_control_1" placeholder="" value="gfbvcvcvbgfc">
                                                 		
                                             		</div>
                                 				</div>
@@ -176,33 +183,27 @@
                                 				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 					<div class="form-group has-info">
                                                 		<label for="form_control_1">Voornaam</label>
-                                                		<input type="text" class="form-control no-border-radius" id="form_control_1" placeholder="x">
+                                                		<input type="text" class="form-control no-border-radius" id="form_control_1" placeholder="" value="Richard">
                                                 		
                                             		</div>
                                             	</div>	
                                             	<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 					<div class="form-group has-info">
                                                 		<label for="form_control_1">Tussenvoegsel</label>
-                                                		<input type="text" class="form-control no-border-radius" id="form_control_1" placeholder="x">
+                                                		<input type="text" class="form-control no-border-radius" id="form_control_1" placeholder="" value="">
                                                 		
                                             		</div>
                                 				</div>
                                 				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 					<div class="form-group has-info">
                                                 		<label for="form_control_1">Achternaam</label>
-                                                		<input type="text" class="form-control no-border-radius" id="form_control_1" placeholder="x">
+                                                		<input type="text" class="form-control no-border-radius" id="form_control_1" placeholder="" value="Perdaan">
                                                 		
                                             		</div>
                                 				</div>
                                            </div>
                                            <div class="row">
-                                           <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                					<div class="form-group has-info">
-                                                		<label for="form_control_1">Telefoonnummer</label>
-                                                		<input type="text" class="form-control no-border-radius" required="true" maxlength="10" name="telefoonnummer">
-                                            		</div>
-                                				</div>
-												<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+												<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
 													<div class="form-group">
 														<label for="geslacht">Geslacht</label>
 														<select class="form-control" required="true" name="geslacht">
@@ -210,14 +211,26 @@
 															<option value="vrouw">Vrouw</option>
 														</select>
 													</div>
-												</div>	
+												</div>
+                                                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                                                    <div class="form-group">
+                                                        <label for="geslacht">Taxi</label>
+                                                        <select class="form-control" required="true" name="taxi">
+                                                            <option value="man" selected="">78-LR-VV Opel Corsa</option>
+                                                            <option value="vrouw">TJ-NZ-45 Audi A3</option>
+                                                        </select>
+                                                    </div>
+                                                </div>	
                                            </div>
                                         </div>
-
-                                        <div class="form-actions noborder ">
-                                            <button type="button" class="btn blue"><i class="fa fa-check" ></i>Opslaan</button>
-                                            <button type="button" class="btn default">Annuleren</button>
-                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="form-actions noborder pull-right ">
+                                                    <button type="button" class="btn green-meadow"><i class="fa fa-check" ></i>Opslaan</button>
+                                                    <button type="button" class="btn default">Annuleren</button>
+                                                </div>
+                                            </div>
+                                        </div>    
                                     </form>
                                 </div>
                             </div>

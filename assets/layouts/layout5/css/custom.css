@@ -1,3 +1,91 @@
+body{
+	background-color: #39424a !important;
+}
 a{
 	text-decoration: none !important;
+}
+.page-content{
+	box-shadow: 0px 6px 10px 0px rgba(0,0,0,0.3);
+}
+.page-header .navbar-fixed-top {
+	margin: 0px;
+	padding: 0px;
+    background: #607d8b !important;
+}
+.page-header .navbar .navbar-nav>li>a {
+    color: #636e77;
+    font-size: 18px;
+    font-weight: 400;
+    background: #39424a;
+    font-family: Oswald,sans-serif;
+}
+.dropdown-menu-v2>li>a {
+	color: #636e77 !important;
+}
+.dropdown-menu-v2>li>a:hover {
+	color: #ffffff !important;
+}
+
+.tabs>li.open, .tabbable-line>.nav-tabs>li:hover {
+    background: 0 0;
+    border-bottom: 4px solid rgba(0, 157, 199, 0.2) !important;
+}
+.copyright{
+	text-align:center;
+}
+.login{
+    background-color: #607d8b !important;
+}
+.btn-blue{
+	background-color: #009dc7 !important;
+	color: #ffffff !important;
+}
+.font-blue{
+	color: #009dc7 !important;
+}
+.copywhite{
+	text-align:center;
+	color:#ffffff;
+}
+.navbar-toggle{
+	padding-right:10px !important;
+}
+.no-top-pad{
+	padding-top: 0px !important;	
+}
+.no-border-radius{
+	border-radius: 0px !important;
+}
+.page-header .topbar-actions {
+    top: 15px;
+    right: 60px;
+}
+.page-header .navbar-collapse {
+     margin-top: 0px; 
+}
+.taxi_image{
+	height: 100px;
+}
+.portlet.light.bordered>.portlet-title {
+    border-bottom: none;
+}
+.taxi_dropdown{
+	    min-width: 147px !important;
+}
+.page-header .navbar .navbar-nav li.selected>a {
+    background-color: #fff !important;
+	color: #000 !important;
+}
+@media (min-width: 992px){
+	.page-header .navbar-collapse .navbar-nav .more-dropdown .dropdown-menu {
+	    min-width: 199px;
+	    padding: 10px auto;
+	    box-shadow: 5px 5px rgba(102,102,102,.1);
+	}
+}
+@media (max-width: 992px){
+	.page-header .topbar-actions {
+		top: 0px !important;
+		right: 60px;
+	}
 }
