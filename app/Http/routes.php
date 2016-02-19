@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/home', array('as' => 'home', 'uses' => 'UserController@showIndex'));
 Route::get('/profiel', array('as' => 'profiel', 'uses' => 'UserController@showProfile'));
 Route::get('/profielwijzigen', array('as' => 'profielwijzigen', 'uses' => 'UserController@showProfileEdit'));
@@ -27,3 +28,20 @@ Route::get('/taxiwijzigen', array('as' => 'taxiwijzigen', 'uses' => 'TaxiControl
 Route::get('/taxitoevoegen', array('as' => 'taxitoevoegen', 'uses' => 'TaxiController@showTaxiAdd'));
 Route::get('/ritten', array('as' => 'ritten', 'uses' => 'RouteController@showRoutes'));
 Route::get('/rittoevoegen', array('as' => 'rittoevoegen', 'uses' => 'RouteController@showRoutesAdd'));
+
+//API v1 routes
+Route::get('/api/v1/getUser/{id}/', function($id){
+
+    $user = User::findOrFail($id);
+    return response()->json(
+        [
+            'email'         => $user->email,
+            'firstname'     => $user->firstname,
+            'surname'       => $user->surname,
+            'lastname'      => $user->lastname,
+            'profile_photo' => $user->profile_photo,
+            'user_rank'     => $user->user_rank,
+            'created_at'    => $user->created_at
+        ]
+    );
+});
