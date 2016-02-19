@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdTable extends Migration
+class CreateAdLocationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,10 @@ class CreateAdTable extends Migration
      */
     public function up()
     {
-        Schema::create('ad', function (Blueprint $table) {
+        Schema::create('ad_location', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('link');
-            $table->integer('clicks');
-            $table->string('banner');
-            $table->timestamps();
+            $table->integer('ad_id');
+            $table->string('location');
         });
     }
 
