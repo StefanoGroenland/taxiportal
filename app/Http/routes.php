@@ -45,3 +45,4 @@ Route::get('/api/v1/getUser/{id}/', function($id){
         ]
     );
 });
+
