@@ -31,19 +31,6 @@ Route::get('/rittoevoegen', array('as' => 'rittoevoegen', 'uses' => 'RouteContro
 Route::get('/ritwijzigen', array('as' => 'ritwijzigen', 'uses' => 'RouteController@showRoutesEdit'));
 
 //API v1 routes
-Route::get('/api/v1/getUser/{id}/', function($id){
-
-    $user = User::findOrFail($id);
-    return response()->json(
-        [
-            'email'         => $user->email,
-            'firstname'     => $user->firstname,
-            'surname'       => $user->surname,
-            'lastname'      => $user->lastname,
-            'profile_photo' => $user->profile_photo,
-            'user_rank'     => $user->user_rank,
-            'created_at'    => $user->created_at
-        ]
-    );
-});
+Route::get('/api/v1/getUser/{id}', 'ApiOneController@getUser');
+Route::get('/api/v1/adsPerLocation/{location}', 'ApiOneController@adsPerLocation');
 

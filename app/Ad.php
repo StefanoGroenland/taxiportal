@@ -27,6 +27,6 @@ class Ad extends Model
     ];
 
     public function adLocation(){
-        return $this->hasMany('App\AdLocation');
+        return $this->hasMany('App\AdLocation','id', 'ad_id');
     }
 }
