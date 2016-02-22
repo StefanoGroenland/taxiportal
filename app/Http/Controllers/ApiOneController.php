@@ -20,8 +20,7 @@ class ApiOneController extends Controller
      * Returns information about the given location
      */
     public function adsPerLocation($location){
-        $results = AdLocation::with('ad')->where('location','=',$location)->get();
-
-        return $results->toJson();
+            $results = AdLocation::with('ad')->where('location','=',$location)->get();
+            return $results->toJson();
     }
 }

@@ -26,6 +26,13 @@ class Ad extends Model
         'banner'
     ];
 
+    /**
+     * The attributes excluded from the model's JSON form.
+     *
+     * @var array
+     */
+    protected $hidden = ['id'];
+
     public function adLocation(){
         return $this->hasMany('App\AdLocation','id', 'ad_id');
     }
