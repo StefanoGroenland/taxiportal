@@ -23,12 +23,4 @@ class Tablet extends Model
         'taxi_id',
         'user_id'
     ];
-
-    public function user(){
-        return $this->belongsTo('App\User');
-    }
-    public function taxi(){
-        return $this->belongsTo('App\Taxi');
-    }
-
 }

@@ -28,6 +28,7 @@ Route::get('/taxiwijzigen', array('as' => 'taxiwijzigen', 'uses' => 'TaxiControl
 Route::get('/taxitoevoegen', array('as' => 'taxitoevoegen', 'uses' => 'TaxiController@showTaxiAdd'));
 Route::get('/ritten', array('as' => 'ritten', 'uses' => 'RouteController@showRoutes'));
 Route::get('/rittoevoegen', array('as' => 'rittoevoegen', 'uses' => 'RouteController@showRoutesAdd'));
+<<<<<<< HEAD
 Route::get('/ritwijzigen', array('as' => 'ritwijzigen', 'uses' => 'RouteController@showRoutesEdit'));
 Route::get('/opmerkingen', array('as' => 'opmerkingen', 'uses' => 'CommentController@showComment'));
 Route::get('/opmerkingwijzigen', array('as' => 'opmerkingwijzigen', 'uses' => 'CommentController@showCommentEdit'));
@@ -42,3 +43,8 @@ Route::get('/reclametoevoegen', array('as' => 'reclametoevoegen', 'uses' => 'AdC
 
 //API v1.0 routes
 Route::get('/api/v1/advertisements/{location}/{key}', 'ApiOneController@adsPerLocation');
+=======
+
+//API v1 routes
+Route::get('/api/v1/advertisements/{location}/{key}', 'ApiOneController@adsPerLocation');
+>>>>>>> 008483e3600a193b00652a3999334dd01ba85df6

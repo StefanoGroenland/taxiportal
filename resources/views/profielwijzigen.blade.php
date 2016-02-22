@@ -21,13 +21,11 @@
                                         <ul class="nav">
                                             <li>
                                                 <a href="/profiel">
-                                                    <i class="fa fa-home"></i> Overzicht 
-                                                </a>
+                                                    <i class="icon-home"></i> Overview </a>
                                             </li>
                                             <li class="active">
                                                 <a href="/profielwijzigen">
-                                                    <i class="fa fa-cog"></i> Account instellingen
-                                                </a>
+                                                    <i class="icon-settings"></i> Account Settings </a>
                                             </li>
                                         </ul>
                                     </div>
@@ -59,41 +57,21 @@
                                                     <!-- PERSONAL INFO TAB -->
                                                     <div class="tab-pane active" id="tab_1_1">
                                                         <form role="form" action="#">
-                                                            <div class="form-group form-md-line-input">
-                                                                <div class="input-icon">
-                                                                    <input type="text" class="form-control" id="voornaam" value="" data-validation="required">
-                                                                    <label for="voornaam">Voornaam</label>
-                                                                    <i class="fa fa-user"></i>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group form-md-line-input">
-                                                                <div class="input-icon">
-                                                                    <input type="text" class="form-control" id="tussenvoegsel" value="">
-                                                                    <label for="tussenvoegsel">Tussenvoegsel</label>
-                                                                    <i class="fa fa-user"></i>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group form-md-line-input">
-                                                                <div class="input-icon">
-                                                                    <input type="text" class="form-control" id="achternaam" value="">
-                                                                    <label for="achternaam">Achternaam</label>
-                                                                    <i class="fa fa-user"></i>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group form-md-line-input">
-                                                                <div class="input-icon">
-                                                                    <input type="text" class="form-control" id="telefoonnummer" value="">
-                                                                    <label for="telefoonnummer">Telefoonnummer</label>
-                                                                    <i class="fa fa-phone"></i>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group form-md-line-input">
-                                                                <div class="input-icon">
-                                                                    <input type="text" class="form-control" id="email" value="">
-                                                                    <label for="emial">E-mail</label>
-                                                                    <i class="fa fa-envelope-o"></i>
-                                                                </div>
-                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label">Voornaam</label>
+                                                                <input type="text" placeholder="Voornaam" class="form-control" /> </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label">Tussenvoegsel</label>
+                                                                <input type="text" placeholder="Tussenvoegsel" class="form-control" /> </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label">Achternaam</label>
+                                                                <input type="text" placeholder="Achternaam" class="form-control" /> </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label">Telefoonnummer</label>
+                                                                <input type="text" placeholder="Telefoonnummer" class="form-control" /> </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label">Email</label>
+                                                                <input type="email" placeholder="Email" class="form-control" /> </div>
                                                             <div class="row">
                                                                 <div class="col-lg-12">
                                                                     <div class="margiv-top-10 pull-right">
@@ -118,10 +96,9 @@
                                                                     <div>
                                                                         <span class="btn default btn-file">
                                                                             <span class="fileinput-new">Selecteer profiel foto</span>
-                                                                                <span class="fileinput-exists"> Verander </span>
-                                                                                <input type="file" name="..."> 
-                                                                            </span>
-                                                                        <a href="javascript:;" class="btn red-intense fileinput-exists" data-dismiss="fileinput"> Verwijder </a>
+                                                                            <span class="fileinput-exists"> Verander </span>
+                                                                            <input type="file" name="..."> </span>
+                                                                        <a href="javascript:;" class="btn default fileinput-exists" data-dismiss="fileinput"> Verwijder </a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -139,27 +116,15 @@
                                                     <!-- CHANGE PASSWORD TAB -->
                                                     <div class="tab-pane" id="tab_1_3">
                                                         <form action="#">
-                                                            <div class="form-group form-md-line-input">
-                                                                <div class="input-icon">
-                                                                    <input type="text" class="form-control" id="huidig_wachtwoord" value="">
-                                                                    <label for="huidig_wachtwoord">Huidig wachtwoord</label>
-                                                                    <i class="fa fa-key"></i>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group form-md-line-input">
-                                                                <div class="input-icon">
-                                                                    <input type="text" class="form-control" id="nieuw_wachtwoord" value="">
-                                                                    <label for="nieuw_wachtwoord">Nieuw wachtwoord</label>
-                                                                    <i class="fa fa-key"></i>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group form-md-line-input">
-                                                                <div class="input-icon">
-                                                                    <input type="text" class="form-control" id="herhaal_nieuw_wachtwoord" value="">
-                                                                    <label for="herhaal_nieuw_wachtwoord">Herhaal nieuw wachtwoord</label>
-                                                                    <i class="fa fa-key"></i>
-                                                                </div>
-                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label">Huidig wachtwoord</label>
+                                                                <input type="password" class="form-control" /> </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label">Nieuw wachtwoord</label>
+                                                                <input type="password" class="form-control" /> </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label">Herhaal nieuw wachtwoord</label>
+                                                                <input type="password" class="form-control" /> </div>
                                                              <div class="row">
                                                                 <div class="col-lg-12">
                                                                     <div class="margiv-top-10 pull-right">
@@ -181,16 +146,4 @@
                     </div>
                 </div>
                 
-                
-@endsection
-@section('scripts')
-<script src="{{URL::asset('../assets/js/jvalidate.js')}}" type="text/javascript"></script>
-<script src="{{URL::asset('../assets/js/locale/messages.en.js')}}"></script>
-<script>
-$(function() {
-	$('form').jvalidate({
-		errorMessage: true
-	});
-});
-</script>
 @endsection

@@ -152,6 +152,7 @@
 	    <script src="{{URL::asset('../assets/js/jquery.uniform.min.js')}}" type="text/javascript"></script>
 	    
 		<script src="{{URL::asset('../assets/js/bootstrap-switch.min.js')}}" type="text/javascript"></script>
+<<<<<<< HEAD
 	    <script src="{{URL::asset('../assets/js/bootstrap-fileinput.js')}}" type="text/javascript"></script>
 	    <script src="{{URL::asset('../assets/js/jquery.sparkline.min.js')}}" type="text/javascript"></script>
 	    <script src="{{URL::asset('../assets/js/app.min.js')}}" type="text/javascript"></script>
@@ -160,4 +161,15 @@
 
 	    @yield('scripts')
 	</body>
+=======
+        <script src="{{URL::asset('../assets/js/bootstrap-fileinput.js')}}" type="text/javascript"></script>
+        <script src="{{URL::asset('../assets/js/jquery.sparkline.min.js')}}" type="text/javascript"></script>
+        <script src="{{URL::asset('../assets/js/app.min.js')}}" type="text/javascript"></script>
+        <script src="{{URL::asset('../assets/js/profile.min.js')}}" type="text/javascript"></script>
+        <script src="{{URL::asset('../assets/js/layout.min.js')}}" type="text/javascript"></script>
+        
+        @yield('scripts')
+       
+</body>
+>>>>>>> 008483e3600a193b00652a3999334dd01ba85df6
 </html>
