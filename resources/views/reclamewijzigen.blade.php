@@ -20,7 +20,7 @@
                                             <div class="input-icon">
                                                 <input type="text" class="form-control" id="reclame_nummer" value="312">
                                                 <label for="reclame_nummer">Reclame nummer</label>
-                                                <i class="fa fa-picture-o"></i>
+                                                <i class="fa fa-hashtag"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -56,7 +56,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-actions noborder pull-right">
-                                        <button type="button" class="btn green-meadow"><i class="fa fa-plus" ></i>Toevoegen</button>
+                                        <button type="button" class="btn green-meadow"><i class="fa fa-check" ></i>Opslaan</button>
                                         <button type="button" class="btn default">Annuleren</button>
                                     </div>
                                 </div>

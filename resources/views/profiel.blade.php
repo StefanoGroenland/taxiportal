@@ -31,36 +31,12 @@
                 <div class="profile-content">
                     <div class="row">
                         <div class="col-md-12">
-<<<<<<< HEAD
                             <div class="portlet light bordered">
                                 <div class="portlet-title">
                                     <div class="caption caption-md">
                                         <i class="icon-bar-chart theme-font hide"></i>
                                         <span class="caption-subject font-blue-madison bold uppercase">Recente opmerkingen</span>
                                         <span class="caption-helper">20 reacties</span>
-=======
-                            <div class="profile-sidebar">
-                                <div class="portlet light profile-sidebar-portlet bordered">
-                                    <div class="profile-userpic">
-                                        <img src="{{URL::asset('../assets/img/profile_user.jpg')}}" class="img-responsive" alt=""> </div>
-                                    <div class="profile-usertitle">
-                                        <div class="profile-usertitle-name"> Marcus Doe </div>
-                                        <div class="profile-usertitle-job"> Developer </div>
-                                    </div>
-                                    <div class="profile-usermenu">
-                                        <ul class="nav">
-                                            <li class="active">
-                                                <a href="/profiel">
-                                                    <i class="icon-home"></i> Overview 
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="/profielwijzigen">
-                                                    <i class="icon-settings"></i> Account Settings 
-                                                </a>
-                                            </li>
-                                        </ul>
->>>>>>> 008483e3600a193b00652a3999334dd01ba85df6
                                     </div>
                                 </div>
                                 <div class="portlet-body">

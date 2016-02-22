@@ -98,8 +98,6 @@
 	                                        </li>
 	                                    </ul>
 	                                </li>
-
-<<<<<<< HEAD
 	                                <li class="dropdown dropdown-fw  ">
 	                                    <a href="/ritten" class="text-uppercase">
 	                                        <i class="fa fa-location-arrow"></i> Ritten
