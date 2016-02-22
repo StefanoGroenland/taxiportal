@@ -16,12 +16,12 @@
                                         <ul class="nav">
                                             <li class="active">
                                                 <a href="/profiel">
-                                                    <i class="icon-home"></i> Overview 
+                                                    <i class="fa fa-home"></i> Overzicht  
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="/profielwijzigen">
-                                                    <i class="icon-settings"></i> Account Settings 
+                                                    <i class="fa fa-cog"></i> Account instellingen
                                                 </a>
                                             </li>
                                         </ul>

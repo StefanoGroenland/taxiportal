@@ -7,8 +7,8 @@
                 <div class="portlet light bordered">
                     <div class="portlet-title">
                         <div class="caption font-grey-gallery">
-                            <i class="fa fa-plus font-grey-gallery"></i>
-                            <span class="caption-subject bold uppercase"> Rit toevoegen</span>
+                            <i class="fa fa-cog font-grey-gallery"></i>
+                            <span class="caption-subject bold uppercase"> Wijzig rit</span>
                         </div>
                     </div>
                     <div class="portlet-body form">
@@ -180,6 +180,6 @@
                 </div>
             </div>
         </div>
-   	</div>
+	</div>
 
 @endsection

@@ -28,6 +28,7 @@ Route::get('/taxiwijzigen', array('as' => 'taxiwijzigen', 'uses' => 'TaxiControl
 Route::get('/taxitoevoegen', array('as' => 'taxitoevoegen', 'uses' => 'TaxiController@showTaxiAdd'));
 Route::get('/ritten', array('as' => 'ritten', 'uses' => 'RouteController@showRoutes'));
 Route::get('/rittoevoegen', array('as' => 'rittoevoegen', 'uses' => 'RouteController@showRoutesAdd'));
+Route::get('/ritwijzigen', array('as' => 'ritwijzigen', 'uses' => 'RouteController@showRoutesEdit'));
 
 //API v1 routes
 Route::get('/api/v1/getUser/{id}/', function($id){

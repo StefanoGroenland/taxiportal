@@ -16,4 +16,7 @@ class RouteController extends Controller
    public function showRoutesAdd(){
 	   return View::make('/rittoevoegen');
    }
+   public function showRoutesEdit(){
+	   return View::make('/ritwijzigen');
+   }
 }

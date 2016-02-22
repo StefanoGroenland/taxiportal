@@ -157,6 +157,7 @@
         <script src="{{URL::asset('../assets/js/profile.min.js')}}" type="text/javascript"></script>
         <script src="{{URL::asset('../assets/js/layout.min.js')}}" type="text/javascript"></script>
         
+        
         @yield('scripts')
        
 </body>
