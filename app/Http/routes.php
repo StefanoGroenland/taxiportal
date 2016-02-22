@@ -30,7 +30,7 @@ Route::get('/ritten', array('as' => 'ritten', 'uses' => 'RouteController@showRou
 Route::get('/rittoevoegen', array('as' => 'rittoevoegen', 'uses' => 'RouteController@showRoutesAdd'));
 Route::get('/ritwijzigen', array('as' => 'ritwijzigen', 'uses' => 'RouteController@showRoutesEdit'));
 
-//API v1 routes
+//API v1.0 routes
 Route::get('/api/v1/getUser/{id}', 'ApiOneController@getUser');
 Route::get('/api/v1/adsPerLocation/{location}', 'ApiOneController@adsPerLocation');
 
