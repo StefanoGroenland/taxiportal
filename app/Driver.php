@@ -25,4 +25,15 @@ class Driver extends Model
         'global_information',
         'star_rating'
     ];
+
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
+    public function taxi(){
+        return $this->belongsTo('App\Taxi');
+    }
+    public function comment(){
+        return $this->hasMany('App\Comment');
+    }
+
 }

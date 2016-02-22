@@ -28,7 +28,17 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = [
+        'email',
+        'password',
+        'firstname',
+        'surname',
+        'lastname',
+        'profile_photo',
+        'phone_number',
+        'user_rank',
+        'tablet_name'
+    ];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -36,4 +46,11 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    public function driver(){
+        return $this->hasOne('App\Driver');
+    }
+    public function tablet(){
+        return $this->hasOne('App\Tablet');
+    }
 }

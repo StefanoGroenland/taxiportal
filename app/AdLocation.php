@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Ad extends Model
+class AdLocation extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'ad';
+    protected $table = 'ad_location';
 
 
     /**
@@ -20,13 +20,11 @@ class Ad extends Model
      * @var array
      */
     protected $fillable = [
-        'link',
-        'locations',
-        'clicks',
-        'banner'
+        'ad_id',
+        'locations'
     ];
 
-    public function adLocation(){
-        return $this->hasMany('App\AdLocation');
+    public function ad(){
+        return $this->belongsTo('App\Ad');
     }
 }

@@ -34,4 +34,8 @@ class Route extends Model
         'email_customer',
         'processed'
     ];
+
+    public function taxi(){
+        return $this->belongsTo('App\Taxi');
+    }
 }

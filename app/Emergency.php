@@ -23,4 +23,8 @@ class Emergency extends Model
         'taxi_id',
         'seen'
     ];
+
+    public function taxi(){
+        return $this->belongsTo('App\Taxi');
+    }
 }
