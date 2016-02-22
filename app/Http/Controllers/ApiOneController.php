@@ -16,16 +16,20 @@ class ApiOneController extends Controller
      *
      * Defines the API key for a security layer.
      */
+
     private static $apikey = "alpha";
+
     /**
      * @author Stefano Groenland
      * @api
      * @version v1.0
      * @param $location
+     * @param $key
      * @return \Illuminate\Http\JsonResponse
      *
      * Returns information about the given location
      */
+
     public function adsPerLocation($location,$key){
         $apikey = self::$apikey;
         if($key == $apikey){
@@ -34,4 +38,5 @@ class ApiOneController extends Controller
         }
         return "none";
     }
+
 }
