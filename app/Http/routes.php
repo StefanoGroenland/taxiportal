@@ -29,8 +29,16 @@ Route::get('/taxitoevoegen', array('as' => 'taxitoevoegen', 'uses' => 'TaxiContr
 Route::get('/ritten', array('as' => 'ritten', 'uses' => 'RouteController@showRoutes'));
 Route::get('/rittoevoegen', array('as' => 'rittoevoegen', 'uses' => 'RouteController@showRoutesAdd'));
 Route::get('/ritwijzigen', array('as' => 'ritwijzigen', 'uses' => 'RouteController@showRoutesEdit'));
+Route::get('/opmerkingen', array('as' => 'opmerkingen', 'uses' => 'CommentController@showComment'));
+Route::get('/opmerkingwijzigen', array('as' => 'opmerkingwijzigen', 'uses' => 'CommentController@showCommentEdit'));
+Route::get('/tablets', array('as' => 'tablets', 'uses' => 'UserController@showTablet'));
+Route::get('/tabletwijzigen', array('as' => 'tabletwijzigen', 'uses' => 'UserController@showTabletEdit'));
+Route::get('/medewerkers', array('as' => 'medewerkers', 'uses' => 'UserController@showAdmin'));
+Route::get('/medewerkerwijzigen', array('as' => 'medewerkerwijzigen', 'uses' => 'UserController@showAdminEdit'));
+Route::get('/medewerkertoevoegen', array('as' => 'medewerkertoevoegen', 'uses' => 'UserController@showAdminAdd'));
+Route::get('/reclames', array('as' => 'reclames', 'uses' => 'AdController@showAds'));
+Route::get('/reclamewijzigen', array('as' => 'reclamewijzigen', 'uses' => 'AdController@showAdsEdit'));
+Route::get('/reclametoevoegen', array('as' => 'reclametoevoegen', 'uses' => 'AdController@showAdsAdd'));
 
 //API v1.0 routes
-Route::get('/api/v1/getUser/{id}', 'ApiOneController@getUser');
-Route::get('/api/v1/adsPerLocation/{location}', 'ApiOneController@adsPerLocation');
-
+Route::get('/api/v1/advertisements/{location}/{key}', 'ApiOneController@adsPerLocation');

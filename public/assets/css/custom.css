@@ -76,6 +76,10 @@ a{
     background-color: #fff !important;
 	color: #000 !important;
 }
+.profile-sidebar-portlet {
+     padding: 0px 0 0!important; 
+     padding-bottom:35px !important;
+}
 @media (min-width: 992px){
 	.page-header .navbar-collapse .navbar-nav .more-dropdown .dropdown-menu {
 	    min-width: 199px;

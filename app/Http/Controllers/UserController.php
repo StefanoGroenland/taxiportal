@@ -29,4 +29,20 @@ class UserController extends Controller
 	public function showDriversAdd(){
 		return View::make('/chauffeurtoevoegen');
 	}
+	public function showTablet(){
+		return View::make('/tablets');
+	}
+	public function showTabletEdit(){
+		return View::make('/tabletwijzigen');
+	}
+	public function showAdmin(){
+		return View::make('/medewerkers');
+	}
+	public function showAdminEdit(){
+		return View::make('/medewerkerwijzigen');
+	}
+	public function showAdminAdd(){
+		return View::make('/medewerkertoevoegen');
+	}
 }
+
