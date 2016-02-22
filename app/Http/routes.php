@@ -43,5 +43,3 @@ Route::get('/reclametoevoegen', array('as' => 'reclametoevoegen', 'uses' => 'AdC
 
 //API v1.0 routes
 Route::get('/api/v1/advertisements/{location}/{key}', 'ApiOneController@adsPerLocation');
-
-

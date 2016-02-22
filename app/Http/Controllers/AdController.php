@@ -20,4 +20,3 @@ class AdController extends Controller
         return View::make('/reclametoevoegen');
     }
 }
-

@@ -9,8 +9,7 @@ use App\Http\Controllers\Controller;
 use Route, View;
 
 class UserController extends Controller
-{
-	
+{	
     public function showIndex(){
 		return View::make('/index');
 	}
