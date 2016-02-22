@@ -10,10 +10,13 @@ use Route, View;
 
 class RouteController extends Controller
 {
-   public function showRoutes(){
-	   return View::make('/ritten');
-   }
-   public function showRoutesAdd(){
-	   return View::make('/rittoevoegen');
-   }
+	public function showRoutes(){
+		return View::make('/ritten');
+	}
+	public function showRoutesAdd(){
+		return View::make('/rittoevoegen');
+	}
+	public function showRoutesEdit(){
+		return View::make('/ritwijzigen');
+	}
 }
