@@ -11,7 +11,7 @@ use Route, View;
 
 class CommentController extends Controller
 {
-    
+    //test
     public function showComment(){
 		return View::make('/opmerkingen');
 	}
