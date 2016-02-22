@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('lastname');
             $table->string('profile_photo');
             $table->string('phone_number');
-            $table->enum('user_rank',['admin','driver']);
+            $table->enum('user_rank',['admin','driver','tablet']);
             $table->string('tablet_name');
             $table->rememberToken();
             $table->timestamps();

@@ -38,5 +38,4 @@ class ApiOneController extends Controller
         }
         return "none";
     }
-
 }
