@@ -21,7 +21,7 @@
                                                 <div class="input-icon">
                                                     <input type="text" class="form-control" id="reclame_nummer" value="">
                                                     <label for="reclame_nummer">Reclame nummer</label>
-                                                    <i class="fa fa-picture-o"></i>
+                                                    <i class="fa fa-hashtag"></i>
                                                 </div>
                                             </div>
                                         </div>
