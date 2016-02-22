@@ -75,7 +75,7 @@
                                                             <div class="row">
                                                                 <div class="col-lg-12">
                                                                     <div class="margiv-top-10 pull-right">
-                                                                        <a href="javascript:;" class="btn green-meadow"> Opslaan </a>
+                                                                        <a href="javascript:;" class="btn green-meadow"><i class="fa fa-check"></i> Opslaan </a>
                                                                         <a href="javascript:;" class="btn default"> Annuleren </a>
                                                                     </div>
                                                                 </div>
@@ -105,7 +105,7 @@
                                                             <div class="row">
                                                                 <div class="col-lg-12">
                                                                     <div class="margiv-top-10 pull-right">
-                                                                        <a href="javascript:;" class="btn green-meadow"> Opslaan </a>
+                                                                        <a href="javascript:;" class="btn green-meadow"><i class="fa fa-check"></i> Opslaan </a>
                                                                         <a href="javascript:;" class="btn default"> Annuleren </a>
                                                                     </div>
                                                                 </div>
