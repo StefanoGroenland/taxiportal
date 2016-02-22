@@ -104,8 +104,8 @@
                                     </a>
                                 </li>
                                 <li class="dropdown dropdown-fw  ">
-                                    <a href="/opmerking" class="text-uppercase">
-                                        <i class="fa fa-comments-o"></i> Opmerkingen 
+                                    <a href="/opmerkingen" class="text-uppercase">
+                                        <i class="fa fa-comments-o"></i> Opmerkingen
                                     </a>
                                 </li>
                                 <li class="dropdown more-dropdown">
