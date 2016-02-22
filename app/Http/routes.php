@@ -28,6 +28,7 @@ Route::get('/taxiwijzigen', array('as' => 'taxiwijzigen', 'uses' => 'TaxiControl
 Route::get('/taxitoevoegen', array('as' => 'taxitoevoegen', 'uses' => 'TaxiController@showTaxiAdd'));
 Route::get('/ritten', array('as' => 'ritten', 'uses' => 'RouteController@showRoutes'));
 Route::get('/rittoevoegen', array('as' => 'rittoevoegen', 'uses' => 'RouteController@showRoutesAdd'));
+Route::get('/opmerkingen', array('as' => 'opmerkingen', 'uses' => 'CommentController@showComment'));
 
 Route::get('/ritwijzigen', array('as' => 'ritwijzigen', 'uses' => 'RouteController@showRoutesEdit'));
 Route::get('/opmerkingen', array('as' => 'opmerkingen', 'uses' => 'CommentController@showComment'));

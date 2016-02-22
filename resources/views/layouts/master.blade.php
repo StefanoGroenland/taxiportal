@@ -99,6 +99,7 @@
 	                                    </ul>
 	                                </li>
 
+<<<<<<< HEAD
 	                                <li class="dropdown dropdown-fw  ">
 	                                    <a href="/ritten" class="text-uppercase">
 	                                        <i class="fa fa-location-arrow"></i> Ritten
@@ -141,7 +142,6 @@
 	    <a href="#index" class="go2top">
 	        <i class="icon-arrow-up"></i>
 	    </a>
-
 
 	 
 		<script src="{{URL::asset('../assets/js/jquery.min.js')}}" type="text/javascript"></script>
