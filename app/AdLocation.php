@@ -21,15 +21,8 @@ class AdLocation extends Model
      */
     protected $fillable = [
         'ad_id',
-        'location'
+        'locations'
     ];
-
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-    protected $hidden = ['ad_id','id'];
 
     public function ad(){
         return $this->belongsTo('App\Ad');

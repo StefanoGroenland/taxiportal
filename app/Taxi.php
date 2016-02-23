@@ -30,4 +30,20 @@ class Taxi extends Model
         'car_model',
         'in_shift'
     ];
+
+    public function tablet(){
+        return $this->hasMany('App\Tablet');
+    }
+    public function driver(){
+        return $this->hasOne('App\Driver');
+    }
+    public function emergency(){
+        return $this->hasMany('App\Emergency');
+    }
+    public function route(){
+        return $this->hasMany('App\Route');
+    }
+
+
+
 }

@@ -25,4 +25,8 @@ class Ad extends Model
         'clicks',
         'banner'
     ];
+
+    public function adLocation(){
+        return $this->hasMany('App\AdLocation');
+    }
 }

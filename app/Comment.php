@@ -24,4 +24,8 @@ class Comment extends Model
         'comment',
         'approved'
     ];
+
+    public function driver(){
+        return $this->belongsTo('App\Driver');
+    }
 }
