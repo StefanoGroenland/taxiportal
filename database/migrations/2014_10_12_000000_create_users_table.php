@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('firstname');
             $table->string('surname');
             $table->string('lastname');
+            $table->enum('sex',['man','vrouw']);
             $table->string('profile_photo');
             $table->string('phone_number');
             $table->enum('user_rank',['admin','driver','tablet']);

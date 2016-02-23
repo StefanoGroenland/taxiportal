@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Driver;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Route, View;
-
 class UserController extends Controller
 {	
     public function showIndex(){
@@ -20,7 +20,8 @@ class UserController extends Controller
 		return View::make('/profielwijzigen');
 	}
 	public function showDrivers(){
-		return View::make('/chauffeurs');
+        $drivers = Driver::with('user','taxi')->get();
+		return View::make('/chauffeurs', compact('drivers','taxis'));
 	}
 	public function showDriversEdit(){
 		return View::make('/chauffeurwijzigen');

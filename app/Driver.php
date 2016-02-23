@@ -30,7 +30,7 @@ class Driver extends Model
         return $this->belongsTo('App\User');
     }
     public function taxi(){
-        return $this->belongsTo('App\Taxi');
+        return $this->belongsTo('App\Taxi', 'id', 'driver_id');
     }
     public function comment(){
         return $this->hasMany('App\Comment');
