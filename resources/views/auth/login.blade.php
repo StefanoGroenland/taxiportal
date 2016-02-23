@@ -25,37 +25,42 @@
         <link href="{{URL::asset('../assets/css/login.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{URL::asset('../assets/css/custom.css')}}" rel="stylesheet" type="text/css" />
     </head>
-    <body class=" login">
-        <div class="logo">
+    <body class="login">
+    <div class="col-lg-4 col-md-4"></div>
+    <div class="col-lg-4 col-md-4">
+        <div class="logo img-responsive text-center">
             <a href="index.html">
                 <img src="{{URL::asset('../assets/img/logo.png')}}" alt="Logo"> 
             </a>
         </div>
         <div class="content">
-        <!-- resources/views/auth/login.blade.php -->
-            <form class="login-form" action="/login" method="post" novalidate="novalidate">
-            	{!! csrf_field() !!}
-                <h3 class="form-title font-green">Log in</h3>
-                <div class="alert alert-danger display-hide">
-                    <button class="close" data-close="alert"></button>
-                    <span> Vul uw E-mail adres en wachtwoord in! </span>
+            <div class="page-content">
+                <div class="portlet light bordered">
+                <!-- resources/views/auth/login.blade.php -->
+                    <form class="login-form" action="/login" method="post" novalidate="novalidate">
+                    	{!! csrf_field() !!}
+                        <h3 class="form-title font-green">Log in</h3>
+                        <div class="alert alert-danger display-hide">
+                            <button class="close" data-close="alert"></button>
+                            <span> Vul uw E-mail adres en wachtwoord in! </span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label visible-ie8 visible-ie9">E-mail</label>
+                            <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email" value="{{ old('email') }}"> </div>
+                        <div class="form-group">
+                            <label class="control-label visible-ie8 visible-ie9">Wachtwoord</label>
+                            <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Wachtwoord" name="password"> </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn green uppercase">Login</button>
+                            <label class="rememberme check pull-right"></label>
+                            <a href="#" id="forget-password" class="forget-password pull-right">Wachtwoord reset?</a>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label class="control-label visible-ie8 visible-ie9">E-mail</label>
-                    <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email" value="{{ old('email') }}"> </div>
-                <div class="form-group">
-                    <label class="control-label visible-ie8 visible-ie9">Wachtwoord</label>
-                    <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Wachtwoord" name="password"> </div>
-                <div class="form-actions ">
-                    <button type="submit" class="btn green uppercase">Login</button>
-                    <label class="rememberme check pull-right">
-                    <a href="#" id="forget-password" class="forget-password ">Wachtwoord reset?</a>
-                </div>
-            </form>
+            </div>
         </div>
-        <p class="copyright copy-color">2016 Â© Moodles.</p>
-	    <a href="#index" class="go2top">
-	        <i class="icon-arrow-up"></i>
-	    </a>
+        <p class="copyright">2016 © Moodles.</p>
+    </div>
+    <div class="col-lg-4 col-md-4"></div>
 </body>
 </html>

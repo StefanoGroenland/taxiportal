@@ -21,8 +21,10 @@ class AdLocation extends Model
      */
     protected $fillable = [
         'ad_id',
-        'locations'
+        'location'
     ];
+
+    public $timestamps = false;
 
     public function ad(){
         return $this->belongsTo('App\Ad');

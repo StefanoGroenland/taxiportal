@@ -25,7 +25,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/opmerkingen', array('as' => 'opmerkingen', 'uses' => 'CommentController@showComment'));
 
     //Routes alleen voor admins.
-    Route::group(['middleware' => 'isAdmin'], function () {
+        Route::group(['middleware' => 'isAdmin'], function () {
         Route::get('/chauffeurs', array('as' => 'chauffeurs', 'uses' => 'UserController@showDrivers'));
         Route::get('/chauffeurwijzigen', array('as' => 'chauffeurwijzigen', 'uses' => 'UserController@showDriversEdit'));
         Route::get('/chauffeurtoevoegen', array('as' => 'chauffeurtoevoegen', 'uses' => 'UserController@showDriversAdd'));
@@ -44,8 +44,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/medewerkerwijzigen', array('as' => 'medewerkerwijzigen', 'uses' => 'UserController@showAdminEdit'));
         Route::get('/medewerkertoevoegen', array('as' => 'medewerkertoevoegen', 'uses' => 'UserController@showAdminAdd'));
         Route::get('/reclames', array('as' => 'reclames', 'uses' => 'AdController@showAds'));
-        Route::get('/reclamewijzigen', array('as' => 'reclamewijzigen', 'uses' => 'AdController@showAdsEdit'));
+        Route::get('/reclamewijzigen/{id}', array('as' => 'reclamewijzigen', 'uses' => 'AdController@showAdsEdit'));
         Route::get('/reclametoevoegen', array('as' => 'reclametoevoegen', 'uses' => 'AdController@showAdsAdd'));
+        Route::post('/addAd', 'AdController@addAd');
+        Route::delete('/deleteAd/{id}', 'AdController@deleteAd');
+        Route::put('/editAd/{id}', array('as' => 'editAd', 'uses' => 'AdController@editAd'));
     });
 });
 
