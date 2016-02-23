@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="page-content">
+                <div class="page-content">
                     <div class="row">
                         <div class="col-md-12">
                             <!-- BEGIN PROFILE SIDEBAR -->
@@ -97,7 +97,7 @@
                                                             <div class="row">
                                                                 <div class="col-lg-12">
                                                                     <div class="margiv-top-10 pull-right">
-                                                                        <a href="javascript:;" class="btn green-meadow"> Opslaan </a>
+                                                                        <a href="javascript:;" class="btn green-meadow"><i class="fa fa-check"></i> Opslaan </a>
                                                                         <a href="javascript:;" class="btn default"> Annuleren </a>
                                                                     </div>
                                                                 </div>
@@ -128,7 +128,7 @@
                                                             <div class="row">
                                                                 <div class="col-lg-12">
                                                                     <div class="margiv-top-10 pull-right">
-                                                                        <a href="javascript:;" class="btn green-meadow"> Opslaan </a>
+                                                                        <a href="javascript:;" class="btn green-meadow"><i class="fa fa-check"></i> Opslaan </a>
                                                                         <a href="javascript:;" class="btn default"> Annuleren </a>
                                                                     </div>
                                                                 </div>
@@ -163,7 +163,7 @@
                                                              <div class="row">
                                                                 <div class="col-lg-12">
                                                                     <div class="margiv-top-10 pull-right">
-                                                                        <a href="javascript:;" class="btn green-meadow"> Verander wachtwoord </a>
+                                                                        <a href="javascript:;" class="btn green-meadow"><i class="fa fa-check"></i> Opslaan</a>
                                                                         <a href="javascript:;" class="btn default"> Annuleren </a>
                                                                     </div>
                                                                 </div>
@@ -177,15 +177,13 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
-                
                 
 @endsection
 @section('scripts')
 <script src="{{URL::asset('../assets/js/jvalidate.js')}}" type="text/javascript"></script>
-<script src="{{URL::asset('../assets/js/locale/messages.en.js')}}"></script>
+<script src="{{URL::asset('../assets/js/locale/messages.nl.js')}}"></script>
 <script>
 $(function() {
     $('form').jvalidate({

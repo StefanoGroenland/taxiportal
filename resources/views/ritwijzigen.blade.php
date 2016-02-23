@@ -168,7 +168,7 @@
                                <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-actions noborder pull-right">
-                                        <button type="button" class="btn green-meadow"><i class="fa fa-plus" ></i>Toevoegen</button>
+                                        <button type="button" class="btn green-meadow"><i class="fa fa-check" ></i>Opslaan</button>
                                         <button type="button" class="btn default">Annuleren</button>
                                     </div>
                                 </div>
