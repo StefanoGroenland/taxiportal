@@ -41,16 +41,6 @@
  	                                        <i class="fa fa-home"></i> Dashboard
  	                                    </a>
  	                                </li>
- 	                                <li class="dropdown more-dropdown">
- 	                                    <a href="/taxilocatie" class="text-uppercase">
- 	                                        <i class="fa fa-briefcase" ></i> Taxi's
- 	                                    </a>
- 	                                    <ul class="dropdown-menu taxi_dropdown">
- 	                                        <li>
- 	                                            <a href="/taxioverzicht">Overzicht</a>
- 	                                        </li>
- 	                                    </ul>
- 	                                </li>
 
  	                                <li class="dropdown dropdown-fw  ">
  	                                    <a href="/ritten" class="text-uppercase">
@@ -61,25 +51,6 @@
  	                                    <a href="/opmerkingen" class="text-uppercase">
  	                                        <i class="fa fa-comments-o"></i> Opmerkingen
  	                                    </a>
- 	                                </li>
- 	                                <li class="dropdown more-dropdown">
- 	                                    <a href="#" class="text-uppercase">
- 	                                        <i class="fa fa-briefcase" ></i> Overzichten
- 	                                    </a>
- 	                                    <ul class="dropdown-menu">
- 	                                        <li>
- 	                                            <a href="/chauffeurs">Chauffeurs</a>
- 	                                        </li>
- 	                                        <li>
- 	                                            <a href="/tablets">Tablets</a>
- 	                                        </li>
- 	                                        <li>
- 	                                            <a href="/medewerkers">Medewerkers</a>
- 	                                        </li>
- 	                                         <li>
- 	                                            <a href="/reclames">Reclames</a>
- 	                                        </li>
- 	                                    </ul>
  	                                </li>
  	                            </ul>
  	                        </div>
