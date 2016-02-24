@@ -11,6 +11,7 @@ use App\User;
 use App\Tablet;
 use App\Driver;
 use App\Ad;
+use Illuminate\Support\Facades\Input;
 class ApiOneController extends Controller
 {
     /**
@@ -59,8 +60,9 @@ class ApiOneController extends Controller
      *
      * returns success if succesfully updated the click count
      */
-    public function increaseClickOfAd($id,$key){
-
+    public function increaseClickOfAd(){
+        $id = Input::get('id');
+        $key = Input::get('key');
         $ad = Ad::find($id);
         $clicks = $ad->clicks;
         $succeed = array('result' => 'success');
