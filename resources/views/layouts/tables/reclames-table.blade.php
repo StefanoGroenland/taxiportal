@@ -1,31 +1,44 @@
-<div class="table-responsive">
-     <table class="table table-hover data_table" >
-         <thead>
-             <th>Reclame nummer</th>
-             <th>Link</th>
-             <th>Locaties</th>
-             <th>Aantal kliks</th>
-             <th></th>
-         </thead>
-         <tbody>
-             @foreach($ads as $ad)
-                 <tr>
-                     <td>{{$ad->id}}</td>
-                     <td>{{$ad->link}}</td>
-                     <td>
-                     @foreach($ad->adLocation as $adLoc)
-                     {{$adLoc->location}},
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        @if(\App\Ad::count() > 0)
+            <div id="grafiek" style="height: 250px;"></div>
+        @endif
+    </div>
+    <div class="col-md-2"></div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-responsive">
+             <table class="table table-hover data_table" >
+                 <thead>
+                     <th>Reclame nummer</th>
+                     <th>Link</th>
+                     <th>Locaties</th>
+                     <th>Aantal kliks</th>
+                     <th></th>
+                 </thead>
+                 <tbody>
+                     @foreach($ads as $ad)
+                         <tr>
+                             <td>{{$ad->id}}</td>
+                             <td>{{$ad->link}}</td>
+                             <td>
+                             @foreach($ad->adLocation as $adLoc)
+                             {{$adLoc->location}},
+                             @endforeach
+                             </td>
+                             <td>{{$ad->clicks}}</td>
+                             <td width="12%" class="text-right">
+                                 <a class="btn btn-sm green-meadow" href="/reclamewijzigen/{{$ad->id}}"><i class="fa fa-pencil"></i></a>
+                                 <a class="btn btn-sm red-sunglo deleteButton" data-model-id="{{$ad->id}}" data-toggle="modal" href="#myModel{{$ad->id}}"><i class="fa fa-trash"></i></a>
+                             </td>
+                         </tr>
                      @endforeach
-                     </td>
-                     <td>{{$ad->clicks}}</td>
-                     <td width="12%" class="text-right">
-                         <a class="btn btn-sm green-meadow" href="/reclamewijzigen/{{$ad->id}}"><i class="fa fa-pencil"></i></a>
-                         <a class="btn btn-sm red-sunglo deleteButton" data-model-id="{{$ad->id}}" data-toggle="modal" href="#myModel{{$ad->id}}"><i class="fa fa-trash"></i></a>
-                     </td>
-                 </tr>
-             @endforeach
-         </tbody>
-     </table>
+                 </tbody>
+             </table>
+        </div>
+    </div>
 </div>
 @foreach($ads as $ad)
     <div class="modal fade" id="myModel{{$ad->id}}" tabindex="-1"  aria-hidden="true" style="display: none;">
@@ -52,5 +65,25 @@
     <!-- /.modal-dialog -->
     </div>
 @endforeach
+@section('scripts') 
+    <script src="{{URL::asset('../assets/js/raphael-min.js')}}" type="text/javascript"></script>
+    <script src="{{URL::asset('../assets/js/morris-0.4.3.min.js')}}" type="text/javascript"></script>
+    <script type="text/javascript">
+     
+        Morris.Bar({
+            element: 'grafiek',
+            data: [
+                @foreach($ads as $ad)
+                    { data: "{{$ad->link}}", value: "{{$ad->clicks}}"},
+                @endforeach
+            ],
+            xkey: 'data',
+            ykeys: ['value'],
+            labels: ['Aantal kliks']
+        });
+    </script>
+@endsection
+
+
 
 
