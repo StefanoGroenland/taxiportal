@@ -10,6 +10,7 @@ use App\AdLocation;
 use App\User;
 use App\Tablet;
 use App\Driver;
+use App\Ad;
 class ApiOneController extends Controller
 {
     /**
@@ -47,6 +48,28 @@ class ApiOneController extends Controller
             return $results->toJson();
         }
         return json_encode(self::$error[0]);
+    }
+
+    /**
+     * @author Stefano Groenland
+     * @api
+     * @param $id
+     * @param $key
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * returns success if succesfully updated the click count
+     */
+    public function increaseClickOfAd($id,$key){
+
+        $ad = Ad::find($id);
+        $clicks = $ad->clicks;
+        $succeed = array('result' => 'success');
+        $apikey = self::$apikey;
+            if($key == $apikey){
+                Ad::where('id',$ad->id)->update(array('clicks' => $clicks + 1));
+                return json_encode($succeed);
+            }
+            return json_encode(self::$error[0]);
     }
 
     /**
