@@ -49,7 +49,7 @@
                                 <div class="col-lg-12">
                                     <div class="form-actions noborder pull-right">
                                         <button type="submit" class="btn green-meadow"><i class="fa fa-plus" aria-hidden="true"></i>Toevoegen</button>
-                                        <button type="button" class="btn default">Annuleren</button>
+                                        <a type="button" href="/reclames" class="btn default">Annuleren</a>
                                     </div>
                                 </div>
                             </div>
@@ -59,6 +59,4 @@
             </div>
         </div>
     </div>
-    
-
 @endsection
