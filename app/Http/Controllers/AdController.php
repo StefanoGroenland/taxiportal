@@ -20,7 +20,7 @@ class AdController extends Controller
     public function showAdsEdit(){
         $id = Route::current()->getParameter('id');
         $obj = Ad::find($id);
-        $objLo = AdLocation::where('ad_id',$obj->id)->first();
+        $objLo = AdLocation::where('ad_id',$obj->id)->get();
         return View::make('/reclamewijzigen', compact('id', 'obj', 'objLo'));
     }
     public function showAdsAdd(){
@@ -37,19 +37,22 @@ class AdController extends Controller
             'link' => 'required',
             'banner' => '',
         );
-        $rulesLocation = array('location' => 'required');
 
         $validator = Validator::make($data, $rules);
         if ($validator->fails()){
             return redirect('reclametoevoegen')->withErrors($validator)->withInput($data);
-        }  
-
+        }
         $advertisement = Ad::create($data);
         $dataLocation = array(
             'ad_id' => $advertisement->id,
             'location' => $request['locatie']
         );
-        AdLocation::create($dataLocation);
+
+        $datLoc = $dataLocation['location'];
+        $datLocArray = explode(',',$datLoc);
+        for($i = 0; $i < count($datLocArray); $i++){
+            AdLocation::insertLocals($advertisement->id,$datLocArray[$i]);
+        }
         return redirect()->route('reclames');
     }
     public function deleteAd(Request $request){
@@ -60,7 +63,7 @@ class AdController extends Controller
        session()->flash('alert-success', 'reclame' . $find->link.' verwijderd.');
        return redirect()->route('reclames'); 
     }
-    public function editAd($id,Request $request){
+    public function editAd(Request $request){
         $id = Route::current()->getParameter('id');
         $data = array(
             'link' => $request['link'],
@@ -68,19 +71,29 @@ class AdController extends Controller
         );
          $rules = array(
             'link' => 'required',
-            'banner' => '',
+            'banner' => 'required',
         );
-        $dat = array(
-            'location' => $request['location']
-            );
 
         $validator = Validator::make($data, $rules);
         if ($validator->fails()){
             return redirect('reclamewijzigen/'.$id)->withErrors($validator)->withInput($data);
         }
+
         Ad::where('id', '=', $id)->update($data);
-        AdLocation::where('ad_id','=',$id)->update($dat);
-        $request->session()->flash('alert-success', 'Reclame ' . $request['link'] . 'is veranderd.');
+        $dataLocation = array(
+            'ad_id' => $id,
+            'location' => $request['location']
+        );
+        $datLoc = $dataLocation['location'];
+        $datLocArray = explode(',',$datLoc);
+        for($i = 0; $i < count($datLocArray); $i++){
+            if($i < 1){
+                AdLocation::deleteLocals($id);
+            }
+            AdLocation::updateLocals($id,$datLocArray[$i]);
+        }
+
+        $request->session()->flash('alert-success', 'Reclame ' . $request['link'] . ' is veranderd.');
         return redirect()->route('reclames'); 
     }
 }

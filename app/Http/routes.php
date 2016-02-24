@@ -25,7 +25,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/opmerkingen', array('as' => 'opmerkingen', 'uses' => 'CommentController@showComment'));
 
     //Routes alleen voor admins.
-        Route::group(['middleware' => 'isAdmin'], function () {
+    Route::group(['middleware' => 'isAdmin'], function () {
         Route::get('/chauffeurs', array('as' => 'chauffeurs', 'uses' => 'UserController@showDrivers'));
         Route::get('/chauffeurwijzigen', array('as' => 'chauffeurwijzigen', 'uses' => 'UserController@showDriversEdit'));
         Route::get('/chauffeurtoevoegen', array('as' => 'chauffeurtoevoegen', 'uses' => 'UserController@showDriversAdd'));

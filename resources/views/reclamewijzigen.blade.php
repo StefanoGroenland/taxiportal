@@ -29,7 +29,8 @@
                                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                         <div class="form-group form-md-line-input">
                                             <div class="input-icon">
-                                                <input type="text" name="location" class="form-control" id="locatie" value="{{$objLo->location}}">
+                                                <input type="text" name="location" class="form-control" id="locatie"
+                                                value="@foreach($objLo as $local){{$local->location}}, @endforeach">
                                                 <label for="locatie">Locatie</label>
                                                 <i class="fa fa-map-marker"></i>
                                             </div>

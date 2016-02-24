@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Facades\DB;
 class AdLocation extends Model
 {
     /**
@@ -28,5 +28,26 @@ class AdLocation extends Model
 
     public function ad(){
         return $this->belongsTo('App\Ad');
+    }
+    public static function insertLocals($id,$location){
+        return DB::table('ad_location')->insert([
+            'ad_id'     =>  $id,
+            'location'  =>  $location
+        ]);
+    }
+    public static function updateLocals($id,$location){
+        if(!empty($location)){
+            DB::table('ad_location')
+                ->insert([
+                    'ad_id'     =>  $id,
+                    'location'  =>  trim($location)
+                ]);
+        }
+
+
+    }
+
+    public static function deleteLocals($id){
+        DB::table('ad_location')->where('ad_id',$id)->delete();
     }
 }

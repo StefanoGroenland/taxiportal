@@ -46,7 +46,7 @@ class ApiOneController extends Controller
             $results = AdLocation::with('ad')->where('location','=',$location)->get();
             return $results->toJson();
         }
-        return json_encode(self::$error);
+        return json_encode(self::$error[0]);
     }
 
     /**
