@@ -20,13 +20,16 @@
                  </thead>
                  <tbody>
                      @foreach($ads as $ad)
+                     {{-- */$locations = '';/* --}}
                          <tr>
                              <td>{{$ad->id}}</td>
                              <td>{{$ad->link}}</td>
                              <td>
-                             @foreach($ad->adLocation as $adLoc)
-                             {{$adLoc->location}},
+                             @foreach($ad->adLocation as $key => $value)
+                                   {{-- */$locations .= $value->location.', ';/* --}}
                              @endforeach
+                             {{-- */$locations = rtrim($locations,', ');/* --}}
+                             {{$locations}}
                              </td>
                              <td>{{$ad->clicks}}</td>
                              <td width="12%" class="text-right">

@@ -21,7 +21,16 @@ class AdController extends Controller
         $id = Route::current()->getParameter('id');
         $obj = Ad::find($id);
         $objLo = AdLocation::where('ad_id',$obj->id)->get();
-        return View::make('/reclamewijzigen', compact('id', 'obj', 'objLo'));
+
+        $locations = '';
+        foreach($objLo as $key => $value){
+            $locations .= $value->location.',';
+        }
+
+        $locations = rtrim($locations, ',');
+
+
+        return View::make('/reclamewijzigen', compact('id', 'obj', 'locations'));
     }
     public function showAdsAdd(){
         return View::make('/reclametoevoegen');
