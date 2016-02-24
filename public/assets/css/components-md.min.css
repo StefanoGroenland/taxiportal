@@ -1,5 +1,5 @@
 .label, body, h1, h2, h3, h4, h5, h6 {
-	font-family: "Open Sans", sans-serif
+	 font-family: "Roboto","Open Sans", sans-serif;
 }
 .bold.btn, .sbold.btn {
 	letter-spacing: 0
@@ -11447,7 +11447,7 @@ body[ng-controller] .modal {
 }
 .table thead tr th {
 	font-size: 14px;
-	font-weight: 600
+	font-weight: 500
 }
 .table-advance {
 	margin-bottom: 10px!important
