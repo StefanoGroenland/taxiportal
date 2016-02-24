@@ -3,17 +3,17 @@
 @section('content')  
 
     <div class="page-content"> 
-    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+        @foreach (['danger', 'warning', 'success', 'info'] as $msg)
             @if(Session::has('alert-' . $msg))
-            <div class="row">
-                <div class="col-lg-12">
-                    <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }}
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="fa fa-times"></i></button>
-                    </p>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }}
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="fa fa-times"></i></button>
+                        </p>
+                    </div>
                 </div>
-            </div>
             @endif
-            @endforeach
+        @endforeach
         <div class="portlet light bordered">
             <div class="portlet-title">
                 <div class="caption font-grey-gallery">
@@ -21,14 +21,15 @@
                     <span class="caption-subject bold uppercase">Reclames</span>
                 </div>
             </div>
+           
             <div class="portlet-body form">
              <a href="/reclametoevoegen" class="btn btn-sm green-meadow margin-bottom-10"><i class="fa fa-plus"></i> Reclame toevoegen</a>
-                @include('layouts.tables.reclames-table')
+               @include('layouts.tables.reclames-table')
             </div>
         </div>
     </div>
-    
 @endsection
+
 
    
 

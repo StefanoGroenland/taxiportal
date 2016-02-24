@@ -10,25 +10,18 @@
 	        <link href="http://fonts.googleapis.com/css?family=Oswald:400,300,700" rel="stylesheet" type="text/css" />
 	        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
 	        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-	        
 	        <link href="{{URL::asset('../assets/css/simple-line-icons.min.css')}}" rel="stylesheet" type="text/css" />
 	        <link href="{{URL::asset('../assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
-	        <link href="{{URL::asset('../assets/css/uniform.default.min.css')}}" rel="stylesheet" type="text/css" />
-	        
+	        <link href="{{URL::asset('../assets/css/uniform.default.min.css')}}" rel="stylesheet" type="text/css" />       
 	        <link href="{{URL::asset('../assets/css/bootstrap-switch.min.css')}}" rel="stylesheet" type="text/css" />
 	        <link href="{{URL::asset('../assets/css/bootstrap-fileinput.css')}}" rel="stylesheet" type="text/css" />
-
 			<link href="{{URL::asset('../assets/css/components-md.min.css')}}" rel="stylesheet" id="style_components" type="text/css" />
-
 			<link href="{{URL::asset('../assets/css/plugins-md.min.css')}}" rel="stylesheet" type="text/css" />
-	        
 			<link href="{{URL::asset('../assets/css/profile.min.css')}}" rel="stylesheet" type="text/css" />
-	      
 	        <link href="{{URL::asset('../assets/css/layout.min.css')}}" rel="stylesheet" type="text/css" />
 			<link href="{{URL::asset('../assets/css/custom.min.css')}}" rel="stylesheet" type="text/css" />
-			
+			<link rel="stylesheet" href="{{URL::asset('../assets/css/morris-0.4.3.min.css')}}">
 	        <link href="{{URL::asset('../assets/css/custom.css')}}" rel="stylesheet" type="text/css" />
-	       
 	        <link rel="shortcut icon" href="favicon.ico" /> 
 
 	</head>
@@ -70,17 +63,7 @@
 	    <script src="{{URL::asset('../assets/js/profile.min.js')}}" type="text/javascript"></script>
 	    <script src="{{URL::asset('../assets/js/layout.min.js')}}" type="text/javascript"></script>
 
-	    @yield('scripts')
-	</body>
-        <script src="{{URL::asset('../assets/js/bootstrap-fileinput.js')}}" type="text/javascript"></script>
-        <script src="{{URL::asset('../assets/js/jquery.sparkline.min.js')}}" type="text/javascript"></script>
-        <script src="{{URL::asset('../assets/js/app.min.js')}}" type="text/javascript"></script>
-        <script src="{{URL::asset('../assets/js/profile.min.js')}}" type="text/javascript"></script>
-        <script src="{{URL::asset('../assets/js/layout.min.js')}}" type="text/javascript"></script>
-        <script src="{{URL::asset('../assets/js/ui-modals.min.js')}}" type="text/javascript"></script>
-        
-        @yield('scripts')
-       
+	    @yield('scripts')       
 </body>
 
 </html>
