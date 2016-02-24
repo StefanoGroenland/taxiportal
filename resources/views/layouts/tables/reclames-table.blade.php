@@ -1,14 +1,5 @@
 <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-        @if(\App\Ad::count() > 0)
-            <div id="grafiek" style="height: 250px;"></div>
-        @endif
-    </div>
-    <div class="col-md-2"></div>
-</div>
-<div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
         <div class="table-responsive">
              <table class="table table-hover data_table" >
                  <thead>
@@ -32,7 +23,7 @@
                              {{$locations}}
                              </td>
                              <td>{{$ad->clicks}}</td>
-                             <td width="12%" class="text-right">
+                             <td width="20%" class="text-right">
                                  <a class="btn btn-sm green-meadow" href="/reclamewijzigen/{{$ad->id}}"><i class="fa fa-pencil"></i></a>
                                  <a class="btn btn-sm red-sunglo deleteButton" data-model-id="{{$ad->id}}" data-toggle="modal" href="#myModel{{$ad->id}}"><i class="fa fa-trash"></i></a>
                              </td>
@@ -41,6 +32,11 @@
                  </tbody>
              </table>
         </div>
+    </div>
+    <div class="col-md-6">
+        @if(\App\Ad::count() > 0)
+            <div id="grafiek" style="height: 250px;"></div>
+        @endif
     </div>
 </div>
 @foreach($ads as $ad)

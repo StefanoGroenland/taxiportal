@@ -9,6 +9,7 @@
 	        <meta content="" name="author" />
 	        <link href="http://fonts.googleapis.com/css?family=Oswald:400,300,700" rel="stylesheet" type="text/css" />
 	        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+	        <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet' type='text/css'>
 	        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	        <link href="{{URL::asset('../assets/css/simple-line-icons.min.css')}}" rel="stylesheet" type="text/css" />
 	        <link href="{{URL::asset('../assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
@@ -25,7 +26,6 @@
 	        <link rel="shortcut icon" href="favicon.ico" /> 
 
 	</head>
-
 	<body class="page-header-fixed page-sidebar-closed-hide-logo page-md">
 	        <!-- BEGIN CONTAINER -->
 	        <div class="wrapper">
@@ -47,7 +47,6 @@
 	        <i class="icon-arrow-up"></i>
 	    </a>
 
-	 
 		<script src="{{URL::asset('../assets/js/jquery.min.js')}}" type="text/javascript"></script>
 	    <script src="{{URL::asset('../assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
 	    <script src="{{URl::asset('../assets/js/bootstrap-hover-dropdown.min.js')}}" type="text/javascript"></script>
