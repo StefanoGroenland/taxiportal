@@ -14,7 +14,7 @@
       @foreach($comments as $comment)
           <tr>
               <td>{{$comment->driver->taxi->license_plate}}</td>
-              <td>{{$comment->driver->user->firstname}}</td>
+              <td>{{$comment->driver->user->firstname .' '. $comment->driver->user->surname .' '. $comment->driver->user->lastname}}</td>
               <td>
                   @for($i = 0; $i < $comment->driver->star_rating; $i++)
                       <i style="color:gold;" class="fa fa-star"></i>
