@@ -8,8 +8,6 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Comment;
 use Route, View;
-use App\Driver;
-use App\Taxi;
 
 class CommentController extends Controller
 {
