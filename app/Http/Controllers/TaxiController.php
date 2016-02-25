@@ -13,9 +13,8 @@ use App\Driver;
 class TaxiController extends Controller
 {
 	public function showTaxiLocation(){
-        $taxis = Taxi::all();
-        $drivers = Driver::with('user')->get();
-		return View::make('/taxilocatie', compact('taxis', 'drivers'));
+        $taxis = Taxi::with('driver')->get();
+		return View::make('/taxilocatie', compact('taxis'));
 	}
 	public function showTaxiOverview(){
         $taxis = Taxi::all();

@@ -13,15 +13,14 @@
         </thead>
         <tbody>
             @foreach($taxis as $taxi)
-                @foreach($drivers as $driver)
                     <tr>
                         <td>{{$taxi->license_plate}}</td>
                         <td>{{$taxi->car_brand}}</td>
                         <td>{{$taxi->car_model}}</td>
                         <td>{{$taxi->car_color}}</td>
-                        <td>{{$driver->user->firstname .' '. $driver->user->surname .' '. $driver->user->lastname}}</td>
+                        <td>{{$taxi->driver->user->firstname .' '. $taxi->driver->user->surname .' '. $taxi->driver->user->lastname}}</td>
                         <td>
-                        @for($i = 0; $i < $driver->star_rating; $i++)
+                        @for($i = 0; $i < $taxi->driver->star_rating; $i++)
                             <i style="color:gold;" class="fa fa-star"></i>
                         @endfor
                         </td>
@@ -31,7 +30,6 @@
                         </td>
                         <td></td>
                     </tr>
-                @endforeach
             @endforeach
         </tbody>
     </table>
