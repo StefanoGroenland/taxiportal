@@ -65,3 +65,5 @@ Route::post('/api/v1/advertisements/increaseclick', 'ApiOneController@increaseCl
 Route::get('/api/v1/driver/{tablet}/{key}', 'ApiOneController@getDriverOffTablet');
 Route::get('/api/v1/routes/{key}', 'ApiOneController@getRoutes');
 Route::get('/api/v1/routes/{taxiId}/{key}', 'ApiOneController@getRoutesForTaxi');
+Route::get('/api/v1/newsfeed/{key}', 'ApiOneController@getNewsfeeds');
+Route::post('/api/v1/sos', 'ApiOneController@sendSOS');
