@@ -6,14 +6,15 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Comment;
 use Route, View;
+
 
 class CommentController extends Controller
 {
-    //test
     public function showComment(){
-		return View::make('/opmerkingen');
+        $comments = Comment::with('driver')->get();
+		return View::make('/opmerkingen', compact('comments'));
 	}
 	public function showCommentEdit(){
 		return View::make('/opmerkingwijzigen');

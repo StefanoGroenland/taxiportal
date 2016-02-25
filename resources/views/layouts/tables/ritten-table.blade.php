@@ -12,48 +12,34 @@
             @endif
         </thead>
         <tbody>
-            <tr>
-                <td>06-ZGD-0</td>
-                <td>Richard Perdaan</td>
-                <td>13:25 19-2-2016</td>
-                <td>Rotterdam</td>
-                <td>Amsterdam</td>
-                <td><i class="fa fa-circle" style="color: #41f800;" ></i> <small>15:19 18-02-2016</small></td>
-                @if(Auth::user()->user_rank == 'admin')
-                    <td width="12%" class="text-right">
-                        <a class="btn btn-sm green-meadow" href="/ritwijzigen"><i class="fa fa-pencil"></i></a>
-                        <a class="btn btn-sm red-sunglo" href="#"><i class="fa fa-trash"></i></a>
-                    </td>
-                @endif
-            </tr>
-             <tr>
-                <td>06-ZGD-0</td>
-                <td>Richard Perdaan</td>
-                <td>13:25 19-2-2016</td>
-                <td>Rotterdam</td>
-                <td>Amsterdam</td>
-                <td><i class="fa fa-circle" style="color: #41f800;" ></i> <small>15:19 18-02-2016</small></td>
-                @if(Auth::user()->user_rank == 'admin')
-                    <td width="12%" class="text-right">
-                        <a class="btn btn-sm green-meadow" href="/ritwijzigen"><i class="fa fa-pencil"></i></a>
-                        <a class="btn btn-sm red-sunglo" href="#"><i class="fa fa-trash"></i></a>
-                    </td>
-                @endif
-            </tr>
-             <tr>
-                <td>06-ZGD-0</td>
-                <td>Richard Perdaan</td>
-                <td>13:25 19-2-2016</td>
-                <td>Rotterdam</td>
-                <td>Amsterdam</td>
-                <td><i class="fa fa-circle" style="color: #41f800;" ></i> <small>15:19 18-02-2016</small></td>
-                @if(Auth::user()->user_rank == 'admin')
-                    <td width="12%" class="text-right">
-                        <a class="btn btn-sm green-meadow" href="/ritwijzigen"><i class="fa fa-pencil"></i></a>
-                        <a class="btn btn-sm red-sunglo" href="#"><i class="fa fa-trash"></i></a>
-                    </td>
-                @endif
-            </tr>
+            @foreach($routes as $route)
+                    @if($route->taxi)
+                    <tr>
+                        <td>{{$route->taxi->license_plate}}</td>
+                        <td>{{$route->taxi->driver->user->firstname .' '. $route->taxi->driver->user->surname .' '. $route->taxi->driver->user->lastname}}</td>
+                        <td>{{date('d-m-Y H:i',strtotime($route->pickup_time))}}</td>
+                        <td>
+                            {{$route->start_street .' '.
+                            $route->start_number.', '.
+                            $route->start_zip .' '. $route->start_city}}
+                        </td>
+                        <td>
+                            {{$route->end_street .' '.
+                            $route->end_number.', '.
+                            $route->end_zip .' '. $route->end_city}}
+                        </td>
+                        <td>@if($route->taxi->in_shift == 1)<i class="fa fa-circle" style="color: #41f800;" ></i>
+                            @else<i class="fa fa-circle" style="color: #F85200;" ></i> <small>@endif{{date('d-m-Y H:i',strtotime($route->taxi->last_seen))}}</small>
+                        </td>
+                        <td class="text-right">
+                        @if(Auth::user()->user_rank == 'admin')
+                                <a class="btn btn-sm green-meadow" href="/ritwijzigen"><i class="fa fa-pencil"></i></a>
+                                <a class="btn btn-sm red-sunglo" href="#"><i class="fa fa-trash"></i></a>
+                        @endif
+                        </td>
+                    </tr>
+                    @endif
+            @endforeach
         </tbody>
     </table>
  </div>

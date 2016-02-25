@@ -2,16 +2,24 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Route, View;
 
+
+use App\Route as Route2;
+use App\Driver;
+use App\Taxi;
 class RouteController extends Controller
 {
 	public function showRoutes(){
-		return View::make('/ritten');
+
+        $routes = Route2::with('taxi')->get();
+
+		return View::make('/ritten', compact('routes'));
 	}
 	public function showRoutesAdd(){
 		return View::make('/rittoevoegen');

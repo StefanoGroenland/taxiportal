@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use App\AdLocation;
 use App\User;
 use App\Tablet;
 use App\Driver;
 use App\Ad;
 use App\Route;
+use App\Newspaper;
+use App\Emergency;
+use App\Taxi;
+
 use Illuminate\Support\Facades\Input;
 class ApiOneController extends Controller
 {
@@ -135,5 +140,53 @@ class ApiOneController extends Controller
         }
         return json_encode(self::$error);
     }
+
+    /**
+     * @author Stefano Groenland
+     * @api
+     * @version v1.0
+     * @param $key
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * Returns all newsfeed links in JSON format
+     */
+    public function getNewsfeeds($key){
+        $apikey = self::$apikey;
+        if($key == $apikey){
+            $news = Newspaper::all();
+            return $news->toJson();
+        }
+        return json_encode(self::$error);
+    }
+
+    /**
+     * @author Stefano Groenland
+     * @api
+     * @version v1.0
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * Creates a row in the 'Emergency' table with current location of the taxi sending it.
+     * returns a JSON object if sending succeeds
+     */
+    public function sendSOS(){
+        $id = Input::get('id');
+        $last_lat = Input::get('latitude');
+        $last_long = Input::get('longtitude');
+        $key = Input::get('key');
+
+        $succeed = array('result' => 'success');
+        $apikey = self::$apikey;
+        if($key == $apikey){
+              Emergency::create(array('taxi_id' => $id, 'seen' => '0'));
+
+              Taxi::where('id','=',$id)->update(
+                  array('last_latitude' => $last_lat,
+                  'last_longtitude' => $last_long
+              ));
+            return json_encode($succeed);
+        }
+        return json_encode(self::$error);
+    }
+
 
 }
