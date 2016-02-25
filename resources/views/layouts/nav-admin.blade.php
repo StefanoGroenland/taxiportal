@@ -44,12 +44,16 @@
  	                         <a id="index" class="page-logo" href="index.html">
  	                               <img src="{{URL::asset('../assets/img/logo.png')}}" alt="Logo"> </a>
  	                            <ul class="nav navbar-nav">
- 	                                <li class="dropdown dropdown-fw  active open selected">
+
+ 	                                <li class="dropdown dropdown-fw @if(\Request::route()->getName() == 'home') active open selected @endif">
  	                                    <a href="/home" class="text-uppercase">
  	                                        <i class="fa fa-home"></i> Dashboard
  	                                    </a>
  	                                </li>
- 	                                <li class="dropdown more-dropdown">
+ 	                                <li class="dropdown more-dropdown @if(\Request::route()->getName() == 'taxilocatie' ||
+ 	                                                                      \Request::route()->getName() == 'taxioverzicht' ||
+ 	                                                                      \Request::route()->getName() == 'taxiwijzigen' ||
+ 	                                                                      \Request::route()->getName() == 'taxitoevoegen') active selected @endif" >
  	                                    <a href="/taxilocatie" class="text-uppercase">
  	                                        <i class="fa fa-briefcase" ></i> Taxi's
  	                                    </a>
@@ -60,17 +64,22 @@
  	                                    </ul>
  	                                </li>
 
- 	                                <li class="dropdown dropdown-fw  ">
+ 	                                <li class="dropdown dropdown-fw  @if(\Request::route()->getName() == 'ritten' ||
+                                                                         \Request::route()->getName() == 'ritwijzigen' ||
+                                                                         \Request::route()->getName() == 'rittoevoegen') active open selected @endif">
  	                                    <a href="/ritten" class="text-uppercase">
  	                                        <i class="fa fa-location-arrow"></i> Ritten
  	                                    </a>
  	                                </li>
- 	                                <li class="dropdown dropdown-fw  ">
+ 	                                <li class="dropdown dropdown-fw  @if(\Request::route()->getName() == 'opmerkingen') active open selected @endif">
  	                                    <a href="/opmerkingen" class="text-uppercase">
  	                                        <i class="fa fa-comments-o"></i> Opmerkingen
  	                                    </a>
  	                                </li>
- 	                                <li class="dropdown more-dropdown">
+ 	                                <li class="dropdown more-dropdown @if(\Request::route()->getName() == 'reclames' ||
+ 	                                                                      \Request::route()->getName() == 'chauffeurs' ||
+ 	                                                                      \Request::route()->getName() == 'tablets' ||
+ 	                                                                      \Request::route()->getName() == 'medewerkers' ) active selected @endif">
  	                                    <a href="#" class="text-uppercase">
  	                                        <i class="fa fa-briefcase" ></i> Overzichten
  	                                    </a>
