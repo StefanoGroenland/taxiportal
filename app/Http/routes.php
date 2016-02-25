@@ -26,11 +26,14 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Routes alleen voor admins.
     Route::group(['middleware' => 'isAdmin'], function () {
+        
         Route::get('/chauffeurs', array('as' => 'chauffeurs', 'uses' => 'UserController@showDrivers'));
-        Route::get('/chauffeurwijzigen', array('as' => 'chauffeurwijzigen', 'uses' => 'UserController@showDriversEdit'));
+        Route::get('/chauffeurwijzigen/{id}', array('as' => 'chauffeurwijzigen', 'uses' => 'UserController@showDriversEdit'));
         Route::get('/chauffeurtoevoegen', array('as' => 'chauffeurtoevoegen', 'uses' => 'UserController@showDriversAdd'));
         Route::post('/addDriver', 'UserController@addDriver');
         Route::delete('/deleteDriver/{id}', 'UserController@deleteDriver');
+        Route::put('/editDriver/{id}', array('as' => 'editDriver', 'uses' => 'UserController@editDriver'));       
+        
         Route::get('/taxilocatie', array('as' => 'taxilocatie', 'uses' => 'TaxiController@showTaxiLocation'));
         Route::get('/taxioverzicht', array('as' => 'taxioverzicht', 'uses' => 'TaxiController@showTaxiOverview'));
         Route::get('/taxiwijzigen', array('as' => 'taxiwijzigen', 'uses' => 'TaxiController@showTaxiEdit'));

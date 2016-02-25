@@ -87,7 +87,6 @@
                                                     <div class="form-group form-md-line-input ">
                                                         <div class="input-icon">
                                                             <select class="form-control" id="geslacht" name="sex">
-                                                                <option value=""></option>
                                                                 <option value="man">Man</option>
                                                                 <option value="vrouw">Vrouw</option>
                                                             </select>
@@ -120,15 +119,17 @@
                                                     <div class="form-group form-md-line-input ">
                                                         <div class="input-icon">
                                                             <select class="form-control" id="car" name="car">
-                                                             @if($carCount > 0)
-                                                                @foreach($cars as $car)
-                                                                    <option value="{{$car->id}}">{{ $car->license_plate .' - '. $car->car_brand .' - '. $car->car_model .' - '. $car->car_color}}</option>  
-                                                                @endforeach
-                                                               @else
+                                                                <option>Niet koppelen</option>
+                                                                @if($carCount > 0)
+                                                                    @foreach($cars as $car)
+                                                                        <option value="{{$car->id}}">{{ $car->license_plate .' - '. $car->car_brand .' - '. $car->car_model .' - '. $car->car_color}}</option>  
+                                                                    @endforeach
+                                                                @else
                                                                     <option>Geen auto's koppelbaar</option>
-                                                               @endif
+                                                                @endif
 ​                                                            </select>
-                                                        <label for="car">Informatie</label>
+                                                            <label for="car">Informatie</label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -141,7 +142,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                     </form>
                                 </div>
                             </div>
