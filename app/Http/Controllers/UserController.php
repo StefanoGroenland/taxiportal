@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Driver;
+use App\Newspaper;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -47,13 +48,18 @@ class UserController extends Controller
         return View::make('/tabletwijzigen');
     }
     public function showAdmin(){
-        return View::make('/medewerkers');
+        $admins = User::where('user_rank','=','admin')->get();
+        return View::make('/medewerkers',compact('admins'));
     }
     public function showAdminEdit(){
         return View::make('/medewerkerwijzigen');
     }
     public function showAdminAdd(){
         return View::make('/medewerkertoevoegen');
+    }
+    public function showNews(){
+        $news = Newspaper::all();
+        return View::make('/nieuws', compact('news'));
     }
     public function addDriver(Request $request){
 

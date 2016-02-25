@@ -79,7 +79,8 @@
  	                                <li class="dropdown more-dropdown @if(\Request::route()->getName() == 'reclames' ||
  	                                                                      \Request::route()->getName() == 'chauffeurs' ||
  	                                                                      \Request::route()->getName() == 'tablets' ||
- 	                                                                      \Request::route()->getName() == 'medewerkers' ) active selected @endif">
+ 	                                                                      \Request::route()->getName() == 'medewerkers' ||
+ 	                                                                      \Request::route()->getName() == 'nieuws' ) active selected @endif">
  	                                    <a href="#" class="text-uppercase">
  	                                        <i class="fa fa-briefcase" ></i> Overzichten
  	                                    </a>
@@ -96,6 +97,9 @@
  	                                         <li>
  	                                            <a href="/reclames">Reclames</a>
  	                                        </li>
+ 	                                        <li>
+                                                <a href="/nieuws">Nieuwsfeeds</a>
+                                            </li>
  	                                    </ul>
  	                                </li>
  	                            </ul>

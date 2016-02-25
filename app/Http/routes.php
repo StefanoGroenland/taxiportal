@@ -33,7 +33,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/addDriver', 'UserController@addDriver');
         Route::delete('/deleteDriver/{id}', 'UserController@deleteDriver');
         Route::put('/editDriver/{id}', array('as' => 'editDriver', 'uses' => 'UserController@editDriver'));       
-        
+
+        Route::get('/nieuws', array('as' => 'nieuws', 'uses' => 'UserController@showNews'));
+
         Route::get('/taxilocatie', array('as' => 'taxilocatie', 'uses' => 'TaxiController@showTaxiLocation'));
         Route::get('/taxioverzicht', array('as' => 'taxioverzicht', 'uses' => 'TaxiController@showTaxiOverview'));
         Route::get('/taxiwijzigen', array('as' => 'taxiwijzigen', 'uses' => 'TaxiController@showTaxiEdit'));
