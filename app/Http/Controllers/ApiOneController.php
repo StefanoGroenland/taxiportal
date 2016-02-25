@@ -11,6 +11,7 @@ use App\User;
 use App\Tablet;
 use App\Driver;
 use App\Ad;
+use App\Route;
 use Illuminate\Support\Facades\Input;
 class ApiOneController extends Controller
 {
@@ -54,8 +55,6 @@ class ApiOneController extends Controller
     /**
      * @author Stefano Groenland
      * @api
-     * @param $id
-     * @param $key
      * @return \Illuminate\Http\JsonResponse
      *
      * returns success if succesfully updated the click count
@@ -99,4 +98,42 @@ class ApiOneController extends Controller
         }
         return json_encode(self::$error);
     }
+
+    /**
+     * @author Stefano Groenland
+     * @api
+     * @version v1.0
+     * @param $key
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * Returns all routes from our Database in JSON format
+     */
+    public function getRoutes($key){
+        $apikey = self::$apikey;
+        if($key == $apikey){
+            $routes = Route::all();
+            return $routes->toJson();
+        }
+        return json_encode(self::$error);
+    }
+
+    /**
+     * @author Stefano Groenland
+     * @api
+     * @version v1.0
+     * @param $taxiId
+     * @param $key
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * Returns all routes for the specified taxi ID in JSON format
+     */
+    public function getRoutesForTaxi($taxiId, $key){
+        $apikey = self::$apikey;
+        if($key == $apikey){
+            $routes = Route::where('taxi_id',$taxiId)->get();
+            return $routes->toJson();
+        }
+        return json_encode(self::$error);
+    }
+
 }

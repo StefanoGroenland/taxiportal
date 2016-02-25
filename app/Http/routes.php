@@ -61,3 +61,5 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('/api/v1/advertisements/{location}/{key}', 'ApiOneController@adsPerLocation');
 Route::post('/api/v1/advertisements/increaseclick', 'ApiOneController@increaseClickOfAd');
 Route::get('/api/v1/driver/{tablet}/{key}', 'ApiOneController@getDriverOffTablet');
+Route::get('/api/v1/routes/{key}', 'ApiOneController@getRoutes');
+Route::get('/api/v1/routes/{taxiId}/{key}', 'ApiOneController@getRoutesForTaxi');

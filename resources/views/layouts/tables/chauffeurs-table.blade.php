@@ -13,10 +13,16 @@
         <tbody>
 
         @foreach($drivers as $driver)
-        @if($driver->user && $driver->taxi)
+        @if($driver->user)
                 <tr>
                     <td>{{$driver->user->firstname .' '. $driver->user->surname .' '. $driver->user->lastname}}</td>
-                    <td>{{$driver->taxi->license_plate}}</td>
+                    <td>
+                    @if($driver->taxi)
+                    {{$driver->taxi->license_plate}}
+                    @else
+                    Geen taxi koppeling
+                    @endif
+                    </td>
                     <td>{{$driver->user->email}}</td>
                     <td>{{$driver->user->phone_number}}</td>
                     <td>{{$driver->user->sex}}</td>
