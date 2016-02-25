@@ -10,18 +10,16 @@
         </thead>
         <tbody>
         @foreach($taxis as $taxi)
-            @foreach($drivers as $driver)
                 <tr>
                     <td><strong>{{$taxi->license_plate}}</strong></td>
                     <td>{{$taxi->car_brand}}</td>
                     <td>{{$taxi->car_model}}</td>
                     <td>{{$taxi->car_color}}</td>
-                    <td>{{$driver->user->firstname .' '. $driver->user->surname .' '. $driver->user->lastname}}</td>
+                    <td>{{$taxi->driver->user->firstname .' '. $taxi->driver->user->surname .' '. $taxi->driver->user->lastname}}</td>
                     <td>@if($taxi->in_shift == 1)<i class="fa fa-circle" style="color: #41f800;" ></i>
                         @else<i class="fa fa-circle" style="color: #F85200;" ></i> <small>@endif{{date('d-m-Y H:i',strtotime($taxi->last_seen))}}</small>
                     </td>
                 </tr>
-            @endforeach
         @endforeach
         </tbody>
     </table>
