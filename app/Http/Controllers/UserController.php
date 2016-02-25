@@ -27,7 +27,13 @@ class UserController extends Controller
         return View::make('/chauffeurs', compact('drivers','taxis'));
     }
     public function showDriversEdit(){
-        return View::make('/chauffeurwijzigen');
+        $id = Route::current()->getParameter('id');
+        $driver = Driver::with('user')->where('user_id','=',$id)->first();
+
+        $cars = Taxi::where('driver_id','=','0')->get();
+        $carCount = count($cars);
+
+        return View::make('/chauffeurwijzigen', compact('id','driver','cars','carCount'));  
     }
     public function showDriversAdd(){
         $cars = Taxi::where('driver_id','=','0')->get();
@@ -58,7 +64,6 @@ class UserController extends Controller
             'surname' => $request['surname'],
             'lastname' => $request['lastname'],
             'sex' => $request['sex'],
-            'password' => $request['repeat_password'],
             'user_rank' => 'driver'
         );
 
@@ -67,12 +72,11 @@ class UserController extends Controller
             'phone_number' =>'required',
             'firstname' =>'required',
             'lastname' =>'required',
-            'sex' =>'required',
-            'password' =>'required'
+            'sex' =>'required'
         );
         $validator = Validator::make($userData, $userRules);
         if ($validator->fails()){
-            return redirect('chauffeurs')->withErrors($validator)->withInput($userData);
+            return redirect('chauffeurstoevoegen')->withErrors($validator)->withInput($userData);
         }
 
         $user = User::create($userData);
@@ -92,7 +96,56 @@ class UserController extends Controller
     }
 
     public function deleteDriver(Request $request){
-       $id  =
+       $id  = Route::current()->getParameter('id');
+       $find = User::find($id);
+       $driver = Driver::where('user_id','=',$find->id)->first();
+       Taxi::where('driver_id','=',$driver->id)->update(array('driver_id' => 0));
+       User::where('id','=', $id)->delete();
+       Driver::where('user_id','=',$id)->delete();
+       session()->flash('alert-success', 'chauffeur'. $find->firstname.' verwijderd.');
+       return redirect()->route('chauffeurs');
+    }
+    public function editDriver(Request $request){
+       
+       $id = Route::current()->getParameter('id');
+       $driver = Driver::where('user_id','=',$id)->first();
+         $userData = array(
+            'email' => $request['email'],
+            'phone_number' => $request['phonenumber'],
+            'firstname' => $request['firstname'],
+            'surname' => $request['surname'],
+            'lastname' => $request['lastname'],
+            'sex' => $request['sex'],
+        ); 
+
+        $userRules = array(
+            'email' =>'required',
+            'phone_number' =>'required',
+            'firstname' =>'required',
+            'lastname' =>'required',
+            'sex' =>'required',
+        );
+
+        $driverData = array(
+            'user_id' => $id,
+            'drivers_exp' => $request['driver_exp'],
+            'global_information' => $request['global_information']
+        );
+
+        Driver::where('user_id', '=', $id)->update($driverData);
+
+        Taxi::where('driver_id','=', $driver->id)->update(array('driver_id' => '0'));
+        Taxi::where('id','=',$request['car'])->update(array('driver_id' => $driver->id));
+
+        $validator = Validator::make($userData, $userRules);
+        if ($validator->fails()){
+            return redirect('chauffeurwijzigen/'.$id)->withErrors($validator)->withInput($userData);
+        }
+
+        User::where('id', '=', $id)->update($userData);
+        
+        $request->session()->flash('alert-success', 'chauffeur ' . $request['firstname'] . ' is veranderd.');
+        return redirect()->route('chauffeurs'); 
     }
 }
 
