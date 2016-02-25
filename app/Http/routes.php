@@ -30,6 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/chauffeurwijzigen', array('as' => 'chauffeurwijzigen', 'uses' => 'UserController@showDriversEdit'));
         Route::get('/chauffeurtoevoegen', array('as' => 'chauffeurtoevoegen', 'uses' => 'UserController@showDriversAdd'));
         Route::post('/addDriver', 'UserController@addDriver');
+        Route::delete('/deleteDriver/{id}', 'UserController@deleteDriver');
         Route::get('/taxilocatie', array('as' => 'taxilocatie', 'uses' => 'TaxiController@showTaxiLocation'));
         Route::get('/taxioverzicht', array('as' => 'taxioverzicht', 'uses' => 'TaxiController@showTaxiOverview'));
         Route::get('/taxiwijzigen', array('as' => 'taxiwijzigen', 'uses' => 'TaxiController@showTaxiEdit'));

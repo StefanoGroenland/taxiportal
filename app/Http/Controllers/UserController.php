@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Route, View;
 use Illuminate\Support\Facades\Validator;
+use App\Taxi;
 
 class UserController extends Controller
 {
@@ -29,7 +30,9 @@ class UserController extends Controller
         return View::make('/chauffeurwijzigen');
     }
     public function showDriversAdd(){
-        return View::make('/chauffeurtoevoegen');
+        $cars = Taxi::where('driver_id','=','0')->get();
+        $carCount = count($cars);
+        return View::make('/chauffeurtoevoegen', compact('cars','carCount'));
     }
     public function showTablet(){
         return View::make('/tablets');
@@ -54,8 +57,8 @@ class UserController extends Controller
             'firstname' => $request['firstname'],
             'surname' => $request['surname'],
             'lastname' => $request['lastname'],
+            'sex' => $request['sex'],
             'password' => $request['repeat_password'],
-            'global_information' => $request['global_information'],
             'user_rank' => 'driver'
         );
 
@@ -64,9 +67,8 @@ class UserController extends Controller
             'phone_number' =>'required',
             'firstname' =>'required',
             'lastname' =>'required',
-            'password' =>'required',
-            'global_information' =>'required',
-            'user_rank' =>'required'
+            'sex' =>'required',
+            'password' =>'required'
         );
         $validator = Validator::make($userData, $userRules);
         if ($validator->fails()){
@@ -74,14 +76,23 @@ class UserController extends Controller
         }
 
         $user = User::create($userData);
-
         $driverData = array(
             'user_id' => $user->id,
-            'drivers_exp' => $request['driver_exp']
+            'drivers_exp' => $request['driver_exp'],
+            'global_information' => $request['global_information']
+        );
+        
+        $driver = Driver::create($driverData);
+        $taxiData = array(
+            'driver_id' => $driver->id
         );
 
-        Driver::create($driverData);
+        Taxi::where('id','=', $request['car'])->update($taxiData);
         return redirect()->route('chauffeurs');
+    }
+
+    public function deleteDriver(Request $request){
+       $id  =
     }
 }
 

@@ -86,7 +86,7 @@
                                                 <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                                                     <div class="form-group form-md-line-input ">
                                                         <div class="input-icon">
-                                                            <select class="form-control" id="geslacht">
+                                                            <select class="form-control" id="geslacht" name="sex">
                                                                 <option value=""></option>
                                                                 <option value="man">Man</option>
                                                                 <option value="vrouw">Vrouw</option>
@@ -107,13 +107,28 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                 <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                                     <div class="form-group form-md-line-input ">
                                                         <div class="input-icon">
                                                             <textarea class="form-control" id="global_information" name="global_information"/></textarea>
                                                             <label for="global_information">Informatie</label>
                                                             <i class="fa fa-info"></i>
                                                         </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                                    <div class="form-group form-md-line-input ">
+                                                        <div class="input-icon">
+                                                            <select class="form-control" id="car" name="car">
+                                                             @if($carCount > 0)
+                                                                @foreach($cars as $car)
+                                                                    <option value="{{$car->id}}">{{ $car->license_plate .' - '. $car->car_brand .' - '. $car->car_model .' - '. $car->car_color}}</option>  
+                                                                @endforeach
+                                                               @else
+                                                                    <option>Geen auto's koppelbaar</option>
+                                                               @endif
+​                                                            </select>
+                                                        <label for="car">Informatie</label>
                                                     </div>
                                                 </div>
                                             </div>
