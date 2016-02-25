@@ -18,9 +18,8 @@ class RouteController extends Controller
 	public function showRoutes(){
 
         $routes = Route2::with('taxi')->get();
-        $drivers = Driver::with('user')->get();
 
-		return View::make('/ritten', compact('taxis','drivers','routes'));
+		return View::make('/ritten', compact('routes'));
 	}
 	public function showRoutesAdd(){
 		return View::make('/rittoevoegen');

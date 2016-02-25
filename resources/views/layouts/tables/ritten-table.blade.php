@@ -13,11 +13,10 @@
         </thead>
         <tbody>
             @foreach($routes as $route)
-                @foreach($drivers as $driver)
                     @if($route->taxi)
                     <tr>
                         <td>{{$route->taxi->license_plate}}</td>
-                        <td>{{$driver->user->firstname .' '. $driver->user->surname .' '. $driver->user->lastname}}</td>
+                        <td>{{$route->taxi->driver->user->firstname .' '. $route->taxi->driver->user->surname .' '. $route->taxi->driver->user->lastname}}</td>
                         <td>{{date('d-m-Y H:i',strtotime($route->pickup_time))}}</td>
                         <td>
                             {{$route->start_street .' '.
@@ -40,7 +39,6 @@
                         </td>
                     </tr>
                     @endif
-                @endforeach
             @endforeach
         </tbody>
     </table>
