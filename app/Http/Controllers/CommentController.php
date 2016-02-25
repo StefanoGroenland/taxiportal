@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Comment;
 use Route, View;
 
+
 class CommentController extends Controller
 {
     public function showComment(){
