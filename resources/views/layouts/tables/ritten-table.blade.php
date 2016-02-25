@@ -29,7 +29,8 @@
                             $route->end_number.', '.
                             $route->end_zip .' '. $route->end_city}}
                         </td>
-                        <td><i class="fa fa-circle" style="color: #41f800;" ></i> <small>{{date('d-m-Y H:i',strtotime($route->taxi->last_seen))}}</small></td>
+                        <td>@if($route->taxi->in_shift == 1)<i class="fa fa-circle" style="color: #41f800;" ></i>
+                            @else<i class="fa fa-circle" style="color: #F85200;" ></i> <small>@endif{{date('d-m-Y H:i',strtotime($route->taxi->last_seen))}}</small></td>
                         <td class="text-right">
                         @if(Auth::user()->user_rank == 'admin')
                                 <a class="btn btn-sm green-meadow" href="/ritwijzigen"><i class="fa fa-pencil"></i></a>
