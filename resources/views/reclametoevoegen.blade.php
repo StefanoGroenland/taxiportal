@@ -38,7 +38,7 @@
                                         <div class="form-group form-md-line-input">
                                             <div class="input-icon">
                                                 <input type="text" class="form-control" id="banner" name="banner" value="">
-                                                <label for="banner">Banner</label>
+                                                <label for="banner">Banner <small>1280x200</small></label>
                                                 <i class="fa fa-picture-o"></i>
                                             </div>
                                         </div>

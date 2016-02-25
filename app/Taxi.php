@@ -35,7 +35,7 @@ class Taxi extends Model
         return $this->hasMany('App\Tablet');
     }
     public function driver(){
-        return $this->hasOne('App\Driver');
+        return $this->hasOne('App\Driver' , 'id', 'driver_id');
     }
     public function emergency(){
         return $this->hasMany('App\Emergency');
