@@ -7,14 +7,20 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Route, View;
+use App\Taxi;
+use App\Driver;
 
 class TaxiController extends Controller
 {
 	public function showTaxiLocation(){
-		return View::make('/taxilocatie');
+        $taxis = Taxi::all();
+        $drivers = Driver::with('user')->get();
+		return View::make('/taxilocatie', compact('taxis', 'drivers'));
 	}
 	public function showTaxiOverview(){
-		return View::make('/taxioverzicht');
+        $taxis = Taxi::all();
+        $drivers = Driver::with('user')->get();
+		return View::make('/taxioverzicht', compact('taxis', 'drivers'));
 	}
 	public function showTaxiEdit(){
 		return View::make('/taxiwijzigen');

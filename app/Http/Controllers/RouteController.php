@@ -18,10 +18,7 @@ class RouteController extends Controller
 	public function showRoutes(){
 
         $routes = Route2::with('taxi')->get();
-        foreach($routes as $route){
-        }
         $drivers = Driver::with('user')->get();
-
 
 		return View::make('/ritten', compact('taxis','drivers','routes'));
 	}
