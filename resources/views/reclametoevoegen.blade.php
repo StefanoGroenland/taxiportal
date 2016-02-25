@@ -13,7 +13,7 @@
                     </div>
                     <div class="portlet-body form">
                         <form role="form" method="POST" action="/addAd">
-                        {!! csrf_field() !!}
+                            {!! csrf_field() !!}
                             <div class="form-body">
                                 <div class="row">
                                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
