@@ -10,6 +10,7 @@
         </thead>
         <tbody>
         @foreach($taxis as $taxi)
+        @if($taxi)
                 <tr>
                     <td><strong>{{$taxi->license_plate}}</strong></td>
                     <td>{{$taxi->car_brand}}</td>
@@ -20,6 +21,7 @@
                         @else<i class="fa fa-circle" style="color: #F85200;" ></i> <small>@endif{{date('d-m-Y H:i',strtotime($taxi->last_seen))}}</small>
                     </td>
                 </tr>
+                @endif
         @endforeach
         </tbody>
     </table>
