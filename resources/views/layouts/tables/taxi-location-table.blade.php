@@ -10,7 +10,7 @@
         </thead>
         <tbody>
         @foreach($taxis as $taxi)
-        @if($taxi->driver)
+        @if($taxi->driver && $taxi->driver->user)
                 <tr>
                     <td><strong>{{$taxi->license_plate}}</strong></td>
                     <td>{{$taxi->car_brand}}</td>

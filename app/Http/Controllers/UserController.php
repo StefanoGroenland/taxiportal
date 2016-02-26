@@ -77,15 +77,15 @@ class UserController extends Controller
         );
 
         $userRules = array(
-            'email' =>'required',
-            'phone_number' =>'required',
+            'email' =>'required|email|unique:user',
+            'phone_number' =>'required|min:10|max:10',
             'firstname' =>'required',
             'lastname' =>'required',
-            'sex' =>'required'
+            'sex' =>'required|in:man,Man,vrouw,Vrouw'
         );
         $validator = Validator::make($userData, $userRules);
         if ($validator->fails()){
-            return redirect('chauffeurstoevoegen')->withErrors($validator)->withInput($userData);
+            return redirect('chauffeurtoevoegen')->withErrors($validator)->withInput($userData);
         }
 
         $user = User::create($userData);
@@ -116,7 +116,7 @@ class UserController extends Controller
     }
     public function editDriver(Request $request){
        
-       
+
        $id = Route::current()->getParameter('id');
        $driver = Driver::where('user_id','=',$id)->first();
          $userData = array(
@@ -129,7 +129,7 @@ class UserController extends Controller
         ); 
 
         $userRules = array(
-            'email' =>'required',
+            'email' =>'required|email|unique:user',
             'phone_number' =>'required',
             'firstname' =>'required',
             'lastname' =>'required',

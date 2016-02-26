@@ -1,7 +1,15 @@
 @extends('layouts.master')
 
 @section('content')
+
                 <div class="page-content">
+                    @if (count($errors))
+                        <ul class="list-unstyled">
+                            @foreach($errors->all() as $error)
+                                <li class="alert alert-danger"><i class="fa fa-exclamation"></i> {{ $error }}</li>
+                             @endforeach
+                        </ul>
+                    @endif
                     <div class="row">
                         <div class="col-md-12 ">
                             <div class="portlet light bordered">
@@ -68,8 +76,8 @@
                                                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                                     <div class="form-group form-md-line-input">
                                                         <div class="input-icon">
-                                                            <input type="password" class="form-control" id="nieuw_wachtwoord" name="new_password" data-validate="required">
-                                                            <label for="nieuw_wachtwoord">Nieuw wachtwoord</label>
+                                                            <input type="password" class="form-control" id="nieuw_wachtwoord" name="new_password" data-validate="required|same:#herhaal_nieuw_wachtwoord" data-name="Wachtwoord">
+                                                            <label for="nieuw_wachtwoord">Wachtwoord</label>
                                                             <i class="fa fa-key"></i>
                                                         </div>
                                                     </div>
@@ -77,7 +85,7 @@
                                                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                                     <div class="form-group form-md-line-input">
                                                         <div class="input-icon">
-                                                            <input type="password" class="form-control" id="herhaal_nieuw_wachtwoord" name="repeat_password" data-validate="required">
+                                                            <input type="password" class="form-control" id="herhaal_nieuw_wachtwoord" name="repeat_password" data-validate="required|same:#nieuw_wachtwoord" data-name="Herhaal nieuw wachtwoord">
                                                             <label for="herhaal_nieuw_wachtwoord">Herhaal nieuw wachtwoord</label>
                                                             <i class="fa fa-key"></i>
                                                         </div>
@@ -109,7 +117,7 @@
                                                  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                                     <div class="form-group form-md-line-input ">
                                                         <div class="input-icon">
-                                                            <textarea class="form-control" id="global_information" name="global_information"/></textarea>
+                                                            <textarea class="form-control" id="global_information" name="global_information" rows="1" /></textarea>
                                                             <label for="global_information">Informatie</label>
                                                             <i class="fa fa-info"></i>
                                                         </div>
@@ -129,6 +137,7 @@
                                                                 @endif
 ​                                                            </select>
                                                             <label for="car">Informatie</label>
+                                                             <i class="fa fa-taxi"></i>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -156,6 +165,7 @@
     $(function() {
         $('form').jvalidate({ 
             errorMessage: true
+            
         });
     });
 </script>
