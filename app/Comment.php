@@ -22,6 +22,7 @@ class Comment extends Model
     protected $fillable = [
         'driver_id',
         'comment',
+        'star_rating',
         'approved'
     ];
 

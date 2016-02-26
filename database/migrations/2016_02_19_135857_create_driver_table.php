@@ -17,7 +17,6 @@ class CreateDriverTable extends Migration
             $table->integer('user_id');
             $table->integer('drivers_exp');
             $table->text('global_information');
-            $table->integer('star_rating');
             $table->timestamps();
         });
     }

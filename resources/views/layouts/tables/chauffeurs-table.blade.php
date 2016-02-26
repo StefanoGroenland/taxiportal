@@ -12,7 +12,7 @@
         </thead>
         <tbody>
         @foreach($drivers as $driver)
-            @if($driver && $driver->user)
+            @if($driver && $driver->user && $driver->comment)
                     <tr>
                         <td>{{$driver->user->firstname .' '. $driver->user->surname .' '. $driver->user->lastname}}</td>
                         <td>
@@ -26,7 +26,7 @@
                         <td>{{$driver->user->phone_number}}</td>
                         <td>{{$driver->user->sex}}</td>
                         <td>
-                            @for($i = 0; $i < $driver->star_rating; $i++)
+                            @for($i = 0; $i < $driver->comment->star_rating; $i++)
                                 <i style="color:gold;" class="fa fa-star"></i>
                             @endfor
                         </td>
