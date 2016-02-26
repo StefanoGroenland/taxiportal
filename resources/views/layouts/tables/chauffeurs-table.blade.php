@@ -12,7 +12,7 @@
         </thead>
         <tbody>
         @foreach($drivers as $driver)
-            @if($driver)
+            @if($driver && $driver->user)
                     <tr>
                         <td>{{$driver->user->firstname .' '. $driver->user->surname .' '. $driver->user->lastname}}</td>
                         <td>
@@ -41,6 +41,7 @@
     </table>
 </div>
 @foreach($drivers as $driver)
+    @if($driver && $driver->user)
     <div class="modal fade" id="myModel{{$driver->user->id}}" tabindex="-1"  aria-hidden="true" style="display: none;">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -64,4 +65,5 @@
         </div>
     <!-- /.modal-dialog -->
     </div>
+    @endif
 @endforeach
