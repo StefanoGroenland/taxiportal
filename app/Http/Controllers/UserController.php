@@ -72,14 +72,16 @@ class UserController extends Controller
             'surname' => $request['surname'],
             'lastname' => $request['lastname'],
             'sex' => $request['sex'],
+            'driver_exp' => $request['driver_exp'],
             'user_rank' => 'driver'
         );
 
         $userRules = array(
-            'email' =>'required',
+            'email' =>'required|email|unique:user',
             'phone_number' =>'required',
             'firstname' =>'required',
             'lastname' =>'required',
+            'driver_exp' => 'required|numeric',
             'sex' =>'required'
         );
         $validator = Validator::make($userData, $userRules);
@@ -115,9 +117,9 @@ class UserController extends Controller
     }
     public function editDriver(Request $request){
        
-       $id = Route::current()->getParameter('id');
-       $driver = Driver::where('user_id','=',$id)->first();
-         $userData = array(
+        $id = Route::current()->getParameter('id');
+        $driver = Driver::where('user_id','=',$id)->first();
+        $userData = array(
             'email' => $request['email'],
             'phone_number' => $request['phonenumber'],
             'firstname' => $request['firstname'],
