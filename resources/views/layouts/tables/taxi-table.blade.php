@@ -7,7 +7,7 @@
             <th>Kleur</th>
             <th>Chauffeur</th>
             <th>Beoordeling</th>
-            <th>Locatie</th>
+            <th>Locatie<small>(latitude, longtitude)</small></th>
             <th>Laatst gezien</th>
             <th></th>
         </thead>
@@ -25,11 +25,14 @@
                             <i style="color:gold;" class="fa fa-star"></i>
                         @endfor
                         </td>
-                        <td>LOCATIE LAT LONG</td>
+                        <td>{{$taxi->last_latitude .' - '. $taxi->last_longtitude}}</td>
                         <td>@if($taxi->in_shift == 1)<i class="fa fa-circle" style="color: #41f800;" ></i>
-                            @else<i class="fa fa-circle" style="color: #F85200;" ></i> <small>@endif{{date('d-m-Y H:i',strtotime($taxi->last_seen))}}</small>
+                            @else<i class="fa fa-circle" style="color: #F85200;" ></i> @endif <small>{{date('d-m-Y H:i',strtotime($taxi->last_seen))}}</small>
                         </td>
-                        <td></td>
+                        <td class="text-right">
+                                <a class="btn btn-sm green-meadow" href="/taxiwijzigen"><i class="fa fa-pencil"></i></a>
+                                <a class="btn btn-sm red-sunglo" href="#"><i class="fa fa-trash"></i></a>
+                        </td>
                     </tr>
                     @endif
             @endforeach
