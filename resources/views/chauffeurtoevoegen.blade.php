@@ -27,7 +27,7 @@
                                                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                     <div class="form-group form-md-line-input">
                                                         <div class="input-icon">
-                                                            <input type="text" class="form-control" id="email" name="email" data-validate="required|email|max:50">
+                                                            <input type="text" class="form-control" id="email" name="email" data-validate="required|email|max:50" value="{{old('email')}}">
                                                             <label for="email">E-mail</label>
                                                             <i class="fa fa-envelope-o"></i>
                                                         </div>
@@ -36,7 +36,7 @@
                                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                     <div class="form-group form-md-line-input">
                                                         <div class="input-icon">
-                                                             <input type="text" class="form-control" id="telefoonnummer" name="phonenumber" data-validate="required|number|minlength:10|maxlength:10">
+                                                             <input type="text" class="form-control" id="telefoonnummer" name="phonenumber" data-validate="required|number|minlength:10|maxlength:10" value="{{old('phone_number')}}">
                                                             <label for="telefoonnummer">Telefoonnummer</label>
                                                             <i class="fa fa-phone"></i>
                                                         </div>
@@ -47,7 +47,7 @@
                                                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                                     <div class="form-group form-md-line-input">
                                                         <div class="input-icon">
-                                                            <input type="text" class="form-control" id="voornaam" name="firstname" data-validate="required">
+                                                            <input type="text" class="form-control" id="voornaam" name="firstname" data-validate="required" value="{{old('firstname')}}">
                                                             <label for="voornaam">Voornaam</label>
                                                             <i class="fa fa-user"></i>
                                                         </div>
@@ -56,16 +56,7 @@
                                                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                                     <div class="form-group form-md-line-input">
                                                         <div class="input-icon">
-                                                            <input type="text" class="form-control" id="tussenvoegsel" name="surname">
-                                                            <label for="tussenvoegsel">Tussenvoegsel</label>
-                                                            <i class="fa fa-user"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                                                    <div class="form-group form-md-line-input">
-                                                        <div class="input-icon">
-                                                            <input type="text" class="form-control" id="achternaam" name="lastname" data-validate="required">
+                                                            <input type="text" class="form-control" id="achternaam" name="lastname" data-validate="required" value="{{old('lastname')}}">
                                                             <label for="achternaam">Achternaam</label>
                                                             <i class="fa fa-user"></i>
                                                         </div>
@@ -76,8 +67,8 @@
                                                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                                     <div class="form-group form-md-line-input">
                                                         <div class="input-icon">
-                                                            <input type="password" class="form-control" id="nieuw_wachtwoord" name="new_password" data-validate="required|same:#herhaal_nieuw_wachtwoord" data-name="Wachtwoord">
-                                                            <label for="nieuw_wachtwoord">Wachtwoord</label>
+                                                            <input type="password" class="form-control" id="password" name="password" data-validate="required|minlength:4|same:#password_confirmation" data-name="Wachtwoord">
+                                                            <label for="wachtwoord">Wachtwoord</label>
                                                             <i class="fa fa-key"></i>
                                                         </div>
                                                     </div>
@@ -85,39 +76,40 @@
                                                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                                     <div class="form-group form-md-line-input">
                                                         <div class="input-icon">
-                                                            <input type="password" class="form-control" id="herhaal_nieuw_wachtwoord" name="repeat_password" data-validate="required|same:#nieuw_wachtwoord" data-name="Herhaal nieuw wachtwoord">
-                                                            <label for="herhaal_nieuw_wachtwoord">Herhaal nieuw wachtwoord</label>
+                                                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" data-validate="required|minlength:4|same:#password" data-name="Herhaal wachtwoord">
+                                                            <label for="herhaal_wachtwoord">Herhaal wachtwoord</label>
                                                             <i class="fa fa-key"></i>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                                                    <div class="form-group form-md-line-input ">
-                                                        <div class="input-icon">
-                                                            <select class="form-control" id="geslacht" name="sex" data-validate="required">
-                                                                <option value="man">Man</option>
-                                                                <option value="vrouw">Vrouw</option>
-                                                            </select>
-                                                            <label for="geslacht">Geslacht</label>
-                                                            <i class="fa fa-user"></i>
-                                                        </div>
+                                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                                    <label for="achternaam">Geslacht</label>
+                                                    <div class="form-group">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="radman" id="radman" checked=""> Man
+                                                        </label>
+                                                        <label class="radio-inline">
+                                                            <input type="radio" name="radvrouw" id="radvrouw"> Vrouw
+                                                        </label>
                                                     </div>
                                                 </div>
+                                               
                                                 <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                                                     <div class="form-group form-md-line-input ">
                                                         <div class="input-icon">
-                                                            <input type="number" class="form-control" id="driver_exp" name="driver_exp" data-validate="required|number">
+                                                            <input type="number" class="form-control" id="driver_exp" name="driver_exp" data-validate="required|number" value="{{old('drivers_exp')}}">
                                                             <label for="driver_exp">Rijervaring (jaren)</label>
                                                             <i class="fa fa-user"></i>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                                 
+                                            </div> 
                                             <div class="row">
                                                  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                                     <div class="form-group form-md-line-input ">
                                                         <div class="input-icon">
-                                                            <textarea class="form-control" id="global_information" name="global_information" rows="1" /></textarea>
+                                                            <textarea class="form-control" id="global_information" name="global_information" rows="1">{{old('global_information')}}</textarea>
                                                             <label for="global_information">Informatie</label>
                                                             <i class="fa fa-info"></i>
                                                         </div>
@@ -136,7 +128,7 @@
                                                                     <option>Geen auto's koppelbaar</option>
                                                                 @endif
 ​                                                            </select>
-                                                            <label for="car">Informatie</label>
+                                                            <label for="car">Taxi</label>
                                                              <i class="fa fa-taxi"></i>
                                                         </div>
                                                     </div>
@@ -145,8 +137,8 @@
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <div class="form-actions noborder pull-right">
-                                                      <button type="submit" class="btn green-meadow"><i class="fa fa-plus" aria-hidden="true"></i>Toevoegen</button>
-                                                        <button type="button" class="btn default">Annuleren</button>
+                                                        <button type="submit" class="btn green-meadow"><i class="fa fa-plus" aria-hidden="true"></i>Toevoegen</button>
+                                                        <a type="button" href="/chauffeurs" class="btn default">Annuleren</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -167,6 +159,13 @@
             errorMessage: true
             
         });
+    });
+
+    $("#radvrouw").on("click",function(){
+       $('#radman').prop('checked',false)
+    });
+    $("#radman").on("click",function(){
+       $('#radvrouw').prop('checked',false)
     });
 </script>
 @endsection
