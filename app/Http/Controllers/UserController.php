@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Taxi;
 use App\Comment;
 use App\Tablet;
+use Illuminate\Support\Facades\Hash as Hash;
 class UserController extends Controller
 {
     public function showIndex(){
@@ -70,31 +71,40 @@ class UserController extends Controller
             'email' => $request['email'],
             'phone_number' => $request['phonenumber'],
             'firstname' => $request['firstname'],
-            'surname' => $request['surname'],
             'lastname' => $request['lastname'],
+            'password' => $request['password'],
+            'password_confirmation' => $request['password_confirmation'],
             'sex' => $request['sex'],
+            'drivers_exp' => $request['driver_exp'],
+            'global_information' => $request['global_information'],
             'user_rank' => 'driver'
         );
 
         $userRules = array(
-            'email' =>'required',
-            'phone_number' =>'required',
+            'email' =>'required|email|unique:user',
+            'phone_number' =>'required|numeric|digits:10',
             'firstname' =>'required',
             'lastname' =>'required',
-            'sex' =>'required'
+            'password' => 'required|min:4|confirmed',
+            'password_confirmation' => 'required|min:4',
+            'drivers_exp' => 'numeric',
+            'sex' =>'required|in:man,Man,vrouw,Vrouw'
         );
+
         $validator = Validator::make($userData, $userRules);
         if ($validator->fails()){
-            return redirect('chauffeurstoevoegen')->withErrors($validator)->withInput($userData);
+            return redirect('chauffeurtoevoegen')->withErrors($validator)->withInput($userData);
         }
-
+        array_forget($userData, 'password_confirmation');
+        $userData['password'] = Hash::make($request['password']);
         $user = User::create($userData);
+        
         $driverData = array(
             'user_id' => $user->id,
             'drivers_exp' => $request['driver_exp'],
             'global_information' => $request['global_information']
         );
-        
+
         $driver = Driver::create($driverData);
         $taxiData = array(
             'driver_id' => $driver->id
@@ -116,24 +126,27 @@ class UserController extends Controller
     }
     public function editDriver(Request $request){
        
-       
+
        $id = Route::current()->getParameter('id');
        $driver = Driver::where('user_id','=',$id)->first();
          $userData = array(
             'email' => $request['email'],
             'phone_number' => $request['phonenumber'],
             'firstname' => $request['firstname'],
-            'surname' => $request['surname'],
             'lastname' => $request['lastname'],
+            'password' => $request['password'],
+            'password_confirmation' => $request['password_confirmation'],
             'sex' => $request['sex'],
         ); 
 
         $userRules = array(
-            'email' =>'required',
-            'phone_number' =>'required',
+            'email' =>'required|email',
+            'phone_number' =>'required|numeric|digits:10',
             'firstname' =>'required',
             'lastname' =>'required',
-            'sex' =>'required',
+            'password' => 'min:4',
+            'password_confirmation' => 'min:4',
+            'sex' =>'required|in:man,Man,vrouw,Vrouw'
         );
 
         $driverData = array(
@@ -151,11 +164,24 @@ class UserController extends Controller
         if ($validator->fails()){
             return redirect('chauffeurwijzigen/'.$id)->withErrors($validator)->withInput($userData);
         }
+       
+        if (empty($userData['password']) || empty($userData['password_confirmation'])) {
+            array_forget($userData, 'password');
+            array_forget($userData, 'password_confirmation');
+        }
 
+        if (array_key_exists('password', $userData)) {
+            $userData['password'] = Hash::make($userData['password']);
+            array_forget($userData, 'password_confirmation');
+        } else {
+            User::where('id', '=', $id)->update($userData);
+            $request->session()->flash('alert-success', 'Uw account is gewijziged, er zijn geen wijzigingen aan het wachtwoord doorgevoerd.');
+            return redirect('/chauffeurs');
+        }
         User::where('id', '=', $id)->update($userData);
+        $request->session()->flash('alert-success', 'Uw account is gewijziged.');
+        return redirect('/chauffeurs');
         
-        $request->session()->flash('alert-success', 'chauffeur ' . $request['firstname'] . ' is veranderd.');
-        return redirect()->route('chauffeurs'); 
     }
 }
 

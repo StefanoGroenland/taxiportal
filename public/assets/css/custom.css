@@ -80,6 +80,25 @@ a{
      padding: 0px 0 0!important; 
      padding-bottom:35px !important;
 }
+.has-error {
+	border-color: #E53935 !important;
+}
+
+.is-valid {
+	border-color: #43A047 !important;
+}
+
+.has-warning {
+	border-color: orange;
+}
+
+.text-danger {
+	color: #a94442;
+}
+
+.jvalidate-error-message {
+	display: block;
+}
 @media (min-width: 992px){
 	.page-header .navbar-collapse .navbar-nav .more-dropdown .dropdown-menu {
 	    min-width: 199px;
