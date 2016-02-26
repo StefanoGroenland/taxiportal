@@ -13,7 +13,7 @@
         <tbody>
 
         @foreach($drivers as $driver)
-        @if($driver->user)
+        @if($driver)
                 <tr>
                     <td>{{$driver->user->firstname .' '. $driver->user->surname .' '. $driver->user->lastname}}</td>
                     <td>

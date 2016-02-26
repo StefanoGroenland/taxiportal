@@ -13,6 +13,7 @@
         </thead>
         <tbody>
             @foreach($taxis as $taxi)
+                @if($taxi)
                     <tr>
                         <td>{{$taxi->license_plate}}</td>
                         <td>{{$taxi->car_brand}}</td>
@@ -30,6 +31,7 @@
                         </td>
                         <td></td>
                     </tr>
+                    @endif
             @endforeach
         </tbody>
     </table>
