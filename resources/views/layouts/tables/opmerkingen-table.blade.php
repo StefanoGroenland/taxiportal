@@ -23,6 +23,7 @@
                     <td>{{$comment->created_at->format('d-m-Y H:i')}}</td>
                         <td width="12%" class="text-right">
                             <a class="btn btn-sm green-meadow" href="/opmerkingwijzigen"><i class="fa fa-pencil"></i></a>
+                            <a class="btn btn-sm yellow-lemon" href="/opmerkingwijzigen"><i class="fa fa-check"></i></a>
                             <a class="btn btn-sm red-sunglo" href="#"><i class="fa fa-trash"></i></a>
                         </td>
                 </tr>
@@ -61,6 +62,7 @@
                     <td>{{$comment->created_at->format('d-m-Y H:i')}}</td>
                         <td width="12%" class="text-right">
                             <a class="btn btn-sm green-meadow" href="/opmerkingwijzigen"><i class="fa fa-pencil"></i></a>
+                            <a class="btn btn-sm yellow-lemon" href="/opmerkingwijzigen"><i class="fa fa-check"></i></a>
                             <a class="btn btn-sm red-sunglo" href="#"><i class="fa fa-trash"></i></a>
                         </td>
                 </tr>
