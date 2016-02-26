@@ -36,7 +36,7 @@
                                     <div class="caption caption-md">
                                         <i class="icon-bar-chart theme-font hide"></i>
                                         <span class="caption-subject font-blue-madison bold uppercase">Recente opmerkingen</span>
-                                        <span class="caption-helper">20 reacties</span>
+                                        <span class="caption-helper"></span>
                                     </div>
                                 </div>
                                 <div class="portlet-body">
