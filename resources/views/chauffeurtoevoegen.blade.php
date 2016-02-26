@@ -83,13 +83,13 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                                                    <label for="achternaam">Geslacht</label>
-                                                    <div class="form-group">
-                                                        <label class="radio-inline">
-                                                            <input type="radio" name="radman" id="radman" checked=""> Man
+                                                    <label for="geslacht">Geslacht</label>
+                                                    <div class="form-group" data-validate="group">
+                                                        <label class="radio-inline" >
+                                                            <input type="radio" name="sex" id="radman" class="md-radiobtn" value="man" checked=""> Man
                                                         </label>
                                                         <label class="radio-inline">
-                                                            <input type="radio" name="radvrouw" id="radvrouw"> Vrouw
+                                                            <input type="radio" name="sex" id="radvrouw" class="md-radiobtn" value="vrouw"> Vrouw
                                                         </label>
                                                     </div>
                                                 </div>
@@ -157,7 +157,6 @@
     $(function() {
         $('form').jvalidate({ 
             errorMessage: true
-            
         });
     });
 

@@ -99,6 +99,7 @@ a{
 .jvalidate-error-message {
 	display: block;
 }
+
 @media (min-width: 992px){
 	.page-header .navbar-collapse .navbar-nav .more-dropdown .dropdown-menu {
 	    min-width: 199px;
