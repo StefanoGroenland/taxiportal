@@ -11,8 +11,8 @@ use App\Http\Controllers\Controller;
 use Route, View;
 use Illuminate\Support\Facades\Validator;
 use App\Taxi;
-use Illuminate\Support\Facades\Auth;
 use App\Comment;
+use App\Tablet;
 class UserController extends Controller
 {
     public function showIndex(){
@@ -44,7 +44,8 @@ class UserController extends Controller
         return View::make('/chauffeurtoevoegen', compact('cars','carCount'));
     }
     public function showTablet(){
-        return View::make('/tablets');
+        $tablets = Tablet::with('taxi','user')->get();
+        return View::make('/tablets', compact('tablets'));
     }
     public function showTabletEdit(){
         return View::make('/tabletwijzigen');

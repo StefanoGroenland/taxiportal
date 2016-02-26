@@ -7,9 +7,7 @@
             <th>Start locatie</th>
             <th>Eind locatie</th>
             <th>Laatst gezien</th>
-            @if(Auth::user()->user_rank == 'admin')
                 <th></th>
-            @endif
         </thead>
         <tbody>
             @foreach($routes as $route)
@@ -32,10 +30,8 @@
                             @else<i class="fa fa-circle" style="color: #F85200;" ></i> <small>@endif{{date('d-m-Y H:i',strtotime($route->taxi->last_seen))}}</small>
                         </td>
                         <td class="text-right">
-                        @if(Auth::user()->user_rank == 'admin')
                                 <a class="btn btn-sm green-meadow" href="/ritwijzigen"><i class="fa fa-pencil"></i></a>
                                 <a class="btn btn-sm red-sunglo" href="#"><i class="fa fa-trash"></i></a>
-                        @endif
                         </td>
                     </tr>
                     @endif

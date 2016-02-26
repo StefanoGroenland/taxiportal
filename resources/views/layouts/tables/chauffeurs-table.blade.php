@@ -11,32 +11,31 @@
         <th></th>
         </thead>
         <tbody>
-
         @foreach($drivers as $driver)
-        @if($driver)
-                <tr>
-                    <td>{{$driver->user->firstname .' '. $driver->user->surname .' '. $driver->user->lastname}}</td>
-                    <td>
-                    @if($driver->taxi)
-                    {{$driver->taxi->license_plate}}
-                    @else
-                    Geen taxi koppeling
-                    @endif
-                    </td>
-                    <td>{{$driver->user->email}}</td>
-                    <td>{{$driver->user->phone_number}}</td>
-                    <td>{{$driver->user->sex}}</td>
-                    <td>
-                        @for($i = 0; $i < $driver->star_rating; $i++)
-                            <i style="color:gold;" class="fa fa-star"></i>
-                        @endfor
-                    </td>
-                    <td width="12%" class="text-right">
-                        <a class="btn btn-sm green-meadow" href="/chauffeurwijzigen/{{$driver->user->id}}"><i class="fa fa-pencil"></i></a>
-                        <a class="btn btn-sm red-sunglo deleteButton" data-model-id="{{$driver->user->id}}" data-toggle="modal" href="#myModel{{$driver->user->id}}"><i class="fa fa-trash"></i></a>
-                    </td>
-                </tr>
-        @endif
+            @if($driver)
+                    <tr>
+                        <td>{{$driver->user->firstname .' '. $driver->user->surname .' '. $driver->user->lastname}}</td>
+                        <td>
+                        @if($driver->taxi)
+                        {{$driver->taxi->license_plate}}
+                        @else
+                        Geen taxi koppeling
+                        @endif
+                        </td>
+                        <td>{{$driver->user->email}}</td>
+                        <td>{{$driver->user->phone_number}}</td>
+                        <td>{{$driver->user->sex}}</td>
+                        <td>
+                            @for($i = 0; $i < $driver->star_rating; $i++)
+                                <i style="color:gold;" class="fa fa-star"></i>
+                            @endfor
+                        </td>
+                        <td width="12%" class="text-right">
+                            <a class="btn btn-sm green-meadow" href="/chauffeurwijzigen/{{$driver->user->id}}"><i class="fa fa-pencil"></i></a>
+                            <a class="btn btn-sm red-sunglo deleteButton" data-model-id="{{$driver->user->id}}" data-toggle="modal" href="#myModel{{$driver->user->id}}"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+            @endif
         @endforeach
         </tbody>
     </table>
