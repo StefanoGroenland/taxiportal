@@ -26,9 +26,10 @@
                         <td>{{$driver->user->phone_number}}</td>
                         <td>{{$driver->user->sex}}</td>
                         <td>
-                            @for($i = 0; $i < $driver->comment->star_rating; $i++)
-                                <i style="color:gold;" class="fa fa-star"></i>
-                            @endfor
+                            {{--@for($i = 0; $i < $driver->comment->star_rating; $i++)--}}
+                                {{--<i style="color:gold;" class="fa fa-star"></i>--}}
+                            {{--@endfor--}}
+                            GEMIDDELDE BEOORDELING HIER! zie issuetracker #1
                         </td>
                         <td width="12%" class="text-right">
                             <a class="btn btn-sm green-meadow" href="/chauffeurwijzigen/{{$driver->user->id}}"><i class="fa fa-pencil"></i></a>
