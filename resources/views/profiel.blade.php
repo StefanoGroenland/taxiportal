@@ -9,8 +9,8 @@
                         <div class="profile-userpic">
                             <img src="{{URL::asset('../assets/img/profile_user.jpg')}}" class="img-responsive" alt=""> </div>
                         <div class="profile-usertitle">
-                            <div class="profile-usertitle-name"> Marcus Doe </div>
-                            <div class="profile-usertitle-job"> Developer </div>
+                            <div class="profile-usertitle-name"> {{Auth::user()->firstname .' '. Auth::user()->surname .' '. Auth::user()->lastname }} </div>
+                            <div class="profile-usertitle-job"> {{Auth::user()->user_rank}} </div>
                         </div>
                         <div class="profile-usermenu">
                             <ul class="nav">
