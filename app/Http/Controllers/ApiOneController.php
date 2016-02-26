@@ -34,8 +34,8 @@ class ApiOneController extends Controller
      * Defines the error and current version, if the api key used is invalid
      */
     private static $error = array(
-        'error'     =>  'API-Key invalid',
-        'version'   =>  'v1.0'
+        'error'     =>  'api-key-invalid',
+        'api-version'   =>  '1.0'
     );
 
     /**
@@ -184,6 +184,34 @@ class ApiOneController extends Controller
                   'last_longtitude' => $last_long
               ));
             return json_encode($succeed);
+        }
+        return json_encode(self::$error);
+    }
+
+
+    /**
+     * @author Stefano Groenland
+     * @api
+     * @version v1.0
+     * @return \Illuminate\Support\Collection|\Illuminate\Http\JsonResponse
+     *
+     * Looks for the relations of a given tablet name if the tablet name exists in the DB,
+     * Returns data from the tablet , the related driver and taxi
+     */
+    public function tabletLogin(){
+        $tablet_name = Input::get('tablet_name');
+        $key = Input::get('key');
+        $apikey = self::$apikey;
+        if($key == $apikey) {
+            $tablet = User::with('tablet')->where('tablet_name', '=', $tablet_name)->first();
+            $exists = count($tablet);
+
+            if($exists > 0){
+                $taxi = Taxi::with('driver')->where('id','=',$tablet->tablet->taxi_id)->first();
+                $result = collect([$tablet,$taxi,$taxi->driver->user]);
+                return $result;
+            }
+            return json_encode(array('error' => 'no_tablet_found', 'api-version' => '1.0'));
         }
         return json_encode(self::$error);
     }
