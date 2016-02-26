@@ -1,6 +1,5 @@
 @extends('layouts.master')
 
-
 @section('content')  
         <div class="page-content">
             @foreach (['danger', 'warning', 'success', 'info'] as $msg)

@@ -6,6 +6,7 @@
 * @version 0.2.3
 * @last-updated 25-02-2016
 */
+
 $(function() {
 
 	'use strict';

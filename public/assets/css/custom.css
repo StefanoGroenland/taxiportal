@@ -19,14 +19,12 @@ a{
     background: #39424a;
     font-family: Oswald,sans-serif;
 }
-
 .dropdown-menu-v2>li>a {
 	color: #636e77 !important;
 }
 .dropdown-menu-v2>li>a:hover {
 	color: #ffffff !important;
 }
-
 .tabs>li.open, .tabbable-line>.nav-tabs>li:hover {
     background: 0 0;
     border-bottom: 4px solid rgba(0, 157, 199, 0.2) !important;
