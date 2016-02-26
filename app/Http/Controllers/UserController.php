@@ -11,14 +11,16 @@ use App\Http\Controllers\Controller;
 use Route, View;
 use Illuminate\Support\Facades\Validator;
 use App\Taxi;
-
+use Illuminate\Support\Facades\Auth;
+use App\Comment;
 class UserController extends Controller
 {
     public function showIndex(){
         return View::make('/index');
     }
     public function showProfile(){
-        return View::make('/profiel');
+        $comments = Comment::with('driver')->where('approved','=','1')->get();
+        return View::make('/profiel', compact('comments'));
     }
     public function showProfileEdit(){
         return View::make('/profielwijzigen');
