@@ -116,6 +116,7 @@ class UserController extends Controller
     }
     public function editDriver(Request $request){
        
+       
        $id = Route::current()->getParameter('id');
        $driver = Driver::where('user_id','=',$id)->first();
          $userData = array(
