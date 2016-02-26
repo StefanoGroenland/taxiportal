@@ -37,7 +37,8 @@ class User extends Model implements AuthenticatableContract,
         'profile_photo',
         'phone_number',
         'user_rank',
-        'tablet_name'
+        'tablet_name',
+        'sex'
     ];
 
     /**

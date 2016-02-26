@@ -67,6 +67,7 @@ class UserController extends Controller
     }
     public function addDriver(Request $request){
 
+
         $userData = array(
             'email' => $request['email'],
             'phone_number' => $request['phonenumber'],
@@ -88,7 +89,7 @@ class UserController extends Controller
             'password' => 'required|min:4|confirmed',
             'password_confirmation' => 'required|min:4',
             'drivers_exp' => 'numeric',
-            'sex' =>'required|in:man,Man,vrouw,Vrouw'
+            'sex' => 'required|in:man,vrouw'
         );
 
         $validator = Validator::make($userData, $userRules);
@@ -98,7 +99,6 @@ class UserController extends Controller
         array_forget($userData, 'password_confirmation');
         $userData['password'] = Hash::make($request['password']);
         $user = User::create($userData);
-        
         $driverData = array(
             'user_id' => $user->id,
             'drivers_exp' => $request['driver_exp'],
