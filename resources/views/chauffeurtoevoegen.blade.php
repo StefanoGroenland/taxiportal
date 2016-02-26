@@ -148,6 +148,7 @@
                         </div>
                     </div>
                 </div>
+                
 @endsection
 @section('scripts')
 <script src="{{URL::asset('../assets/js/jvalidate.js')}}" type="text/javascript"></script>
