@@ -36,7 +36,6 @@
         <div class="content">
             <div class="page-content">
                 <div class="portlet light bordered">
-                <!-- resources/views/auth/login.blade.php -->
                     <form class="login-form" action="/login" method="post" novalidate="novalidate">
                     	{!! csrf_field() !!}
                         <h3 class="form-title font-green">Log in</h3>

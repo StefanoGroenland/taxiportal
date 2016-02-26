@@ -42,66 +42,22 @@
                                 <div class="portlet-body">
                                     <div class="scroller" style="height: 305px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
                                         <div class="general-item-list">
+                                            @foreach($comments as $comment)
+                                            @if($comment->driver->id == Auth::user()->id)
                                             <div class="item">
                                                 <div class="item-head">
                                                     <div class="item-details">
                                                         <img class="item-pic" src="{{URL::asset('../assets/img/avatar3.jpg')}}">
-                                                        <a href="" class="item-name primary-link">Nick Larson</a>
-                                                        <span class="item-label">3 hrs ago</span>
+                                                        <a href="" class="item-name primary-link">Passagier</a>
+                                                        <span class="item-label">{{$comment->created_at->format('d-m-Y H:i')}}</span>
                                                     </div>
                                                     <span class="item-status">
-                                                        <span class="badge badge-empty badge-success"></span> Open</span>
+                                                        <span class="badge badge-empty badge-success"></span> status</span>
                                                 </div>
-                                                <div class="item-body"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </div>
+                                                <div class="item-body">{{$comment->comment}}</div>
                                             </div>
-                                            <div class="item">
-                                                <div class="item-head">
-                                                    <div class="item-details">
-                                                        <img class="item-pic" src="{{URL::asset('../assets/img/avatar3.jpg')}}">
-                                                        <a href="" class="item-name primary-link">Mark</a>
-                                                        <span class="item-label">5 hrs ago</span>
-                                                    </div>
-                                                    <span class="item-status">
-                                                        <span class="badge badge-empty badge-warning"></span> Pending</span>
-                                                </div>
-                                                <div class="item-body"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat tincidunt ut laoreet. </div>
-                                            </div>
-                                             <div class="item">
-                                                <div class="item-head">
-                                                    <div class="item-details">
-                                                        <img class="item-pic" src="{{URL::asset('../assets/img/avatar3.jpg')}}">
-                                                        <a href="" class="item-name primary-link">Mark</a>
-                                                        <span class="item-label">5 hrs ago</span>
-                                                    </div>
-                                                    <span class="item-status">
-                                                        <span class="badge badge-empty badge-warning"></span> Pending</span>
-                                                </div>
-                                                <div class="item-body"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat tincidunt ut laoreet. </div>
-                                            </div>
-                                             <div class="item">
-                                                <div class="item-head">
-                                                    <div class="item-details">
-                                                        <img class="item-pic" src="{{URL::asset('../assets/img/avatar3.jpg')}}">
-                                                        <a href="" class="item-name primary-link">Mark</a>
-                                                        <span class="item-label">5 hrs ago</span>
-                                                    </div>
-                                                    <span class="item-status">
-                                                        <span class="badge badge-empty badge-warning"></span> Pending</span>
-                                                </div>
-                                                <div class="item-body"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat tincidunt ut laoreet. </div>
-                                            </div>
-                                             <div class="item">
-                                                <div class="item-head">
-                                                    <div class="item-details">
-                                                        <img class="item-pic" src="{{URL::asset('../assets/img/avatar3.jpg')}}">
-                                                        <a href="" class="item-name primary-link">Mark</a>
-                                                        <span class="item-label">5 hrs ago</span>
-                                                    </div>
-                                                    <span class="item-status">
-                                                        <span class="badge badge-empty badge-warning"></span> Pending</span>
-                                                </div>
-                                                <div class="item-body"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat tincidunt ut laoreet. </div>
-                                            </div>
+                                            @endif
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>

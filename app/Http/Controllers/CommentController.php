@@ -13,8 +13,10 @@ use Route, View;
 class CommentController extends Controller
 {
     public function showComment(){
-        $comments = Comment::with('driver')->get();
-		return View::make('/opmerkingen', compact('comments'));
+        $comments = Comment::with('driver')->where('approved','!=',1)->get();
+        $commentsApproved = Comment::with('driver')->where('approved','=',1)->get();
+
+		return View::make('/opmerkingen', compact('comments','commentsApproved'));
 	}
 	public function showCommentEdit(){
 		return View::make('/opmerkingwijzigen');
