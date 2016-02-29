@@ -209,7 +209,10 @@ class ApiOneController extends Controller
 
             if($exists > 0){
                 $taxi = Taxi::with('driver')->where('id','=',$tablet->tablet->taxi_id)->first();
-                $result = collect([$tablet,$taxi,$taxi->driver->user]);
+                $result = collect([ array('tablet' => $tablet),
+                                    array('taxi' => $taxi),
+                                    array('taxi_user' => $taxi->driver->user)
+                                  ]);
                 return json_encode($result);
             }
             return json_encode(array('error' => 'no_tablet_found', 'api-version' => '1.0'));
