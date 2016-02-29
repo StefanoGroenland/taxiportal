@@ -209,7 +209,7 @@ class UserController extends Controller
                 $fileName = rand(1111, 9999) . '.' . $extension;
                 $request->file('profile_photo')->move($destinationPath, $fileName);
                 $ava = $destinationPath . '/' . $fileName;
-                $img = Image::make($ava)->crop($w, $h, $x, $y)->save();
+                $img = Image::make($ava)->fit(200)->crop($w, $h, $x, $y)->save();
                 $final = $destinationPath . '/' . $img->basename;
                 User::uploadPicture($id, $final);
                 $request->session()->flash('alert-success', 'Chauffeur toegevoegd');

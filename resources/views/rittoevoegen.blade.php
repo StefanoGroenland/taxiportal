@@ -12,9 +12,13 @@
                                     </div>
                                 </div>
                                 <div class="portlet-body form">
-                                    <form role="form">
+                                   <form role="form" method="POST" action="/addRoute">
+                                        {!! csrf_field() !!}
                                         <div class="form-body">
                                         	<div class="row">
+                                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 "> 
+                                                    <div id="map" style="height: 400px; width: 100%;" class="contact_maps"></div>
+                                                </div>
                                                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 					<div class="form-group form-md-line-input ">
                                                     	<div class="input-icon">
@@ -30,24 +34,22 @@
                                                        	</div>
                                            			</div>
                                 				</div>
-                                				 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                				 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 													<div class="form-group form-md-line-input">
                                                         <div class="input-icon">
-                                                            <input type="text" class="form-control" id="start_tijd" value="">
+                                                            <input type="text" class="form-control" id="pickup_time" name="pickup_time" value="">
                                                             <label for="start_tijd">Ophaal tijd</label>
                                                             <i class="fa fa-clock-o"></i>
                                                         </div>
                                                     </div>
 												</div>
-                                           </div>
-                                            <div class="row">
                                                 <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12">
 													<h4>Begin:</h4>
 												</div>
-                                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 													<div class="form-group form-md-line-input">
                                                         <div class="input-icon">
-                                                            <input type="text" class="form-control" id="start_straat" value="">
+                                                            <input type="text" class="form-control" id="start_street" name="start_street" value="">
                                                             <label for="start_straat">Straat</label>
                                                             <i class="fa fa-map-marker"></i>
                                                         </div>
@@ -56,39 +58,37 @@
                                                 <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12">
 													<div class="form-group form-md-line-input">
                                                         <div class="input-icon">
-                                                            <input type="text" class="form-control" id="start_huisnummer" value="">
+                                                            <input type="text" class="form-control" id="start_number" name="start_number" value="">
                                                             <label for="start_huisnummer">Huisnummer</label>
                                                             <i class="fa fa-map-marker"></i>
                                                         </div>
                                                     </div>
 												</div>
-                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                                <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12">
 													<div class="form-group form-md-line-input">
                                                         <div class="input-icon">
-                                                            <input type="text" class="form-control" id="start_postcode" value="">
+                                                            <input type="text" class="form-control" id="start_zip" name="start_zip" value="">
                                                             <label for="start_postcode">Postcode</label>
                                                             <i class="fa fa-map-marker"></i>
                                                         </div>
                                                     </div>
 												</div>
-                                                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                                 <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
 													<div class="form-group form-md-line-input">
                                                         <div class="input-icon">
-                                                            <input type="text" class="form-control" id="start_plaats" value="">
+                                                            <input type="text" class="form-control" id="start_straat" name="start_city" value="">
                                                             <label for="start_plaats">Plaats</label>
                                                             <i class="fa fa-map-marker"></i>
                                                         </div>
                                                     </div>
 												</div>
-                                           </div>
-                                           <div class="row">
                                           		<div class="col-lg-1 col-md-1 col-sm-6 col-xs-12">
 													<h4>Eind:</h4>
 												</div>
-                                           		 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                           		 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 													<div class="form-group form-md-line-input">
                                                         <div class="input-icon">
-                                                            <input type="text" class="form-control" id="eind_straat" value="">
+                                                            <input type="text" class="form-control" id="end_street" name="end_street" value="">
                                                             <label for="eind_straat">Straat</label>
                                                             <i class="fa fa-map-marker"></i>
                                                         </div>
@@ -97,32 +97,32 @@
                                                 <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12">
 													<div class="form-group form-md-line-input">
                                                         <div class="input-icon">
-                                                            <input type="text" class="form-control" id="eind_huisnummer" value="">
+                                                            <input type="text" class="form-control" id="end_number" name="end_number" value="">
                                                             <label for="eind_huisnummer">Huisnummer</label>
                                                             <i class="fa fa-map-marker"></i>
                                                         </div>
                                                     </div>
 												</div>
-                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                                <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12">
 													<div class="form-group form-md-line-input">
                                                         <div class="input-icon">
-                                                            <input type="text" class="form-control" id="eind_postcode" value="">
+                                                            <input type="text" class="form-control" id="end_zip" name="end_zip" value="">
                                                             <label for="eind_postcode">Postcode</label>
                                                             <i class="fa fa-map-marker"></i>
                                                         </div>
                                                     </div>
 												</div>
-                                                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                                 <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
 													<div class="form-group form-md-line-input">
                                                         <div class="input-icon">
-                                                            <input type="text" class="form-control" id="eind_plaats" value="">
+                                                            <input type="text" class="form-control" id="end_city" name="end_city" value="">
                                                             <label for="eind_plaats">Plaats</label>
                                                             <i class="fa fa-map-marker"></i>
                                                         </div>
                                                     </div>
 												</div>
                                            </div>
-                                           
+                                           <!--
                                            <div class="row">
                                 				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 													<div class="form-group form-md-line-input">
@@ -166,12 +166,12 @@
                                                        	</div>
                                            			</div>
                                 				</div>
-                                           </div>
+                                           </div>-->
                                            <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="form-actions noborder pull-right">
-                                                    <button type="button" class="btn green-meadow"><i class="fa fa-plus" ></i>Toevoegen</button>
-                                                    <button type="button" class="btn default">Annuleren</button>
+                                                   <button type="submit" class="btn green-meadow"><i class="fa fa-plus" aria-hidden="true"></i>Toevoegen</button>
+                                                    <a type="button" href="/ritten" class="btn default">Annuleren</a>
                                                 </div>
                                             </div>
                                             </div>
@@ -183,4 +183,20 @@
                         </div>
                     </div>
 
+@endsection
+@section('scripts')
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyBuzlPSNhmRIEhIl-3ZUidj3fwXfsDSw&amp;sensor=false"></script>
+        <script type="text/javascript"> 
+            var myLatlng = new google.maps.LatLng(51.929759,4.471919);
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 7,
+                center: new google.maps.LatLng(51.9996726,5.5019347),
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                scrollwheel: false,
+                navigationControl: false,
+                mapTypeControl: false,
+                scaleControl: false,
+                draggable: true 
+            });        
+        </script>
 @endsection
