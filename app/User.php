@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use DB;
 
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
@@ -53,5 +54,12 @@ class User extends Model implements AuthenticatableContract,
     }
     public function tablet(){
         return $this->hasOne('App\Tablet');
+    }
+
+    public static function uploadPicture($id, $img)
+    {
+        DB::table('user')
+            ->where('id', $id)
+            ->update(['profile_photo' => $img]);
     }
 }
