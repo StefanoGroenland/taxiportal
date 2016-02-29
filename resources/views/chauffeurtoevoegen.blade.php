@@ -34,11 +34,9 @@
                                                                 <img id="jcrop_target" style=" height:100% width:80%;" src="../assets/img/avatars/avatar.png" alt="gfxuser" class="img-responsive center-block"/>
                                                                 <div class="jcrop-holder" style="width: 80% !important; height: 200px!important;"></div>
                                                             </div>
-                                                           
                                                             <div>
                                                                 <span class="btn btn-success" id="verkennerButton" data-toggle="tooltip" title="Kies een foto" onclick="$(this).parent().find('input[type=file]').click();">Verkenner</span>
                                                                 <input name="profile_photo" id="imgInp" onchange="$(this).parent().parent().find('.form-control').html($(this).val().split(/[\\|/]/).pop());readURL(this)" style="display: none;" type="file">
-                                                                <a class="btn red-intense fileinput-exists center-block" data-dismiss="fileinput"> Verwijder </a>
                                                             </div>
                                                         </div>
                                                     </div>

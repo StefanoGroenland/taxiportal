@@ -18,9 +18,38 @@
                             <span class="caption-subject bold uppercase"> Wijzig chauffeur</span>
                         </div>
                     </div>
-                    <div class="portlet-body form">
-                        <form role="form" method="POST" action="/editDriver/{{$id}}">
-                            {!! csrf_field() !!}
+                    <form method="POST" class="formulier" onsubmit="return checkCoords();" action="/editDriver/{{$id}}" files="true" enctype="multipart/form-data">
+                        {!! csrf_field() !!}
+                        <input type="hidden" id="x" name="x">
+                        <input type="hidden" id="y" name="y">
+                        <input type="hidden" id="w" name="w">
+                        <input type="hidden" id="h" name="h">
+                        <div class="profile-sidebar">
+                            <div class="profile-sidebar-portlet">
+                                <div class="profile-usertitle">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12 center-block">
+                                            <div class="fileinput fileinput-new " data-provides="fileinput">
+                                                <div id="jcrop_target" class="fileinput-new thumbnail center-block" style="width: 80%; height: 200px;">
+                                                    <img id="jcrop_target" style=" height:100% width:80%;" src="
+                                                    @if(!$driver->user->profile_photo)
+                                                        {{"../assets/uploads/avatar.png"}}
+                                                    @else
+                                                       ../{{$driver->user->profile_photo}}
+                                                    @endif" alt="gfxuser" class="img-responsive center-block"/>
+                                                    <div class="jcrop-holder" style="width: 80% !important; height: 200px!important;"></div>
+                                                </div>
+                                                <div>
+                                                    <span class="btn btn-success" id="verkennerButton" data-toggle="tooltip" title="Kies een foto" onclick="$(this).parent().find('input[type=file]').click();">Verkenner</span>
+                                                    <input name="profile_photo" id="imgInp" onchange="$(this).parent().parent().find('.form-control').html($(this).val().split(/[\\|/]/).pop());readURL(this)" style="display: none;" type="file">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-content">
                             <input type="hidden" name="_method" value="PUT">
                             <div class="form-body">
                                 <div class="row">
@@ -146,8 +175,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -163,5 +192,69 @@
             errorMessage: true
         });
     });
+
+    $(function(){
+        var input = $('#imgInp');
+        var sendButton = $('.sendButton');
+            if(input.val().length === 0){
+                sendButton.attr("disabled", true);
+            }
+    })
+
+    $('#imgInp').change(function(){
+        var input = $('#imgInp');
+        var sendButton = $('.sendButton');
+        if(input === 0){
+            sendButton.attr("disabled", true);
+        }else{
+            sendButton.attr("disabled", false);
+        }
+    });
+
+    $("#imgInp").change(function(){
+    console.log("changed!");
+        readURL(this);
+    });
+
+    
+
+    function updateCoords(c)
+    {
+        $('#x').val(c.x);
+        $('#y').val(c.y);
+        $('#w').val(c.w);
+        $('#h').val(c.h);
+    };
+
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('.jcrop-holder img').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    function checkCoords()
+    {
+        if (parseInt(jQuery('#w').val())>0) return true;
+        return true;
+    };
+
+    jQuery(function($) {
+        var input = $('#imgInp');
+          $('#imgInp').change(function(){
+          if(input.val() !== ""){
+             $('#jcrop_target').Jcrop({
+                 bgColor:     'transparant',
+                 setSelect:   [ 0, 0, 200, 200 ],
+                 bgOpacity:   .4,
+                 aspectRatio: 1,
+                 onSelect: updateCoords
+             });
+            }
+          });
+        });
 </script>
 @endsection
