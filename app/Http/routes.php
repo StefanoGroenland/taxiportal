@@ -73,3 +73,4 @@ Route::get('/api/v1/routes/{taxiId}/{key}', 'ApiOneController@getRoutesForTaxi')
 Route::get('/api/v1/newsfeed/{key}', 'ApiOneController@getNewsfeeds');
 Route::post('/api/v1/sos', 'ApiOneController@sendSOS');
 Route::post('/api/v1/tabletlogin', 'ApiOneController@tabletLogin');
+Route::post('/api/v1/postcomment', 'ApiOneController@postComment');

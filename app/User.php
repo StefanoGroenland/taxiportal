@@ -46,7 +46,7 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $hidden = ['password', 'remember_token', 'id'];
+    protected $hidden = ['password', 'remember_token'];
 
     public function driver(){
         return $this->hasOne('App\Driver');

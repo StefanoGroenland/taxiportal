@@ -16,6 +16,7 @@ use App\Route;
 use App\Newspaper;
 use App\Emergency;
 use App\Taxi;
+use App\Comment;
 
 use Illuminate\Support\Facades\Input;
 class ApiOneController extends Controller
@@ -212,6 +213,33 @@ class ApiOneController extends Controller
                 return $result;
             }
             return json_encode(array('error' => 'no_tablet_found', 'api-version' => '1.0'));
+        }
+        return json_encode(self::$error);
+    }
+
+    /**
+     * @author Stefano Groenland
+     * @api
+     * @version v1.0
+     * @return string|static|\Illuminate\Http\JsonResponse
+     *
+     * Let's the tablet post a comment for the corresponding driver to the database with a star rating
+     */
+    public function postComment(){
+        $driver = Input::get('driver_id');
+        $message = Input::get('message');
+        $stars = Input::get('stars');
+        $key = Input::get('key');
+        $apikey = self::$apikey;
+        if ($key == $apikey) {
+            $data = array(
+                'driver_id' => $driver,
+                'comment' => $message,
+                'approved' => 0,
+                'star_rating' => $stars);
+
+            $result = Comment::create($data);
+            return $result;
         }
         return json_encode(self::$error);
     }
