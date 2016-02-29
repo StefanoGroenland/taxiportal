@@ -7,7 +7,7 @@
         <th>Email</th>
         <th>Telefoonnummer</th>
         <th>Geslacht</th>
-        <th>Beoordeling</th>
+        <th>Beoordeling<small> gemiddelde</small></th>
         <th></th>
         </thead>
         <tbody>
@@ -26,10 +26,20 @@
                         <td>{{$driver->user->phone_number}}</td>
                         <td>{{$driver->user->sex}}</td>
                         <td>
-                            {{--@for($i = 0; $i < $driver->comment->star_rating; $i++)--}}
-                                {{--<i style="color:gold;" class="fa fa-star"></i>--}}
-                            {{--@endfor--}}
-                            GEMIDDELDE BEOORDELING HIER! zie issuetracker #1
+                            {{-- */$stars = 0;/* --}}
+                            {{-- */$rowCount = 0;/* --}}
+                            {{-- */$avg = 0;/* --}}
+                            @foreach($driver->comment as $key => $value)
+                                @if($value->approved > 0)
+                                    {{-- */$stars += $value->star_rating;/* --}}
+                                    {{-- */$rowCount += count($value->star_rating);/* --}}
+                                @endif
+                            @endforeach
+                            {{-- */$avg = $stars / $rowCount;/* --}}
+
+                            @for($i = 0;$i < $avg; $i++)
+                                <i style="color:gold;" class="fa fa-star"></i>
+                            @endfor
                         </td>
                         <td width="12%" class="text-right">
                             <a class="btn btn-sm green-meadow" href="/chauffeurwijzigen/{{$driver->user->id}}"><i class="fa fa-pencil"></i></a>
