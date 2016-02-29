@@ -14,6 +14,8 @@ use App\Taxi;
 use App\Comment;
 use App\Tablet;
 use Illuminate\Support\Facades\Hash as Hash;
+use Image as Image;
+
 class UserController extends Controller
 {
     public function showIndex(){
@@ -67,7 +69,6 @@ class UserController extends Controller
     }
     public function addDriver(Request $request){
 
-
         $userData = array(
             'email' => $request['email'],
             'phone_number' => $request['phonenumber'],
@@ -99,6 +100,9 @@ class UserController extends Controller
         array_forget($userData, 'password_confirmation');
         $userData['password'] = Hash::make($request['password']);
         $user = User::create($userData);
+
+        $this->upload($request,$user->id);
+
         $driverData = array(
             'user_id' => $user->id,
             'drivers_exp' => $request['driver_exp'],
@@ -182,6 +186,39 @@ class UserController extends Controller
         $request->session()->flash('alert-success', 'Uw account is gewijziged.');
         return redirect('/chauffeurs');
         
+    }
+    public function upload(Request $request , $id){
+        $x = $request['x'];
+        $y = $request['y'];
+        $h = $request['h'];
+        $w = $request['w'];
+
+        $file = array('profile_photo' => $request->file('profile_photo'));
+        $rules = array('profile_photo' => 'required|mimes:jpeg,bmp,png,jpg',);
+        $validator = Validator::make($file, $rules);
+        if ($validator->fails()) {
+            if ($file) {
+                $request->session()->flash('alert-danger', 'U heeft geen bestand / geen geldig bestand gekozen om te uploaden, voeg een foto toe.');
+            }
+            return redirect('/chauffeurtoevoegen');
+        } else {
+            if ($request->file('profile_photo')->isValid()) {
+                $destinationPath = 'assets/uploads';
+                $extension = $request->file('profile_photo')->getClientOriginalExtension();
+                $fileName = rand(1111, 9999) . '.' . $extension;
+                $request->file('profile_photo')->move($destinationPath, $fileName);
+                $ava = $destinationPath . '/' . $fileName;
+                $img = Image::make($ava)->crop($w, $h, $x, $y)->save();
+                $final = $destinationPath . '/' . $img->basename;
+                User::uploadPicture($id, $final);
+                $request->session()->flash('alert-success', 'Chauffeur toegevoegd');
+                return redirect('/chauffeurs');
+            } else {
+                $request->session()->flash('alert-danger', 'Er is een fout opgetreden tijdens het uploaden van uw bestand.');
+                return redirect('/profiel');
+            }
+        }
+
     }
 }
 

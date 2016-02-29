@@ -21,6 +21,7 @@
 			<link href="{{URL::asset('../assets/css/profile.min.css')}}" rel="stylesheet" type="text/css" />
 	        <link href="{{URL::asset('../assets/css/layout.min.css')}}" rel="stylesheet" type="text/css" />
 			<link href="{{URL::asset('../assets/css/custom.min.css')}}" rel="stylesheet" type="text/css" />
+			<link href="{{URL::asset('../assets/css/jquery.Jcrop.css')}}" rel="stylesheet" type="text/css" />
 			<link rel="stylesheet" href="{{URL::asset('../assets/css/morris-0.4.3.min.css')}}">
 	        <link href="{{URL::asset('../assets/css/custom.css')}}" rel="stylesheet" type="text/css" />
 	        <link rel="shortcut icon" href="favicon.ico" /> 
@@ -61,6 +62,8 @@
 	    <script src="{{URL::asset('../assets/js/app.min.js')}}" type="text/javascript"></script>
 	    <script src="{{URL::asset('../assets/js/profile.min.js')}}" type="text/javascript"></script>
 	    <script src="{{URL::asset('../assets/js/layout.min.js')}}" type="text/javascript"></script>
+	    <script src="{{URL::asset('../assets/js/jquery.Jcrop.js')}}" type="text/javascript"></script>
+	    <script src="{{URL::asset('../assets/js/jquery.color.js')}}" type="text/javascript"></script>
 
 	    @yield('scripts')       
 </body>

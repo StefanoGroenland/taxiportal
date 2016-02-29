@@ -35,7 +35,11 @@
                                     {{-- */$rowCount += count($value->star_rating);/* --}}
                                 @endif
                             @endforeach
+                            @if($avg > 0)
                             {{-- */$avg = $stars / $rowCount;/* --}}
+                            @else
+                            Geen beoordeling
+                            @endif
 
                             @for($i = 0;$i < $avg; $i++)
                                 <i style="color:gold;" class="fa fa-star"></i>
