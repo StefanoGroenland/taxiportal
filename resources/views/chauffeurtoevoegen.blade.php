@@ -86,10 +86,10 @@
                                                     <label for="geslacht">Geslacht</label>
                                                     <div class="form-group" data-validate="group">
                                                         <label class="radio-inline" >
-                                                            <input type="radio" name="sex" id="radman" class="md-radiobtn" value="man" checked=""> Man
+                                                            <input type="radio" name="sex" id="radman" class="md-radiobtn" value="man" checked="" @if(old('sex') == 'man') checked @endif> Man
                                                         </label>
                                                         <label class="radio-inline">
-                                                            <input type="radio" name="sex" id="radvrouw" class="md-radiobtn" value="vrouw"> Vrouw
+                                                            <input type="radio" name="sex" id="radvrouw" class="md-radiobtn" value="vrouw" @if(old('sex') == 'vrouw') checked @endif> Vrouw
                                                         </label>
                                                     </div>
                                                 </div>
