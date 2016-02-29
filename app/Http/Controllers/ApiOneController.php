@@ -239,7 +239,7 @@ class ApiOneController extends Controller
                 'star_rating' => $stars);
 
             $result = Comment::create($data);
-            return $result;
+            return json_encode($result);
         }
         return json_encode(self::$error);
     }
