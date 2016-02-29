@@ -74,3 +74,5 @@ Route::get('/api/v1/newsfeed/{key}', 'ApiOneController@getNewsfeeds');
 Route::post('/api/v1/sos', 'ApiOneController@sendSOS');
 Route::post('/api/v1/tabletlogin', 'ApiOneController@tabletLogin');
 Route::post('/api/v1/postcomment', 'ApiOneController@postComment');
+Route::get('/api/v1/signalcheck', 'ApiOneController@signalCheck');
+Route::get('/api/v1/emergencies', 'ApiOneController@getSOS');

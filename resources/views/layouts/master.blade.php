@@ -65,6 +65,18 @@
 	    <script src="{{URL::asset('../assets/js/jquery.Jcrop.js')}}" type="text/javascript"></script>
 	    <script src="{{URL::asset('../assets/js/jquery.color.js')}}" type="text/javascript"></script>
 
+       <script type="text/javascript">
+        $.get('http://taxiportaal.dev/api/v1/emergencies', function(data){
+        			var sos = jQuery.parseJSON(data)
+        			console.log(sos);
+        			alert(sos[0].taxi_license_plate);
+
+
+        		}).done(function() {
+        			console.log("done")
+        		});
+
+       </script>
 	    @yield('scripts')       
 </body>
 
