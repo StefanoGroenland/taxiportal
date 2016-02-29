@@ -27,8 +27,8 @@ class UserController extends Controller
         return View::make('/profielwijzigen');
     }
     public function showDrivers(){
-        $drivers = Driver::with('user','taxi')->get();
-        return View::make('/chauffeurs', compact('drivers','taxis'));
+        $drivers = Driver::with('user','taxi','comment')->get();
+        return View::make('/chauffeurs', compact('drivers','taxis','comment'));
     }
     public function showDriversEdit(){
         $id = Route::current()->getParameter('id');

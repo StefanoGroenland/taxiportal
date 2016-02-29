@@ -7,12 +7,12 @@
         <th>Email</th>
         <th>Telefoonnummer</th>
         <th>Geslacht</th>
-        <th>Beoordeling</th>
+        <th>Beoordeling<small> gemiddelde</small></th>
         <th></th>
         </thead>
         <tbody>
         @foreach($drivers as $driver)
-            @if($driver && $driver->user)
+            @if($driver && $driver->user && $driver->comment)
                     <tr>
                         <td>{{$driver->user->firstname .' '. $driver->user->surname .' '. $driver->user->lastname}}</td>
                         <td>
@@ -26,7 +26,18 @@
                         <td>{{$driver->user->phone_number}}</td>
                         <td>{{$driver->user->sex}}</td>
                         <td>
-                            @for($i = 0; $i < $driver->star_rating; $i++)
+                            {{-- */$stars = 0;/* --}}
+                            {{-- */$rowCount = 0;/* --}}
+                            {{-- */$avg = 0;/* --}}
+                            @foreach($driver->comment as $key => $value)
+                                @if($value->approved > 0)
+                                    {{-- */$stars += $value->star_rating;/* --}}
+                                    {{-- */$rowCount += count($value->star_rating);/* --}}
+                                @endif
+                            @endforeach
+                            {{-- */$avg = $stars / $rowCount;/* --}}
+
+                            @for($i = 0;$i < $avg; $i++)
                                 <i style="color:gold;" class="fa fa-star"></i>
                             @endfor
                         </td>

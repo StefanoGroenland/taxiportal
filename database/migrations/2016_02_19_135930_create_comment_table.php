@@ -16,6 +16,7 @@ class CreateCommentTable extends Migration
             $table->increments('id');
             $table->integer('driver_id');
             $table->string('comment');
+            $table->integer('star_rating');
             $table->boolean('approved');
             $table->timestamps();
         });
