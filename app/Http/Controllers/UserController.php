@@ -68,7 +68,6 @@ class UserController extends Controller
         return View::make('/nieuws', compact('news'));
     }
     public function addDriver(Request $request){
-
         $userData = array(
             'email' => $request['email'],
             'phone_number' => $request['phonenumber'],
@@ -129,8 +128,6 @@ class UserController extends Controller
        return redirect()->route('chauffeurs');
     }
     public function editDriver(Request $request){
-       
-
        $id = Route::current()->getParameter('id');
        $driver = Driver::where('user_id','=',$id)->first();
          $userData = array(
@@ -179,11 +176,15 @@ class UserController extends Controller
             array_forget($userData, 'password_confirmation');
         } else {
             User::where('id', '=', $id)->update($userData);
+            $this->upload($request, $id);
             $request->session()->flash('alert-success', 'Uw account is gewijziged, er zijn geen wijzigingen aan het wachtwoord doorgevoerd.');
             return redirect('/chauffeurs');
         }
+        
         User::where('id', '=', $id)->update($userData);
         $request->session()->flash('alert-success', 'Uw account is gewijziged.');
+
+        $this->upload($request, $id);
         return redirect('/chauffeurs');
         
     }
