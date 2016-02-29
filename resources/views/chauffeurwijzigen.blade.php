@@ -82,16 +82,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                                        <div class="form-group form-md-line-input ">
-                                            <div class="input-icon">
-                                                <select class="form-control" id="geslacht" name="sex" data-validate="required" value="@if(old('sex')){{old('sex')}}@else{{$driver->user->sex}}@endif">
-                                                    <option @if($driver->user->geslacht == 'man')selected @endif value="man">Man</option>
-                                                    <option @if($driver->user->geslacht == 'vrouw')selected @endif value="vrouw">Vrouw</option>
-                                                </select>
-                                                <label for="geslacht">Geslacht</label>
-                                                <i class="fa fa-user"></i>
-                                            </div>
+                                   
+                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                        <label for="geslacht">Geslacht</label>
+                                        <div class="form-group" data-validate="group">
+                                            <label class="radio-inline" >
+                                                <input type="radio" name="sex" id="radman" class="md-radiobtn" value="man" @if(old('sex') == 'man') checked @elseif($driver->user->sex == 'man') checked @endif> Man
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input type="radio" name="sex" id="radvrouw" class="md-radiobtn" value="vrouw" @if(old('sex') == 'vrouw') checked @elseif($driver->user->sex == 'vrouw') checked @endif> Vrouw
+                                            </label>
                                         </div>
                                     </div>
                                     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
