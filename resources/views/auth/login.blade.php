@@ -28,12 +28,20 @@
     <body class="login">
     <div class="col-lg-4 col-md-4"></div>
     <div class="col-lg-4 col-md-4">
+
         <div class="logo img-responsive text-center">
             <a href="index.html">
                 <img src="{{URL::asset('../assets/img/logo.png')}}" alt="Logo"> 
             </a>
         </div>
         <div class="content">
+            @if (count($errors))
+                <ul class="list-unstyled">
+                    @foreach($errors->all() as $error)
+                        <li class="alert alert-danger"><i class="fa fa-exclamation"></i> {{ $error }}</li>
+                     @endforeach
+                </ul>
+            @endif
             <div class="page-content">
                 <div class="portlet light bordered">
                     <form class="login-form" action="/login" method="post" novalidate="novalidate">
