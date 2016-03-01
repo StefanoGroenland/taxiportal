@@ -30,9 +30,9 @@
                                                 <div class="row">
                                                     <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12 center-block">
                                                         <div class="fileinput fileinput-new " data-provides="fileinput">
-                                                            <div id="jcrop_target" class="fileinput-new thumbnail center-block" style="width: 80%; height: 200px;">
+                                                            <div id="jcrop_target" class="fileinput-new thumbnail center-block" style="width: 250px; height: 200px;">
                                                                 <img id="jcrop_target" style=" height:100% width:80%;" src="../assets/img/avatars/avatar.png" alt="gfxuser" class="img-responsive center-block"/>
-                                                                <div class="jcrop-holder" style="width: 80% !important; height: 200px!important;"></div>
+                                                                <div class="jcrop-holder" style="width: 400px !important; height: 200px!important;"></div>
                                                             </div>
                                                             <div>
                                                                 <span class="btn btn-success" id="verkennerButton" data-toggle="tooltip" title="Kies een foto" onclick="$(this).parent().find('input[type=file]').click();">Verkenner</span>
