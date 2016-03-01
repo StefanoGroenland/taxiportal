@@ -60,14 +60,15 @@ class AdController extends Controller
         for($i = 0; $i < count($datLocArray); $i++){
             AdLocation::insertLocals($advertisement->id,$datLocArray[$i]);
         }
+        session()->flash('alert-success', 'reclame ' . $advertisement->link.' toegevoegd.');
         return redirect()->route('reclames');
     }
-    public function deleteAd(Request $request){
+    public function deleteAd(){
        $id = Route::current()->getParameter('id');
        $find = Ad::find($id);
        Ad::where('id','=',$id)->delete();
        AdLocation::where('ad_id','=',$id)->delete();
-       session()->flash('alert-success', 'reclame' . $find->link.' verwijderd.');
+       session()->flash('alert-success', 'reclame ' . $find->link.' verwijderd.');
        return redirect()->route('reclames'); 
     }
     public function editAd(Request $request){
