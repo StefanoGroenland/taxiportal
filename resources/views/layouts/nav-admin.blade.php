@@ -24,7 +24,7 @@
  	                                        </li>
 
  	                                        <li>
- 	                                            <a href="noodsignalen">
+ 	                                            <a href="/noodsignalen">
  	                                                <i class="icon-envelope-open"></i> Noodsignalen
  	                                                <span class="badge badge-danger"> 3 </span>
  	                                            </a>
