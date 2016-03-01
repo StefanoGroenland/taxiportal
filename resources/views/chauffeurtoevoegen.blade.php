@@ -31,7 +31,7 @@
                                                     <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12 center-block">
                                                         <div class="fileinput fileinput-new " data-provides="fileinput">
                                                             <div id="jcrop_target" class="fileinput-new thumbnail center-block" style="width: 200px; height: 200px;">
-                                                                <img id="jcrop_target" style=" height:100% width:80%;" src="../assets/img/avatars/avatar.png" alt="gfxuser" class="img-responsive center-block"/>
+                                                                <img id="jcrop_target" style=" height:100%; width:100%;" src="../assets/img/avatars/avatar.png" alt="avatar" class="img-responsive center-block"/>
                                                                 <div class="jcrop-holder" style="width: 400px !important; height: 200px!important;"></div>
                                                             </div>
                                                             <div>
@@ -210,8 +210,11 @@
     });
 
     $("#imgInp").change(function(){
+    console.log("changed!");
         readURL(this);
     });
+
+    
 
     function updateCoords(c)
     {

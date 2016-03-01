@@ -15,6 +15,8 @@ use App\Comment;
 use App\Tablet;
 use Illuminate\Support\Facades\Hash as Hash;
 use Image as Image;
+use File;
+use App\Http\Controllers\Storage;
 
 class UserController extends Controller
 {
@@ -114,23 +116,31 @@ class UserController extends Controller
         );
 
         Taxi::where('id','=', $request['car'])->update($taxiData);
+        $request->session()->flash('alert-success', 'De chauffeur is toegevoegd.');
         return redirect()->route('chauffeurs');
     }
 
     public function deleteDriver(Request $request){
-       $id  = Route::current()->getParameter('id');
-       $find = User::find($id);
-       $driver = Driver::where('user_id','=',$find->id)->first();
-       Taxi::where('driver_id','=',$driver->id)->update(array('driver_id' => 0));
-       User::where('id','=', $id)->delete();
-       Driver::where('user_id','=',$id)->delete();
-       session()->flash('alert-success', 'chauffeur'. $find->firstname.' verwijderd.');
-       return redirect()->route('chauffeurs');
+       
+        $id  = Route::current()->getParameter('id');
+        $find = User::find($id);
+        $driver = Driver::where('user_id','=',$find->id)->first();
+        Taxi::where('driver_id','=',$driver->id)->update(array('driver_id' => 0));
+        User::where('id','=', $id)->delete();
+        Driver::where('user_id','=',$id)->delete();
+        if(!$find->profile_photo == ""){
+            unlink($find->profile_photo);
+        }
+        
+        session()->flash('alert-success', 'chauffeur'. $find->firstname.' verwijderd.');
+        return redirect()->route('chauffeurs');
     }
     public function editDriver(Request $request){
-       $id = Route::current()->getParameter('id');
-       $driver = Driver::where('user_id','=',$id)->first();
-         $userData = array(
+       
+        $id = Route::current()->getParameter('id');
+        $driver = Driver::where('user_id','=',$id)->first();
+
+        $userData = array(
             'email' => $request['email'],
             'phone_number' => $request['phonenumber'],
             'firstname' => $request['firstname'],
@@ -139,7 +149,6 @@ class UserController extends Controller
             'password_confirmation' => $request['password_confirmation'],
             'sex' => $request['sex'],
         ); 
-
         $userRules = array(
             'email' =>'required|email',
             'phone_number' =>'required|numeric|digits:10',
@@ -175,15 +184,14 @@ class UserController extends Controller
             $userData['password'] = Hash::make($userData['password']);
             array_forget($userData, 'password_confirmation');
         } else {
-            User::where('id', '=', $id)->update($userData);
+            $user = User::where('id', '=', $id)->update($userData);
             $this->upload($request, $id);
             $request->session()->flash('alert-success', 'Uw account is gewijziged, er zijn geen wijzigingen aan het wachtwoord doorgevoerd.');
             return redirect('/chauffeurs');
         }
-        
-        User::where('id', '=', $id)->update($userData);
+       
+        $user = User::where('id', '=', $id)->update($userData);
         $request->session()->flash('alert-success', 'Uw account is gewijziged.');
-
         $this->upload($request, $id);
         return redirect('/chauffeurs');
         
@@ -199,7 +207,7 @@ class UserController extends Controller
         $validator = Validator::make($file, $rules);
         if ($validator->fails()) {
             if ($file) {
-                $request->session()->flash('alert-danger', 'U heeft geen bestand / geen geldig bestand gekozen om te uploaden, voeg een foto toe.');
+                //$request->session()->flash('alert-danger', 'U heeft geen bestand / geen geldig bestand gekozen om te uploaden, voeg een foto toe.');
             }
             return redirect('/chauffeurtoevoegen');
         } else {
