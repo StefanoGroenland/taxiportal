@@ -270,8 +270,8 @@ class ApiOneController extends Controller
         $taxis = Taxi::where('in_shift', '=', 1)->get();
         foreach ($taxis as $taxi) {
             $last = Carbon::createFromFormat('Y-m-d H:i:s', $taxi->last_seen);
-            $diff = $last->diffInMinutes(Carbon::now()->addMinutes(7));
-            if ($diff >= 20) {
+            $diff = $last->diffInMinutes(Carbon::now()->addMinutes(7));{
+            if ($diff >= 20)
                 return Emergency::create(array('taxi_id' => $taxi->id, 'seen' => 0));
             }
             return json_encode(['nothing' => 'all_good']);

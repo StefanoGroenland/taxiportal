@@ -48,6 +48,53 @@
 	        <i class="icon-arrow-up"></i>
 	    </a>
 
+
+
+            <div class="modal fade" id="myModel" tabindex="-1"  aria-hidden="true" style="display: none;">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                            <h4 class="modal-title">Noodsignalen</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Onderstaande tabel toont alle noodmeldingen</p>
+
+                            <div class="table-responsive">
+                                <table class="table table-bordered" >
+                                    <thead>
+                                        <th>Kenteken</th>
+                                        <th>Chauffeur</th>
+                                        <th>Laatst gezien</th>
+                                        <th>Gemeld op</th>
+                                        <th></th>
+                                    </thead>
+                                    @foreach(\App\Emergency::all() as $sos)
+                                        @if($sos && $sos->taxi)
+                                            <tr>
+                                                <td>{{$sos->taxi->license_plate}}</td>
+                                                <td>{{$sos->taxi->driver->user->firstname}}</td>
+                                                <td>{{$sos->taxi->last_seen}}</td>
+                                                <td>{{$sos->created_at}}</td>
+                                                <td>
+                                                    <a class="btn btn-sm green-meadow" href="/noodsignaal/id"><i class="fa fa-search"></i></a>
+                                                </td>
+                                            </tr>
+                                        @endif
+                                @endforeach
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Sluiten</button>
+                            <a href="/noodsignalen" class="btn btn-danger pull-right">Overzicht</a>
+                        </div>
+                    </div>
+                <!-- /.modal-content -->
+                </div>
+            <!-- /.modal-dialog -->
+            </div>
+
 		<script src="{{URL::asset('../assets/js/jquery.min.js')}}" type="text/javascript"></script>
 	    <script src="{{URL::asset('../assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
 	    <script src="{{URl::asset('../assets/js/bootstrap-hover-dropdown.min.js')}}" type="text/javascript"></script>
@@ -69,8 +116,7 @@
         $.get('http://taxiportaal.dev/api/v1/emergencies', function(data){
         			var sos = jQuery.parseJSON(data)
         			console.log(sos);
-        			alert(sos[0].taxi_license_plate);
-
+        			$('#myModel').modal('show');
 
         		}).done(function() {
         			console.log("done")
