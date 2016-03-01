@@ -75,7 +75,7 @@
                                                 <td>{{$sos->taxi->license_plate}}</td>
                                                 <td>{{$sos->taxi->driver->user->firstname}}</td>
                                                 <td>{{$sos->taxi->last_seen}}</td>
-                                                <td>{{$sos->created_at}}</td>
+                                                <td>{{$sos->created_at->format('d-m-Y H:i:s')}}</td>
                                                 <td>
                                                     <a class="btn btn-sm green-meadow" href="/noodsignaal/id"><i class="fa fa-search"></i></a>
                                                 </td>
@@ -116,6 +116,8 @@
         $.get('http://taxiportaal.dev/api/v1/emergencies', function(data){
         			var sos = jQuery.parseJSON(data)
         			console.log(sos);
+        			//todo : checken of er rows in de db zijn.
+        			//todo : om de x minuten kijken of API.signalcheck() iets terug geeft.
         			$('#myModel').modal('show');
 
         		}).done(function() {
