@@ -2,6 +2,13 @@
 
 @section('content')
 <div class="page-content">
+                    @if (count($errors))
+                        <ul class="list-unstyled">
+                            @foreach($errors->all() as $error)
+                                <li class="alert alert-danger"><i class="fa fa-exclamation"></i> {{ $error }}</li>
+                             @endforeach
+                        </ul>
+                    @endif
                     <div class="row">
                         <div class="col-md-12 ">
                             <div class="portlet light bordered">
@@ -121,62 +128,35 @@
                                                         </div>
                                                     </div>
 												</div>
+
+                                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                                    <div class="form-group form-md-line-input">
+                                                        <div class="input-icon">
+                                                            <input type="text" class="form-control" id="phone_customer" name="phone_customer" value="">
+                                                            <label for="eind_plaats">Telefoonnummer klant</label>
+                                                            <i class="fa fa-phone"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                                    <div class="form-group form-md-line-input">
+                                                        <div class="input-icon">
+                                                            <input type="text" class="form-control" id="email_customer" name="email_customer" value="">
+                                                            <label for="eind_plaats">Email klant</label>
+                                                            <i class="fa fa-envelope-o"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                            </div>
-                                           <!--
-                                           <div class="row">
-                                				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-													<div class="form-group form-md-line-input">
-                                                        <div class="input-icon">
-                                                            <input type="text" class="form-control" id="voornaam" value="">
-                                                            <label for="voornaam">Voornaam</label>
-                                                            <i class="fa fa-user"></i>
-                                                        </div>
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="form-actions noborder pull-right">
+                                                       <button type="submit" class="btn green-meadow"><i class="fa fa-plus" aria-hidden="true"></i>Toevoegen</button>
+                                                        <a type="button" href="/ritten" class="btn default">Annuleren</a>
                                                     </div>
-												</div>
-                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-													<div class="form-group form-md-line-input">
-                                                        <div class="input-icon">
-                                                            <input type="text" class="form-control" id="tussenvoegsel" value="">
-                                                            <label for="tussenvoegsel">Tussenvoegsel</label>
-                                                            <i class="fa fa-map-marker"></i>
-                                                        </div>
-                                                    </div>
-												</div>
-                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-													<div class="form-group form-md-line-input">
-                                                        <div class="input-icon">
-                                                            <input type="text" class="form-control" id="achternaam" value="">
-                                                            <label for="achternaam">Achternaam</label>
-                                                            <i class="fa fa-map-marker"></i>
-                                                        </div>
-                                                    </div>
-												</div>
-                                           </div>
-                                           <div class="row">
-												<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                					<div class="form-group form-md-line-input ">
-                                                    	<div class="input-icon">
-                                                            <select class="form-control" id="geslacht">
-                                                                <option value=""></option>
-                                                                <option value="1">Man</option>
-                                                                <option value="2">Vrouw</option>
-                                                            </select>
-                                                            <label for="geslacht">Geslacht</label>
-                                                        	<i class="fa fa-user"></i>
-                                                       	</div>
-                                           			</div>
-                                				</div>
-                                           </div>-->
-                                           <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="form-actions noborder pull-right">
-                                                   <button type="submit" class="btn green-meadow"><i class="fa fa-plus" aria-hidden="true"></i>Toevoegen</button>
-                                                    <a type="button" href="/ritten" class="btn default">Annuleren</a>
                                                 </div>
                                             </div>
-                                            </div>
                                         </div>
-
                                     </form>
                                 </div>
                             </div>

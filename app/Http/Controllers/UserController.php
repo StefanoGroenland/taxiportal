@@ -223,6 +223,7 @@ class UserController extends Controller
      * then deletes the driver and linked user account from the database.
      */
     public function deleteDriver(Request $request){
+
        
         $id  = Route::current()->getParameter('id');
         $find = User::find($id);
@@ -234,7 +235,7 @@ class UserController extends Controller
             unlink($find->profile_photo);
         }
         
-        session()->flash('alert-success', 'chauffeur'. $find->firstname.' verwijderd.');
+        session()->flash('alert-success', 'chauffeur '. $find->firstname.' verwijderd.');
         return redirect()->route('chauffeurs');
     }
 
