@@ -96,13 +96,9 @@ class ApiOneController extends Controller
     {
         $apikey = self::$apikey;
         if ($key == $apikey) {
-            //Looks for the given tablet name.
             $user = User::where('tablet_name', '=', $tablet)->first();
-            //Looks for the associated taxi in the tablet table.
             $tablet = Tablet::with('taxi')->where('user_id', '=', $user->id)->first();
-            //Looks for the driver with the user_id of the Taxi.driver_id
             $driver = Driver::with('user')->where('user_id', '=', $tablet->taxi->driver_id)->first();
-            //If found return in JSON format.
             return $driver->toJson();
         }
         return json_encode(self::$error);

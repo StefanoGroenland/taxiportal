@@ -30,7 +30,7 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12 center-block">
                                             <div class="fileinput fileinput-new " data-provides="fileinput">
-                                                <div id="jcrop_target" class="fileinput-new thumbnail center-block" style="width: 250px; height: 200px;">
+                                                <div id="jcrop_target" class="fileinput-new thumbnail center-block" style="width: 200px; height: 200px;">
                                                     <img id="jcrop_target" style=" margin-left: auto !important" src="
                                                     @if(!$driver->user->profile_photo)
                                                         {{"../assets/uploads/avatar.png"}}

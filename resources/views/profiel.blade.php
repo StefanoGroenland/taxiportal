@@ -51,10 +51,13 @@
                                                         <a href="" class="item-name primary-link">Passagier</a>
                                                         <span class="item-label">{{$comment->created_at->format('d-m-Y H:i')}}</span>
                                                     </div>
-                                                    <span class="item-status">
-                                                        <span class="badge badge-empty badge-success"></span> status</span>
+
                                                 </div>
-                                                <div class="item-body">{{$comment->comment}}</div>
+                                                <div class="item-body">{{$comment->comment}}
+                                                    @for($i = 0;$i < $comment->star_rating; $i++)
+                                                        <i style="color:gold;" class="fa fa-star"></i>
+                                                    @endfor
+                                                </div>
                                             </div>
                                             @endif
                                             @endforeach
