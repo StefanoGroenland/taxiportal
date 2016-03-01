@@ -21,7 +21,9 @@ class RouteController extends Controller
 		return View::make('/rittoevoegen');
 	}
 	public function showRoutesEdit(){
-		return View::make('/ritwijzigen');
+		$id = Route::current()->getParameter('id');
+		$routes = Route2::with('taxi')->where('id',$id)->first();
+		return View::make('/ritwijzigen', compact('id','routes'));
 	}
 	public function addRoute(Request $request){
 
@@ -53,6 +55,8 @@ class RouteController extends Controller
 			'phone_customer' => 'required',
 			'email_customer' => 'required'
 		);
+
+		$data['pickup_time'] = date('Y-m-d H:i', strtotime($data['pickup_time']));
 
 		$validator = Validator::make($data, $rules);
 		if ($validator->fails()){
@@ -92,11 +96,12 @@ class RouteController extends Controller
 			'end_zip' => 'required',
 			'end_number' => 'required',
 			'end_street' => 'required',
-			'pickup_time'=> 'required',
 			'phone_customer' => 'required',
-			'email_customer' => 'required'
+			'email_customer' => 'required|email'
         );
-
+        
+        $data['pickup_time'] = date('Y-m-d H:i', strtotime($data['pickup_time']));
+        
         $validator = Validator::make($data, $rules);
         if ($validator->fails()){
             return redirect('ritwijzigen/'.$id)->withErrors($validator)->withInput($data);
@@ -104,7 +109,7 @@ class RouteController extends Controller
 
         Route2::where('id', '=', $id)->update($data);
 
-        $request->session()->flash('alert-success', 'Rit van '.$find->email_customer.' '.$find->created_at.' is veranderd.');
+        $request->session()->flash('alert-success', 'Rit van '. $request['email_customer'].' '.$request['pickup_time'].' is veranderd.');
         return redirect()->route('ritten'); 
     }
 }
