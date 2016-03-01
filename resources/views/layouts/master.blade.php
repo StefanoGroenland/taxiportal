@@ -117,23 +117,25 @@
 	    <script src="{{URL::asset('../assets/js/jquery.color.js')}}" type="text/javascript"></script>
 
        <script type="text/javascript">
-       $.get('http://taxiportaal.dev/api/v1/emergencies', function(data){
-       	var sos = jQuery.parseJSON(data);
-       	if(sos.length > 0){
-       	    $('#myModel').modal('show');
-       	}
 
-       }).done(function() {
-       	console.log("emergency check done");
-           myFunction();
-       });
 
        function myFunction() {
+       $.get('http://taxiportaal.dev/api/v1/emergencies', function(data){
+              	var sos = jQuery.parseJSON(data);
+              	if(sos.length > 0){
+              	    $('#myModel').modal('show');
+              	}
+
+              }).done(function() {
+              	console.log("emergency check done");
+                  myFunction();
+              });
+
            $.get('http://taxiportaal.dev/api/v1/signalcheck', function(data){
             }).done(function() {
             	console.log("signal check done")
             });
-       }setInterval(function(){myFunction()}, 30000);
+       }setInterval(function(){myFunction()}, 300000);
 
        </script>
 	    @yield('scripts')       
