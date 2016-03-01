@@ -9,6 +9,9 @@
                     <span class="caption-subject bold uppercase">Tablets</span>
                 </div>
             </div>
+            @if(Auth::user()->user_rank == 'admin')
+             <a href="/tablettoevoegen" class="btn btn-sm green-meadow margin-bottom-10"><i class="fa fa-plus"></i> Tablet toevoegen</a>
+            @endif
             <div class="portlet-body form">
                 @include('layouts.tables.tablet-table')
             </div>
