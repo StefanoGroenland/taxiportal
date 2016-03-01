@@ -78,7 +78,7 @@
                                             <tr>
                                                 <td>{{$sos->taxi->license_plate}}</td>
                                                 <td>{{$sos->taxi->driver->user->firstname}}</td>
-                                                <td>{{$sos->taxi->last_seen}}</td>
+                                                <td>{{date('d-m-Y H:i:s',strtotime($sos->taxi->last_seen))}}</td>
                                                 <td>{{$sos->created_at->format('d-m-Y H:i:s')}}</td>
                                                 <td>
                                                     <a class="btn btn-sm green-meadow" href="/noodsignaal/id"><i class="fa fa-search"></i></a>
@@ -118,7 +118,7 @@
 
        <script type="text/javascript">
 
-
+        myFunction();
        function myFunction() {
        $.get('http://taxiportaal.dev/api/v1/emergencies', function(data){
               	var sos = jQuery.parseJSON(data);
@@ -128,7 +128,6 @@
 
               }).done(function() {
               	console.log("emergency check done");
-                  myFunction();
               });
 
            $.get('http://taxiportaal.dev/api/v1/signalcheck', function(data){
