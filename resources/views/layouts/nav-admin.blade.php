@@ -19,14 +19,16 @@
  	                                        <li>
  	                                            <a href="/profiel">
  	                                                <i class="icon-user"></i> Mijn profiel
- 	                                                <span class="badge badge-danger">1</span>
+ 	                                                <span class="badge badge-danger">X</span>
  	                                            </a>
  	                                        </li>
 
  	                                        <li>
  	                                            <a href="/noodsignalen">
  	                                                <i class="icon-envelope-open"></i> Noodsignalen
- 	                                                <span class="badge badge-danger"> 3 </span>
+ 	                                                @if(count(\App\Emergency::where('seen','!=',1)->get()) > 0)
+ 	                                                    <span class="badge badge-danger"> {{count(\App\Emergency::where('seen','!=',1)->get())}} </span>
+ 	                                                @endif
  	                                            </a>
  	                                        </li>
 
