@@ -17,7 +17,7 @@
               <td>{{date('d-m-Y H:i:s',strtotime($sos->taxi->last_seen))}}</td>
               <td>{{$sos->created_at->format('d-m-Y H:i:s')}}</td>
               <td>@if($sos->seen == 1) <i class="fa fa-check" ></i> @else <i class="fa fa-times"></i> @endif</td>
-              <td class="pull-right text-right">
+              <td class="text-right">
                   <a class="btn btn-sm green-meadow" href="/seenSignal/{{$sos->id}}"><i class="fa fa-check"></i></a>
               </td>
           </tr>
@@ -49,8 +49,8 @@
                     <td>{{date('d-m-Y H:i:s',strtotime($sos->taxi->last_seen))}}</td>
                     <td>{{$sos->created_at->format('d-m-Y H:i:s')}}</td>
                     <td>@if($sos->seen == 1) <i class="fa fa-check" ></i> @else <i class="fa fa-times"></i> @endif</td>
-                    <td class="pull-right text-right">
-                        <a class="btn btn-sm green-meadow" href="/seenSignal/{{$sos->id}}"><i class="fa fa-times"></i></a>
+                    <td class="text-right">
+                        <a class="btn btn-sm green-meadow" href="/seenSignal/{{$sos->id}}"><i class="fa fa-check"></i></a>
                     </td>
                 </tr>
                 @endforeach
