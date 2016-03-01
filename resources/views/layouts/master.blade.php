@@ -119,7 +119,6 @@
        <script type="text/javascript">
        $.get('http://taxiportaal.dev/api/v1/emergencies', function(data){
        	var sos = jQuery.parseJSON(data);
-       	console.log(sos);
        	if(sos.length > 0){
        	    $('#myModel').modal('show');
        	}
