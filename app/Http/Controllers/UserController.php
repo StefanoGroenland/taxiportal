@@ -120,7 +120,7 @@ class UserController extends Controller
         return redirect()->route('chauffeurs');
     }
 
-    public function deleteDriver(Request $request){
+    public function deleteDriver(){
        
         $id  = Route::current()->getParameter('id');
         $find = User::find($id);
@@ -132,7 +132,7 @@ class UserController extends Controller
             unlink($find->profile_photo);
         }
         
-        session()->flash('alert-success', 'chauffeur'. $find->firstname.' verwijderd.');
+        session()->flash('alert-success', 'chauffeur '. $find->firstname.' verwijderd.');
         return redirect()->route('chauffeurs');
     }
     public function editDriver(Request $request){

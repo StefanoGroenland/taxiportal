@@ -41,8 +41,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/taxiwijzigen', array('as' => 'taxiwijzigen', 'uses' => 'TaxiController@showTaxiEdit'));
         Route::get('/taxitoevoegen', array('as' => 'taxitoevoegen', 'uses' => 'TaxiController@showTaxiAdd'));
         Route::get('/rittoevoegen', array('as' => 'rittoevoegen', 'uses' => 'RouteController@showRoutesAdd'));
-        Route::get('/ritwijzigen', array('as' => 'ritwijzigen', 'uses' => 'RouteController@showRoutesEdit'));
+        Route::get('/ritwijzigen/{id}', array('as' => 'ritwijzigen', 'uses' => 'RouteController@showRoutesEdit'));
         Route::post('/addRoute', 'RouteController@addRoute');
+        Route::delete('/deleteRoute/{id}', 'RouteController@deleteRoute');
+        Route::put('/editRoute/{id}', array('as' => 'editRoute', 'uses' => 'RouteController@editRoute'));
        
         Route::get('/opmerkingwijzigen', array('as' => 'opmerkingwijzigen', 'uses' => 'CommentController@showCommentEdit'));
         Route::get('/tablets', array('as' => 'tablets', 'uses' => 'UserController@showTablet'));

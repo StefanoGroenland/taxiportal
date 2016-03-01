@@ -11,10 +11,16 @@
         </thead>
         <tbody>
             @foreach($routes as $route)
-                    @if($route->taxi)
+                  
                     <tr>
-                        <td>{{$route->taxi->license_plate}}</td>
-                        <td>{{$route->taxi->driver->user->firstname .' '. $route->taxi->driver->user->surname .' '. $route->taxi->driver->user->lastname}}</td>
+                        @if($route->taxi)
+                            <td>{{$route->taxi->license_plate}}</td>
+                            <td>{{$route->taxi->driver->user->firstname .' '. $route->taxi->driver->user->surname .' '. $route->taxi->driver->user->lastname}}</td>
+                        @else
+                        <td>Geen taxi gekoppeld</td>
+                        <td>Geen chauffeur gekoppeld</td>
+                        @endif
+
                         <td>{{date('d-m-Y H:i',strtotime($route->pickup_time))}}</td>
                         <td>
                             {{$route->start_street .' '.
@@ -26,16 +32,43 @@
                             $route->end_number.', '.
                             $route->end_zip .' '. $route->end_city}}
                         </td>
+                        @if($route->taxi)
                         <td>@if($route->taxi->in_shift == 1)<i class="fa fa-circle" style="color: #41f800;" ></i>
                             @else<i class="fa fa-circle" style="color: #F85200;" ></i> <small>@endif{{date('d-m-Y H:i',strtotime($route->taxi->last_seen))}}</small>
                         </td>
+                        @else
+                        <td>Geen taxi gekoppeld</td>
+                        @endif
                         <td class="text-right">
-                                <a class="btn btn-sm green-meadow" href="/ritwijzigen"><i class="fa fa-pencil"></i></a>
-                                <a class="btn btn-sm red-sunglo" href="#"><i class="fa fa-trash"></i></a>
-                        </td>
+                            <a class="btn btn-sm green-meadow" href="/ritwijzigen/{{$route->id}}"><i class="fa fa-pencil"></i></a>
+                            <a class="btn btn-sm red-sunglo deleteButton" data-model-id="{{$route->id}}" data-toggle="modal" href="#myModel{{$route->id}}"><i class="fa fa-trash"></i></a>
                     </tr>
-                    @endif
             @endforeach
         </tbody>
     </table>
  </div>
+@foreach($routes as $route)
+    <div class="modal fade" id="myModel{{$route->id}}" tabindex="-1"  aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Verwijder verzoek</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Weet u zeker dat u de rit: <strong>{{$route->start_city}}</strong> wilt verwijderen?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Sluiten</button>
+                    <form method="POST" action="/deleteRoute/{{$route->id}}" >
+                        {!! method_field('DELETE') !!}
+                        {!! csrf_field() !!}
+                        <button type="submit" class="btn btn-danger pull-right">Verwijder rit</button>
+                    </form>
+                </div>
+            </div>
+        <!-- /.modal-content -->
+        </div>
+    <!-- /.modal-dialog -->
+    </div>
+@endforeach
