@@ -199,14 +199,6 @@
        $('#radvrouw').prop('checked',false)
     });
 
-    $(function(){
-        var input = $('#imgInp');
-        var sendButton = $('.sendButton');
-            if(input.val().length === 0){
-                sendButton.attr("disabled", true);
-            }
-    })
-
     $('#imgInp').change(function(){
         var input = $('#imgInp');
         var sendButton = $('.sendButton');
@@ -218,11 +210,8 @@
     });
 
     $("#imgInp").change(function(){
-    console.log("changed!");
         readURL(this);
     });
-
-    
 
     function updateCoords(c)
     {
