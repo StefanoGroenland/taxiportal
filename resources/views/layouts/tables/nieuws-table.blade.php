@@ -7,8 +7,9 @@
               <th></th>
       </thead>
       <tbody>
-          <tr>
+
           @foreach($news as $rss)
+          <tr>
               <td>{{$rss->name}}</td>
               <td>{!! $rss->link !!}</td>
               <td>{{$rss->created_at->format('d-m-Y H:i')}}</td>

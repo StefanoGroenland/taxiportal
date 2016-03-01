@@ -58,6 +58,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/addAd', 'AdController@addAd');
         Route::delete('/deleteAd/{id}', 'AdController@deleteAd');
         Route::put('/editAd/{id}', array('as' => 'editAd', 'uses' => 'AdController@editAd'));
+        Route::get('/noodsignalen', array('as' => 'noodsignalen', 'uses' => 'EmergencyController@showSignals'));
+        Route::get('/seenSignal/{id}', array('as' => 'signalChange', 'uses' => 'EmergencyController@seenSignal'));
     });
 });
 

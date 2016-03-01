@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -264,13 +265,15 @@ class ApiOneController extends Controller
     public function signalCheck()
     {
         $taxis = Taxi::where('in_shift', '=', 1)->get();
+
         foreach ($taxis as $taxi) {
             $last = Carbon::createFromFormat('Y-m-d H:i:s', $taxi->last_seen);
-            $diff = $last->diffInMinutes(Carbon::now()->addMinutes(7));{
-            if ($diff >= 20)
-                return Emergency::create(array('taxi_id' => $taxi->id, 'seen' => 0));
+            $diff = $last->diffInMinutes(Carbon::now()->addMinutes(7));
+            if ($diff >= 20){
+                if(!Emergency::where('taxi_id',$taxi->id)->where('seen',0)->exists()){
+                    Emergency::create(array('taxi_id' => $taxi->id, 'seen' => 0));
+                }
             }
-            return json_encode(['nothing' => 'all_good']);
         }
     }
 
