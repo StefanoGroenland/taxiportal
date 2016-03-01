@@ -11,10 +11,25 @@ use Illuminate\Support\Facades\Validator;
 
 class AdController extends Controller
 {
+    /**
+     * @author Stefano Groenland
+     * @return mixed
+     *
+     * Gets all ads from the database with atleast one location linked to it,
+     * and passes them along when making the view.
+     */
     public function showAds(){
         $ads = Ad::with('adLocation')->get();
         return View::make('/reclames', compact('ads'));
     }
+
+    /**
+     * @authors Stefano Groenland , Richard Perdaan
+     * @return mixed
+     *
+     * Gets the corresponding advertisement of the route id passed,
+     * Gets all locations comma from the database and places them comma delimited in a variable for later use.
+     */
     public function showAdsEdit(){
         $id = Route::current()->getParameter('id');
         $obj = Ad::find($id);
@@ -30,9 +45,25 @@ class AdController extends Controller
 
         return View::make('/reclamewijzigen', compact('id', 'obj', 'locations'));
     }
+
+    /**
+     * @author Richard Perdaan
+     * @return mixed
+     *
+     *  TODO : fill in func description
+     */
     public function showAdsAdd(){
         return View::make('/reclametoevoegen');
     }
+
+    /**
+     * @author Richard Perdaan
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     *
+     * Grabs all input values from the request, validates them and if all goes well,
+     * The advertisement will be created.
+     */
     public function addAd(Request $request){
        
         $data = array(
@@ -63,6 +94,15 @@ class AdController extends Controller
         session()->flash('alert-success', 'reclame ' . $advertisement->link.' toegevoegd.');
         return redirect()->route('reclames');
     }
+
+    /**
+     * @author Richard Perdaan
+     * @return \Illuminate\Http\RedirectResponse
+     *
+     * Gets the id from the route parameter,
+     * looks for the id in the database. If found the row will be deleted from the Ad table,
+     * Aswell as the linked rows in the AdLocation table.
+     */
     public function deleteAd(){
        $id = Route::current()->getParameter('id');
        $find = Ad::find($id);
@@ -71,6 +111,16 @@ class AdController extends Controller
        session()->flash('alert-success', 'reclame ' . $find->link.' verwijderd.');
        return redirect()->route('reclames'); 
     }
+
+    /**
+     * @author Richard Perdaan
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     *
+     * Uses the route parameter to define which advertisement has to be edited,
+     * Gets all inputs filled in and checks them for validation.
+     * If all passed correctly the advertisement gets updated.
+     */
     public function editAd(Request $request){
         $id = Route::current()->getParameter('id');
         $data = array(

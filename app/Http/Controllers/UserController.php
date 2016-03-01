@@ -20,20 +20,55 @@ use App\Http\Controllers\Storage;
 
 class UserController extends Controller
 {
+    /**
+     * @author Stefano Groenland
+     * @return mixed
+     *
+     * Makes the index view.
+     */
     public function showIndex(){
         return View::make('/index');
     }
+
+    /**
+     * @author Stefano Groenland
+     * @return mixed
+     *
+     * Makes the profile view and passes a variable of comments with it.
+     */
     public function showProfile(){
         $comments = Comment::with('driver')->where('approved','=','1')->get();
         return View::make('/profiel', compact('comments'));
     }
+
+    /**
+     * @author Richard Perdaan
+     * @return mixed
+     *
+     *  TODO : fill in func description..
+     */
     public function showProfileEdit(){
         return View::make('/profielwijzigen');
     }
+
+    /**
+     * @author Stefano Groenland
+     * @return mixed
+     *
+     * Makes the drivers overview view and passes a series of variables with it.
+     */
     public function showDrivers(){
         $drivers = Driver::with('user','taxi','comment')->get();
         return View::make('/chauffeurs', compact('drivers','taxis','comment'));
     }
+
+    /**
+     * @author Richard Perdaan
+     * @return mixed
+     *
+     * Gets the id of the corresponding driver to define which driver will be shown in the view,
+     * and defines a series of 2 other variables to show the car count available and all cars.
+     */
     public function showDriversEdit(){
         $id = Route::current()->getParameter('id');
         $driver = Driver::with('user')->where('user_id','=',$id)->first();
@@ -43,32 +78,91 @@ class UserController extends Controller
 
         return View::make('/chauffeurwijzigen', compact('id','driver','cars','carCount'));  
     }
+
+    /**
+     * @author Richard Perdaan
+     * @return mixed
+     *
+     * Gets all cars and passes them along with the view so a new driver can be assigned to a available car.
+     */
     public function showDriversAdd(){
         $cars = Taxi::where('driver_id','=','0')->get();
         $carCount = count($cars);
         return View::make('/chauffeurtoevoegen', compact('cars','carCount'));
     }
+
+    /**
+     * @author Stefano Groenland
+     * @return mixed
+     *
+     * Gets all the tablets which are linked to a taxi and passes them along when making the view.
+     */
     public function showTablet(){
         $tablets = Tablet::with('taxi','user')->get();
         return View::make('/tablets', compact('tablets'));
     }
+
+    /**
+     * @author Richard Perdaan
+     * @return mixed
+     *
+     *  TODO : fill in func description
+     */
     public function showTabletEdit(){
         return View::make('/tabletwijzigen');
     }
+
+    /**
+     * @author Stefano Groenland
+     * @return mixed
+     *
+     * Grabs all users with the user rank 'admin' out the database and passes them when making the view.
+     */
     public function showAdmin(){
         $admins = User::where('user_rank','=','admin')->get();
         return View::make('/medewerkers',compact('admins'));
     }
+
+    /**
+     * @author Richard Perdaan
+     * @return mixed
+     *
+     *  TODO : fill in func description
+     */
     public function showAdminEdit(){
         return View::make('/medewerkerwijzigen');
     }
+
+    /**
+     * @author Richard Perdaan
+     * @return mixed
+     *
+     *  TODO : fill in func description
+     */
     public function showAdminAdd(){
         return View::make('/medewerkertoevoegen');
     }
+
+    /**
+     * @author Stefano Groenland
+     * @return mixed
+     *
+     * Grabs all newspapers from the database and passes them along when making the view.
+     */
     public function showNews(){
         $news = Newspaper::all();
         return View::make('/nieuws', compact('news'));
     }
+
+    /**
+     * @author Richard Perdaan
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     *
+     * Uses the request parameter to define all inputs ,
+     * checks all inputs passed if they are filled in correctly and then makes the Driver with linked user details.
+     *
+     */
     public function addDriver(Request $request){
         $userData = array(
             'email' => $request['email'],
@@ -120,6 +214,14 @@ class UserController extends Controller
         return redirect()->route('chauffeurs');
     }
 
+    /**
+     * @author Richard Perdaan
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     *
+     * Uses the route parameter to define which corresponding driver is selected,
+     * then deletes the driver and linked user account from the database.
+     */
     public function deleteDriver(Request $request){
        
         $id  = Route::current()->getParameter('id');
@@ -135,6 +237,15 @@ class UserController extends Controller
         session()->flash('alert-success', 'chauffeur'. $find->firstname.' verwijderd.');
         return redirect()->route('chauffeurs');
     }
+
+    /**
+     * @author Richard Perdaan
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     *
+     * Uses the route parameter to define which driver has to be edited,
+     * Gets all inputs filled in and checks them for validation. If all passed correctly the Driver gets updated.
+     */
     public function editDriver(Request $request){
        
         $id = Route::current()->getParameter('id');
@@ -196,6 +307,16 @@ class UserController extends Controller
         return redirect('/chauffeurs');
         
     }
+
+    /**
+     * @authors Stefano Groenland, Richard Perdaan
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     *
+     * Grabs the file named 'profile_photo' from the request and uploads it onto the server,
+     * It updates the corresponding user with the link to the uploaded picture as their profile_photo in the User table.
+     */
     public function upload(Request $request , $id){
         $x = $request['x'];
         $y = $request['y'];
