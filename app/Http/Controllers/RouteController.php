@@ -28,32 +28,32 @@ class RouteController extends Controller
 	public function addRoute(Request $request){
 
 		$data = array(
-			'start_city' => $request['start_city'],
-			'start_zip' => $request['start_zip'],
-			'start_number' => $request['start_number'],
-			'start_street' => $request['start_street'],
-			'end_city' => $request['end_city'],
-			'end_zip' => $request['end_zip'],
-			'end_number' => $request['end_number'],
-			'end_street' => $request['end_street'],
-			'pickup_time'=> $request['pickup_time'],
-			'phone_customer' => $request['phone_customer'],
-			'email_customer' => $request['email_customer']
+			'start_city'        => $request['start_city'],
+			'start_zip'         => $request['start_zip'],
+			'start_number'      => $request['start_number'],
+			'start_street'      => $request['start_street'],
+			'end_city'          => $request['end_city'],
+			'end_zip'           => $request['end_zip'],
+			'end_number'        => $request['end_number'],
+			'end_street'        => $request['end_street'],
+			'pickup_time'       => $request['pickup_time'],
+			'phone_customer'    => $request['phone_customer'],
+			'email_customer'    => $request['email_customer']
 			
 		);
 		
 		$rules = array(
-			'start_city' => 'required',
-			'start_zip' => 'required',
-			'start_number' => 'required',
-			'start_street' => 'required',
-			'end_city' => 'required',
-			'end_zip' => 'required',
-			'end_number' => 'required',
-			'end_street' => 'required',
-			'pickup_time'=> 'required',
-			'phone_customer' => 'required',
-			'email_customer' => 'required'
+			'start_city'        => 'required',
+			'start_zip'         => 'required',
+			'start_number'      => 'required',
+			'start_street'      => 'required',
+			'end_city'          => 'required',
+			'end_zip'           => 'required',
+			'end_number'        => 'required',
+			'end_street'        => 'required',
+			'pickup_time'       => 'required',
+			'phone_customer'    => 'required|numeric|digits:10',
+			'email_customer'    => 'required|email'
 		);
 
 		$data['pickup_time'] = date('Y-m-d H:i', strtotime($data['pickup_time']));
@@ -62,7 +62,7 @@ class RouteController extends Controller
 		if ($validator->fails()){
 			return redirect('rittoevoegen')->withErrors($validator)->withInput($data);
 		}
-		$routs = Route2::create($data);
+		Route2::create($data);
 		return redirect()->route('ritten');
 	}
 	public function deleteRoute(){
@@ -75,29 +75,29 @@ class RouteController extends Controller
 	public function editRoute(Request $request){
         $id = Route::current()->getParameter('id');
         $data = array(
-            'start_city' => $request['start_city'],
-			'start_zip' => $request['start_zip'],
-			'start_number' => $request['start_number'],
-			'start_street' => $request['start_street'],
-			'end_city' => $request['end_city'],
-			'end_zip' => $request['end_zip'],
-			'end_number' => $request['end_number'],
-			'end_street' => $request['end_street'],
-			'pickup_time'=> $request['pickup_time'],
-			'phone_customer' => $request['phone_customer'],
-			'email_customer' => $request['email_customer']
+            'start_city'        => $request['start_city'],
+			'start_zip'         => $request['start_zip'],
+			'start_number'      => $request['start_number'],
+			'start_street'      => $request['start_street'],
+			'end_city'          => $request['end_city'],
+			'end_zip'           => $request['end_zip'],
+			'end_number'        => $request['end_number'],
+			'end_street'        => $request['end_street'],
+			'pickup_time'       => $request['pickup_time'],
+			'phone_customer'    => $request['phone_customer'],
+			'email_customer'    => $request['email_customer']
         );
          $rules = array(
-            'start_city' => 'required',
-			'start_zip' => 'required',
-			'start_number' => 'required',
-			'start_street' => 'required',
-			'end_city' => 'required',
-			'end_zip' => 'required',
-			'end_number' => 'required',
-			'end_street' => 'required',
-			'phone_customer' => 'required',
-			'email_customer' => 'required|email'
+            'start_city'        => 'required',
+			'start_zip'         => 'required',
+			'start_number'      => 'required',
+			'start_street'      => 'required',
+			'end_city'          => 'required',
+			'end_zip'           => 'required',
+			'end_number'        => 'required',
+			'end_street'        => 'required',
+			'phone_customer'    => 'required|numeric|digits:10',
+			'email_customer'    => 'required|email'
         );
         
         $data['pickup_time'] = date('Y-m-d H:i', strtotime($data['pickup_time']));

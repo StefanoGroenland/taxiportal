@@ -67,13 +67,13 @@ class AdController extends Controller
     public function addAd(Request $request){
        
         $data = array(
-            'link' => $request['link'],
-            'banner' => $request['banner']
+            'link'      => $request['link'],
+            'banner'    => $request['banner']
         );
 
         $rules = array(
-            'link' => 'required',
-            'banner' => '',
+            'link'      => 'required',
+            'banner'    => '',
         );
 
         $validator = Validator::make($data, $rules);
@@ -82,8 +82,8 @@ class AdController extends Controller
         }
         $advertisement = Ad::create($data);
         $dataLocation = array(
-            'ad_id' => $advertisement->id,
-            'location' => $request['locatie']
+            'ad_id'     => $advertisement->id,
+            'location'  => $request['locatie']
         );
 
         $datLoc = $dataLocation['location'];
@@ -124,12 +124,12 @@ class AdController extends Controller
     public function editAd(Request $request){
         $id = Route::current()->getParameter('id');
         $data = array(
-            'link' => $request['link'],
-            'banner' => $request['banner']
+            'link'      => $request['link'],
+            'banner'    => $request['banner']
         );
          $rules = array(
-            'link' => 'required',
-            'banner' => 'required',
+            'link'      => 'required',
+            'banner'    => 'required',
         );
 
         $validator = Validator::make($data, $rules);
@@ -139,8 +139,8 @@ class AdController extends Controller
 
         Ad::where('id', '=', $id)->update($data);
         $dataLocation = array(
-            'ad_id' => $id,
-            'location' => $request['location']
+            'ad_id'     => $id,
+            'location'  => $request['location']
         );
         $datLoc = $dataLocation['location'];
         $datLocArray = explode(',',$datLoc);
