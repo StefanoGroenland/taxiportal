@@ -70,11 +70,11 @@ class UserController extends Controller
      * and defines a series of 2 other variables to show the car count available and all cars.
      */
     public function showDriversEdit(){
-        $id = Route::current()->getParameter('id');
-        $driver = Driver::with('user')->where('user_id','=',$id)->first();
+        $id         = Route::current()->getParameter('id');
+        $driver     = Driver::with('user')->where('user_id','=',$id)->first();
 
-        $cars = Taxi::where('driver_id','=','0')->get();
-        $carCount = count($cars);
+        $cars       = Taxi::where('driver_id','=','0')->get();
+        $carCount   = count($cars);
 
         return View::make('/chauffeurwijzigen', compact('id','driver','cars','carCount'));  
     }
@@ -86,8 +86,8 @@ class UserController extends Controller
      * Gets all cars and passes them along with the view so a new driver can be assigned to a available car.
      */
     public function showDriversAdd(){
-        $cars = Taxi::where('driver_id','=','0')->get();
-        $carCount = count($cars);
+        $cars       = Taxi::where('driver_id','=','0')->get();
+        $carCount   = count($cars);
         return View::make('/chauffeurtoevoegen', compact('cars','carCount'));
     }
 
@@ -109,7 +109,7 @@ class UserController extends Controller
      *  TODO : fill in func description
      */
     public function showTabletAdd(){
-        $cars = Taxi::all();
+        $cars   = Taxi::all();
         return View::make('/tablettoevoegen', compact('cars'));
     }
 
@@ -120,10 +120,10 @@ class UserController extends Controller
      *  TODO : fill in func description
      */
     public function showTabletEdit(){
-        $id = Route::current()->getParameter('id');
+        $id     = Route::current()->getParameter('id');
         $tablet = Tablet::where('id',$id)->first();
-        $user = User::where('id',$tablet->user_id)->first();
-        $cars = Taxi::all();
+        $user   = User::where('id',$tablet->user_id)->first();
+        $cars   = Taxi::all();
         return View::make('/tabletwijzigen',compact('id','tablet','user','cars'));
     }
 
@@ -156,17 +156,6 @@ class UserController extends Controller
      */
     public function showAdminAdd(){
         return View::make('/medewerkertoevoegen');
-    }
-
-    /**
-     * @author Stefano Groenland
-     * @return mixed
-     *
-     * Grabs all newspapers from the database and passes them along when making the view.
-     */
-    public function showNews(){
-        $news = Newspaper::all();
-        return View::make('/nieuws', compact('news'));
     }
 
     /**
@@ -437,7 +426,7 @@ class UserController extends Controller
      * @author Stefano Groenland
      * @return \Illuminate\Http\RedirectResponse
      *
-     * Grabs the ID of the route, and deletes the corresponding rows from the Database.
+     * Grabs the ID of the route, And deletes the corresponding rows from the Database.
      */
     public function deleteTablet(){
         $id = Route::current()->getParameter('id');

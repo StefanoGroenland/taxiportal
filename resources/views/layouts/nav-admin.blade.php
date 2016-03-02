@@ -84,6 +84,8 @@
  	                                                                      \Request::route()->getName() == 'medewerkers' ||
  	                                                                      \Request::route()->getName() == 'tabletwijzigen' ||
  	                                                                      \Request::route()->getName() == 'tablettoevoegen' ||
+ 	                                                                      \Request::route()->getName() == 'nieuwstoevoegen' ||
+ 	                                                                      \Request::route()->getName() == 'nieuwswijzigen' ||
  	                                                                      \Request::route()->getName() == 'nieuws' ) active selected @endif">
  	                                    <a href="#" class="text-uppercase">
  	                                        <i class="fa fa-briefcase" ></i> Overzichten

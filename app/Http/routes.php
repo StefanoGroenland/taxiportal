@@ -34,7 +34,13 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/deleteDriver/{id}', 'UserController@deleteDriver');
         Route::put('/editDriver/{id}', array('as' => 'editDriver', 'uses' => 'UserController@editDriver'));       
 
-        Route::get('/nieuws', array('as' => 'nieuws', 'uses' => 'UserController@showNews'));
+        Route::get('/nieuws', array('as' => 'nieuws', 'uses' => 'NewspaperController@showNews'));
+        Route::get('/nieuwstoevoegen', array('as' => 'nieuwstoevoegen', 'uses' => 'NewspaperController@showNewsAdd'));
+        Route::get('/nieuwswijzigen/{id}', array('as' => 'nieuwswijzigen', 'uses' => 'NewspaperController@showNewsEdit'));
+        Route::post('/addNews', 'NewspaperController@addNews');
+        Route::put('/editNews/{id}', 'NewspaperController@editNews');
+        Route::delete('/deleteNews/{id}', 'NewspaperController@deleteNews');
+
 
         Route::get('/taxilocatie', array('as' => 'taxilocatie', 'uses' => 'TaxiController@showTaxiLocation'));
         Route::get('/taxioverzicht', array('as' => 'taxioverzicht', 'uses' => 'TaxiController@showTaxiOverview'));
