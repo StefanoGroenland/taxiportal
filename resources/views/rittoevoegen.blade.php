@@ -25,6 +25,7 @@
                                         	<div class="row">
                                                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 "> 
                                                     <div id="map" style="height: 400px; width: 100%;" class="contact_maps"></div>
+                                                    
                                                 </div>
                                                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 					<div class="form-group form-md-line-input ">
@@ -87,7 +88,7 @@
                                                  <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
 													<div class="form-group form-md-line-input">
                                                         <div class="input-icon">
-                                                            <input type="text" class="form-control" id="start_straat" name="start_city" data-validate="required" value="{{old('start_city')}}">
+                                                            <input type="text" class="form-control" id="start_city" name="start_city" data-validate="required" value="{{old('start_city')}}">
                                                             <label for="start_plaats">Plaats</label>
                                                             <i class="fa fa-map-marker"></i>
                                                         </div>
@@ -151,6 +152,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <input type="hidden" value="" id="end_all">
                                            </div>
                                             <div class="row">
                                                 <div class="col-lg-12">
@@ -167,13 +169,12 @@
                         </div>
                     </div>
                 </div>
-
 @endsection
 @section('scripts')
 <script src="{{URL::asset('../assets/js/jvalidate.js')}}" type="text/javascript"></script>
 <script src="{{URL::asset('../assets/js/locale/messages.nl.js')}}" type="text/javascript"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyBuzlPSNhmRIEhIl-3ZUidj3fwXfsDSw&amp;sensor=false"></script>
 
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyBuzlPSNhmRIEhIl-3ZUidj3fwXfsDSw&amp;sensor=false&callback=initMap"></script>
 <script type="text/javascript" src="{{URL::asset('../assets/js/bootstrap-datetimepicker.min.js')}}" charset="UTF-8"></script>
 <script type="text/javascript" src="{{URL::asset('../assets/js/locale/bootstrap-datetimepicker.nl.js')}}" charset="UTF-8"></script>
 
@@ -183,19 +184,7 @@
             errorMessage: true
         });
     });
-    var myLatlng = new google.maps.LatLng(51.929759,4.471919);
-    var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 7,
-        center: new google.maps.LatLng(51.9996726,5.5019347),
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        scrollwheel: false,
-        navigationControl: false,
-        mapTypeControl: false,
-        scaleControl: false,
-        draggable: true 
-    });  
-
-    
+       
     $(document).ready(function() {
            $(".form_datetime").datetimepicker({
            language: 'nl',
@@ -205,5 +194,51 @@
            });
     });
 
+    //maps
+    function initMap() {
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 7,
+            center: {lat: 52.1996726, lng: 5.4019347}
+        });
+        directionsDisplay.setMap(map);
+
+        var onChangeHandler = function() {
+            calculateAndDisplayRoute(directionsService, directionsDisplay);
+        };
+       
+
+        $('#end_street, #end_number, #end_zip, #end_city').on('blur', function() {
+            onChangeHandler();
+        });
+    }
+
+    function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+         if ($('#start_street').val().length > 0 && $('#start_number').val().length > 0 && $('#start_zip').val().length > 0 && $('#start_city').val().length > 0) {
+            var startstreet = $('#start_street').val();
+            var startnumber    = $('#start_number').val();
+            var startzip    = $('#start_zip').val();
+            var startcity    = $('#start_city').val();
+        } 
+        if ($('#end_street').val().length > 0 && $('#end_number').val().length > 0 && $('#end_zip').val().length > 0 && $('#end_city').val().length > 0) {
+            var endstreet = $('#end_street').val();
+            var endnumber    = $('#end_number').val();
+            var endzip    = $('#end_zip').val();
+            var endcity    = $('#end_city').val();
+        } 
+        var endall = endstreet + ' ' + endnumber + ' ' + endzip + ' ' + endcity;
+        var startall = startstreet + ' ' + startnumber + ' ' + startzip + ' ' + startcity;
+
+      directionsService.route({
+        origin: startall,
+        destination: endall,
+        travelMode: google.maps.TravelMode.DRIVING
+      }, function(response, status) {
+        if (status === google.maps.DirectionsStatus.OK) {
+          directionsDisplay.setDirections(response);
+        }
+      });
+    }
     </script>
 @endsection
