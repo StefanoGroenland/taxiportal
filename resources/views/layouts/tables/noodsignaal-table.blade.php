@@ -13,7 +13,11 @@
           @foreach($emergencies as $sos)
           <tr>
               <td>{{$sos->taxi->license_plate}}</td>
-              <td>{{$sos->taxi->driver->user->firstname}}</td>
+              @if($sos->taxi->driver)
+                <td>{{$sos->taxi->driver->user->firstname}}</td>
+              @else
+                <td>Geen chauffeur gevonden</td>
+              @endif
               <td>{{date('d-m-Y H:i:s',strtotime($sos->taxi->last_seen))}}</td>
               <td>{{$sos->created_at->format('d-m-Y H:i:s')}}</td>
               <td>@if($sos->seen == 1) <i class="fa fa-check" ></i> @else <i class="fa fa-times"></i> @endif</td>
@@ -45,7 +49,11 @@
                 @foreach($emergenciesSeen as $sos)
                 <tr>
                     <td>{{$sos->taxi->license_plate}}</td>
-                    <td>{{$sos->taxi->driver->user->firstname}}</td>
+                    @if($sos->taxi->driver)
+                      <td>{{$sos->taxi->driver->user->firstname}}</td>
+                    @else
+                      <td>Geen chauffeur gevonden</td>
+                    @endif
                     <td>{{date('d-m-Y H:i:s',strtotime($sos->taxi->last_seen))}}</td>
                     <td>{{$sos->created_at->format('d-m-Y H:i:s')}}</td>
                     <td>@if($sos->seen == 1) <i class="fa fa-check" ></i> @else <i class="fa fa-times"></i> @endif op {{$sos->updated_at->format('d-m-Y H:i')}}</td>
