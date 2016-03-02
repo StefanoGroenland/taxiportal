@@ -13,17 +13,22 @@ use Illuminate\Support\Facades\Validator;
 class RouteController extends Controller
 {
 	public function showRoutes(){
-
         $routes = Route2::with('taxi')->get();
 		return View::make('/ritten', compact('routes'));
 	}
 	public function showRoutesAdd(){
-		return View::make('/rittoevoegen');
+		$cars = Taxi::where('driver_id','>','0')->where('in_shift','=','1')->get();
+        $carCount = count($cars);
+		return View::make('/rittoevoegen', compact('cars','carCount'));
 	}
 	public function showRoutesEdit(){
 		$id = Route::current()->getParameter('id');
 		$routes = Route2::with('taxi')->where('id',$id)->first();
-		return View::make('/ritwijzigen', compact('id','routes'));
+		
+		$cars = Taxi::where('driver_id','>','0')->where('in_shift','=','1')->get();
+        $carCount = count($cars);
+
+		return View::make('/ritwijzigen', compact('id','routes','cars','carCount'));
 	}
 	public function addRoute(Request $request){
 
@@ -38,8 +43,8 @@ class RouteController extends Controller
 			'end_street'        => $request['end_street'],
 			'pickup_time'       => $request['pickup_time'],
 			'phone_customer'    => $request['phone_customer'],
-			'email_customer'    => $request['email_customer']
-			
+			'email_customer'    => $request['email_customer'],
+			'taxi_id'			=> $request['taxi']
 		);
 		
 		$rules = array(
@@ -74,6 +79,7 @@ class RouteController extends Controller
 	}
 	public function editRoute(Request $request){
         $id = Route::current()->getParameter('id');
+        
         $data = array(
             'start_city'        => $request['start_city'],
 			'start_zip'         => $request['start_zip'],
@@ -85,8 +91,10 @@ class RouteController extends Controller
 			'end_street'        => $request['end_street'],
 			'pickup_time'       => $request['pickup_time'],
 			'phone_customer'    => $request['phone_customer'],
-			'email_customer'    => $request['email_customer']
+			'email_customer'    => $request['email_customer'],
+			'taxi_id'			=> $request['taxi']
         );
+       
          $rules = array(
             'start_city'        => 'required',
 			'start_zip'         => 'required',
@@ -99,7 +107,7 @@ class RouteController extends Controller
 			'phone_customer'    => 'required|numeric|digits:10',
 			'email_customer'    => 'required|email'
         );
-        
+       
         $data['pickup_time'] = date('Y-m-d H:i', strtotime($data['pickup_time']));
         
         $validator = Validator::make($data, $rules);
