@@ -103,13 +103,28 @@ class UserController extends Controller
     }
 
     /**
-     * @author Richard Perdaan
+     * @author Stefano Groenland
+     * @return mixed
+     *
+     *  TODO : fill in func description
+     */
+    public function showTabletAdd(){
+        $cars = Taxi::all();
+        return View::make('/tablettoevoegen', compact('cars'));
+    }
+
+    /**
+     * @author Stefano Groenland
      * @return mixed
      *
      *  TODO : fill in func description
      */
     public function showTabletEdit(){
-        return View::make('/tabletwijzigen');
+        $id = Route::current()->getParameter('id');
+        $tablet = Tablet::where('id',$id)->first();
+        $user = User::where('id',$tablet->user_id)->first();
+        $cars = Taxi::all();
+        return View::make('/tabletwijzigen',compact('id','tablet','user','cars'));
     }
 
     /**
@@ -349,6 +364,91 @@ class UserController extends Controller
             }
         }
 
+    }
+
+
+    /**
+     * @author Stefano Groenland
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     *
+     * Gets values from the $request, validates the input on specific rules.
+     * If all passes it will Create an Tablet account with a link of the tablet and taxi.
+     */
+    public function addTablet(Request $request){
+
+        $userData = array(
+            'user_rank'     =>  'tablet',
+            'tablet_name'   =>  $request['tablet'],
+            'email'         =>  str_random(15)
+        );
+        $userRules = array(
+            'tablet_name'   =>  'required|unique:user'
+        );
+        $valid = Validator::make($userData,$userRules);
+        if($valid->fails()){
+            return redirect('tablettoevoegen')->withErrors($valid)->withInput($userData);
+        }
+        $user = User::create($userData);
+
+        $tabData = array(
+            'taxi_id'   =>  $request['taxi'],
+            'user_id'   =>  $user->id
+        );
+        Tablet::create($tabData);
+
+        $request->session()->flash('alert-success', 'De tablet is toegevoegd.');
+        return redirect()->route('tablets');
+    }
+
+    /**
+     * @author Stefano Groenland
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     *
+     * Gets the ID of the route parameter, and grabs all information for a tablet with that id,
+     * aswell as getting data from the $request and changes the linked rows with the values of the requests after validation.
+     */
+    public function editTablet(Request $request){
+        $id = Route::current()->getParameter('id');
+        $tablet = Tablet::where('id',$id)->first();
+        $user = User::where('id',$tablet->user_id)->first();
+
+        $tabUserData = array(
+            'tablet_name'   => trim($request['tablet']),
+            'taxi_id'   => $tablet->taxi_id
+        );
+        $tabUserRules = array(
+            'tablet_name'   => 'required|unique:user,tablet_name,' . $user->id
+        );
+        $valid = Validator::make($tabUserData, $tabUserRules);
+        if($valid->fails()){
+            return redirect('tabletwijzigen/'.$id)->withErrors($valid)->withInput($tabUserData);
+        }
+        array_forget($tabUserData, 'taxi_id');
+        $user->update($tabUserData);
+        $tablet->update(['taxi_id' => $request['taxi']]);
+
+        $request->session()->flash('alert-success', 'Tablet '. $request['tablet'] .' is gewijziged.');
+        return redirect('/tablets');
+    }
+
+    /**
+     * @author Stefano Groenland
+     * @return \Illuminate\Http\RedirectResponse
+     *
+     * Grabs the ID of the route, and deletes the corresponding rows from the Database.
+     */
+    public function deleteTablet(){
+        $id = Route::current()->getParameter('id');
+
+        $tablet = Tablet::where('id',$id)->first();
+        $user = User::where('id',$tablet->user_id)->first();
+        Tablet::where('id',$id)->delete();
+        User::where('id',$tablet->id)->delete();
+
+        session()->flash('alert-success', 'Tablet '.$user->tablet_name .' verwijderd.');
+        return redirect()->route('tablets');
     }
 }
 
