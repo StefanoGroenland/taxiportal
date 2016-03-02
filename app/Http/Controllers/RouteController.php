@@ -47,14 +47,15 @@ class RouteController extends Controller
 			'taxi_id'			=> $request['taxi']
 		);
 		
+		//todo date format check
 		$rules = array(
 			'start_city'        => 'required',
 			'start_zip'         => 'required',
-			'start_number'      => 'required',
+			'start_number'      => 'required|numeric',
 			'start_street'      => 'required',
 			'end_city'          => 'required',
 			'end_zip'           => 'required',
-			'end_number'        => 'required',
+			'end_number'        => 'required|numeric',
 			'end_street'        => 'required',
 			'pickup_time'       => 'required',
 			'phone_customer'    => 'required|numeric|digits:10',
@@ -68,13 +69,14 @@ class RouteController extends Controller
 			return redirect('rittoevoegen')->withErrors($validator)->withInput($data);
 		}
 		Route2::create($data);
+		session()->flash('alert-success','De route is aangemaakt.');
 		return redirect()->route('ritten');
 	}
 	public function deleteRoute(){
 		$id = Route::current()->getparameter('id');
 		$find = Route2::find($id);
 		Route2::where('id','=', $id)->delete();
-		session()->flash('alert-success','Rit van '.$find->email_customer.' '.$find->created_at.' verwijderd.');
+		session()->flash('alert-success','De route is verwijderd.');
 		return redirect()->route('ritten');
 	}
 	public function editRoute(Request $request){
@@ -96,14 +98,15 @@ class RouteController extends Controller
         );
        
          $rules = array(
-            'start_city'        => 'required',
+           	'start_city'        => 'required',
 			'start_zip'         => 'required',
-			'start_number'      => 'required',
+			'start_number'      => 'required|numeric',
 			'start_street'      => 'required',
 			'end_city'          => 'required',
 			'end_zip'           => 'required',
-			'end_number'        => 'required',
+			'end_number'        => 'required|numeric',
 			'end_street'        => 'required',
+			'pickup_time'       => 'required',
 			'phone_customer'    => 'required|numeric|digits:10',
 			'email_customer'    => 'required|email'
         );
@@ -117,7 +120,7 @@ class RouteController extends Controller
 
         Route2::where('id', '=', $id)->update($data);
 
-        $request->session()->flash('alert-success', 'Rit van '. $request['email_customer'].' '.$request['pickup_time'].' is veranderd.');
+        $request->session()->flash('alert-success', 'De route is gewijzigd.');
         return redirect()->route('ritten'); 
     }
 }

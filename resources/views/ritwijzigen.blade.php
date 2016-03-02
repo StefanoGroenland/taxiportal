@@ -32,12 +32,9 @@
                                             <div class="input-icon">
                                                 <select class="form-control" id="taxi" name='taxi'>
                                                     <option>Niet koppelen</option>
-                                                    @if($routes->taxi)
-                                                        <option value="{{$routes->taxi->id}}" @if($routes->taxi->driver_id != "0")selected @endif>{{ $routes->taxi->license_plate .' - '. $routes->taxi->car_brand .' - '. $routes->taxi->car_model .' - '. $routes->taxi->car_color}}</option>
-                                                    @endif
                                                     @if($carCount > 0)
                                                         @foreach($cars as $car)
-                                                            <option value="{{$car->id}}">{{ $car->license_plate .' - '. $car->car_brand .' - '. $car->car_model .' - '. $car->car_color}}</option>
+                                                            <option @if($routes->taxi) @if($routes->taxi->id == $car->id)  selected @endif @endif value="{{$car->id}}">{{ $car->license_plate .' - '. $car->car_brand .' - '. $car->car_model .' - '. $car->car_color}}</option>
                                                         @endforeach
                                                     @else
                                                         <option>Geen auto's koppelbaar</option>
@@ -180,10 +177,7 @@
 <script type="text/javascript" src="{{URL::asset('../assets/js/bootstrap-datetimepicker.min.js')}}" charset="UTF-8"></script>
 <script type="text/javascript" src="{{URL::asset('../assets/js/locale/bootstrap-datetimepicker.nl.js')}}" charset="UTF-8"></script>
 
-    <script type="text/javascript"> 
-
-        
-            onChangeHandler();
+<script type="text/javascript"> 
 
     $(function() {
         $('form').jvalidate({ 
