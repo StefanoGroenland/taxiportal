@@ -38,7 +38,7 @@
                                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                         <div class="form-group form-md-line-input">
                                             <div class="input-icon">
-                                                <input type="text" class="form-control" id="tablet_naam" name="tablet" value="@if(old('tablet_name')){{old('tablet_name')}}@else{{$user->tablet_name}}@endif">
+                                                <input type="text" class="form-control" id="tablet_naam" data-validate="required|maxlength:50" name="tablet" value="@if(old('tablet_name')){{old('tablet_name')}}@else{{$user->tablet_name}}@endif">
                                                 <label for="tablet_naam">Tablet naam</label>
                                                 <i class="fa fa-tablet"></i>
                                             </div>
@@ -79,4 +79,16 @@
         </div>
 	</div>
 
+@endsection
+@section('scripts')
+<script src="{{URL::asset('../assets/js/jvalidate.js')}}" type="text/javascript"></script>
+<script src="{{URL::asset('../assets/js/locale/messages.nl.js')}}" type="text/javascript"></script>
+
+<script>
+    $(function() {
+        $('form').jvalidate({
+            errorMessage: true
+        });
+    });
+</script>
 @endsection

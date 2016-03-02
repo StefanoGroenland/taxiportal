@@ -383,7 +383,7 @@ class UserController extends Controller
             'email'         =>  str_random(15)
         );
         $userRules = array(
-            'tablet_name'   =>  'required|unique:user'
+            'tablet_name'   =>  'required|max:50|unique:user'
         );
         $valid = Validator::make($userData,$userRules);
         if($valid->fails()){
@@ -419,7 +419,7 @@ class UserController extends Controller
             'taxi_id'   => $tablet->taxi_id
         );
         $tabUserRules = array(
-            'tablet_name'   => 'required|unique:user,tablet_name,' . $user->id
+            'tablet_name'   => 'required|max:50|unique:user,tablet_name,' . $user->id
         );
         $valid = Validator::make($tabUserData, $tabUserRules);
         if($valid->fails()){

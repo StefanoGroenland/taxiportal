@@ -11,7 +11,11 @@
             @if($tablet->taxi && $tablet->user)
                 <tr>
                     <td>{{$tablet->user->tablet_name}}</td>
-                    <td>{{$tablet->taxi->driver->user->firstname .' '. $tablet->taxi->driver->user->surname .' '. $tablet->taxi->driver->user->lastname}}</td>
+                    @if($tablet->taxi->driver)
+                        <td>{{$tablet->taxi->driver->user->firstname .' '. $tablet->taxi->driver->user->surname .' '. $tablet->taxi->driver->user->lastname}}</td>
+                    @else
+                        <td>Geen chauffeur</td>
+                    @endif
                     <td>{{$tablet->taxi->license_plate .', '. $tablet->taxi->car_brand .' '. $tablet->taxi->car_model}} </td>
                     <td width="12%" class="text-right">
                         <a class="btn btn-sm green-meadow" href="/tabletwijzigen/{{$tablet->id}}"><i class="fa fa-pencil"></i></a>
