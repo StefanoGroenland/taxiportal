@@ -165,27 +165,27 @@ class UserController extends Controller
      */
     public function addDriver(Request $request){
         $userData = array(
-            'email' => $request['email'],
-            'phone_number' => $request['phonenumber'],
-            'firstname' => $request['firstname'],
-            'lastname' => $request['lastname'],
-            'password' => $request['password'],
+            'email'                 => $request['email'],
+            'phone_number'          => $request['phonenumber'],
+            'firstname'             => $request['firstname'],
+            'lastname'              => $request['lastname'],
+            'password'              => $request['password'],
             'password_confirmation' => $request['password_confirmation'],
-            'sex' => $request['sex'],
-            'drivers_exp' => $request['driver_exp'],
-            'global_information' => $request['global_information'],
+            'sex'                   => $request['sex'],
+            'drivers_exp'           => $request['driver_exp'],
+            'global_information'    => $request['global_information'],
             'user_rank' => 'driver'
         );
 
         $userRules = array(
-            'email' =>'required|email|unique:user',
-            'phone_number' =>'required|numeric|digits:10',
-            'firstname' =>'required',
-            'lastname' =>'required',
-            'password' => 'required|min:4|confirmed',
+            'email'                 =>'required|email|unique:user',
+            'phone_number'          =>'required|numeric|digits:10',
+            'firstname'             =>'required',
+            'lastname'              =>'required',
+            'password'              => 'required|min:4|confirmed',
             'password_confirmation' => 'required|min:4',
-            'drivers_exp' => 'numeric',
-            'sex' => 'required|in:man,vrouw'
+            'drivers_exp'           => 'numeric',
+            'sex'                   => 'required|in:man,vrouw'
         );
 
         $validator = Validator::make($userData, $userRules);
@@ -199,9 +199,9 @@ class UserController extends Controller
         $this->upload($request,$user->id);
 
         $driverData = array(
-            'user_id' => $user->id,
-            'drivers_exp' => $request['driver_exp'],
-            'global_information' => $request['global_information']
+            'user_id'               => $user->id,
+            'drivers_exp'           => $request['driver_exp'],
+            'global_information'    => $request['global_information']
         );
 
         $driver = Driver::create($driverData);
@@ -216,13 +216,12 @@ class UserController extends Controller
 
     /**
      * @author Richard Perdaan
-     * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      *
      * Uses the route parameter to define which corresponding driver is selected,
      * then deletes the driver and linked user account from the database.
      */
-    public function deleteDriver(Request $request){
+    public function deleteDriver(){
 
        
         $id  = Route::current()->getParameter('id');
@@ -253,28 +252,28 @@ class UserController extends Controller
         $driver = Driver::where('user_id','=',$id)->first();
 
         $userData = array(
-            'email' => $request['email'],
-            'phone_number' => $request['phonenumber'],
-            'firstname' => $request['firstname'],
-            'lastname' => $request['lastname'],
-            'password' => $request['password'],
+            'email'                 => $request['email'],
+            'phone_number'          => $request['phonenumber'],
+            'firstname'             => $request['firstname'],
+            'lastname'              => $request['lastname'],
+            'password'              => $request['password'],
             'password_confirmation' => $request['password_confirmation'],
-            'sex' => $request['sex'],
+            'sex'                   => $request['sex'],
         ); 
         $userRules = array(
-            'email' =>'required|email',
-            'phone_number' =>'required|numeric|digits:10',
-            'firstname' =>'required',
-            'lastname' =>'required',
-            'password' => 'min:4',
+            'email'                 => 'required|email',
+            'phone_number'          => 'required|numeric|digits:10',
+            'firstname'             => 'required',
+            'lastname'              => 'required',
+            'password'              => 'min:4',
             'password_confirmation' => 'min:4',
-            'sex' =>'required|in:man,Man,vrouw,Vrouw'
+            'sex'                   => 'required|in:man,vrouw'
         );
 
         $driverData = array(
-            'user_id' => $id,
-            'drivers_exp' => $request['driver_exp'],
-            'global_information' => $request['global_information']
+            'user_id'               => $id,
+            'drivers_exp'           => $request['driver_exp'],
+            'global_information'    => $request['global_information']
         );
 
         Driver::where('user_id', '=', $id)->update($driverData);
@@ -346,7 +345,7 @@ class UserController extends Controller
                 return redirect('/chauffeurs');
             } else {
                 $request->session()->flash('alert-danger', 'Er is een fout opgetreden tijdens het uploaden van uw bestand.');
-                return redirect('/profiel');
+                return redirect('/chauffeurs');
             }
         }
 
