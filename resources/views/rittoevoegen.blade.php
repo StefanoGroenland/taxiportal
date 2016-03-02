@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="page-content">
+				<div class="page-content">
                     @if (count($errors))
                         <ul class="list-unstyled">
                             @foreach($errors->all() as $error)
@@ -29,13 +29,17 @@
                                                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 					<div class="form-group form-md-line-input ">
                                                     	<div class="input-icon">
-                                                            <select class="form-control" id="taxi">
-                                                                <option value=""></option>
-                                                                <option value="1">Kenteken chauffeur</option>
-                                                                <option value="2">Kenteken chauffeur</option>
-                                                                <option value="3">Kenteken chauffeur</option>
-                                                                <option value="4">Kenteken chauffeur</option>
+                                                            <select class="form-control" id="taxi" name="taxi">
+                                                                <option>Niet koppelen</option>
+                                                                @if($carCount > 0)
+                                                                    @foreach($cars as $car)
+                                                                        <option value="{{$car->id}}">{{ $car->license_plate .' - '. $car->car_brand .' - '. $car->car_model .' - '. $car->car_color}}</option>  
+                                                                    @endforeach
+                                                                @else
+                                                                    <option>Geen auto's koppelbaar</option>
+                                                                @endif
                                                             </select>
+
                                                             <label for="taxi">Taxi</label>
                                                         	<i class="fa fa-car"></i>
                                                        	</div>
@@ -44,7 +48,7 @@
                                 				 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 													<div class="form-group form-md-line-input">
                                                         <div class="input-icon">
-                                                            <input type="text" class="form-control" id="pickup_time" name="pickup_time" data-validate="required|date:dd-mm-yyyy" value="{{old('pickup_time')}}">
+                                                            <input data-toggle="tooltip" title="Ophaal tijd" type="text" name="pickup_time" class="form_datetime form-control date-picker"  value="@if(old('pickup_time')){{old('pickup_time')}}@endif" data-rule-maxlength="30">
                                                             <label for="start_tijd">Ophaal tijd</label>
                                                             <i class="fa fa-clock-o"></i>
                                                         </div>
@@ -162,33 +166,44 @@
                             </div>
                         </div>
                     </div>
+                </div>
 
 @endsection
 @section('scripts')
 <script src="{{URL::asset('../assets/js/jvalidate.js')}}" type="text/javascript"></script>
 <script src="{{URL::asset('../assets/js/locale/messages.nl.js')}}" type="text/javascript"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyBuzlPSNhmRIEhIl-3ZUidj3fwXfsDSw&amp;sensor=false"></script>
+
+<script type="text/javascript" src="{{URL::asset('../assets/js/bootstrap-datetimepicker.min.js')}}" charset="UTF-8"></script>
+<script type="text/javascript" src="{{URL::asset('../assets/js/locale/bootstrap-datetimepicker.nl.js')}}" charset="UTF-8"></script>
+
     <script type="text/javascript"> 
     $(function() {
         $('form').jvalidate({ 
             errorMessage: true
         });
     });
+    var myLatlng = new google.maps.LatLng(51.929759,4.471919);
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 7,
+        center: new google.maps.LatLng(51.9996726,5.5019347),
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        scrollwheel: false,
+        navigationControl: false,
+        mapTypeControl: false,
+        scaleControl: false,
+        draggable: true 
+    });  
 
+    
+    $(document).ready(function() {
+           $(".form_datetime").datetimepicker({
+           language: 'nl',
+           weekStart: 1,
+           format: 'dd-mm-yyyy hh:ii',
+           autoclose: true
+           });
+    });
 
-
-
-
-            var myLatlng = new google.maps.LatLng(51.929759,4.471919);
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 7,
-                center: new google.maps.LatLng(51.9996726,5.5019347),
-                mapTypeId: google.maps.MapTypeId.ROADMAP,
-                scrollwheel: false,
-                navigationControl: false,
-                mapTypeControl: false,
-                scaleControl: false,
-                draggable: true 
-            });        
     </script>
 @endsection
