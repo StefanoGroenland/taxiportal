@@ -16,13 +16,14 @@
 	        <link href="{{URL::asset('../assets/css/uniform.default.min.css')}}" rel="stylesheet" type="text/css" />       
 	        <link href="{{URL::asset('../assets/css/bootstrap-switch.min.css')}}" rel="stylesheet" type="text/css" />
 	        <link href="{{URL::asset('../assets/css/bootstrap-fileinput.css')}}" rel="stylesheet" type="text/css" />
-			<link href="{{URL::asset('../assets/css/components-md.min.css')}}" rel="stylesheet" id="style_components" type="text/css" />
-			<link href="{{URL::asset('../assets/css/plugins-md.min.css')}}" rel="stylesheet" type="text/css" />
-			<link href="{{URL::asset('../assets/css/profile.min.css')}}" rel="stylesheet" type="text/css" />
+    			<link href="{{URL::asset('../assets/css/components-md.min.css')}}" rel="stylesheet" id="style_components" type="text/css" />
+    			<link href="{{URL::asset('../assets/css/plugins-md.min.css')}}" rel="stylesheet" type="text/css" />
+    			<link href="{{URL::asset('../assets/css/profile.min.css')}}" rel="stylesheet" type="text/css" />
 	        <link href="{{URL::asset('../assets/css/layout.min.css')}}" rel="stylesheet" type="text/css" />
-			<link href="{{URL::asset('../assets/css/custom.min.css')}}" rel="stylesheet" type="text/css" />
-			<link href="{{URL::asset('../assets/css/jquery.Jcrop.css')}}" rel="stylesheet" type="text/css" />
-			<link rel="stylesheet" href="{{URL::asset('../assets/css/morris-0.4.3.min.css')}}">
+    			<link href="{{URL::asset('../assets/css/custom.min.css')}}" rel="stylesheet" type="text/css" />
+    			<link href="{{URL::asset('../assets/css/jquery.Jcrop.css')}}" rel="stylesheet" type="text/css" />
+    			<link rel="stylesheet" href="{{URL::asset('../assets/css/morris-0.4.3.min.css')}}">
+          <link rel="stylesheet" href="{{URL::asset('../assets/css/bootstrap-datetimepicker.min.css')}}">
 	        <link href="{{URL::asset('../assets/css/custom.css')}}" rel="stylesheet" type="text/css" />
 	        <link rel="shortcut icon" href="favicon.ico" /> 
 
