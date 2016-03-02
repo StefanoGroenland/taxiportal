@@ -64,8 +64,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('/editTablet/{id}', 'UserController@editTablet');
         Route::delete('/deleteTablet/{id}', 'UserController@deleteTablet');
         Route::get('/medewerkers', array('as' => 'medewerkers', 'uses' => 'UserController@showAdmin'));
-        Route::get('/medewerkerwijzigen', array('as' => 'medewerkerwijzigen', 'uses' => 'UserController@showAdminEdit'));
+        Route::get('/medewerkerwijzigen/{id}', array('as' => 'medewerkerwijzigen', 'uses' => 'UserController@showAdminEdit'));
         Route::get('/medewerkertoevoegen', array('as' => 'medewerkertoevoegen', 'uses' => 'UserController@showAdminAdd'));
+        Route::post('/addAdmin', 'UserController@addAdmin');
+        Route::put('/editAdmin/{id}', 'UserController@editAdmin');
+        Route::delete('/deleteAdmin/{id}', 'UserController@deleteAdmin');
         Route::get('/reclames', array('as' => 'reclames', 'uses' => 'AdController@showAds'));
         Route::get('/reclamewijzigen/{id}', array('as' => 'reclamewijzigen', 'uses' => 'AdController@showAdsEdit'));
         Route::get('/reclametoevoegen', array('as' => 'reclametoevoegen', 'uses' => 'AdController@showAdsAdd'));
@@ -74,6 +77,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('/editAd/{id}', array('as' => 'editAd', 'uses' => 'AdController@editAd'));
         Route::get('/noodsignalen', array('as' => 'noodsignalen', 'uses' => 'EmergencyController@showSignals'));
         Route::get('/seenSignal/{id}', array('as' => 'signalChange', 'uses' => 'EmergencyController@seenSignal'));
+
     });
 });
 

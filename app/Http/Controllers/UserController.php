@@ -139,23 +139,129 @@ class UserController extends Controller
     }
 
     /**
-     * @author Richard Perdaan
+     * @author Stefano Groenland
      * @return mixed
      *
-     *  TODO : fill in func description
+     *  Grabs the ID of the current route, looks for a user with that ID, and returns both the id and the User found along while making the View.
      */
     public function showAdminEdit(){
-        return View::make('/medewerkerwijzigen');
+        $id = Route::current()->getParameter('id');
+        $admin = User::where('id',$id)->first();
+
+        return View::make('/medewerkerwijzigen',compact('admin','id'));
     }
 
     /**
-     * @author Richard Perdaan
+     * @author Stefano Groenland
      * @return mixed
      *
-     *  TODO : fill in func description
+     * Uses the route parameter to define which user has to be edited,
+     * Gets all inputs filled in and checks them for validation. If all passed correctly the User gets updated.
+     */
+    public function editAdmin(Request $request){
+        $id = Route::current()->getParameter('id');
+        $user = User::where('id','=',$id)->first();
+
+        $userData = array(
+            'email'                 => $request['email'],
+            'phone_number'          => $request['phonenumber'],
+            'firstname'             => $request['firstname'],
+            'lastname'              => $request['lastname'],
+            'password'              => $request['password'],
+            'password_confirmation' => $request['password_confirmation'],
+            'sex'                   => $request['sex'],
+        );
+        $userRules = array(
+            'email'                 => 'required|email',
+            'phone_number'          => 'required|numeric|digits:10',
+            'firstname'             => 'required',
+            'lastname'              => 'required',
+            'password'              => 'min:4',
+            'password_confirmation' => 'min:4',
+            'sex'                   => 'required|in:man,vrouw'
+        );
+        $validator = Validator::make($userData, $userRules);
+        if ($validator->fails()){
+            return redirect('medewerkerwijzigen/'.$id)->withErrors($validator)->withInput($userData);
+        }
+        $user->update($userData);
+        $request->session()->flash('alert-success', 'Het account met e-mail '. $user->email .' is gewijziged.');
+        $this->upload($request, $id, 1);
+        return redirect('/medewerkers');
+
+    }
+
+    /**
+     * @author Stefano Groenland
+     * @return \Illuminate\Http\RedirectResponse
+     *
+     * Uses the route parameter to define which corresponding user is selected,
+     * then deletes the user from the database. It even deletes their profile picture from the server!
+     */
+    public function deleteAdmin(){
+        $id  = Route::current()->getParameter('id');
+        $find = User::find($id);
+
+        User::where('id','=',$id)->delete();
+        if(!$find->profile_photo == ""){
+            unlink($find->profile_photo);
+        }
+        session()->flash('alert-success', 'Medewerker '. $find->firstname.' verwijderd.');
+        return redirect()->route('medewerkers');
+    }
+
+    /**
+     * @author Stefano Groenland
+     * @return mixed
+     *
+     * Makes the view for showing the form for adding a new admin user.
      */
     public function showAdminAdd(){
         return View::make('/medewerkertoevoegen');
+    }
+
+    /**
+     * @author Stefano Groenland
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     *
+     * Uses the request parameter to define all inputs ,
+     * checks all inputs passed if they are filled in correctly and then makes the User.
+     *
+     */
+    public function addAdmin(Request $request){
+        $userData = array(
+            'email'                 => $request['email'],
+            'phone_number'          => $request['phonenumber'],
+            'firstname'             => $request['firstname'],
+            'lastname'              => $request['lastname'],
+            'password'              => $request['password'],
+            'password_confirmation' => $request['password_confirmation'],
+            'sex'                   => $request['sex'],
+            'user_rank' => 'admin'
+        );
+
+        $userRules = array(
+            'email'                 => 'required|email|unique:user',
+            'phone_number'          => 'required|numeric|digits:10',
+            'firstname'             => 'required',
+            'lastname'              => 'required',
+            'password'              => 'required|min:4|confirmed',
+            'password_confirmation' => 'required|min:4',
+            'sex'                   => 'required|in:man,vrouw'
+        );
+        $validator = Validator::make($userData, $userRules);
+        if ($validator->fails()){
+            return redirect('medewerkertoevoegen')->withErrors($validator)->withInput($userData);
+        }
+        array_forget($userData, 'password_confirmation');
+        $userData['password'] = Hash::make($request['password']);
+        $user = User::create($userData);
+
+        $this->upload($request,$user->id,1);
+
+        $request->session()->flash('alert-success', 'De medewerker is toegevoegd.');
+        return redirect()->route('medewerkers');
     }
 
     /**
@@ -316,12 +422,13 @@ class UserController extends Controller
      * @authors Stefano Groenland, Richard Perdaan
      * @param Request $request
      * @param $id
+     * @param $redirect
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      *
      * Grabs the file named 'profile_photo' from the request and uploads it onto the server,
      * It updates the corresponding user with the link to the uploaded picture as their profile_photo in the User table.
      */
-    public function upload(Request $request , $id){
+    public function upload(Request $request , $id, $redirect = 0){
         $x = $request['x'];
         $y = $request['y'];
         $h = $request['h'];
@@ -345,11 +452,23 @@ class UserController extends Controller
                 $img = Image::make($ava)->fit(200)->crop($w, $h, $x, $y)->save();
                 $final = $destinationPath . '/' . $img->basename;
                 User::uploadPicture($id, $final);
-                $request->session()->flash('alert-success', 'Chauffeur toegevoegd');
-                return redirect('/chauffeurs');
+                if($redirect != 0){
+                    $request->session()->flash('alert-success', 'Medewerker toegevoegd');
+                    return redirect('/admins');
+                }else{
+                    $request->session()->flash('alert-success', 'Chauffeur toegevoegd');
+                    return redirect('/chauffeurs');
+                }
+
+
             } else {
                 $request->session()->flash('alert-danger', 'Er is een fout opgetreden tijdens het uploaden van uw bestand.');
-                return redirect('/chauffeurs');
+
+                if($redirect != 1){
+                    return redirect('/admins');
+                }else{
+                    return redirect('/chauffeurs');
+                }
             }
         }
 
