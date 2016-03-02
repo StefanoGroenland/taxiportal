@@ -80,7 +80,7 @@ class NewspaperController extends Controller
      * @param Request $request
      * @return $this|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      *
-     * Gets the ID of the route parameter, and grabs all information for a news row with that id,
+     * Gets the ID of the route parameter, and grabs all information for a news row with that ID,
      * aswell as getting data from the $request and changes the linked row with the values of the requests after validation.
      */
     public function editNews(Request $request){

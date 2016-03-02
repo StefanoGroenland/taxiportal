@@ -52,7 +52,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/deleteRoute/{id}', 'RouteController@deleteRoute');
         Route::put('/editRoute/{id}', array('as' => 'editRoute', 'uses' => 'RouteController@editRoute'));
        
-        Route::get('/opmerkingwijzigen', array('as' => 'opmerkingwijzigen', 'uses' => 'CommentController@showCommentEdit'));
+        Route::get('/opmerkingwijzigen/{id}', array('as' => 'opmerkingwijzigen', 'uses' => 'CommentController@showCommentEdit'));
+        Route::put('/editComment/{id}', 'CommentController@editComment');
+        Route::get('/toggleComment/{id}', 'CommentController@togglesStateComment');
+        Route::delete('/deleteComment/{id}', 'CommentController@deleteComment');
+
         Route::get('/tablets', array('as' => 'tablets', 'uses' => 'UserController@showTablet'));
         Route::get('/tablettoevoegen', array('as' => 'tablettoevoegen', 'uses' => 'UserController@showTabletAdd'));
         Route::get('/tabletwijzigen/{id}', array('as' => 'tabletwijzigen', 'uses' => 'UserController@showTabletEdit'));
