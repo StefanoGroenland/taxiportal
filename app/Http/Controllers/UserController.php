@@ -70,11 +70,11 @@ class UserController extends Controller
      * and defines a series of 2 other variables to show the car count available and all cars.
      */
     public function showDriversEdit(){
-        $id = Route::current()->getParameter('id');
-        $driver = Driver::with('user')->where('user_id','=',$id)->first();
+        $id         = Route::current()->getParameter('id');
+        $driver     = Driver::with('user')->where('user_id','=',$id)->first();
 
-        $cars = Taxi::where('driver_id','=','0')->get();
-        $carCount = count($cars);
+        $cars       = Taxi::where('driver_id','=','0')->get();
+        $carCount   = count($cars);
 
         return View::make('/chauffeurwijzigen', compact('id','driver','cars','carCount'));  
     }
@@ -86,8 +86,8 @@ class UserController extends Controller
      * Gets all cars and passes them along with the view so a new driver can be assigned to a available car.
      */
     public function showDriversAdd(){
-        $cars = Taxi::where('driver_id','=','0')->get();
-        $carCount = count($cars);
+        $cars       = Taxi::where('driver_id','=','0')->get();
+        $carCount   = count($cars);
         return View::make('/chauffeurtoevoegen', compact('cars','carCount'));
     }
 
@@ -103,13 +103,28 @@ class UserController extends Controller
     }
 
     /**
-     * @author Richard Perdaan
+     * @author Stefano Groenland
+     * @return mixed
+     *
+     *  TODO : fill in func description
+     */
+    public function showTabletAdd(){
+        $cars   = Taxi::all();
+        return View::make('/tablettoevoegen', compact('cars'));
+    }
+
+    /**
+     * @author Stefano Groenland
      * @return mixed
      *
      *  TODO : fill in func description
      */
     public function showTabletEdit(){
-        return View::make('/tabletwijzigen');
+        $id     = Route::current()->getParameter('id');
+        $tablet = Tablet::where('id',$id)->first();
+        $user   = User::where('id',$tablet->user_id)->first();
+        $cars   = Taxi::all();
+        return View::make('/tabletwijzigen',compact('id','tablet','user','cars'));
     }
 
     /**
@@ -124,20 +139,82 @@ class UserController extends Controller
     }
 
     /**
-     * @author Richard Perdaan
+     * @author Stefano Groenland
      * @return mixed
      *
-     *  TODO : fill in func description
+     *  Grabs the ID of the current route, looks for a user with that ID, and returns both the id and the User found along while making the View.
      */
     public function showAdminEdit(){
-        return View::make('/medewerkerwijzigen');
+        $id = Route::current()->getParameter('id');
+        $admin = User::where('id',$id)->first();
+
+        return View::make('/medewerkerwijzigen',compact('admin','id'));
     }
 
     /**
-     * @author Richard Perdaan
+     * @author Stefano Groenland
      * @return mixed
      *
-     *  TODO : fill in func description
+     * Uses the route parameter to define which user has to be edited,
+     * Gets all inputs filled in and checks them for validation. If all passed correctly the User gets updated.
+     */
+    public function editAdmin(Request $request){
+        $id = Route::current()->getParameter('id');
+        $user = User::where('id','=',$id)->first();
+
+        $userData = array(
+            'email'                 => $request['email'],
+            'phone_number'          => $request['phonenumber'],
+            'firstname'             => $request['firstname'],
+            'lastname'              => $request['lastname'],
+            'password'              => $request['password'],
+            'password_confirmation' => $request['password_confirmation'],
+            'sex'                   => $request['sex'],
+        );
+        $userRules = array(
+            'email'                 => 'required|email',
+            'phone_number'          => 'required|numeric|digits:10',
+            'firstname'             => 'required',
+            'lastname'              => 'required',
+            'password'              => 'min:4',
+            'password_confirmation' => 'min:4',
+            'sex'                   => 'required|in:man,vrouw'
+        );
+        $validator = Validator::make($userData, $userRules);
+        if ($validator->fails()){
+            return redirect('medewerkerwijzigen/'.$id)->withErrors($validator)->withInput($userData);
+        }
+        $user->update($userData);
+        $request->session()->flash('alert-success', 'Het account met e-mail '. $user->email .' is gewijziged.');
+        $this->upload($request, $id, 1);
+        return redirect('/medewerkers');
+
+    }
+
+    /**
+     * @author Stefano Groenland
+     * @return \Illuminate\Http\RedirectResponse
+     *
+     * Uses the route parameter to define which corresponding user is selected,
+     * then deletes the user from the database. It even deletes their profile picture from the server!
+     */
+    public function deleteAdmin(){
+        $id  = Route::current()->getParameter('id');
+        $find = User::find($id);
+
+        User::where('id','=',$id)->delete();
+        if(!$find->profile_photo == ""){
+            unlink($find->profile_photo);
+        }
+        session()->flash('alert-success', 'Medewerker '. $find->firstname.' verwijderd.');
+        return redirect()->route('medewerkers');
+    }
+
+    /**
+     * @author Stefano Groenland
+     * @return mixed
+     *
+     * Makes the view for showing the form for adding a new admin user.
      */
     public function showAdminAdd(){
         return View::make('/medewerkertoevoegen');
@@ -145,13 +222,46 @@ class UserController extends Controller
 
     /**
      * @author Stefano Groenland
-     * @return mixed
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
      *
-     * Grabs all newspapers from the database and passes them along when making the view.
+     * Uses the request parameter to define all inputs ,
+     * checks all inputs passed if they are filled in correctly and then makes the User.
+     *
      */
-    public function showNews(){
-        $news = Newspaper::all();
-        return View::make('/nieuws', compact('news'));
+    public function addAdmin(Request $request){
+        $userData = array(
+            'email'                 => $request['email'],
+            'phone_number'          => $request['phonenumber'],
+            'firstname'             => $request['firstname'],
+            'lastname'              => $request['lastname'],
+            'password'              => $request['password'],
+            'password_confirmation' => $request['password_confirmation'],
+            'sex'                   => $request['sex'],
+            'user_rank' => 'admin'
+        );
+
+        $userRules = array(
+            'email'                 => 'required|email|unique:user',
+            'phone_number'          => 'required|numeric|digits:10',
+            'firstname'             => 'required',
+            'lastname'              => 'required',
+            'password'              => 'required|min:4|confirmed',
+            'password_confirmation' => 'required|min:4',
+            'sex'                   => 'required|in:man,vrouw'
+        );
+        $validator = Validator::make($userData, $userRules);
+        if ($validator->fails()){
+            return redirect('medewerkertoevoegen')->withErrors($validator)->withInput($userData);
+        }
+        array_forget($userData, 'password_confirmation');
+        $userData['password'] = Hash::make($request['password']);
+        $user = User::create($userData);
+
+        $this->upload($request,$user->id,1);
+
+        $request->session()->flash('alert-success', 'De medewerker is toegevoegd.');
+        return redirect()->route('medewerkers');
     }
 
     /**
@@ -312,12 +422,13 @@ class UserController extends Controller
      * @authors Stefano Groenland, Richard Perdaan
      * @param Request $request
      * @param $id
+     * @param $redirect
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      *
      * Grabs the file named 'profile_photo' from the request and uploads it onto the server,
      * It updates the corresponding user with the link to the uploaded picture as their profile_photo in the User table.
      */
-    public function upload(Request $request , $id){
+    public function upload(Request $request , $id, $redirect = 0){
         $x = $request['x'];
         $y = $request['y'];
         $h = $request['h'];
@@ -341,14 +452,111 @@ class UserController extends Controller
                 $img = Image::make($ava)->fit(200)->crop($w, $h, $x, $y)->save();
                 $final = $destinationPath . '/' . $img->basename;
                 User::uploadPicture($id, $final);
-                $request->session()->flash('alert-success', 'Chauffeur toegevoegd');
-                return redirect('/chauffeurs');
+                if($redirect != 0){
+                    $request->session()->flash('alert-success', 'Medewerker toegevoegd');
+                    return redirect('/admins');
+                }else{
+                    $request->session()->flash('alert-success', 'Chauffeur toegevoegd');
+                    return redirect('/chauffeurs');
+                }
+
+
             } else {
                 $request->session()->flash('alert-danger', 'Er is een fout opgetreden tijdens het uploaden van uw bestand.');
-                return redirect('/chauffeurs');
+
+                if($redirect != 1){
+                    return redirect('/admins');
+                }else{
+                    return redirect('/chauffeurs');
+                }
             }
         }
 
+    }
+
+
+    /**
+     * @author Stefano Groenland
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     *
+     * Gets values from the $request, validates the input on specific rules.
+     * If all passes it will Create an Tablet account with a link of the tablet and taxi.
+     */
+    public function addTablet(Request $request){
+
+        $userData = array(
+            'user_rank'     =>  'tablet',
+            'tablet_name'   =>  $request['tablet'],
+            'email'         =>  str_random(15)
+        );
+        $userRules = array(
+            'tablet_name'   =>  'required|max:50|unique:user'
+        );
+        $valid = Validator::make($userData,$userRules);
+        if($valid->fails()){
+            return redirect('tablettoevoegen')->withErrors($valid)->withInput($userData);
+        }
+        $user = User::create($userData);
+
+        $tabData = array(
+            'taxi_id'   =>  $request['taxi'],
+            'user_id'   =>  $user->id
+        );
+        Tablet::create($tabData);
+
+        $request->session()->flash('alert-success', 'De tablet is toegevoegd.');
+        return redirect()->route('tablets');
+    }
+
+    /**
+     * @author Stefano Groenland
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     *
+     * Gets the ID of the route parameter, and grabs all information for a tablet with that id,
+     * aswell as getting data from the $request and changes the linked rows with the values of the requests after validation.
+     */
+    public function editTablet(Request $request){
+        $id = Route::current()->getParameter('id');
+        $tablet = Tablet::where('id',$id)->first();
+        $user = User::where('id',$tablet->user_id)->first();
+
+        $tabUserData = array(
+            'tablet_name'   => trim($request['tablet']),
+            'taxi_id'   => $tablet->taxi_id
+        );
+        $tabUserRules = array(
+            'tablet_name'   => 'required|max:50|unique:user,tablet_name,' . $user->id
+        );
+        $valid = Validator::make($tabUserData, $tabUserRules);
+        if($valid->fails()){
+            return redirect('tabletwijzigen/'.$id)->withErrors($valid)->withInput($tabUserData);
+        }
+        array_forget($tabUserData, 'taxi_id');
+        $user->update($tabUserData);
+        $tablet->update(['taxi_id' => $request['taxi']]);
+
+        $request->session()->flash('alert-success', 'Tablet '. $request['tablet'] .' is gewijziged.');
+        return redirect('/tablets');
+    }
+
+    /**
+     * @author Stefano Groenland
+     * @return \Illuminate\Http\RedirectResponse
+     *
+     * Grabs the ID of the route, And deletes the corresponding rows from the Database.
+     */
+    public function deleteTablet(){
+        $id = Route::current()->getParameter('id');
+
+        $tablet = Tablet::where('id',$id)->first();
+        $user = User::where('id',$tablet->user_id)->first();
+        Tablet::where('id',$id)->delete();
+        User::where('id',$tablet->id)->delete();
+
+        session()->flash('alert-success', 'Tablet '.$user->tablet_name .' verwijderd.');
+        return redirect()->route('tablets');
     }
 }
 

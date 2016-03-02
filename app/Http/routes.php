@@ -34,7 +34,13 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/deleteDriver/{id}', 'UserController@deleteDriver');
         Route::put('/editDriver/{id}', array('as' => 'editDriver', 'uses' => 'UserController@editDriver'));       
 
-        Route::get('/nieuws', array('as' => 'nieuws', 'uses' => 'UserController@showNews'));
+        Route::get('/nieuws', array('as' => 'nieuws', 'uses' => 'NewspaperController@showNews'));
+        Route::get('/nieuwstoevoegen', array('as' => 'nieuwstoevoegen', 'uses' => 'NewspaperController@showNewsAdd'));
+        Route::get('/nieuwswijzigen/{id}', array('as' => 'nieuwswijzigen', 'uses' => 'NewspaperController@showNewsEdit'));
+        Route::post('/addNews', 'NewspaperController@addNews');
+        Route::put('/editNews/{id}', 'NewspaperController@editNews');
+        Route::delete('/deleteNews/{id}', 'NewspaperController@deleteNews');
+
 
         Route::get('/taxilocatie', array('as' => 'taxilocatie', 'uses' => 'TaxiController@showTaxiLocation'));
         Route::get('/taxioverzicht', array('as' => 'taxioverzicht', 'uses' => 'TaxiController@showTaxiOverview'));
@@ -46,12 +52,23 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/deleteRoute/{id}', 'RouteController@deleteRoute');
         Route::put('/editRoute/{id}', array('as' => 'editRoute', 'uses' => 'RouteController@editRoute'));
        
-        Route::get('/opmerkingwijzigen', array('as' => 'opmerkingwijzigen', 'uses' => 'CommentController@showCommentEdit'));
+        Route::get('/opmerkingwijzigen/{id}', array('as' => 'opmerkingwijzigen', 'uses' => 'CommentController@showCommentEdit'));
+        Route::put('/editComment/{id}', 'CommentController@editComment');
+        Route::get('/toggleComment/{id}', 'CommentController@togglesStateComment');
+        Route::delete('/deleteComment/{id}', 'CommentController@deleteComment');
+
         Route::get('/tablets', array('as' => 'tablets', 'uses' => 'UserController@showTablet'));
-        Route::get('/tabletwijzigen', array('as' => 'tabletwijzigen', 'uses' => 'UserController@showTabletEdit'));
+        Route::get('/tablettoevoegen', array('as' => 'tablettoevoegen', 'uses' => 'UserController@showTabletAdd'));
+        Route::get('/tabletwijzigen/{id}', array('as' => 'tabletwijzigen', 'uses' => 'UserController@showTabletEdit'));
+        Route::post('/addTablet', 'UserController@addTablet');
+        Route::put('/editTablet/{id}', 'UserController@editTablet');
+        Route::delete('/deleteTablet/{id}', 'UserController@deleteTablet');
         Route::get('/medewerkers', array('as' => 'medewerkers', 'uses' => 'UserController@showAdmin'));
-        Route::get('/medewerkerwijzigen', array('as' => 'medewerkerwijzigen', 'uses' => 'UserController@showAdminEdit'));
+        Route::get('/medewerkerwijzigen/{id}', array('as' => 'medewerkerwijzigen', 'uses' => 'UserController@showAdminEdit'));
         Route::get('/medewerkertoevoegen', array('as' => 'medewerkertoevoegen', 'uses' => 'UserController@showAdminAdd'));
+        Route::post('/addAdmin', 'UserController@addAdmin');
+        Route::put('/editAdmin/{id}', 'UserController@editAdmin');
+        Route::delete('/deleteAdmin/{id}', 'UserController@deleteAdmin');
         Route::get('/reclames', array('as' => 'reclames', 'uses' => 'AdController@showAds'));
         Route::get('/reclamewijzigen/{id}', array('as' => 'reclamewijzigen', 'uses' => 'AdController@showAdsEdit'));
         Route::get('/reclametoevoegen', array('as' => 'reclametoevoegen', 'uses' => 'AdController@showAdsAdd'));
@@ -60,6 +77,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('/editAd/{id}', array('as' => 'editAd', 'uses' => 'AdController@editAd'));
         Route::get('/noodsignalen', array('as' => 'noodsignalen', 'uses' => 'EmergencyController@showSignals'));
         Route::get('/seenSignal/{id}', array('as' => 'signalChange', 'uses' => 'EmergencyController@seenSignal'));
+
     });
 });
 

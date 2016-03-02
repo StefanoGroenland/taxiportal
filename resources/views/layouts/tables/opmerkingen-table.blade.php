@@ -22,9 +22,9 @@
                     <td>{{$comment->comment}}</td>
                     <td>{{$comment->created_at->format('d-m-Y H:i')}}</td>
                         <td width="12%" class="text-right">
-                            <a class="btn btn-sm green-meadow" href="/opmerkingwijzigen"><i class="fa fa-pencil"></i></a>
-                            <a class="btn btn-sm yellow-lemon" href="/opmerkingwijzigen"><i class="fa fa-check"></i></a>
-                            <a class="btn btn-sm red-sunglo" href="#"><i class="fa fa-trash"></i></a>
+                            <a class="btn btn-sm green-meadow" href="/opmerkingwijzigen/{{$comment->id}}"><i class="fa fa-pencil"></i></a>
+                            <a class="btn btn-sm yellow-lemon" href="/toggleComment/{{$comment->id}}"><i class="fa fa-check"></i></a>
+                            <a class="btn btn-sm red-sunglo deleteButton" data-model-id="{{$comment->id}}" data-toggle="modal" href="#myModel{{$comment->id}}"><i class="fa fa-trash"></i></a>
                         </td>
                 </tr>
             @endif
@@ -61,9 +61,9 @@
                     <td>{{$comment->comment}}</td>
                     <td>{{$comment->created_at->format('d-m-Y H:i')}}</td>
                         <td width="12%" class="text-right">
-                            <a class="btn btn-sm green-meadow" href="/opmerkingwijzigen"><i class="fa fa-pencil"></i></a>
-                            <a class="btn btn-sm yellow-lemon" href="/opmerkingwijzigen"><i class="fa fa-check"></i></a>
-                            <a class="btn btn-sm red-sunglo" href="#"><i class="fa fa-trash"></i></a>
+                            <a class="btn btn-sm green-meadow" href="/opmerkingwijzigen/{{$comment->id}}"><i class="fa fa-pencil"></i></a>
+                            <a class="btn btn-sm yellow-lemon" href="/toggleComment/{{$comment->id}}"><i class="fa fa-check"></i></a>
+                            <a class="btn btn-sm red-sunglo deleteButton" data-model-id="{{$comment->id}}" data-toggle="modal" href="#myModel{{$comment->id}}"><i class="fa fa-trash"></i></a>
                         </td>
                 </tr>
             @endif
@@ -71,3 +71,59 @@
       </tbody>
   </table>
 </div>
+
+@foreach($comments as $comm)
+    @if($comm)
+    <div class="modal fade" id="myModel{{$comm->id}}" tabindex="-1"  aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Verwijder verzoek</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Weet u zeker dat u de opmerking wilt verwijderen?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Sluiten</button>
+                    <form method="POST" action="/deleteComment/{{$comm->id}}" >
+                        {!! method_field('DELETE') !!}
+                        {!! csrf_field() !!}
+                        <button type="submit" class="btn btn-danger pull-right">Verwijder opmerking</button>
+                    </form>
+                </div>
+            </div>
+        <!-- /.modal-content -->
+        </div>
+    <!-- /.modal-dialog -->
+    </div>
+    @endif
+@endforeach
+
+@foreach($commentsApproved as $comm)
+    @if($comm)
+    <div class="modal fade" id="myModel{{$comm->id}}" tabindex="-1"  aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Verwijder verzoek</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Weet u zeker dat u de opmerking wilt verwijderen?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Sluiten</button>
+                    <form method="POST" action="/deleteComment/{{$comm->id}}" >
+                        {!! method_field('DELETE') !!}
+                        {!! csrf_field() !!}
+                        <button type="submit" class="btn btn-danger pull-right">Verwijder opmerking</button>
+                    </form>
+                </div>
+            </div>
+        <!-- /.modal-content -->
+        </div>
+    <!-- /.modal-dialog -->
+    </div>
+    @endif
+@endforeach
