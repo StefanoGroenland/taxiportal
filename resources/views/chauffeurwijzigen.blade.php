@@ -148,13 +148,9 @@
                                             <div class="input-icon">
                                                 <select class="form-control" id="car" name="car">
                                                     <option>Niet koppelen</option>
-                                                    @if($driver->taxi)
-                                                        <option value="{{$driver->taxi->id}}" @if($driver->taxi->driver_id != "0")selected @endif>{{ $driver->taxi->license_plate .' - '. $driver->taxi->car_brand .' - '. $driver->taxi->car_model .' - '. $driver->taxi->car_color}}</option>
-                                                    @endif
-
                                                     @if($carCount > 0)
                                                         @foreach($cars as $car)
-                                                            <option value="{{$car->id}}">{{ $car->license_plate .' - '. $car->car_brand .' - '. $car->car_model .' - '. $car->car_color}}</option>
+                                                            <option @if($driver->taxi) @if($driver->taxi->id == $car->id)  selected @endif @endif value="{{$car->id}}">{{ $car->license_plate .' - '. $car->car_brand .' - '. $car->car_model .' - '. $car->car_color}}</option>
                                                         @endforeach
                                                     @else
                                                         <option>Geen auto's koppelbaar</option>

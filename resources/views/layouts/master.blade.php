@@ -120,6 +120,11 @@
 
         myFunction();
        function myFunction() {
+       $.get('http://taxiportaal.dev/api/v1/signalcheck', function(data){
+                   }).done(function() {
+                   	console.log("signal check done")
+                   });
+
        $.get('http://taxiportaal.dev/api/v1/emergencies', function(data){
               	var sos = jQuery.parseJSON(data);
               	if(sos.length > 0){
@@ -130,10 +135,7 @@
               	console.log("emergency check done");
               });
 
-           $.get('http://taxiportaal.dev/api/v1/signalcheck', function(data){
-            }).done(function() {
-            	console.log("signal check done")
-            });
+
        }setInterval(function(){myFunction()}, 300000);
 
        </script>

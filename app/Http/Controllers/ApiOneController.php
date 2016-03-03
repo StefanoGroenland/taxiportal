@@ -273,7 +273,7 @@ class ApiOneController extends Controller
                 if(!Emergency::where('taxi_id',$taxi->id)->where('seen',0)->exists()){
                     Emergency::create(array('taxi_id' => $taxi->id, 'seen' => 0));
                 }
-            }
+        }
         }
     }
 
@@ -298,6 +298,72 @@ class ApiOneController extends Controller
             return json_encode($sosArray);
         }
         return json_encode(['sos' => 'false']);
+    }
+
+    /**
+     * @author Stefano Groenland
+     * @api
+     * @version 1.0
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * Gets all comments for the given driver.
+     */
+    public function getCommentsOffDriver(){
+        $driverID = Input::get('driver_id');
+        $key = Input::get('key');
+        $apikey = self::$apikey;
+        if ($key == $apikey) {
+            $comment = Comment::where('driver_id',$driverID)->where('approved',1)->get();
+            $result = collect([array('tablet' => $comment)]);
+            return $result->toJson();
+        }
+        return json_encode(self::$error);
+    }
+
+    /**
+     * @author Stefano Groenland
+     * @api
+     * @version 1.0
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * Updates the taxi location with the given params
+     */
+    public function sendLocation(){
+        $driverID = Input::get('driver_id');
+        $latitude = Input::get('latitude');
+        $longtitude = Input::get('longtitude');
+        $key = Input::get('key');
+
+        $apikey = self::$apikey;
+        if ($key == $apikey) {
+            Taxi::where('driver_id',$driverID)->update([
+                'last_latitude'     =>  $latitude,
+                'last_longtitude'   =>  $longtitude
+            ]);
+            return json_encode(['success'   =>  'location_send']);
+        }
+        return json_encode(self::$error);
+    }
+
+    /**
+     * @author Stefano Groenland
+     * @api
+     * @version 1.0
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * Updates the shift value of the given taxi with the passed value of input.shift
+     */
+    public function toggleShift(){
+        $taxiID = Input::get('taxi_id');
+        $shiftValue = Input::get('shift');
+        $key = Input::get('key');
+
+        $apikey = self::$apikey;
+        if($key == $apikey){
+            Taxi::where('id',$taxiID)->update(['in_shift' => $shiftValue]);
+            return json_encode(['success'   =>  'shift_value_changed']);
+        }
+        return json_encode(self::$error);
     }
 }
 
