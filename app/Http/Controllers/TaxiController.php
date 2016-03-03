@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Route, View;
 use App\Taxi;
 use App\Driver;
+use App\User;
+use Illuminate\Support\Facades\Validator;
 
 class TaxiController extends Controller
 {
@@ -42,8 +42,13 @@ class TaxiController extends Controller
      *  TODO : fill in func description
      */
     public function showTaxiEdit(){
-		return View::make('/taxiwijzigen');
-	}
+    	$id = Route::current()->getParameter('id');
+        $taxi = Taxi::where('id',$id)->first();
+        $user = Taxi::with('driver')->where('id',$id)->first();
+        $drivers = Driver::with('user')->where('taxi_id','0')->orWhere('taxi_id',$id)->get();
+        $driverCount   = count($drivers);
+       return View::make('/taxiwijzigen', compact('id','taxi','user','drivers','driverCount'));
+     }
 
     /**
      * @author Richard Perdaan
@@ -52,6 +57,67 @@ class TaxiController extends Controller
      *  TODO : fill in func description
      */
     public function showTaxiAdd(){
-		return View::make('/taxitoevoegen');
+    	$drivers = Driver::with('user')->where('taxi_id','0')->get();
+
+    	$driverCount = count($drivers); 
+		
+		return View::make('/taxitoevoegen', compact('drivers','driverCount'));
 	}
+	public function addTaxi(Request $request){
+
+		$data = array(
+			'license_plate' 	=> $request['license_plate'],
+			'car_brand' 		=> $request['car_brand'],
+			'car_color' 		=> $request['car_color'],
+			'car_model' 		=> $request['car_model'],
+			'driver_id'			=> $request['driver']
+		);
+		$rules = array(
+			'license_plate' 	=> 'required',
+			'car_model'			=> 'required',
+			'car_color'			=> 'required',
+			'car_model'			=> 'required'
+		);
+
+		$validator = Validator::make($data, $rules);
+		if ($validator->fails()){
+			return redirect('taxitoevoegen')->withErrors($validator)->withInput($data);
+		}
+		$taxi = Taxi::create($data);
+		Driver::where('id',$data['driver_id'])->update(['taxi_id' => $taxi->id]);
+		session()->flash('alert-success','De taxi is aangemaakt.');
+		return redirect()->route('taxioverzicht');
+	}
+	public function deletetaxi(){
+		$id = Route::current()->getparameter('id');
+		$find = Taxi::find($id);
+		Taxi::where('id','=', $id)->delete();
+		session()->flash('alert-success','De Taxi is verwijderd.');
+		return redirect()->route('taxioverzicht');
+	}
+	public function editTaxi(Request $request){
+		$id = Route::current()->getParameter('id');
+        $data = array(
+			'license_plate' 	=> $request['license_plate'],
+			'car_brand' 		=> $request['car_brand'],
+			'car_color' 		=> $request['car_color'],
+			'car_model' 		=> $request['car_model'],
+			'driver_id'			=> $request['driver']
+		);
+		$rules = array(
+			'license_plate' 	=> 'required',
+			'car_model'			=> 'required',
+			'car_color'			=> 'required',
+			'car_model'			=> 'required'
+		);
+
+		$validator = Validator::make($data, $rules);
+		if ($validator->fails()){
+			return redirect('taxiwijzigen')->withErrors($validator)->withInput($data);
+		}
+		
+		Taxi::where('id', '=', $id)->update($data);
+		session()->flash('alert-success','De taxi is gewijzigd.');
+		return redirect()->route('taxioverzicht');
+    }
 }
