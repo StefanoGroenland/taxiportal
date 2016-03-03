@@ -313,7 +313,7 @@ class ApiOneController extends Controller
         $key = Input::get('key');
         $apikey = self::$apikey;
         if ($key == $apikey) {
-            $comment = Comment::where('driver_id',$driverID)->get();
+            $comment = Comment::where('driver_id',$driverID)->where('approved',1)->get();
             $result = collect([array('tablet' => $comment)]);
             return $result->toJson();
         }
