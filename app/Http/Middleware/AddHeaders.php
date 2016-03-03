@@ -7,7 +7,7 @@ use Closure;
 class AddHeaders
 {
     /**
-     * The URIs that should be excluded from CSRF verification.
+     * The URIs that should be excluded from Access-Controll-Allow-Origin.
      *
      * @var array
      */
