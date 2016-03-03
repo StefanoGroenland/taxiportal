@@ -49,7 +49,7 @@
  	                        </div>
  	                        <div class="nav-collapse collapse navbar-collapse navbar-responsive-collapse">
  	                         <a id="index" class="page-logo" href="index.html">
- 	                               <img src="{{URL::asset('../assets/img/logo.png')}}" alt="Logo"> </a>
+ 	                               <img src="{{URL::asset('../assets/img/taxi_logo.png')}}" alt="Logo"> </a>
  	                            <ul class="nav navbar-nav">
 
  	                                <li class="dropdown dropdown-fw @if(\Request::route()->getName() == 'home') active open selected @endif">

@@ -28,12 +28,13 @@
     <body class="login">
     <div class="col-lg-4 col-md-4"></div>
     <div class="col-lg-4 col-md-4">
-
+        <div class="margin-bottom-20"></div>
         <div class="logo img-responsive text-center">
             <a href="index.html">
-                <img src="{{URL::asset('../assets/img/logo.png')}}" alt="Logo"> 
+                <img src="{{URL::asset('../assets/img/taxi_logo.png')}}" height="250" alt="Logo"> 
             </a>
         </div>
+        <div class="margin-bottom-30"></div>
         <div class="content">
             @if (count($errors))
                 <ul class="list-unstyled">
@@ -66,7 +67,7 @@
                 </div>
             </div>
         </div>
-        <p class="copyright">2016 © Moodles.</p>
+        <p class="copyright" style="color:white;">2016 © Moodles.</p>
     </div>
     <div class="col-lg-4 col-md-4"></div>
 </body>
