@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return View::make('auth/login');
 });
 
 //Routes where the user must be logged in.

@@ -123,7 +123,7 @@
                 "order": [[ 0, "desc" ]],
                            "oLanguage" : {
                                "sInfo" : "Toon _START_ tot _END_ van _TOTAL_ rijen" ,
-                               "sInfoEmpty" : "Geen resultaten gevonden" ,
+                               "sInfoEmpty" : "" ,
                                "sInfoEmptyTable" : "Geen resultaten gevonden" ,
                                "sInfoFiltered" : "(Gezocht in _MAX_ rijen)" ,
                                "sZeroRecords" : "Geen resultaten gevonden",
