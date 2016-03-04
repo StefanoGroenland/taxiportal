@@ -80,7 +80,7 @@
                                                 <div class="tab-content">
                                                     <!-- PERSONAL INFO TAB -->
                                                     <div class="tab-pane active" id="tab_1_1">
-                                                        <form role="form" class="validate" method="POST" action="/editProfile/{{$id}}">
+                                                        <form role="form" class="validate1" method="POST" action="/editProfile/{{$id}}">
                                                             {!! csrf_field() !!}
                                                             <input type="hidden" name="_method" value="PUT">
                                                             <div class="form-group form-md-line-input">
@@ -106,7 +106,7 @@
                                                             </div>
                                                             <div class="form-group form-md-line-input">
                                                                 <div class="input-icon">
-                                                                    <input type="text" class="form-control" name="email" id="email" value="{{Auth::user()->email}}" data-validate="required">
+                                                                    <input type="text" class="form-control" name="email" id="email" value="{{Auth::user()->email}}" data-validate="required|email">
                                                                     <label for="emial">E-mail</label>
                                                                     <i class="fa fa-envelope-o"></i>
                                                                 </div>
@@ -135,7 +135,13 @@
                                                                     <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12 center-block">
                                                                         <div class="fileinput fileinput-new " data-provides="fileinput">
                                                                             <div id="jcrop_target" class="fileinput-new thumbnail center-block" style="width: 200px; height: 200px;">
-                                                                                <img id="jcrop_target" style=" height:100%; width:100%;" src="../assets/img/avatars/avatar.png" alt="avatar" class="img-responsive center-block"/>
+                                                                                <img id="jcrop_target" style=" height:100%; width:100%;" 
+                                                                                    @if(Auth::user()->profile_photo == "")
+                                                                                        src="../assets/img/avatars/avatar.png"
+                                                                                    @else
+                                                                                       src="../{{Auth::user()->profile_photo}}" 
+                                                                                    @endif
+                                                                                alt="avatar" class="img-responsive center-block"/>
                                                                                 <div class="jcrop-holder" style="width: 400px !important; height: 200px!important;"></div>
                                                                             </div>
                                                                             <div>
@@ -163,14 +169,14 @@
                                                             <input type="hidden" name="_method" value="PUT">
                                                             <div class="form-group form-md-line-input">
                                                                 <div class="input-icon">
-                                                                    <input type="password" class="form-control" name="password" id="nieuw_wachtwoord" value="" data-validate="required|minlenght:4">
+                                                                    <input type="password" class="form-control" name="password" id="nieuw_wachtwoord" value="" data-validate="required|minlength:4|same:#password_confirmation" data-name="nieuw wachtwoord">
                                                                     <label for="nieuw_wachtwoord">Nieuw wachtwoord</label>
                                                                     <i class="fa fa-key"></i>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group form-md-line-input">
                                                                 <div class="input-icon">
-                                                                    <input type="password" class="form-control" name="password_confirmation" id="herhaal_nieuw_wachtwoord" value="" data-validate="required|minlenght:4">
+                                                                    <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" value="" data-validate="required|minlength:4|same:#nieuw_wachtwoord" data-name="herhaal nieuw wachtwoord">
                                                                     <label for="herhaal_nieuw_wachtwoord">Herhaal nieuw wachtwoord</label>
                                                                     <i class="fa fa-key"></i>
                                                                 </div>
@@ -201,7 +207,10 @@
 <script src="{{URL::asset('../assets/js/locale/messages.nl.js')}}"></script>
 <script>
 $(function() {
-        $('form .validate').jvalidate({
+        $('.validate1').jvalidate({
+            errorMessage: true
+        });
+        $('.validate').jvalidate({
             errorMessage: true
         });
     });

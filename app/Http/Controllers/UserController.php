@@ -622,7 +622,7 @@ class UserController extends Controller
 
         $valid = Validator::make($data,$rules);
         if($valid->fails()){
-            return redirect('/profielwijzigen#tab_1_3');
+            return redirect('/profielwijzigen#tab_1_3')->withErrors($valid);
         }
         array_forget($data,'password_confirmation');
         $data['password'] = Hash::make($data['password']);
