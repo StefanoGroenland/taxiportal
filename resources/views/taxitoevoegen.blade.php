@@ -47,7 +47,7 @@
                                            		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 													<div class="form-group form-md-line-input">
                                                         <div class="input-icon">
-                                                            <input type="text" class="form-control" id="car_model" name="car_color" value="">
+                                                            <input type="text" class="form-control" id="car_color" name="car_model" value="">
                                                             <label for="model">Model</label>
                                                             <i class="fa fa-car"></i>
                                                         </div>
@@ -56,7 +56,7 @@
                                                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 													<div class="form-group form-md-line-input">
                                                         <div class="input-icon">
-                                                            <input type="text" class="form-control" id="car_color" name="car_model" value="">
+                                                            <input type="text" class="form-control" id="car_model" name="car_color" value="">
                                                             <label for="kleur">Kleur</label>
                                                             <i class="fa fa-car"></i>
                                                         </div>
