@@ -2,12 +2,34 @@
 
 @section('content')
     <div class="page-content">
+    @if (count($errors))
+            <ul class="list-unstyled">
+                @foreach($errors->all() as $error)
+                    <li class="alert alert-danger"><i class="fa fa-exclamation"></i> {{ $error }}</li>
+                 @endforeach
+            </ul>
+        @endif
+        @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                    @if(Session::has('alert-' . $msg))
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="fa fa-times"></i></button>
+                                </p>
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
         <div class="row">
             <div class="col-md-12">
                 <div class="profile-sidebar">
                     <div class="portlet light profile-sidebar-portlet bordered">
                         <div class="profile-userpic">
-                            <img src="{{URL::asset('../assets/img/profile_user.jpg')}}" class="img-responsive" alt=""> </div>
+                            @if(Auth::user()->profile_photo == "")
+                                <img src="../assets/img/avatars/avatar.png" class="img-responsive" alt=""></div>
+                            @else
+                                <img src="../{{Auth::user()->profile_photo}}" class="img-responsive" alt=""></div>
+                            @endif
                         <div class="profile-usertitle">
                             <div class="profile-usertitle-name"> {{Auth::user()->firstname .' '. Auth::user()->surname .' '. Auth::user()->lastname }} </div>
                             <div class="profile-usertitle-job"> {{Auth::user()->user_rank}} </div>

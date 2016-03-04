@@ -99,6 +99,10 @@ a{
 .jvalidate-error-message {
 	display: block;
 }
+.profile-userpic img{
+    -webkit-border-radius: 0% !important;
+    -moz-border-radius: 0% !important;
+}
 
 @media (min-width: 992px){
 	.page-header .navbar-collapse .navbar-nav .more-dropdown .dropdown-menu {

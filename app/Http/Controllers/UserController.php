@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Route, View;
 use Illuminate\Support\Facades\Validator;
 use App\Taxi;
@@ -48,7 +49,8 @@ class UserController extends Controller
      *  TODO : fill in func description..
      */
     public function showProfileEdit(){
-        return View::make('/profielwijzigen');
+        $id = Auth::user()->id;
+        return View::make('/profielwijzigen', compact('id'));
     }
 
     /**
@@ -482,7 +484,10 @@ class UserController extends Controller
 
                 if($redirect != 1){
                     return redirect('/admins');
-                }else{
+                }elseif($redirect == 2){
+                    return redirect('/profielwijzigen#tab_1_2');
+                }
+                else{
                     return redirect('/chauffeurs');
                 }
             }
@@ -573,6 +578,66 @@ class UserController extends Controller
 
         session()->flash('alert-success', 'Tablet '.$user->tablet_name .' verwijderd.');
         return redirect()->route('tablets');
+    }
+
+    public function editProfile(Request $request){
+        $id = Route::current()->getParameter('id');
+
+        $user = User::where('id',$id)->first();
+
+        $data = array(
+            'firstname' =>  $request['firstname'],
+            'lastname' =>  $request['lastname'],
+            'phone_number' =>  $request['phone_number'],
+            'email' =>  $request['email']
+        );
+        $rules = array(
+            'firstname' =>  'required|min:4|max:50',
+            'lastname' =>  'required|min:4|max:50',
+            'phone_number' =>  'required|numeric|digits:10',
+            'email' =>  'required|email|unique:user,email,' . $user->id
+        );
+
+        $valid = Validator::make($data, $rules);
+        if($valid->fails()){
+            return redirect('/profielwijzigen')->withErrors($valid)->withInput($data);
+        }
+        $user->update($data);
+
+        $request->session()->flash('alert-success', 'Uw profiel is gewijziged.');
+        return redirect('/profielwijzigen');
+    }
+
+    public function editPassword(Request $request){
+        $id = Route::current()->getParameter('id');
+        $user = User::where('id',$id)->first();
+        $data = array(
+            'password'                  =>  $request['password'],
+            'password_confirmation'     =>  $request['password_confirmation']
+        );
+        $rules = array(
+            'password'              =>  'required|min:4|confirmed',
+            'password_confirmation' =>  'required|min:4'
+        );
+
+        $valid = Validator::make($data,$rules);
+        if($valid->fails()){
+            return redirect('/profielwijzigen#tab_1_3');
+        }
+        array_forget($data,'password_confirmation');
+        $data['password'] = Hash::make($data['password']);
+
+        $user->update($data);
+        $request->session()->flash('alert-success', 'Uw wachtwoord is gewijziged.');
+        return redirect('/profielwijzigen#tab_1_3');
+    }
+
+    public function editProfilePhoto(Request $request){
+        $id = Route::current()->getParameter('id');
+
+        $this->upload($request,$id,2);
+        $request->session()->flash('alert-success', 'Uw profielfoto is gewijziged');
+        return redirect('/profielwijzigen#tab_1_2');
     }
 }
 
