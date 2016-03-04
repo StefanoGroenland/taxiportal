@@ -112,6 +112,31 @@
 	    <script src="{{URL::asset('../assets/js/jquery.Jcrop.js')}}" type="text/javascript"></script>
 	    <script src="{{URL::asset('../assets/js/jquery.color.js')}}" type="text/javascript"></script>
 
+        <script src="{{URL::asset('../assets/js/datatables/datatables.min.js')}}" type="text/javascript"></script>
+        <script src="{{URL::asset('../assets/js/datatables/datatables.bootstrap.js')}}" type="text/javascript"></script>
+
+
+
+       <script type="text/javascript">
+
+       $('table').dataTable( {
+                "order": [[ 0, "desc" ]],
+                           "oLanguage" : {
+                               "sInfo" : "Toon _START_ tot _END_ van _TOTAL_ rijen" ,
+                               "sInfoEmpty" : "Geen resultaten gevonden" ,
+                               "sInfoEmptyTable" : "Geen resultaten gevonden" ,
+                               "sInfoFiltered" : "(Gezocht in _MAX_ rijen)" ,
+                               "sZeroRecords" : "Geen resultaten gevonden",
+                               "sLengthMenu" : "Toon _MENU_ rijen",
+                               "sSearch" : "Zoek : ",
+                                   "oPaginate" : {
+                                       "sNext" : "Volgende",
+                                       "sPrevious" : "Vorige"
+                                   }
+                           }
+                           });
+
+       </script>
        <script type="text/javascript">
 
         myFunction();

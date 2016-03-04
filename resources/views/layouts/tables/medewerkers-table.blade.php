@@ -1,4 +1,3 @@
-<div class="table-responsive">
     <table class="table table-hover" >
         <thead>
             <th>Voornaam</th>
@@ -30,7 +29,6 @@
         @endforeach
         </tbody>
     </table>
-</div>
 
 @foreach($admins as $comm)
     @if($comm)

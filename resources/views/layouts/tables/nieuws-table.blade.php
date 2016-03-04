@@ -1,4 +1,3 @@
-<div class="table-responsive">
   <table class="table table-hover" >
       <thead>
           <th>Naam</th>
@@ -20,7 +19,6 @@
           @endforeach
       </tbody>
   </table>
-</div>
 @foreach($news as $rss)
     <div class="modal fade" id="myModel{{$rss->id}}" tabindex="-1"  aria-hidden="true" style="display: none;">
         <div class="modal-dialog">

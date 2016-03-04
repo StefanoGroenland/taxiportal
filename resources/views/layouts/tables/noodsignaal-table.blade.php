@@ -1,5 +1,4 @@
-<div class="table-responsive">
-  <table class="table table-hover" >
+<table class="table table-hover" >
       <thead>
           <th>Kenteken</th>
           <th>Chauffeur</th>
@@ -29,13 +28,12 @@
 
       </tbody>
   </table>
-</div>
 
 <a class="btn btn-info collapsed" role="button" data-toggle="collapse" href="#validated" aria-expanded="false" aria-controls="collapseValidated">
   <i class="fa fa-archive"> </i> Verwerkte noodsignalen bekijken
 </a>
 
-<div class="table-responsive collapse" id="validated" >
+<div class="collapse" id="validated" >
   <table class="table table-hover" >
       <thead>
                 <th>Kenteken</th>

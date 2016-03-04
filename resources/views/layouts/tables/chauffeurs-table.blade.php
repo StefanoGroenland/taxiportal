@@ -1,14 +1,14 @@
 <a href="/chauffeurtoevoegen" class="btn btn-sm green-meadow margin-bottom-10"><i class="fa fa-plus"></i> Chauffeur toevoegen</a>
-<div class="table-responsive">
-    <table class="table table-hover" >
+
+    <table class="table table-bordered table-hover" id="sample_1">
         <thead>
-        <th>Chauffeur</th>
-        <th>Kenteken</th>
-        <th>Email</th>
-        <th>Telefoonnummer</th>
-        <th>Geslacht</th>
-        <th>Beoordeling<small> gemiddelde</small></th>
-        <th></th>
+            <th>Chauffeur</th>
+            <th>Kenteken</th>
+            <th>Email</th>
+            <th>Telefoonnummer</th>
+            <th>Geslacht</th>
+            <th>Gemiddelde beoordeling</th>
+            <th></th>
         </thead>
         <tbody>
         @foreach($drivers as $driver)
@@ -53,8 +53,12 @@
             @endif
         @endforeach
         </tbody>
-    </table>
-</div>
+        </table>
+
+
+
+
+
 @foreach($drivers as $driver)
     @if($driver && $driver->user)
     <div class="modal fade" id="myModel{{$driver->user->id}}" tabindex="-1"  aria-hidden="true" style="display: none;">
