@@ -17,7 +17,7 @@
                     <td>{{$taxi->car_color}}</td>
                     <td>{{$taxi->driver->user->firstname .' '. $taxi->driver->user->surname .' '. $taxi->driver->user->lastname}}</td>
                     <td>@if($taxi->in_shift == 1)<i class="fa fa-circle" style="color: #41f800;" ></i>
-                        @else<i class="fa fa-circle" style="color: #F85200;" ></i> @endif<small>{{date('d-m-Y H:i',strtotime($taxi->last_seen))}}</small>
+                        @else<i class="fa fa-circle" style="color: #F85200;" ></i> @endif<small> @if($taxi->last_seen != '0000-00-00 00:00:00') {{date('d-m-Y H:i',strtotime($taxi->last_seen))}} @else Geen @endif</small>
                     </td>
                 </tr>
                 @endif
