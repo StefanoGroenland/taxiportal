@@ -91,7 +91,7 @@ Route::group(['middleware' => 'auth'], function () {
 // Authentication routes...
 Route::get('/login', 'Auth\AuthController@getLogin');
 Route::post('/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
+Route::get('/logout', 'Auth\AuthController@getLogout');
 
 //API v1.0 routes
 Route::get('/api/v1/advertisements/{location}/{key}', 'ApiOneController@adsPerLocation');
