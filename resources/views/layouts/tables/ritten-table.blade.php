@@ -13,7 +13,7 @@
             @foreach($routes as $route)
                   
                     <tr>
-                        @if($route->taxi)
+                        @if($route->taxi && $route->taxi->driver)
                             <td>{{$route->taxi->license_plate}}</td>
                             <td>{{$route->taxi->driver->user->firstname .' '. $route->taxi->driver->user->surname .' '. $route->taxi->driver->user->lastname}}</td>
                         @else
@@ -34,7 +34,7 @@
                         </td>
                         @if($route->taxi)
                         <td>@if($route->taxi->in_shift == 1)<i class="fa fa-circle" style="color: #41f800;" ></i>
-                            @else<i class="fa fa-circle" style="color: #F85200;" ></i> <small>@endif{{date('d-m-Y H:i',strtotime($route->taxi->last_seen))}}</small>
+                            @else<i class="fa fa-circle" style="color: #F85200;" ></i> <small>@endif @if($route->taxi->last_seen != '0000-00-00 00:00:00') {{date('d-m-Y H:i',strtotime($route->taxi->last_seen))}} @else Geen laatst gezien @endif</small>
                         </td>
                         @else
                         <td>Geen taxi gekoppeld</td>
