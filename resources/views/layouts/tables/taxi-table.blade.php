@@ -1,5 +1,4 @@
-<div class="table-responsive">
-    <table class="table table-hover" >
+<table class="table table-hover" >
         <thead>
             <th>Kenteken</th>
             <th>Merk</th>
@@ -42,7 +41,6 @@
             @endforeach
         </tbody>
     </table>
-</div>
 @foreach($taxis as $taxi)
     @if($taxi)
     <div class="modal fade" id="myModel{{$taxi->id}}" tabindex="-1"  aria-hidden="true" style="display: none;">

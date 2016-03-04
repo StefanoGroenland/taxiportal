@@ -1,6 +1,5 @@
 <div class="row">
     <div class="col-md-6">
-        <div class="table-responsive">
              <table class="table table-hover data_table" >
                  <thead>
                      <th>Reclame nummer</th>
@@ -31,7 +30,6 @@
                      @endforeach
                  </tbody>
              </table>
-        </div>
     </div>
     <div class="col-md-6">
         @if(\App\Ad::count() > 0)

@@ -1,5 +1,4 @@
- <div class="table-responsive">
-    <table class="table table-hover" >
+ <table class="table table-hover" >
         <thead>
             <th>Kenteken</th>
             <th>Chauffeur</th>
@@ -46,7 +45,6 @@
             @endforeach
         </tbody>
     </table>
- </div>
 @foreach($routes as $route)
     <div class="modal fade" id="myModel{{$route->id}}" tabindex="-1"  aria-hidden="true" style="display: none;">
         <div class="modal-dialog">

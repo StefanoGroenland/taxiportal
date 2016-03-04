@@ -1,5 +1,4 @@
-<div class="table-responsive">
-    <table class="table table-hover" >
+<table class="table table-hover" >
         <thead>
             <th>Tablet naam</th>
             <th>Chauffeur</th>
@@ -26,7 +25,6 @@
         @endforeach
         </tbody>
     </table>
-</div>
 
 @foreach($tablets as $tablet)
     @if($tablet && $tablet->user)

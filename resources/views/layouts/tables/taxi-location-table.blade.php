@@ -1,5 +1,4 @@
-<div class="table-responsive">
-    <table class="table table-hover" >
+<table class="table table-hover" >
         <thead>
         <th><small> Kenteken</small></th>
         <th><i class="fa fa-taxi" ></i><small> Merk</small></th>
@@ -25,4 +24,3 @@
         @endforeach
         </tbody>
     </table>
-</div>
