@@ -71,7 +71,6 @@
                                         <th>Chauffeur</th>
                                         <th>Laatst gezien</th>
                                         <th>Gemeld op</th>
-                                        <th></th>
                                     </thead>
                                     @foreach(\App\Emergency::where('seen','!=',1)->get() as $sos)
                                         @if($sos && $sos->taxi)
@@ -80,9 +79,6 @@
                                                 <td>{{$sos->taxi->driver->user->firstname}}</td>
                                                 <td>{{date('d-m-Y H:i:s',strtotime($sos->taxi->last_seen))}}</td>
                                                 <td>{{$sos->created_at->format('d-m-Y H:i:s')}}</td>
-                                                <td>
-                                                    <a class="btn btn-sm green-meadow" href="/noodsignaal/id"><i class="fa fa-search"></i></a>
-                                                </td>
                                             </tr>
                                         @endif
                                 @endforeach

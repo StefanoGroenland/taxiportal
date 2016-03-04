@@ -15,7 +15,7 @@
                     <div class="portlet-title">
                         <div class="caption font-grey-gallery">
                             <i class="fa fa-cog font-grey-gallery"></i>
-                            <span class="caption-subject bold uppercase"> Wijzig chauffeur</span>
+                            <span class="caption-subject bold uppercase"> Wijzig medewerker</span>
                         </div>
                     </div>
                     <form method="POST" class="formulier" onsubmit="return checkCoords();" action="/editAdmin/{{$id}}" files="true" enctype="multipart/form-data">

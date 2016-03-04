@@ -23,6 +23,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/profielwijzigen', array('as' => 'profielwijzigen', 'uses' => 'UserController@showProfileEdit'));
         Route::get('/ritten', array('as' => 'ritten', 'uses' => 'RouteController@showRoutes'));
         Route::get('/opmerkingen', array('as' => 'opmerkingen', 'uses' => 'CommentController@showComment'));
+        Route::put('/editProfile/{id}', 'UserController@editProfile');
+        Route::put('/editPassword/{id}', 'UserController@editPassword');
+        Route::put('/editProfilePhoto/{id}', 'UserController@editProfilePhoto');
 
     //Routes alleen voor admins.
     Route::group(['middleware' => 'isAdmin'], function () {
