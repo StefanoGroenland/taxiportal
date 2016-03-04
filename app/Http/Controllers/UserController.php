@@ -634,7 +634,10 @@ class UserController extends Controller
 
     public function editProfilePhoto(Request $request){
         $id = Route::current()->getParameter('id');
-
+        $find = User::find($id);
+        if(!$find->profile_photo == ""){
+            unlink($find->profile_photo);
+        }
         $this->upload($request,$id,2);
         $request->session()->flash('alert-success', 'Uw profielfoto is gewijziged');
         return redirect('/profielwijzigen#tab_1_2');
