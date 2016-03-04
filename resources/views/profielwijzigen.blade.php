@@ -80,7 +80,7 @@
                                                 <div class="tab-content">
                                                     <!-- PERSONAL INFO TAB -->
                                                     <div class="tab-pane active" id="tab_1_1">
-                                                    <form role="form" class="validate" method="POST" action="/editProfile/{{$id}}">
+                                                        <form role="form" class="validate" method="POST" action="/editProfile/{{$id}}">
                                                             {!! csrf_field() !!}
                                                             <input type="hidden" name="_method" value="PUT">
                                                             <div class="form-group form-md-line-input">
@@ -201,7 +201,7 @@
 <script src="{{URL::asset('../assets/js/locale/messages.nl.js')}}"></script>
 <script>
 $(function() {
-        $('.validate').jvalidate({
+        $('form .validate').jvalidate({
             errorMessage: true
         });
     });
