@@ -19,6 +19,7 @@ use App\Newspaper;
 use App\Emergency;
 use App\Taxi;
 use App\Comment;
+use App\Route as RouteR;
 
 use Illuminate\Support\Facades\Input;
 class ApiOneController extends Controller
@@ -362,6 +363,31 @@ class ApiOneController extends Controller
         if($key == $apikey){
             Taxi::where('id',$taxiID)->update(['in_shift' => $shiftValue]);
             return json_encode(['success'   =>  'shift_value_changed']);
+        }
+        return json_encode(self::$error);
+    }
+
+    public function requestReturnRide()
+    {
+        $key = Input::get('key');
+        $apikey = self::$apikey;
+        if ($key == $apikey) {
+            RouteR::create([
+                'start_city'   => Input::get('start_city'),
+                'start_zip'    => Input::get('start_zip'),
+                'start_number' => Input::get('start_number'),
+                'start_street' => Input::get('start_street'),
+
+                'end_city'     => Input::get('end_city'),
+                'end_zip'      => Input::get('end_zip'),
+                'end_number'   => Input::get('end_number'),
+                'end_street'   => Input::get('end_street'),
+
+                'pickup_time'  => Input::get('pickup_time'),
+                'phone_customer' => Input::get('phone_customer'),
+                'email_customer' => Input::get('email_customer'),
+            ]);
+            return json_encode(['success' => 'return_ride_request_made']);
         }
         return json_encode(self::$error);
     }

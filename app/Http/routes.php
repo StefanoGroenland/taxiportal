@@ -108,3 +108,4 @@ Route::get('/api/v1/signalcheck'                    , 'ApiOneController@signalCh
 Route::get('/api/v1/emergencies'                    , 'ApiOneController@getSOS');
 Route::post('/api/v1/sendlocation'                  , 'ApiOneController@sendLocation');
 Route::post('/api/v1/toggleshift'                   , 'ApiOneController@toggleShift');
+Route::post('/api/v1/returnrequest'                 , 'ApiOneController@requestReturnRide');

@@ -103,6 +103,12 @@ a{
     -webkit-border-radius: 0% !important;
     -moz-border-radius: 0% !important;
 }
+#sample_1_filter{
+    float:right !important;
+}
+.dataTables_filter{
+    float:right !important;
+}
 
 @media (min-width: 992px){
 	.page-header .navbar-collapse .navbar-nav .more-dropdown .dropdown-menu {
