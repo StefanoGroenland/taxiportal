@@ -184,6 +184,22 @@ class UserController extends Controller
         if ($validator->fails()){
             return redirect('medewerkerwijzigen/'.$id)->withErrors($validator)->withInput($userData);
         }
+
+        if (empty($userData['password']) || empty($userData['password_confirmation'])) {
+            array_forget($userData, 'password');
+            array_forget($userData, 'password_confirmation');
+        }
+
+        if (array_key_exists('password', $userData)) {
+            $userData['password'] = Hash::make($userData['password']);
+            array_forget($userData, 'password_confirmation');
+        } else {
+            User::where('id', '=', $id)->update($userData);
+            $this->upload($request, $id);
+            $request->session()->flash('alert-success', 'Medewerker account is gewijziged, er zijn geen wijzigingen aan het wachtwoord doorgevoerd.');
+            return redirect('/medewerkers');
+        }
+
         $user->update($userData);
         $request->session()->flash('alert-success', 'Het account met e-mail '. $user->email .' is gewijziged.');
         $this->upload($request, $id, 1);
