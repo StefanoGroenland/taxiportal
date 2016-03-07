@@ -115,6 +115,9 @@ a{
 .dataTables_empty{
     text-align:center !important;
 }
+tr{
+    cursor:pointer !important;
+}
 
 @media (min-width: 992px){
 	.page-header .navbar-collapse .navbar-nav .more-dropdown .dropdown-menu {

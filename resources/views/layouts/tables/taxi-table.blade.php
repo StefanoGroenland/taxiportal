@@ -11,7 +11,7 @@
         </thead>
         <tbody>
             @foreach($taxis as $taxi)
-                    <tr>
+                    <tr data-href="/taxiwijzigen/{{$taxi->id}}">
                         <td>{{$taxi->license_plate}}</td>
                         <td>{{$taxi->car_brand}}</td>
                         <td>{{$taxi->car_model}}</td>

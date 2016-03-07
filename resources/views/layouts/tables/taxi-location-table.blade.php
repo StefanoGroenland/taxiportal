@@ -9,8 +9,7 @@
         </thead>
         <tbody>
         @foreach($taxis as $taxi)
-
-                <tr>
+                <tr data-href="/taxiwijzigen/{{$taxi->id}}">
                     <td><strong>{{$taxi->license_plate}}</strong></td>
                     <td>{{$taxi->car_brand}}</td>
                     <td>{{$taxi->car_model}}</td>

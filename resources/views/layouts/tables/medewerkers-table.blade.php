@@ -9,7 +9,7 @@
         </thead>
         <tbody>
         @foreach($admins as $admin)
-            <tr>
+            <tr data-href="/medewerkerwijzigen/{{$admin->id}}">
                 <td>{{$admin->firstname}} </td>
                 <td>{{$admin->lastname}}</td>
                 <td>{{$admin->email}}</td>

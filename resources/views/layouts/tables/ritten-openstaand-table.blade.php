@@ -11,7 +11,7 @@
          <tbody>
              @foreach($routes as $route)
 
-                     <tr>
+                     <tr data-href="/ritwijzigen/{{$route->id}}">
                          @if($route->taxi && $route->taxi->driver)
                              <td>{{$route->taxi->license_plate}}</td>
                              <td>{{$route->taxi->driver->user->firstname .' '. $route->taxi->driver->user->surname .' '. $route->taxi->driver->user->lastname}}</td>

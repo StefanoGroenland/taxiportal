@@ -8,7 +8,7 @@
         <tbody>
         @foreach($tablets as $tablet)
             @if($tablet->taxi && $tablet->user)
-                <tr>
+                <tr data-href="/tabletwijzigen/{{$tablet->id}}">
                     <td>{{$tablet->user->tablet_name}}</td>
                     @if($tablet->taxi->driver)
                         <td>{{$tablet->taxi->driver->user->firstname .' '. $tablet->taxi->driver->user->surname .' '. $tablet->taxi->driver->user->lastname}}</td>

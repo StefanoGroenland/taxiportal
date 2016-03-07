@@ -165,7 +165,18 @@
        {{--}setInterval(function(){myFunction()}, 300000);--}}
 
        {{--</script>--}}
-
+        <script type="text/javascript">
+           $(document).ready(function() {
+                 $('table').on("click",'tr[data-href]',  function() {
+                    window.location.href = $(this).data('href');
+                });
+                $('.deleteButton').on("click", function(event) {
+                    var modalId = $(this).data('model-id');
+                    event.stopPropagation();
+                    $('#myModel'+modalId).modal('show');
+                });
+           });
+        </script>
 
 	    @yield('scripts')       
 </body>

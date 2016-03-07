@@ -10,7 +10,7 @@
       <tbody>
          @foreach($comments as $comment)
             @if($comment && $comment->driver)
-                <tr>
+                <tr data-href="/opmerkingwijzigen/{{$comment->id}}">
                     <td>{{$comment->driver->taxi->license_plate}}</td>
                     <td>{{$comment->driver->user->firstname .' '. $comment->driver->user->surname .' '. $comment->driver->user->lastname}}</td>
                     <td>
@@ -49,7 +49,7 @@
       <tbody>
         @foreach($commentsApproved as $comment)
             @if($comment && $comment->driver)
-                <tr>
+                <tr data-href="/opmerkingwijzigen/{{$comment->id}}">
                     <td>{{$comment->driver->taxi->license_plate}}</td>
                     <td>{{$comment->driver->user->firstname .' '. $comment->driver->user->surname .' '. $comment->driver->user->lastname}}</td>
                     <td>
