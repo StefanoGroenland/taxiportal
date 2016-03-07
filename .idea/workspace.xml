@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="519bf916-5f09-4b43-913d-4efc13c49b43" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/tables/chauffeurs-table.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/tables/chauffeurs-table.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/custom.css" afterPath="$PROJECT_DIR$/public/assets/css/custom.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/tables/medewerkers-table.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/tables/medewerkers-table.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/tables/nieuws-table.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/tables/nieuws-table.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/tables/noodsignaal-table.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/tables/noodsignaal-table.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/tables/opmerkingen-table.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/tables/opmerkingen-table.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/tables/reclames-table.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/tables/reclames-table.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/tables/ritten-openstaand-table.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/tables/ritten-openstaand-table.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/tables/ritten-table.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/tables/ritten-table.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/tables/tablet-table.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/tables/tablet-table.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/tables/taxi-location-table.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/tables/taxi-location-table.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/tables/taxi-table.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/tables/taxi-table.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/nav-admin.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/nav-admin.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="898f360f-9443-42ce-bed2-6a84766c6e32" name="New changelist" comment="" />
@@ -40,148 +28,18 @@
     <favorites_list name="taxiportal" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4502688">
-      <split-first>
-        <leaf>
-          <file leaf-file-name="master.blade.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/resources/views/layouts/master.blade.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-4.8461537" vertical-offset="1846" max-vertical-offset="3213">
-                  <caret line="116" column="56" selection-start-line="116" selection-start-column="56" selection-end-line="116" selection-end-column="56" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="custom.css" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/public/assets/css/custom.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.6395089" vertical-offset="1433" max-vertical-offset="2380">
-                  <caret line="118" column="30" selection-start-line="118" selection-start-column="30" selection-end-line="118" selection-end-column="30" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="chauffeurs-table.blade.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/resources/views/layouts/tables/chauffeurs-table.blade.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-11.884615" vertical-offset="558" max-vertical-offset="1581">
-                  <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
-                  <folding>
-                    <element signature="e#2101#2120#0#HTML" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="medewerkers-table.blade.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/resources/views/layouts/tables/medewerkers-table.blade.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="1088">
-                  <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="62" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="nieuws-table.blade.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/resources/views/layouts/tables/nieuws-table.blade.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-5.230769" vertical-offset="0" max-vertical-offset="867">
-                  <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="noodsignaal-table.blade.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/resources/views/layouts/tables/noodsignaal-table.blade.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="1190">
-                  <caret line="12" column="39" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="opmerkingen-table.blade.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/resources/views/layouts/tables/opmerkingen-table.blade.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-9.153846" vertical-offset="612" max-vertical-offset="2261">
-                  <caret line="50" column="45" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="reclames-table.blade.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/resources/views/layouts/tables/reclames-table.blade.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="1564">
-                  <caret line="13" column="69" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="69" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ritten-openstaand-table.blade.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/resources/views/layouts/tables/ritten-openstaand-table.blade.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-8.5" vertical-offset="0" max-vertical-offset="1309">
-                  <caret line="13" column="65" selection-start-line="13" selection-start-column="65" selection-end-line="13" selection-end-column="65" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ritten-table.blade.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/resources/views/layouts/tables/ritten-table.blade.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-12.423077" vertical-offset="0" max-vertical-offset="1309">
-                  <caret line="19" column="57" selection-start-line="19" selection-start-column="57" selection-end-line="19" selection-end-column="57" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="tablet-table.blade.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/resources/views/layouts/tables/tablet-table.blade.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="1020">
-                  <caret line="11" column="59" selection-start-line="11" selection-start-column="59" selection-end-line="11" selection-end-column="59" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="taxi-location-table.blade.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/resources/views/layouts/tables/taxi-location-table.blade.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="595">
-                  <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="taxi-table.blade.php" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/resources/views/layouts/tables/taxi-table.blade.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.041923553" vertical-offset="51" max-vertical-offset="1275">
-                  <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="nav-admin.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/layouts/nav-admin.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.43333334" vertical-offset="1068" max-vertical-offset="2363">
+              <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -225,7 +83,6 @@
         <option value="$PROJECT_DIR$/resources/views/ritten-openstaand.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/tables/ritten-openstaand.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/nav-admin.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/ritten-openstaand.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/RouteController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TaxiController.php" />
@@ -246,6 +103,7 @@
         <option value="$PROJECT_DIR$/resources/views/layouts/tables/taxi-location-table.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/tables/taxi-table.blade.php" />
         <option value="$PROJECT_DIR$/public/assets/css/custom.css" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/nav-admin.blade.php" />
       </list>
     </option>
   </component>
@@ -1494,7 +1352,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457353387241</updated>
     </task>
-    <option name="localTasksCounter" value="105" />
+    <task id="LOCAL-00105" summary="table rows clickable inclusief pointer cursor. die het verduidelijkt dat je op een regel kan klikken.">
+      <created>1457355262023</created>
+      <option name="number" value="00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1457355262023</updated>
+    </task>
+    <option name="localTasksCounter" value="106" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1540,7 +1404,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="jValidate op tablet muteren pagina's" />
     <MESSAGE value="small fix noodsignaal table indien taxi niet meer gekoppeld is aan een user komen er errors." />
     <MESSAGE value="Nieuws toevoegen,wijzigen en verwijderen toegevoegd." />
     <MESSAGE value="commentaar wijzigen/accepteren geimplementeerd." />
@@ -1565,7 +1428,8 @@
     <MESSAGE value="/dashboard heeft nu ook een maps overzicht voor alle huidige taxi's met hun locaties." />
     <MESSAGE value="pagination styling aangepast van Datatables.&#10;" />
     <MESSAGE value="maps div een shadow gegeven." />
-    <option name="LAST_COMMIT_MESSAGE" value="maps div een shadow gegeven." />
+    <MESSAGE value="table rows clickable inclusief pointer cursor. die het verduidelijkt dat je op een regel kan klikken." />
+    <option name="LAST_COMMIT_MESSAGE" value="table rows clickable inclusief pointer cursor. die het verduidelijkt dat je op een regel kan klikken." />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.535" />
   </component>
   <component name="XDebuggerManager">
@@ -1810,14 +1674,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/nav-admin.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.23077" vertical-offset="887" max-vertical-offset="2346">
-          <caret line="77" column="81" selection-start-line="77" selection-start-column="81" selection-end-line="77" selection-end-column="81" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.12232779" vertical-offset="1155" max-vertical-offset="11305">
@@ -1857,16 +1713,6 @@
         <state vertical-scroll-proportion="-20.26923" vertical-offset="2091" max-vertical-offset="4250">
           <caret line="154" column="57" selection-start-line="154" selection-start-column="57" selection-end-line="154" selection-end-column="57" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/tables/chauffeurs-table.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.884615" vertical-offset="558" max-vertical-offset="1581">
-          <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
-          <folding>
-            <element signature="e#2101#2120#0#HTML" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1952,16 +1798,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/css/custom.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6395089" vertical-offset="1433" max-vertical-offset="2380">
-          <caret line="118" column="30" selection-start-line="118" selection-start-column="30" selection-end-line="118" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.46875" vertical-offset="1433" max-vertical-offset="2380">
+          <caret line="109" column="27" selection-start-line="109" selection-start-column="27" selection-end-line="109" selection-end-column="27" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/tables/chauffeurs-table.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3605601" vertical-offset="558" max-vertical-offset="1581">
+          <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
+          <folding>
+            <element signature="e#2101#2120#0#HTML" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/tables/taxi-table.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.041923553" vertical-offset="51" max-vertical-offset="1275">
+        <state vertical-scroll-proportion="0.03908046" vertical-offset="51" max-vertical-offset="1275">
           <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/nav-admin.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43333334" vertical-offset="1068" max-vertical-offset="2363">
+          <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
           <folding />
         </state>
       </provider>

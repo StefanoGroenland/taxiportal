@@ -85,7 +85,8 @@
                                         </ul>
 
  	                                </li>
- 	                                <li class="dropdown dropdown-fw  @if(\Request::route()->getName() == 'opmerkingen') active open selected @endif">
+ 	                                <li class="dropdown dropdown-fw  @if(\Request::route()->getName() == 'opmerkingen' ||
+ 	                                                                      \Request::route()->getName() == 'opmerkingwijzigen' ) active open selected @endif">
  	                                    <a href="/opmerkingen" class="text-uppercase">
  	                                        <i class="fa fa-comments-o"></i> Opmerkingen
  	                                    </a>
