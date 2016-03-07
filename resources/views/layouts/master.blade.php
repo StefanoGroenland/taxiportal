@@ -120,27 +120,28 @@
         <script src="{{URL::asset('../assets/js/datatables/datatables.bootstrap.js')}}" type="text/javascript"></script>
 
 
-{{-- TODO uncomment for production --}}
-       {{--<script type="text/javascript">--}}
 
-       {{--$('table').dataTable( {--}}
-                {{--"order": [[ 0, "desc" ]],--}}
-                           {{--"oLanguage" : {--}}
-                               {{--"sInfo" : "Toon _START_ tot _END_ van _TOTAL_ rijen" ,--}}
-                               {{--"sInfoEmpty" : "" ,--}}
-                               {{--"sInfoEmptyTable" : "Geen resultaten gevonden" ,--}}
-                               {{--"sInfoFiltered" : "(Gezocht in _MAX_ rijen)" ,--}}
-                               {{--"sZeroRecords" : "Geen resultaten gevonden",--}}
-                               {{--"sLengthMenu" : "Toon _MENU_ rijen",--}}
-                               {{--"sSearch" : "Zoek : ",--}}
-                                   {{--"oPaginate" : {--}}
-                                       {{--"sNext" : "Volgende",--}}
-                                       {{--"sPrevious" : "Vorige"--}}
-                                   {{--}--}}
-                           {{--}--}}
-                           {{--});--}}
+       <script type="text/javascript">
 
-       {{--</script>--}}
+       $('table').dataTable( {
+                "order": [[ 0, "desc" ]],
+                           "oLanguage" : {
+                               "sInfo" : "Toon _START_ tot _END_ van _TOTAL_ rijen" ,
+                               "sInfoEmpty" : "" ,
+                               "sInfoEmptyTable" : "Geen resultaten gevonden" ,
+                               "sInfoFiltered" : "(Gezocht in _MAX_ rijen)" ,
+                               "sZeroRecords" : "Geen resultaten gevonden",
+                               "sLengthMenu" : "Toon _MENU_ rijen",
+                               "sSearch" : "Zoek : ",
+                                   "oPaginate" : {
+                                       "sNext" : "Volgende",
+                                       "sPrevious" : "Vorige"
+                                   }
+                           }
+                           });
+
+       </script>
+       {{-- TODO uncomment for production --}}
        {{--<script type="text/javascript">--}}
 
         {{--myFunction();--}}
