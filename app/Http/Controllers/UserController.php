@@ -28,6 +28,7 @@ class UserController extends Controller
      * Makes the index view.
      */
     public function showIndex(){
+        $cars = Taxi::with('driver')->where('in_shift',1)->where('last_latitude','!=','')->where('last_longtitude','!=','')->get();
         $today = date('Y-m-d');
         $routeCount = 0;
         $countCars = count(Taxi::where('in_shift',1)->get());
@@ -40,7 +41,7 @@ class UserController extends Controller
         $countOpenRoutes = count(\App\Route::where('processed',0)->get());
         $countComments = count(Comment::where('approved',0)->get());
 
-        return View::make('/index',compact('routeCount','countCars','countOpenRoutes','countComments'));
+        return View::make('/index',compact('routeCount','countCars','countOpenRoutes','countComments','cars'));
     }
 
     /**
