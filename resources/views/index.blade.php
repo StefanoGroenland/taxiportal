@@ -120,27 +120,52 @@
             var infoWindow = new google.maps.InfoWindow(), marker, i;
 
             // Loop through our array of markers & place each one on the map
-            for( i = 0; i < markers.length; i++ ) {
-                var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+            {{-- */$i = 0;/* --}}
+            @foreach($cars as $taxi)
+
+                var position = new google.maps.LatLng(markers['{{$i}}'][1], markers['{{$i}}'][2]);
                 bounds.extend(position);
                 marker = new google.maps.Marker({
                     position: position,
                     map: map,
                     icon: 'https://cdn3.iconfinder.com/data/icons/mapicons/icons/taxi.png',
-                    title: markers[i][0]
+                    title: markers['{{$i}}'][0]
                 });
-
-                // Allow each marker to have an info window
+                 // Allow each marker to have an info window
                 google.maps.event.addListener(marker, 'click', (function(marker, i) {
                     return function() {
-                        infoWindow.setContent(infoWindowContent[i][0]);
+                        infoWindow.setContent(infoWindowContent['{{$i}}'][0]);
                         infoWindow.open(map, marker);
                     }
                 })(marker, i));
 
                 // Automatically center the map fitting all markers on the screen
                 map.fitBounds(bounds);
-            }
+                {{-- */$i++;/* --}}
+            @endforeach
+
+//            for( i = 0; i < markers.length; i++ ) {
+//                var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+//                bounds.extend(position);
+//                marker = new google.maps.Marker({
+//                    position: position,
+//                    map: map,
+//                    icon: 'https://cdn3.iconfinder.com/data/icons/mapicons/icons/taxi.png',
+//                    title: markers[i][0]
+//                });
+//
+//                // Allow each marker to have an info window
+//                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+//                    return function() {
+//                        infoWindow.setContent(infoWindowContent[i][0]);
+//                        infoWindow.open(map, marker);
+//                    }
+//                })(marker, i));
+//
+//                // Automatically center the map fitting all markers on the screen
+//                map.fitBounds(bounds);
+//            }
+
 
             // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
             var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
