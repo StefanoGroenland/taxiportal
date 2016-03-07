@@ -250,7 +250,7 @@ color:#4b5761
 }
 .page-header .navbar .navbar-nav>li:hover>a {
 	color: #fff;
-	background: #009dc7
+	/*background: #000000;*/
 }
 .page-header .navbar .navbar-nav>li .more-dropdown-sub .dropdown-menu>li.active>a, .page-header .navbar .navbar-nav>li .more-dropdown-sub .dropdown-menu>li>a:hover, .page-header .navbar .navbar-nav>li.more-dropdown .dropdown-menu>li.active>a, .page-header .navbar .navbar-nav>li.more-dropdown .dropdown-menu>li>a:hover {
 	background: #f1f1f1
@@ -288,7 +288,7 @@ color:#4b5761
 }
 .page-header .navbar .navbar-nav .dropdown-menu>li>a:focus, .page-header .navbar .navbar-nav .dropdown-menu>li>a:hover {
 	background: inherit;
-	color: #009dc7
+	color: #000000;
 }
 .page-header .navbar .navbar-nav .dropdown-menu>li>a:focus>i, .page-header .navbar .navbar-nav .dropdown-menu>li>a:hover>i {
 	color: #009dc7

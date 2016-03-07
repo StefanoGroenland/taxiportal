@@ -5,7 +5,7 @@
 	<div class="page-content">
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                         <a href="/taxioverzicht">
+                         <a href="/taxilocatie">
                             <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
                                 <h4 class="widget-thumb-heading">Aantal taxi's</h4>
                                 <div class="widget-thumb-wrap">
@@ -84,6 +84,16 @@
         });
 
         function initialize() {
+            var pinColor = "FFFC00";
+            var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+                new google.maps.Size(21, 34),
+                new google.maps.Point(0,0),
+                new google.maps.Point(10, 34));
+            var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+                new google.maps.Size(40, 37),
+                new google.maps.Point(0, 0),
+                new google.maps.Point(12, 35));
+
             var map;
             var bounds = new google.maps.LatLngBounds();
             var mapOptions = {
@@ -126,6 +136,7 @@
                 marker = new google.maps.Marker({
                     position: position,
                     map: map,
+                    icon: 'https://cdn3.iconfinder.com/data/icons/mapicons/icons/taxi.png',
                     title: markers[i][0]
                 });
 

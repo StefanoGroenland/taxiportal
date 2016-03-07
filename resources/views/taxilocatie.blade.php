@@ -36,6 +36,17 @@
 });
 
 function initialize() {
+
+    var pinColor = "FFFC00";
+    var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+        new google.maps.Size(21, 34),
+        new google.maps.Point(0,0),
+        new google.maps.Point(10, 34));
+    var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+        new google.maps.Size(40, 37),
+        new google.maps.Point(0, 0),
+        new google.maps.Point(12, 35));
+
     var map;
     var bounds = new google.maps.LatLngBounds();
     var mapOptions = {
@@ -78,6 +89,7 @@ function initialize() {
         marker = new google.maps.Marker({
             position: position,
             map: map,
+            icon: 'https://cdn3.iconfinder.com/data/icons/mapicons/icons/firstaid.png',
             title: markers[i][0]
         });
         

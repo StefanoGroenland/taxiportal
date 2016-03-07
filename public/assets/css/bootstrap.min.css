@@ -2915,7 +2915,7 @@ caption {
 .table>thead>tr.active>th,
 .table>thead>tr>td.active,
 .table>thead>tr>th.active {
-    background-color: #eef1f5
+    background-color: #EEEEEE
 }
 
 table col[class*=col-] {
