@@ -33,11 +33,11 @@
                          </a>
                         </div>
                          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                         <a href="/ritten">
+                         <a href="/ritten/openstaand">
                             <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
                                 <h4 class="widget-thumb-heading">Openstaande ritten</h4>
                                 <div class="widget-thumb-wrap">
-                                    <i class="widget-thumb-icon bg-green fa fa-folder-open-o"></i>
+                                    <i class="widget-thumb-icon bg-blue fa fa-calendar-plus-o"></i>
                                     <div class="widget-thumb-body">
                                         <span class="widget-thumb-subtitle">Nog te koppelen</span>
                                         <span class="widget-thumb-body-stat" data-counter="counterup" data-value="{{$countOpenRoutes}}">0</span>
@@ -51,7 +51,7 @@
                             <div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
                                 <h4 class="widget-thumb-heading">Opmerkingen</h4>
                                 <div class="widget-thumb-wrap">
-                                    <i class="widget-thumb-icon bg-blue-chambray fa fa-comments-o"></i>
+                                    <i class="widget-thumb-icon bg-green-turquoise fa fa-comments-o"></i>
                                     <div class="widget-thumb-body">
                                         <span class="widget-thumb-subtitle">Actie vereist op</span>
                                         <span class="widget-thumb-body-stat" data-counter="counterup" data-value="{{$countComments}}">0</span>

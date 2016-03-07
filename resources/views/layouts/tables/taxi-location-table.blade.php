@@ -9,7 +9,7 @@
         </thead>
         <tbody>
         @foreach($taxis as $taxi)
-        
+
                 <tr>
                     <td><strong>{{$taxi->license_plate}}</strong></td>
                     <td>{{$taxi->car_brand}}</td>

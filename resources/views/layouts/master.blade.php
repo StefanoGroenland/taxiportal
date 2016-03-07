@@ -120,50 +120,52 @@
         <script src="{{URL::asset('../assets/js/datatables/datatables.bootstrap.js')}}" type="text/javascript"></script>
 
 
+{{-- TODO uncomment for production --}}
+       {{--<script type="text/javascript">--}}
 
-       <script type="text/javascript">
+       {{--$('table').dataTable( {--}}
+                {{--"order": [[ 0, "desc" ]],--}}
+                           {{--"oLanguage" : {--}}
+                               {{--"sInfo" : "Toon _START_ tot _END_ van _TOTAL_ rijen" ,--}}
+                               {{--"sInfoEmpty" : "" ,--}}
+                               {{--"sInfoEmptyTable" : "Geen resultaten gevonden" ,--}}
+                               {{--"sInfoFiltered" : "(Gezocht in _MAX_ rijen)" ,--}}
+                               {{--"sZeroRecords" : "Geen resultaten gevonden",--}}
+                               {{--"sLengthMenu" : "Toon _MENU_ rijen",--}}
+                               {{--"sSearch" : "Zoek : ",--}}
+                                   {{--"oPaginate" : {--}}
+                                       {{--"sNext" : "Volgende",--}}
+                                       {{--"sPrevious" : "Vorige"--}}
+                                   {{--}--}}
+                           {{--}--}}
+                           {{--});--}}
 
-       $('table').dataTable( {
-                "order": [[ 0, "desc" ]],
-                           "oLanguage" : {
-                               "sInfo" : "Toon _START_ tot _END_ van _TOTAL_ rijen" ,
-                               "sInfoEmpty" : "" ,
-                               "sInfoEmptyTable" : "Geen resultaten gevonden" ,
-                               "sInfoFiltered" : "(Gezocht in _MAX_ rijen)" ,
-                               "sZeroRecords" : "Geen resultaten gevonden",
-                               "sLengthMenu" : "Toon _MENU_ rijen",
-                               "sSearch" : "Zoek : ",
-                                   "oPaginate" : {
-                                       "sNext" : "Volgende",
-                                       "sPrevious" : "Vorige"
-                                   }
-                           }
-                           });
+       {{--</script>--}}
+       {{--<script type="text/javascript">--}}
 
-       </script>
-       <script type="text/javascript">
+        {{--myFunction();--}}
+       {{--function myFunction() {--}}
+       {{--$.get('http://taxiportaal.dev/api/v1/signalcheck', function(data){--}}
+                   {{--}).done(function() {--}}
+                   	{{--console.log("signal check done")--}}
+                   {{--});--}}
 
-        myFunction();
-       function myFunction() {
-       $.get('http://taxiportaal.dev/api/v1/signalcheck', function(data){
-                   }).done(function() {
-                   	console.log("signal check done")
-                   });
+       {{--$.get('http://taxiportaal.dev/api/v1/emergencies', function(data){--}}
+              	{{--var sos = jQuery.parseJSON(data);--}}
+              	{{--if(sos.length > 0){--}}
+              	    {{--$('#myModel').modal('show');--}}
+              	{{--}--}}
 
-       $.get('http://taxiportaal.dev/api/v1/emergencies', function(data){
-              	var sos = jQuery.parseJSON(data);
-              	if(sos.length > 0){
-              	    $('#myModel').modal('show');
-              	}
-
-              }).done(function() {
-              	console.log("emergency check done");
-              });
+              {{--}).done(function() {--}}
+              	{{--console.log("emergency check done");--}}
+              {{--});--}}
 
 
-       }setInterval(function(){myFunction()}, 300000);
+       {{--}setInterval(function(){myFunction()}, 300000);--}}
 
-       </script>
+       {{--</script>--}}
+
+
 	    @yield('scripts')       
 </body>
 
