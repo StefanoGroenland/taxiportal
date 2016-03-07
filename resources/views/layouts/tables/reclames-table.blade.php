@@ -11,7 +11,7 @@
                  <tbody>
                      @foreach($ads as $ad)
                      {{-- */$locations = '';/* --}}
-                         <tr>
+                         <tr data-href="/reclamewijzigen/{{$ad->id}}">
                              <td>{{$ad->id}}</td>
                              <td>{{$ad->link}}</td>
                              <td>

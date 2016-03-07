@@ -10,7 +10,7 @@
       <tbody>
          @foreach($comments as $comment)
             @if($comment && $comment->driver)
-                <tr>
+                <tr data-href="/opmerkingwijzigen/{{$comment->id}}">
                     <td>{{$comment->driver->taxi->license_plate}}</td>
                     <td>{{$comment->driver->user->firstname .' '. $comment->driver->user->surname .' '. $comment->driver->user->lastname}}</td>
                     <td>
@@ -31,9 +31,10 @@
       </tbody>
   </table>
 
-<a class="btn btn-info collapsed" role="button" data-toggle="collapse" href="#validated" aria-expanded="false" aria-controls="collapseValidated">
+<a class="btn btn-info collapsed margin-bottom-40" role="button" data-toggle="collapse" href="#validated" aria-expanded="false" aria-controls="collapseValidated">
   <i class="fa fa-archive"> </i> Geaccepteerde feedback bekijken
 </a>
+
 
 <div class="collapse" id="validated" >
   <table class="table table-hover" >
@@ -48,7 +49,7 @@
       <tbody>
         @foreach($commentsApproved as $comment)
             @if($comment && $comment->driver)
-                <tr>
+                <tr data-href="/opmerkingwijzigen/{{$comment->id}}">
                     <td>{{$comment->driver->taxi->license_plate}}</td>
                     <td>{{$comment->driver->user->firstname .' '. $comment->driver->user->surname .' '. $comment->driver->user->lastname}}</td>
                     <td>

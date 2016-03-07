@@ -13,7 +13,7 @@
         <tbody>
         @foreach($drivers as $driver)
             @if($driver && $driver->user && $driver->comment)
-                    <tr>
+                    <tr data-href="/chauffeurwijzigen/{{$driver->user->id}}">
                         <td>{{$driver->user->firstname .' '. $driver->user->surname .' '. $driver->user->lastname}}</td>
                         <td>
                         @if($driver->taxi)

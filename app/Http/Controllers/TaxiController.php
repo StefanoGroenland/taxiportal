@@ -19,8 +19,8 @@ class TaxiController extends Controller
      * Makes the taxi location view and passes a variable with it.
      */
     public function showTaxiLocation(){
-        $cars = Taxi::with('driver')->where('last_latitude','!=','')->orWhere('last_longtitude','!=','')->get();
-        $taxis = Taxi::with('driver')->get();
+        $cars = Taxi::with('driver')->where('in_shift',1)->where('last_latitude','!=','')->where('last_longtitude','!=','')->get();
+        $taxis = Taxi::with('driver')->where('in_shift',1)->get();
 		return View::make('/taxilocatie', compact('taxis','cars'));
 	}
 

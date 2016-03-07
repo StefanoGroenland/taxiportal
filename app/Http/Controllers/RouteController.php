@@ -13,9 +13,20 @@ use Illuminate\Support\Facades\Validator;
 class RouteController extends Controller
 {
 	public function showRoutes(){
-        $routes = Route2::with('taxi')->get();
+        $routes = Route2::with('taxi')->where('processed',1)->get();
 		return View::make('/ritten', compact('routes'));
 	}
+
+    /**
+     * @author Stefano Groenland
+     * @return mixed
+     *
+     * Passes all routes with a value of processed equal to 0 along when making the view.
+     */
+    public function showRoutesOpen(){
+        $routes = Route2::with('taxi')->where('processed',0)->get();
+        return View::make('/ritten-openstaand', compact('routes'));
+    }
 	public function showRoutesAdd(){
 		$cars = Taxi::where('driver_id','>','0')->where('in_shift','=','1')->get();
         $carCount = count($cars);

@@ -1,4 +1,4 @@
-<table class="table table-hover" >
+<table class="table table-hover">
         <thead>
         <th><small> Kenteken</small></th>
         <th><i class="fa fa-taxi" ></i><small> Merk</small></th>
@@ -9,8 +9,7 @@
         </thead>
         <tbody>
         @foreach($taxis as $taxi)
-        
-                <tr>
+                <tr data-href="/taxiwijzigen/{{$taxi->id}}">
                     <td><strong>{{$taxi->license_plate}}</strong></td>
                     <td>{{$taxi->car_brand}}</td>
                     <td>{{$taxi->car_model}}</td>

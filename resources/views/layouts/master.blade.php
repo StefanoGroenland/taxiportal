@@ -64,7 +64,7 @@
                                Mocht een taxi geen locatie verstuurd te hebben in de afgelopen 20 minuten komt deze hier ook te staan.
                             </p>
 
-                            <div class="table-responsive">
+                            <div class="">
                                 <table class="table table-bordered" >
                                     <thead>
                                         <th>Kenteken</th>
@@ -77,7 +77,11 @@
                                             <tr>
                                                 <td>{{$sos->taxi->license_plate}}</td>
                                                 <td>{{$sos->taxi->driver->user->firstname}}</td>
+                                                @if($sos->taxi->last_seen != '0000-00-00 00:00:00')
                                                 <td>{{date('d-m-Y H:i:s',strtotime($sos->taxi->last_seen))}}</td>
+                                                @else
+                                                <td>Geen data</td>
+                                                @endif
                                                 <td>{{$sos->created_at->format('d-m-Y H:i:s')}}</td>
                                             </tr>
                                         @endif
@@ -137,29 +141,43 @@
                            });
 
        </script>
-       <script type="text/javascript">
+       {{-- TODO uncomment for production --}}
+       {{--<script type="text/javascript">--}}
 
-        myFunction();
-       function myFunction() {
-       $.get('http://taxiportaal.dev/api/v1/signalcheck', function(data){
-                   }).done(function() {
-                   	console.log("signal check done")
-                   });
+        {{--myFunction();--}}
+       {{--function myFunction() {--}}
+       {{--$.get('http://taxiportaal.dev/api/v1/signalcheck', function(data){--}}
+                   {{--}).done(function() {--}}
+                   	{{--console.log("signal check done")--}}
+                   {{--});--}}
 
-       $.get('http://taxiportaal.dev/api/v1/emergencies', function(data){
-              	var sos = jQuery.parseJSON(data);
-              	if(sos.length > 0){
-              	    $('#myModel').modal('show');
-              	}
+       {{--$.get('http://taxiportaal.dev/api/v1/emergencies', function(data){--}}
+              	{{--var sos = jQuery.parseJSON(data);--}}
+              	{{--if(sos.length > 0){--}}
+              	    {{--$('#myModel').modal('show');--}}
+              	{{--}--}}
 
-              }).done(function() {
-              	console.log("emergency check done");
-              });
+              {{--}).done(function() {--}}
+              	{{--console.log("emergency check done");--}}
+              {{--});--}}
 
 
-       }setInterval(function(){myFunction()}, 300000);
+       {{--}setInterval(function(){myFunction()}, 300000);--}}
 
-       </script>
+       {{--</script>--}}
+        <script type="text/javascript">
+           $(document).ready(function() {
+                 $('table').on("click",'tr[data-href]',  function() {
+                    window.location.href = $(this).data('href');
+                });
+                $('.deleteButton').on("click", function(event) {
+                    var modalId = $(this).data('model-id');
+                    event.stopPropagation();
+                    $('#myModel'+modalId).modal('show');
+                });
+           });
+        </script>
+
 	    @yield('scripts')       
 </body>
 

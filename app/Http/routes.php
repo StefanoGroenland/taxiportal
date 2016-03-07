@@ -21,7 +21,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/home', array('as' => 'home', 'uses' => 'UserController@showIndex'));
         Route::get('/profiel', array('as' => 'profiel', 'uses' => 'UserController@showProfile'));
         Route::get('/profielwijzigen', array('as' => 'profielwijzigen', 'uses' => 'UserController@showProfileEdit'));
-        Route::get('/ritten', array('as' => 'ritten', 'uses' => 'RouteController@showRoutes'));
         Route::get('/opmerkingen', array('as' => 'opmerkingen', 'uses' => 'CommentController@showComment'));
         Route::put('/editProfile/{id}', 'UserController@editProfile');
         Route::put('/editPassword/{id}', 'UserController@editPassword');
@@ -58,7 +57,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/addRoute', 'RouteController@addRoute');
         Route::delete('/deleteRoute/{id}', 'RouteController@deleteRoute');
         Route::put('/editRoute/{id}', array('as' => 'editRoute', 'uses' => 'RouteController@editRoute'));
-       
+
+
+        Route::get('/ritten', array('as' => 'ritten', 'uses' => 'RouteController@showRoutes'));
+        Route::get('/ritten/openstaand', array('as' => 'rittenopenstaand', 'uses' => 'RouteController@showRoutesOpen'));
+
         Route::get('/opmerkingwijzigen/{id}', array('as' => 'opmerkingwijzigen', 'uses' => 'CommentController@showCommentEdit'));
         Route::put('/editComment/{id}', 'CommentController@editComment');
         Route::get('/toggleComment/{id}', 'CommentController@togglesStateComment');

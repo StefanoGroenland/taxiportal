@@ -71,14 +71,22 @@
  	                                    </ul>
  	                                </li>
 
- 	                                <li class="dropdown dropdown-fw  @if(\Request::route()->getName() == 'ritten' ||
+ 	                                <li class="dropdown more-dropdown  @if(\Request::route()->getName() == 'ritten' ||
                                                                          \Request::route()->getName() == 'ritwijzigen' ||
-                                                                         \Request::route()->getName() == 'rittoevoegen') active open selected @endif">
+                                                                         \Request::route()->getName() == 'rittenopenstaand' ||
+                                                                         \Request::route()->getName() == 'rittoevoegen') active selected @endif">
  	                                    <a href="/ritten" class="text-uppercase">
  	                                        <i class="fa fa-location-arrow"></i> Ritten
  	                                    </a>
+ 	                                    <ul class="dropdown-menu rit_dropdown">
+                                            <li>
+                                                <a href="/ritten/openstaand">Open ritten</a>
+                                            </li>
+                                        </ul>
+
  	                                </li>
- 	                                <li class="dropdown dropdown-fw  @if(\Request::route()->getName() == 'opmerkingen') active open selected @endif">
+ 	                                <li class="dropdown dropdown-fw  @if(\Request::route()->getName() == 'opmerkingen' ||
+ 	                                                                      \Request::route()->getName() == 'opmerkingwijzigen' ) active open selected @endif">
  	                                    <a href="/opmerkingen" class="text-uppercase">
  	                                        <i class="fa fa-comments-o"></i> Opmerkingen
  	                                    </a>
