@@ -63,7 +63,7 @@
                     </div>
                     <div class="row">
                     <div class="col-lg-12">
-                        <div id="map" style="height: 500px; width: 100%;" class="contact_maps"></div>
+                        <div id="map" style="height: 500px; width: 100%;" class="contact_maps md-shadow-z-2"></div>
                     </div>
                     </div>
                 </div>    
@@ -77,7 +77,7 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyBuzlPSNhmRIEhIl-3ZUidj3fwXfsDSw&amp;sensor=false"></script>
          <script type="text/javascript">
 
-                    jQuery(function($) {
+            jQuery(function($) {
             // Asynchronously Load the map API
             var script = document.createElement('script');
             script.src = "http://maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
