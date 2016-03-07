@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="519bf916-5f09-4b43-913d-4efc13c49b43" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/components-md.min.css" afterPath="$PROJECT_DIR$/public/assets/css/components-md.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/custom.css" afterPath="$PROJECT_DIR$/public/assets/css/custom.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/layout.min.css" afterPath="$PROJECT_DIR$/public/assets/css/layout.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/nav-admin.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/nav-admin.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/taxilocatie.blade.php" afterPath="$PROJECT_DIR$/resources/views/taxilocatie.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="898f360f-9443-42ce-bed2-6a84766c6e32" name="New changelist" comment="" />
@@ -77,8 +72,8 @@
       <file leaf-file-name="nav-admin.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/layouts/nav-admin.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.115385" vertical-offset="1221" max-vertical-offset="2550">
-              <caret line="98" column="74" selection-start-line="98" selection-start-column="74" selection-end-line="98" selection-end-column="74" />
+            <state vertical-scroll-proportion="-18.307692" vertical-offset="0" max-vertical-offset="2550">
+              <caret line="28" column="49" selection-start-line="28" selection-start-column="49" selection-end-line="28" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -97,8 +92,8 @@
       <file leaf-file-name="components-md.min.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/assets/css/components-md.min.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.42921856" vertical-offset="208126" max-vertical-offset="317815">
-              <caret line="12265" column="18" selection-start-line="12265" selection-start-column="18" selection-end-line="12265" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.08267271" vertical-offset="208126" max-vertical-offset="317832">
+              <caret line="12247" column="21" selection-start-line="12247" selection-start-column="21" selection-end-line="12248" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -117,8 +112,8 @@
       <file leaf-file-name="master.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/layouts/master.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-28.018518" vertical-offset="714" max-vertical-offset="3213">
-              <caret line="131" column="65" selection-start-line="131" selection-start-column="63" selection-end-line="131" selection-end-column="65" />
+            <state vertical-scroll-proportion="-18.574074" vertical-offset="0" max-vertical-offset="3213">
+              <caret line="59" column="30" selection-start-line="59" selection-start-column="30" selection-end-line="59" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -1455,7 +1450,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457357152148</updated>
     </task>
-    <option name="localTasksCounter" value="108" />
+    <task id="LOCAL-00108" summary="dashboard widgets hover/ navigatie aangepast dat de headers niet linken maar deze in een dropdown komen.">
+      <created>1457359975375</created>
+      <option name="number" value="00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1457359975375</updated>
+    </task>
+    <option name="localTasksCounter" value="109" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1501,7 +1502,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="commentaar wijzigen/accepteren geimplementeerd." />
     <MESSAGE value="admin beheren geimplementeerd." />
     <MESSAGE value="API functies locatie versturen en shift toggle geimplementeerd, samen met een kleine fix op de signaalcheck die toonde soms een lege table als er iets in de db was toegevoegd. dit is opgelost." />
     <MESSAGE value="result benaming gegeven zodat furkan erdoorheen kan loopen" />
@@ -1526,7 +1526,8 @@
     <MESSAGE value="table rows clickable inclusief pointer cursor. die het verduidelijkt dat je op een regel kan klikken." />
     <MESSAGE value="opmerkingwijzigen triggerd nu `opmerkingen` als active aangezien dit een submenu item hiervan is :)" />
     <MESSAGE value="taxilocatie maps ook een shadow gegeven." />
-    <option name="LAST_COMMIT_MESSAGE" value="taxilocatie maps ook een shadow gegeven." />
+    <MESSAGE value="dashboard widgets hover/ navigatie aangepast dat de headers niet linken maar deze in een dropdown komen." />
+    <option name="LAST_COMMIT_MESSAGE" value="dashboard widgets hover/ navigatie aangepast dat de headers niet linken maar deze in een dropdown komen." />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.535" />
   </component>
   <component name="XDebuggerManager">
@@ -1753,14 +1754,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/css/bootstrap.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="93970" max-vertical-offset="132209">
-          <caret line="5550" column="27" selection-start-line="5550" selection-start-column="27" selection-end-line="5550" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/chauffeurwijzigen.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-20.26923" vertical-offset="2091" max-vertical-offset="4250">
@@ -1859,14 +1852,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/master.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-28.018518" vertical-offset="714" max-vertical-offset="3213">
-          <caret line="131" column="65" selection-start-line="131" selection-start-column="63" selection-end-line="131" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/css/custom.min.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="896">
@@ -1879,14 +1864,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-16.346153" vertical-offset="0" max-vertical-offset="595">
           <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/nav-admin.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.115385" vertical-offset="1221" max-vertical-offset="2550">
-          <caret line="98" column="74" selection-start-line="98" selection-start-column="74" selection-end-line="98" selection-end-column="74" />
           <folding />
         </state>
       </provider>
@@ -1907,10 +1884,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/css/custom.css">
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/master.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="719" max-vertical-offset="2431">
-          <caret line="66" column="18" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
+        <state vertical-scroll-proportion="-18.574074" vertical-offset="0" max-vertical-offset="3213">
+          <caret line="59" column="30" selection-start-line="59" selection-start-column="30" selection-end-line="59" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/css/bootstrap.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37209302" vertical-offset="75313" max-vertical-offset="132209">
+          <caret line="4449" column="14" selection-start-line="4449" selection-start-column="14" selection-end-line="4449" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/nav-admin.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.307692" vertical-offset="0" max-vertical-offset="2550">
+          <caret line="28" column="49" selection-start-line="28" selection-start-column="49" selection-end-line="28" selection-end-column="49" />
           <folding />
         </state>
       </provider>
@@ -1923,10 +1916,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/css/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="719" max-vertical-offset="2431">
+          <caret line="66" column="18" selection-start-line="66" selection-start-column="18" selection-end-line="66" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/css/components-md.min.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42921856" vertical-offset="208126" max-vertical-offset="317815">
-          <caret line="12265" column="18" selection-start-line="12265" selection-start-column="18" selection-end-line="12265" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.08267271" vertical-offset="208126" max-vertical-offset="317832">
+          <caret line="12247" column="21" selection-start-line="12247" selection-start-column="21" selection-end-line="12248" selection-end-column="19" />
           <folding />
         </state>
       </provider>

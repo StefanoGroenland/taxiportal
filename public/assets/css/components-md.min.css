@@ -12265,6 +12265,7 @@ body[ng-controller] .modal {
 .widget-thumb:hover {
     padding: 20px;
     box-shadow:0px 6px 8px 0px rgba(0,0,0,0.3);
+    transition: box-shadow 1s;
 }
 .widget-thumb.bordered {
 	border: 1px solid #e7ecf1
