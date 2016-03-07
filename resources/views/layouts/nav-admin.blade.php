@@ -61,12 +61,15 @@
  	                                                                      \Request::route()->getName() == 'taxioverzicht' ||
  	                                                                      \Request::route()->getName() == 'taxiwijzigen' ||
  	                                                                      \Request::route()->getName() == 'taxitoevoegen') active selected @endif" >
- 	                                    <a href="/taxilocatie" class="text-uppercase">
+ 	                                    <a class="text-uppercase">
  	                                        <i class="fa fa-briefcase" ></i> Taxi's
  	                                    </a>
  	                                    <ul class="dropdown-menu taxi_dropdown">
  	                                        <li>
- 	                                            <a href="/taxioverzicht">Overzicht</a>
+                                                <a href="/taxilocatie">Taxi's</a>
+                                            </li>
+ 	                                        <li>
+ 	                                            <a href="/taxioverzicht">Taxi overzicht</a>
  	                                        </li>
  	                                    </ul>
  	                                </li>
@@ -80,16 +83,24 @@
  	                                    </a>
  	                                    <ul class="dropdown-menu rit_dropdown">
                                             <li>
+                                                <a href="/ritten">Alle ritten</a>
+                                            </li>
+                                            <li>
                                                 <a href="/ritten/openstaand">Open ritten</a>
                                             </li>
                                         </ul>
 
  	                                </li>
- 	                                <li class="dropdown dropdown-fw  @if(\Request::route()->getName() == 'opmerkingen' ||
- 	                                                                      \Request::route()->getName() == 'opmerkingwijzigen' ) active open selected @endif">
- 	                                    <a href="/opmerkingen" class="text-uppercase">
+ 	                                <li class="dropdown more-dropdown  @if(\Request::route()->getName() == 'opmerkingen' ||
+ 	                                                                      \Request::route()->getName() == 'opmerkingwijzigen' ) active selected @endif">
+ 	                                    <a class="text-uppercase">
  	                                        <i class="fa fa-comments-o"></i> Opmerkingen
  	                                    </a>
+ 	                                    <ul class="dropdown-menu opmerkingen_dropdown">
+                                            <li>
+                                                <a href="/opmerkingen">Alle opmerkingen</a>
+                                            </li>
+                                        </ul>
  	                                </li>
  	                                <li class="dropdown more-dropdown @if(\Request::route()->getName() == 'reclames' ||
  	                                                                      \Request::route()->getName() == 'reclametoevoegen' ||

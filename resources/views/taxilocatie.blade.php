@@ -25,7 +25,7 @@
                 </div>
 @endsection
 @section('scripts')
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyBuzlPSNhmRIEhIl-3ZUidj3fwXfsDSw&amp;sensor=false"></script>
+
  <script type="text/javascript"> 
             
             jQuery(function($) {

@@ -12262,6 +12262,10 @@ body[ng-controller] .modal {
 	padding: 20px;
 	border-radius: 2px
 }
+.widget-thumb:hover {
+    padding: 20px;
+    box-shadow:0px 6px 8px 0px rgba(0,0,0,0.3);
+}
 .widget-thumb.bordered {
 	border: 1px solid #e7ecf1
 }

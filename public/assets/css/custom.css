@@ -75,6 +75,9 @@ a{
 .rit_dropdown{
     min-width: 150px !important;
 }
+.opmerkingen_dropdown{
+    min-width: 205px !important;
+}
 .page-header .navbar .navbar-nav li.selected>a {
     background-color: #fff !important;
 	color: #000 !important;
