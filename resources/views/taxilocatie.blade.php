@@ -17,7 +17,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6 "> 
-                                    <div id="map" style="height: 500px; width: 100%;" class="contact_maps"></div>
+                                    <div id="map" style="height: 500px; width: 100%;" class="contact_maps md-shadow-z-2"></div>
                                 </div>
                             </div>
                         </div>

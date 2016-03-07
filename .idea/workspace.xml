@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="519bf916-5f09-4b43-913d-4efc13c49b43" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/nav-admin.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/nav-admin.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/tables/taxi-location-table.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/tables/taxi-location-table.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/taxilocatie.blade.php" afterPath="$PROJECT_DIR$/resources/views/taxilocatie.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="898f360f-9443-42ce-bed2-6a84766c6e32" name="New changelist" comment="" />
@@ -29,11 +30,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="nav-admin.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/layouts/nav-admin.blade.php">
+      <file leaf-file-name="rittoevoegen.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/rittoevoegen.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.43333334" vertical-offset="1068" max-vertical-offset="2363">
-              <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+            <state vertical-scroll-proportion="-13.346154" vertical-offset="3376" max-vertical-offset="4233">
+              <caret line="219" column="58" selection-start-line="219" selection-start-column="58" selection-end-line="219" selection-end-column="58" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="taxilocatie.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/taxilocatie.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="1887">
+              <caret line="14" column="64" selection-start-line="14" selection-start-column="64" selection-end-line="14" selection-end-column="64" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="taxi-location-table.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/layouts/tables/taxi-location-table.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.49591598" vertical-offset="0" max-vertical-offset="857">
+              <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -86,7 +107,6 @@
         <option value="$PROJECT_DIR$/resources/views/ritten-openstaand.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/RouteController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TaxiController.php" />
-        <option value="$PROJECT_DIR$/resources/views/taxilocatie.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
         <option value="$PROJECT_DIR$/public/assets/css/bootstrap.min.css" />
         <option value="$PROJECT_DIR$/resources/views/index.blade.php" />
@@ -100,10 +120,11 @@
         <option value="$PROJECT_DIR$/resources/views/layouts/tables/ritten-openstaand-table.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/tables/ritten-table.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/tables/tablet-table.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/tables/taxi-location-table.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/tables/taxi-table.blade.php" />
         <option value="$PROJECT_DIR$/public/assets/css/custom.css" />
         <option value="$PROJECT_DIR$/resources/views/layouts/nav-admin.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/taxilocatie.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/tables/taxi-location-table.blade.php" />
       </list>
     </option>
   </component>
@@ -1358,7 +1379,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457355262023</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="opmerkingwijzigen triggerd nu `opmerkingen` als active aangezien dit een submenu item hiervan is :)">
+      <created>1457355388110</created>
+      <option name="number" value="00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1457355388110</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1404,7 +1431,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="small fix noodsignaal table indien taxi niet meer gekoppeld is aan een user komen er errors." />
     <MESSAGE value="Nieuws toevoegen,wijzigen en verwijderen toegevoegd." />
     <MESSAGE value="commentaar wijzigen/accepteren geimplementeerd." />
     <MESSAGE value="admin beheren geimplementeerd." />
@@ -1429,7 +1455,8 @@
     <MESSAGE value="pagination styling aangepast van Datatables.&#10;" />
     <MESSAGE value="maps div een shadow gegeven." />
     <MESSAGE value="table rows clickable inclusief pointer cursor. die het verduidelijkt dat je op een regel kan klikken." />
-    <option name="LAST_COMMIT_MESSAGE" value="table rows clickable inclusief pointer cursor. die het verduidelijkt dat je op een regel kan klikken." />
+    <MESSAGE value="opmerkingwijzigen triggerd nu `opmerkingen` als active aangezien dit een submenu item hiervan is :)" />
+    <option name="LAST_COMMIT_MESSAGE" value="opmerkingwijzigen triggerd nu `opmerkingen` als active aangezien dit een submenu item hiervan is :)" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.535" />
   </component>
   <component name="XDebuggerManager">
@@ -1439,13 +1466,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/html5chars.ent">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34356552" vertical-offset="168" max-vertical-offset="34952">
-          <caret line="27" column="10" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/medewerkerwijzigen.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.49591598" vertical-offset="306" max-vertical-offset="3638">
@@ -1700,14 +1720,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/taxilocatie.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19836639" vertical-offset="0" max-vertical-offset="1887">
-          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/chauffeurwijzigen.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-20.26923" vertical-offset="2091" max-vertical-offset="4250">
@@ -1780,14 +1792,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/tables/taxi-location-table.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="595">
-          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/master.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.8461537" vertical-offset="1846" max-vertical-offset="3213">
@@ -1824,8 +1828,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/nav-admin.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43333334" vertical-offset="1068" max-vertical-offset="2363">
-          <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.5505747" vertical-offset="813" max-vertical-offset="2363">
+          <caret line="76" column="35" selection-start-line="76" selection-start-column="35" selection-end-line="76" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/rittoevoegen.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.346154" vertical-offset="3376" max-vertical-offset="4233">
+          <caret line="219" column="58" selection-start-line="219" selection-start-column="58" selection-end-line="219" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/taxilocatie.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="1887">
+          <caret line="14" column="64" selection-start-line="14" selection-start-column="64" selection-end-line="14" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/tables/taxi-location-table.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49591598" vertical-offset="0" max-vertical-offset="857">
+          <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
           <folding />
         </state>
       </provider>
