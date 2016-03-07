@@ -72,6 +72,9 @@ a{
 .taxi_dropdown{
 	    min-width: 147px !important;
 }
+.rit_dropdown{
+    min-width: 150px !important;
+}
 .page-header .navbar .navbar-nav li.selected>a {
     background-color: #fff !important;
 	color: #000 !important;

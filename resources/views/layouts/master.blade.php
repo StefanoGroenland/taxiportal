@@ -64,7 +64,7 @@
                                Mocht een taxi geen locatie verstuurd te hebben in de afgelopen 20 minuten komt deze hier ook te staan.
                             </p>
 
-                            <div class="table-responsive">
+                            <div class="">
                                 <table class="table table-bordered" >
                                     <thead>
                                         <th>Kenteken</th>
@@ -77,7 +77,11 @@
                                             <tr>
                                                 <td>{{$sos->taxi->license_plate}}</td>
                                                 <td>{{$sos->taxi->driver->user->firstname}}</td>
+                                                @if($sos->taxi->last_seen != '0000-00-00 00:00:00')
                                                 <td>{{date('d-m-Y H:i:s',strtotime($sos->taxi->last_seen))}}</td>
+                                                @else
+                                                <td>Geen data</td>
+                                                @endif
                                                 <td>{{$sos->created_at->format('d-m-Y H:i:s')}}</td>
                                             </tr>
                                         @endif

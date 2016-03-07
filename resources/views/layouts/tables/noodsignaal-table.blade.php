@@ -29,7 +29,7 @@
       </tbody>
   </table>
 
-<a class="btn btn-info collapsed" role="button" data-toggle="collapse" href="#validated" aria-expanded="false" aria-controls="collapseValidated">
+<a class="btn btn-info collapsed margin-bottom-40" role="button" data-toggle="collapse" href="#validated" aria-expanded="false" aria-controls="collapseValidated">
   <i class="fa fa-archive"> </i> Verwerkte noodsignalen bekijken
 </a>
 
