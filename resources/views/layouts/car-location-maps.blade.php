@@ -138,7 +138,7 @@
                             marker = new google.maps.Marker({
                                 position: position,
                                 map: map,
-                                title: markers[i][0]
+                                title: invisible[i][0]
                             });
                     marker.setVisible(false);
                             // Allow each marker to have an info window
