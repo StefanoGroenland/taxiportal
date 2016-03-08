@@ -1,4 +1,4 @@
- <table class="table table-hover" >
+ <table class="table table-hover">
          <thead>
              <th>Kenteken</th>
              <th>Chauffeur</th>
@@ -6,7 +6,6 @@
              <th>Start locatie</th>
              <th>Eind locatie</th>
              <th>Laatst gezien</th>
-                 <th></th>
          </thead>
          <tbody>
              @foreach($routes as $route)

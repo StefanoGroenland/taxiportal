@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Taxibase;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -367,27 +368,62 @@ class ApiOneController extends Controller
         return json_encode(self::$error);
     }
 
+    /**
+     * @author Stefano Groenland
+     * @api
+     * @version 1.0
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * Uses a ton of inputs to define the return route and request it.
+     * It will create a row in the database and the admins need to assign them to a driver,
+     * if possible.
+     */
     public function requestReturnRide()
     {
         $key = Input::get('key');
         $apikey = self::$apikey;
         if ($key == $apikey) {
             RouteR::create([
-                'start_city'   => Input::get('start_city'),
-                'start_zip'    => Input::get('start_zip'),
-                'start_number' => Input::get('start_number'),
-                'start_street' => Input::get('start_street'),
+                'start_city'        => Input::get('start_city'),
+                'start_zip'         => Input::get('start_zip'),
+                'start_number'      => Input::get('start_number'),
+                'start_street'      => Input::get('start_street'),
 
-                'end_city'     => Input::get('end_city'),
-                'end_zip'      => Input::get('end_zip'),
-                'end_number'   => Input::get('end_number'),
-                'end_street'   => Input::get('end_street'),
+                'end_city'          => Input::get('end_city'),
+                'end_zip'           => Input::get('end_zip'),
+                'end_number'        => Input::get('end_number'),
+                'end_street'        => Input::get('end_street'),
 
-                'pickup_time'  => Input::get('pickup_time'),
-                'phone_customer' => Input::get('phone_customer'),
-                'email_customer' => Input::get('email_customer'),
+                'pickup_time'       => Input::get('pickup_time'),
+                'phone_customer'    => Input::get('phone_customer'),
+                'email_customer'    => Input::get('email_customer'),
             ]);
             return json_encode(['success' => 'return_ride_request_made']);
+        }
+        return json_encode(self::$error);
+    }
+
+    /**
+     * @author Stefano Groenland
+     * @api
+     * @version 1.0
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * Uses the given inputs to create a new location in the DB for the google maps base markers.
+     */
+    public function postBase(){
+        $key = Input::get('key');
+        $lat = Input::get('latitude');
+        $long= Input::get('longtitude');
+        $name= Input::get('base_name');
+        $apikey = self::$apikey;
+        if($key == $apikey){
+            Taxibase::create([
+                'latitude'      => $lat,
+                'longtitude'    => $long,
+                'base_name'     => $name
+            ]);
+            return json_encode(['success' => 'new_base_confirmed']);
         }
         return json_encode(self::$error);
     }

@@ -114,3 +114,4 @@ Route::get('/api/v1/emergencies'                    , 'ApiOneController@getSOS')
 Route::post('/api/v1/sendlocation'                  , 'ApiOneController@sendLocation');
 Route::post('/api/v1/toggleshift'                   , 'ApiOneController@toggleShift');
 Route::post('/api/v1/returnrequest'                 , 'ApiOneController@requestReturnRide');
+Route::post('/api/v1/postbase'                      , 'ApiOneController@postBase');
