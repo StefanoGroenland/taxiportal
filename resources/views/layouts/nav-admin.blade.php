@@ -78,7 +78,7 @@
                                                                          \Request::route()->getName() == 'ritwijzigen' ||
                                                                          \Request::route()->getName() == 'rittenopenstaand' ||
                                                                          \Request::route()->getName() == 'rittoevoegen') active selected @endif">
- 	                                    <a href="/ritten" class="text-uppercase">
+ 	                                    <a class="text-uppercase">
  	                                        <i class="fa fa-location-arrow"></i> Ritten
  	                                    </a>
  	                                    <ul class="dropdown-menu rit_dropdown">
@@ -117,7 +117,7 @@
  	                                                                      \Request::route()->getName() == 'nieuwstoevoegen' ||
  	                                                                      \Request::route()->getName() == 'nieuwswijzigen' ||
  	                                                                      \Request::route()->getName() == 'nieuws' ) active selected @endif">
- 	                                    <a href="#" class="text-uppercase">
+ 	                                    <a class="text-uppercase">
  	                                        <i class="fa fa-briefcase" ></i> Overzichten
  	                                    </a>
  	                                    <ul class="dropdown-menu">

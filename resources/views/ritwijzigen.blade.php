@@ -34,7 +34,7 @@
                                                     <option>Niet koppelen</option>
                                                     @if($carCount > 0)
                                                         @foreach($cars as $car)
-                                                            <option @if($routes->taxi) @if($routes->taxi->id == $car->id)  selected @endif @endif value="{{$car->id}}">{{ $car->license_plate .' - '. $car->car_brand .' - '. $car->car_model .' - '. $car->car_color}}</option>
+                                                            <option  value="{{$car->id}}" @if($routes->taxi) @if($routes->taxi->id == $car->id)  selected @endif @endif >{{ $car->license_plate .' - '. $car->car_brand .' - '. $car->car_model .' - '. $car->car_color}}</option>
                                                         @endforeach
                                                     @else
                                                         <option>Geen auto's koppelbaar</option>
@@ -150,6 +150,18 @@
                                                 <i class="fa fa-envelope-o"></i>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                    <div class="form-group form-md-line-input ">
+                                        <div class="input-icon">
+                                            <select class="form-control" id="status" name="processed">
+                                                <option @if(old('processed') == 0) selected  @elseif($routes->processed == 0) selected @endif value="0">Niet geaccepteerd</option>
+                                                <option @if(old('processed') == 1) selected  @elseif($routes->processed == 1) selected @endif value="1">Geaccepteerd</option>
+                                            </select>
+                                            <label for="status">Status</label>
+                                            <i class="fa fa-tag"></i>
+                                        </div>
+                                    </div>
                                     </div>
                                </div>
                                 <div class="row">

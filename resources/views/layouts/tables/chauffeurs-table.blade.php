@@ -35,7 +35,7 @@
                                     {{-- */$rowCount += count($value->star_rating);/* --}}
                                 @endif
                             @endforeach
-                            @if($avg > 0)
+                            @if($stars > 0)
                             {{-- */$avg = $stars / $rowCount;/* --}}
                             @else
                             Geen beoordeling

@@ -55,7 +55,8 @@ class RouteController extends Controller
 			'pickup_time'       => $request['pickup_time'],
 			'phone_customer'    => $request['phone_customer'],
 			'email_customer'    => $request['email_customer'],
-			'taxi_id'			=> $request['taxi']
+			'taxi_id'			=> $request['taxi'],
+            'processed'         => 1
 		);
 		
 		//todo date format check
@@ -105,7 +106,9 @@ class RouteController extends Controller
 			'pickup_time'       => $request['pickup_time'],
 			'phone_customer'    => $request['phone_customer'],
 			'email_customer'    => $request['email_customer'],
-			'taxi_id'			=> $request['taxi']
+			'taxi_id'			=> $request['taxi'],
+            'processed'         => $request['processed']
+
         );
        
          $rules = array(
@@ -130,8 +133,20 @@ class RouteController extends Controller
         }
 
         Route2::where('id', '=', $id)->update($data);
-
         $request->session()->flash('alert-success', 'De route is gewijzigd.');
         return redirect()->route('ritten'); 
+    }
+
+    public function toggleRoute(){
+        $id = Route::current()->getParameter('id');
+
+        $msg = Route2::where('id',$id)->first();
+        if(!$msg->processed > 0){
+            $msg->where('id',$id)->update(['processed' => 1]);
+        }else{
+            $msg->where('id',$id)->update(['processed' => 0]);
+        }
+        session()->flash('alert-success', 'Rit status gewijzigd.');
+        return redirect('/ritten/openstaand');
     }
 }

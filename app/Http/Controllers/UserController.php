@@ -51,7 +51,12 @@ class UserController extends Controller
      * Makes the profile view and passes a variable of comments with it.
      */
     public function showProfile(){
+        $driver = Driver::with('user')->where('user_id',Auth::user()->id)->first();
         $comments = Comment::with('driver')->where('approved','=','1')->get();
+
+        foreach($comments as $comment){
+            $comment->where('driver_id',$driver->id)->update(['seen' => 1]);
+        }
         return View::make('/profiel', compact('comments'));
     }
 

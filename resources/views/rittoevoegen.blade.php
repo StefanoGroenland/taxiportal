@@ -24,7 +24,7 @@
                                         <div class="form-body">
                                         	<div class="row">
                                                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 "> 
-                                                    <div id="map" style="height: 400px; width: 100%;" class="contact_maps"></div>
+                                                    <div id="map" style="height: 400px; width: 100%;" class="contact_maps md-shadow-z-2"></div>
                                                     
                                                 </div>
                                                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">

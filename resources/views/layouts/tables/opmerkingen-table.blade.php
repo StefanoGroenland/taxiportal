@@ -11,7 +11,11 @@
          @foreach($comments as $comment)
             @if($comment && $comment->driver)
                 <tr data-href="/opmerkingwijzigen/{{$comment->id}}">
+                    @if($comment->taxi)
                     <td>{{$comment->driver->taxi->license_plate}}</td>
+                    @else
+                    <td>Geen taxi gekoppeld</td>
+                    @endif
                     <td>{{$comment->driver->user->firstname .' '. $comment->driver->user->surname .' '. $comment->driver->user->lastname}}</td>
                     <td>
                         @for($i = 0; $i < $comment->star_rating; $i++)

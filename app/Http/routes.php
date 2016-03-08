@@ -61,6 +61,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('/ritten', array('as' => 'ritten', 'uses' => 'RouteController@showRoutes'));
         Route::get('/ritten/openstaand', array('as' => 'rittenopenstaand', 'uses' => 'RouteController@showRoutesOpen'));
+        Route::get('/toggleRoute/{id}', array('as' => 'ritaccepteren', 'uses' => 'RouteController@toggleRoute'));
 
         Route::get('/opmerkingwijzigen/{id}', array('as' => 'opmerkingwijzigen', 'uses' => 'CommentController@showCommentEdit'));
         Route::put('/editComment/{id}', 'CommentController@editComment');

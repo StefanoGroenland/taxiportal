@@ -18,6 +18,7 @@ class CreateCommentTable extends Migration
             $table->string('comment');
             $table->integer('star_rating');
             $table->boolean('approved');
+            $table->boolean('seen');
             $table->timestamps();
         });
     }
