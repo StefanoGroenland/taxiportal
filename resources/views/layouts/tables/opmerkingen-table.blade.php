@@ -54,8 +54,12 @@
         @foreach($commentsApproved as $comment)
             @if($comment && $comment->driver)
                 <tr data-href="/opmerkingwijzigen/{{$comment->id}}">
-                    <td>{{$comment->driver->taxi->license_plate}}</td>
-                    <td>{{$comment->driver->user->firstname .' '. $comment->driver->user->surname .' '. $comment->driver->user->lastname}}</td>
+                    @if($comment->driver->taxi)
+                        <td>{{$comment->driver->taxi->license_plate}}</td>
+                    @else
+                        <td>Geen taxi gekoppeld</td>
+                    @endif
+                    <td>{{$comment->driver->user->firstname .' '. $comment->driver->user->lastname}}</td>
                     <td>
                         @for($i = 0; $i < $comment->star_rating; $i++)
                             <i style="color:gold;" class="fa fa-star"></i>

@@ -19,13 +19,15 @@
  	                                        <li>
  	                                            <a href="/profiel">
  	                                                <i class="icon-user"></i> Mijn profiel
- 	                                                <span class="badge badge-danger">1</span>
+ 	                                                @if(count(\App\Comment::where('seen','!=',1)->get()) > 0)
+                                                        <span class="badge badge-danger"> {{count(\App\Comment::where('seen','!=',1)->get())}} </span>
+                                                    @endif
  	                                            </a>
  	                                        </li>
  	                                        <li class="divider"> </li>
 
  	                                        <li>
- 	                                            <a href="/auth/logout">
+ 	                                            <a href="/logout">
  	                                                <i class="icon-key"></i> Uitloggen </a>
  	                                        </li>
  	                                    </ul>

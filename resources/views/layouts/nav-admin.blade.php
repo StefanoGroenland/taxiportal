@@ -24,7 +24,9 @@
  	                                        <li>
  	                                            <a href="/profiel">
  	                                                <i class="icon-user"></i> Mijn profiel
- 	                                                <span class="badge badge-danger">X</span>
+ 	                                                @if(count(\App\Comment::where('seen','!=',1)->get()) > 0)
+                                                        <span class="badge badge-danger"> {{count(\App\Comment::where('seen','!=',1)->get())}} </span>
+                                                    @endif
  	                                            </a>
  	                                        </li>
 
