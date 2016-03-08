@@ -55,7 +55,9 @@ class UserController extends Controller
         $comments = Comment::with('driver')->where('approved','=','1')->get();
 
         foreach($comments as $comment){
-            $comment->where('driver_id',$driver->id)->update(['seen' => 1]);
+            if($driver){
+                $comment->where('driver_id',$driver->id)->update(['seen' => 1]);
+            }
         }
         return View::make('/profiel', compact('comments'));
     }

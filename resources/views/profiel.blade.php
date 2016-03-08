@@ -31,7 +31,7 @@
                                 <img src="../{{Auth::user()->profile_photo}}" class="img-responsive" alt=""></div>
                             @endif
                         <div class="profile-usertitle">
-                            <div class="profile-usertitle-name"> {{Auth::user()->firstname .' '. Auth::user()->surname .' '. Auth::user()->lastname }} </div>
+                            <div class="profile-usertitle-name"> {{Auth::user()->firstname .' '. Auth::user()->lastname }} </div>
                             <div class="profile-usertitle-job"> {{Auth::user()->user_rank}} </div>
                         </div>
                         <div class="profile-usermenu">
