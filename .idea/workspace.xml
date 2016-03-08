@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="519bf916-5f09-4b43-913d-4efc13c49b43" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/car-location-maps.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/car-location-maps.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/tables/noodsignaal-table.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/tables/noodsignaal-table.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="898f360f-9443-42ce-bed2-6a84766c6e32" name="New changelist" comment="" />
@@ -28,66 +28,26 @@
     <favorites_list name="taxiportal" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5577313">
+    <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="taxilocatie.blade.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/resources/views/taxilocatie.blade.php">
+          <file leaf-file-name="ApiOneController.php" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ApiOneController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-17.0" vertical-offset="0" max-vertical-offset="544">
-                  <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="TaxiController.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TaxiController.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-16.346153" vertical-offset="0" max-vertical-offset="2210">
-                  <caret line="25" column="56" selection-start-line="25" selection-start-column="56" selection-end-line="25" selection-end-column="56" />
+                <state vertical-scroll-proportion="4.848308" vertical-offset="2747" max-vertical-offset="7429">
+                  <caret line="406" column="32" selection-start-line="406" selection-start-column="32" selection-end-line="406" selection-end-column="32" />
                   <folding>
-                    <element signature="e#39#67#0#PHP" expanded="true" />
+                    <element signature="e#41#58#0#PHP" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/resources/views/index.blade.php">
+          <file leaf-file-name="noodsignaal-table.blade.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/resources/views/layouts/tables/noodsignaal-table.blade.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="323">
-                  <caret line="7" column="44" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="car-location-maps.blade.php" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/resources/views/layouts/car-location-maps.blade.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.50959235" vertical-offset="1989" max-vertical-offset="2907">
-                  <caret line="142" column="30" selection-start-line="142" selection-start-column="30" selection-end-line="142" selection-end-column="30" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="UserController.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-8.5" vertical-offset="51" max-vertical-offset="11798">
-                  <caret line="32" column="8" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="33" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ritten-chauffeur-table.blade.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/resources/views/layouts/tables/ritten-chauffeur-table.blade.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-6.5384617" vertical-offset="0" max-vertical-offset="884">
-                  <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+                <state vertical-scroll-proportion="-17.615385" vertical-offset="1" max-vertical-offset="1326">
+                  <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
                   <folding />
                 </state>
               </provider>
@@ -97,11 +57,11 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="opmerkingen-chauffeur-table.blade.php" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/resources/views/layouts/tables/opmerkingen-chauffeur-table.blade.php">
+          <file leaf-file-name="routes.php" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.21820304" vertical-offset="0" max-vertical-offset="857">
-                  <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
+                <state vertical-scroll-proportion="0.92648774" vertical-offset="1025" max-vertical-offset="1921">
+                  <caret line="116" column="83" selection-start-line="116" selection-start-column="83" selection-end-line="116" selection-end-column="83" />
                   <folding />
                 </state>
               </provider>
@@ -129,7 +89,6 @@
         <option value="$PROJECT_DIR$/resources/views/layouts/master.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/tables/medewerkers-table.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/tables/nieuws-table.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/tables/noodsignaal-table.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/tables/reclames-table.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/tables/tablet-table.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/tables/taxi-table.blade.php" />
@@ -164,9 +123,7 @@
         <option value="$PROJECT_DIR$/database/migrations/2016_03_08_141621_create_taxibases_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_03_08_141621_create_taxibase_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_03_08_141918_create_taxibase_table.php" />
-        <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/Taxibase.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ApiOneController.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/admin-dashboard.blade.php" />
@@ -174,6 +131,9 @@
         <option value="$PROJECT_DIR$/resources/views/taxilocatie.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TaxiController.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/car-location-maps.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/routes.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ApiOneController.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/tables/noodsignaal-table.blade.php" />
       </list>
     </option>
   </component>
@@ -1518,7 +1478,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457447384317</updated>
     </task>
-    <option name="localTasksCounter" value="121" />
+    <task id="LOCAL-00121" summary="Maps 99.99% zekerheid werkend.">
+      <created>1457447588289</created>
+      <option name="number" value="00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1457447588289</updated>
+    </task>
+    <option name="localTasksCounter" value="122" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1564,7 +1530,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="kleur van datatable pagination active aangepast.&#10;" />
     <MESSAGE value="taxitoevoegen car_color / car_model waren omgedraaid in de toevoeg view." />
     <MESSAGE value="taxitoevoegen car_color / car_model waren omgedraaid in de toevoeg view. 2/2&#10;" />
     <MESSAGE value="session verlengd naar 480min idle timing." />
@@ -1589,7 +1554,8 @@
     <MESSAGE value="admin and driver dashboard splitted." />
     <MESSAGE value="API functie voor het toevoegen van een taxi centrale locatie op coords en met een base name, toegevoegd. daarnaast wordt er nu op de maps getoond waar de taxis zijn en waar de centrale(s) zijn." />
     <MESSAGE value="Maps 99.9% zekerheid werkend." />
-    <option name="LAST_COMMIT_MESSAGE" value="Maps 99.9% zekerheid werkend." />
+    <MESSAGE value="Maps 99.99% zekerheid werkend." />
+    <option name="LAST_COMMIT_MESSAGE" value="Maps 99.99% zekerheid werkend." />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.535" />
   </component>
   <component name="XDebuggerManager">
@@ -1654,14 +1620,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.7307692" vertical-offset="303" max-vertical-offset="1581">
           <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/tables/noodsignaal-table.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.038462" vertical-offset="0" max-vertical-offset="1190">
-          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="116" />
           <folding />
         </state>
       </provider>
@@ -1874,14 +1832,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.461538" vertical-offset="1339" max-vertical-offset="1921">
-          <caret line="116" column="80" selection-start-line="116" selection-start-column="80" selection-end-line="116" selection-end-column="80" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2016_03_08_141918_create_taxibase_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.85294116" vertical-offset="0" max-vertical-offset="629">
@@ -1938,16 +1888,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ApiOneController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.81654674" vertical-offset="6595" max-vertical-offset="7429">
-          <caret line="428" column="5" selection-start-line="428" selection-start-column="5" selection-end-line="428" selection-end-column="5" />
-          <folding>
-            <element signature="e#41#58#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.62660444" vertical-offset="228" max-vertical-offset="1343">
@@ -1993,16 +1933,42 @@
         <state vertical-scroll-proportion="-16.346153" vertical-offset="0" max-vertical-offset="2210">
           <caret line="25" column="56" selection-start-line="25" selection-start-column="56" selection-end-line="25" selection-end-column="56" />
           <folding>
-            <element signature="e#39#67#0#PHP" expanded="true" />
+            <element signature="e#39#67#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/car-location-maps.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.50959235" vertical-offset="1989" max-vertical-offset="2907">
-          <caret line="142" column="30" selection-start-line="142" selection-start-column="30" selection-end-line="142" selection-end-column="30" />
+        <state vertical-scroll-proportion="-10.461538" vertical-offset="1989" max-vertical-offset="2907">
+          <caret line="133" column="24" selection-start-line="133" selection-start-column="24" selection-end-line="133" selection-end-column="24" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.92648774" vertical-offset="1025" max-vertical-offset="1921">
+          <caret line="116" column="83" selection-start-line="116" selection-start-column="83" selection-end-line="116" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/tables/noodsignaal-table.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.615385" vertical-offset="1" max-vertical-offset="1326">
+          <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ApiOneController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="4.848308" vertical-offset="2747" max-vertical-offset="7429">
+          <caret line="406" column="32" selection-start-line="406" selection-start-column="32" selection-end-line="406" selection-end-column="32" />
+          <folding>
+            <element signature="e#41#58#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
