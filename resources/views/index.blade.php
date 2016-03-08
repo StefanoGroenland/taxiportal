@@ -129,6 +129,13 @@
                     position: position,
                     map: map,
                     icon: 'https://cdn3.iconfinder.com/data/icons/mapicons/icons/taxi.png',
+                    @if($taxi->emergency)
+                        @foreach($taxi->emergency as $sos)
+                            @if($sos->taxi_id == $taxi->id && $sos->seen == 0)
+                                icon: 'https://cdn3.iconfinder.com/data/icons/mapicons/icons/firstaid.png',
+                            @endif
+                        @endforeach
+                    @endif
                     title: markers['{{$i}}'][0]
                 });
                  // Allow each marker to have an info window
@@ -137,7 +144,7 @@
                         infoWindow.setContent(infoWindowContent['{{$i}}'][0]);
                         infoWindow.open(map, marker);
                     }
-                })(marker, i));
+                })(marker, '{{$i}}'));
 
                 // Automatically center the map fitting all markers on the screen
                 map.fitBounds(bounds);
