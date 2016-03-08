@@ -22,10 +22,13 @@
              map = new google.maps.Map(document.getElementById("map"), mapOptions);
              map.setTilt(45);
 
+            var invisible = [
+                ['', 52.1396726,5.6019347],
+            ]
+
              // Multiple Markers
              var markers = [
                  // ['London Eye, London', 51.503454,-0.119562],
-                 // ['Palace of Westminster, London', 51.499633,-0.124755]
 
                  @foreach($cars as $taxi)
                      ['',{{$taxi->last_latitude .','. $taxi->last_longtitude}}],
@@ -45,8 +48,17 @@
                     '</div>'],
                 @endforeach
             ];
+
+            var infoWindowContentz = [
+
+                ['<div class="info_content">' +
+                '<p><i class="fa fa-building"></i> '+ '' +'</p>' +
+                '</div>'],
+            ];
+
              // Info Window Content
              var infoWindowContent = [
+
                  @foreach ($cars as $taxi)
                      ['<div class="info_content">' +
                      '<p><i class="fa fa-taxi"></i> '+ '{{$taxi->license_plate }}' +'</p>' +
@@ -120,14 +132,34 @@
                  map.fitBounds(bounds);
                  {{-- */$i++;/* --}}
              @endforeach
-             // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
-             var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
-                 this.setZoom(7);
-                 this.setCenter(new google.maps.LatLng(52.1396726,5.6019347));
-                 google.maps.event.removeListener(boundsListener);
-             });
+            for( i = 0; i < invisible.length; i++ ) {
+                            var position = new google.maps.LatLng(invisible[i][1], invisible[i][2]);
+                            bounds.extend(position);
+                            marker = new google.maps.Marker({
+                                position: position,
+                                map: map,
+                                title: markers[i][0]
+                            });
+                    marker.setVisible(false);
+                            // Allow each marker to have an info window
+                            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                                return function() {
+                                    infoWindow.setContent(infoWindowContentz[i][0]);
+                                    infoWindow.open(map, marker);
+                                }
+                            })(marker, i));
+                            // Automatically center the map fitting all markers on the screen
+                            map.fitBounds(bounds);
+                        }
 
-         }
+                        // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
+                        var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+                            this.setZoom(7);
+                            this.setCenter(new google.maps.LatLng(52.1396726,5.6019347));
+                            google.maps.event.removeListener(boundsListener);
+                        });
+
+                    }
 
          </script>
         @endif
