@@ -33,13 +33,26 @@ class UserController extends Controller
         $routeCount = 0;
         $countCars = count(Taxi::where('in_shift',1)->get());
         $countRoutes = \App\Route::where('processed',1)->get();
+
         foreach($countRoutes as $route){
-            if($route->created_at->format('Y-m-d') == $today){
-                $routeCount++;
+            if(date('Y-m-d',strtotime($route->pickup_time)) == $today){
+                if(Auth::user()->user_rank != 'admin'){
+                    if($route->taxi && $route->taxi->driver){
+                        if($route->taxi->driver->user_id == Auth::user()->id){
+                            $routeCount++;
+                        }
+                    }
+                }else{
+                    $routeCount++;
+                }
             }
         }
         $countOpenRoutes = count(\App\Route::where('processed',0)->get());
-        $countComments = count(Comment::where('approved',0)->get());
+        if(Auth::user()->user_rank != 'admin'){
+            $countComments = count(Comment::where('approved',1)->get());
+        }else{
+            $countComments = count(Comment::where('approved',0)->get());
+        }
 
         return View::make('/index',compact('today','routeCount','countCars','countOpenRoutes','countComments','cars'));
     }
@@ -59,7 +72,11 @@ class UserController extends Controller
                 $comment->where('driver_id',$driver->id)->update(['seen' => 1]);
             }
         }
-        return View::make('/profiel', compact('comments'));
+        if(Auth::user()->user_rank == 'admin'){
+            return $this->showProfileEdit();
+        }else{
+            return View::make('/profiel', compact('comments'));
+        }
     }
 
     /**

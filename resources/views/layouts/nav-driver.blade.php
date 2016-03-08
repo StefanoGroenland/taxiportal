@@ -38,18 +38,18 @@
  	                         <a id="index" class="page-logo" href="index.html">
  	                               <img src="{{URL::asset('../assets/img/taxi_logo.png')}}" alt="Logo"> </a>
  	                            <ul class="nav navbar-nav">
- 	                                <li class="dropdown dropdown-fw  active open selected">
+ 	                                <li class="dropdown dropdown-fw @if(\Request::route()->getName() == 'home') active selected @endif" >
  	                                    <a href="/home" class="text-uppercase">
  	                                        <i class="fa fa-home"></i> Dashboard
  	                                    </a>
  	                                </li>
 
- 	                                <li class="dropdown dropdown-fw  ">
+ 	                                <li class="dropdown dropdown-fw  @if(\Request::route()->getName() == 'ritten') active selected @endif">
  	                                    <a href="/ritten" class="text-uppercase">
  	                                        <i class="fa fa-location-arrow"></i> Ritten
  	                                    </a>
  	                                </li>
- 	                                <li class="dropdown dropdown-fw  ">
+ 	                                <li class="dropdown dropdown-fw  @if(\Request::route()->getName() == 'opmerkingen') active selected @endif">
  	                                    <a href="/opmerkingen" class="text-uppercase">
  	                                        <i class="fa fa-comments-o"></i> Opmerkingen
  	                                    </a>

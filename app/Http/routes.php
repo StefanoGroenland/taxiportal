@@ -25,6 +25,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('/editProfile/{id}', 'UserController@editProfile');
         Route::put('/editPassword/{id}', 'UserController@editPassword');
         Route::put('/editProfilePhoto/{id}', 'UserController@editProfilePhoto');
+        Route::get('/ritten', array('as' => 'ritten', 'uses' => 'RouteController@showRoutes'));
 
     //Routes alleen voor admins.
     Route::group(['middleware' => 'isAdmin'], function () {
@@ -59,7 +60,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('/editRoute/{id}', array('as' => 'editRoute', 'uses' => 'RouteController@editRoute'));
 
 
-        Route::get('/ritten', array('as' => 'ritten', 'uses' => 'RouteController@showRoutes'));
+
         Route::get('/ritten/openstaand', array('as' => 'rittenopenstaand', 'uses' => 'RouteController@showRoutesOpen'));
         Route::get('/toggleRoute/{id}', array('as' => 'ritaccepteren', 'uses' => 'RouteController@toggleRoute'));
 

@@ -21,10 +21,15 @@
 						 </div>
 				 </div>
 				 <div class="portlet-body form">
-				 @if(Auth::user()->user_rank == 'admin')
-					<a href="/rittoevoegen" class="btn btn-sm green-meadow margin-bottom-10"><i class="fa fa-plus"></i> Rit toevoegen</a>
-				 @endif
-						 @include('layouts.tables.ritten-table')
+				    @if(Auth::user()->user_rank == 'admin')
+				   	    <a href="/rittoevoegen" class="btn btn-sm green-meadow margin-bottom-10"><i class="fa fa-plus"></i> Rit toevoegen</a>
+				    @endif
+
+				    @if(Auth::user()->user_rank == 'admin')
+					    @include('layouts.tables.ritten-table')
+					@else
+					    @include('layouts.tables.ritten-chauffeur-table')
+					@endif
 				 </div>
 		 </div>
 	</div>

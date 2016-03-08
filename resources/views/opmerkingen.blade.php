@@ -10,7 +10,11 @@
                 </div>
             </div>
             <div class="portlet-body form">
-                @include('layouts.tables.opmerkingen-table')
+                @if(Auth::user()->user_rank == 'admin')
+                    @include('layouts.tables.opmerkingen-table')
+                @else
+                    @include('layouts.tables.opmerkingen-chauffeur-table')
+                @endif
             </div>
         </div>
     </div>

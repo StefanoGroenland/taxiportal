@@ -42,9 +42,15 @@
                                     <div class="profile-usermenu">
                                         <ul class="nav">
                                             <li>
-                                                <a href="/profiel">
-                                                    <i class="fa fa-home"></i> Overzicht 
-                                                </a>
+                                                @if(Auth::user()->user_rank == 'admin')
+                                                    <a href="/home">
+                                                        <i class="fa fa-home"></i> Dashboard
+                                                    </a>
+                                                @else
+                                                    <a href="/profiel">
+                                                        <i class="fa fa-home"></i> Opmerkingen
+                                                    </a>
+                                                @endif
                                             </li>
                                             <li class="active">
                                                 <a href="/profielwijzigen">
