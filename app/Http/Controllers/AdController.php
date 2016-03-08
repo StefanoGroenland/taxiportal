@@ -72,8 +72,7 @@ class AdController extends Controller
         );
 
         $rules = array(
-            'link'      => 'required',
-            'banner'    => '',
+            'link'      => 'required'
         );
 
         $validator = Validator::make($data, $rules);
@@ -129,7 +128,7 @@ class AdController extends Controller
         );
          $rules = array(
             'link'      => 'required',
-            'banner'    => 'required',
+            'banner'    => 'required'
         );
 
         $validator = Validator::make($data, $rules);

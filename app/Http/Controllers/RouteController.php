@@ -87,7 +87,7 @@ class RouteController extends Controller
 	public function deleteRoute(){
 		$id = Route::current()->getparameter('id');
 		$find = Route2::find($id);
-		Route2::where('id','=', $id)->delete();
+		$find->delete();
 		session()->flash('alert-success','De route is verwijderd.');
 		return redirect()->route('ritten');
 	}

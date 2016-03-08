@@ -370,18 +370,15 @@ class UserController extends Controller
      * then deletes the driver and linked user account from the database.
      */
     public function deleteDriver(){
-
-       
         $id  = Route::current()->getParameter('id');
         $find = User::find($id);
         $driver = Driver::where('user_id','=',$find->id)->first();
         Taxi::where('driver_id','=',$driver->id)->update(array('driver_id' => 0));
-        User::where('id','=', $id)->delete();
-        Driver::where('user_id','=',$id)->delete();
+        $find->delete();
+        $driver->delete();
         if(!$find->profile_photo == ""){
             unlink($find->profile_photo);
         }
-        
         session()->flash('alert-success', 'chauffeur '. $find->firstname.' verwijderd.');
         return redirect()->route('chauffeurs');
     }
@@ -443,13 +440,13 @@ class UserController extends Controller
             $userData['password'] = Hash::make($userData['password']);
             array_forget($userData, 'password_confirmation');
         } else {
-            $user = User::where('id', '=', $id)->update($userData);
+            User::where('id', '=', $id)->update($userData);
             $this->upload($request, $id);
             $request->session()->flash('alert-success', 'Uw account is gewijziged, er zijn geen wijzigingen aan het wachtwoord doorgevoerd.');
             return redirect('/chauffeurs');
         }
        
-        $user = User::where('id', '=', $id)->update($userData);
+        User::where('id', '=', $id)->update($userData);
         $request->session()->flash('alert-success', 'Uw account is gewijziged.');
         $this->upload($request, $id);
         return redirect('/chauffeurs');
@@ -600,6 +597,13 @@ class UserController extends Controller
         return redirect()->route('tablets');
     }
 
+    /**
+     * @author Stefano Groenland
+     * @param Request $request
+     * @return $this|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     *
+     * Grabs the ID from the route, looks for an user with the given ID and edits it with the requests values if they passes the validation.
+     */
     public function editProfile(Request $request){
         $id = Route::current()->getParameter('id');
 
@@ -628,6 +632,13 @@ class UserController extends Controller
         return redirect('/profielwijzigen');
     }
 
+    /**
+     * @author Stefano Groenland
+     * @param Request $request
+     * @return $this|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     *
+     * Grabs the ID from the route, checks if the given values are validated and changes the users password if they do.
+     */
     public function editPassword(Request $request){
         $id = Route::current()->getParameter('id');
         $user = User::where('id',$id)->first();
@@ -652,6 +663,14 @@ class UserController extends Controller
         return redirect('/profielwijzigen#tab_1_3');
     }
 
+    /**
+     * @author Stefano Groenland
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     *
+     * Grabs the ID of the route, looks for the useracount with the given ID and changes the profile picture of it.
+     * It also deletes the past profile picture with the unlink() function.
+     */
     public function editProfilePhoto(Request $request){
         $id = Route::current()->getParameter('id');
         $find = User::find($id);

@@ -59,9 +59,7 @@ class TaxiController extends Controller
      */
     public function showTaxiAdd(){
     	$drivers = Driver::with('user')->where('taxi_id','0')->get();
-
-    	$driverCount = count($drivers); 
-		
+    	$driverCount = count($drivers);
 		return View::make('/taxitoevoegen', compact('drivers','driverCount'));
 	}
 	public function addTaxi(Request $request){
@@ -92,7 +90,7 @@ class TaxiController extends Controller
 	public function deletetaxi(){
 		$id = Route::current()->getparameter('id');
 		$find = Taxi::find($id);
-		Taxi::where('id','=', $id)->delete();
+		$find->delete();
 		session()->flash('alert-success','De Taxi is verwijderd.');
 		return redirect()->route('taxioverzicht');
 	}
