@@ -25,7 +25,7 @@ class Driver extends Model
         'global_information',
         'star_rating'
     ];
-    protected $hidden = ['id', 'user_id'];
+    protected $hidden = ['user_id'];
 
     public function user(){
         return $this->belongsTo('App\User');

@@ -42,7 +42,13 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        if ($e instanceof ModelNotFoundException) {
+        if($request->is('api/*')){
+            return response()->json(array(
+                'success'   => false,
+                'info'      =>  'server-error'
+            ),500);
+        }
+        elseif ($e instanceof ModelNotFoundException) {
             $e = new NotFoundHttpException($e->getMessage(), $e);
         }
 
