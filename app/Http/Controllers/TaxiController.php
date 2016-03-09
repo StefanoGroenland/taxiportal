@@ -8,6 +8,7 @@ use Route, View;
 use App\Taxi;
 use App\Driver;
 use App\User;
+use App\Taxibase;
 use Illuminate\Support\Facades\Validator;
 
 class TaxiController extends Controller
@@ -21,7 +22,8 @@ class TaxiController extends Controller
     public function showTaxiLocation(){
         $cars = Taxi::with('driver','emergency')->where('in_shift',1)->where('last_latitude','!=','')->where('last_longtitude','!=','')->get();
         $taxis = Taxi::with('driver','emergency')->where('in_shift',1)->get();
-		return View::make('/taxilocatie', compact('taxis','cars'));
+        $bases = Taxibase::all();
+		return View::make('/taxilocatie', compact('bases','taxis','cars'));
 	}
 
     /**

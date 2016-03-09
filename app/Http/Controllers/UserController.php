@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Driver;
 use App\Newspaper;
+use App\Taxibase;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -29,6 +30,7 @@ class UserController extends Controller
      */
     public function showIndex(){
         $cars = Taxi::with('emergency','driver')->where('in_shift',1)->where('last_latitude','!=','')->where('last_longtitude','!=','')->get();
+        $bases = Taxibase::all();
         $today = date('Y-m-d');
         $routeCount = 0;
         $countCars = count(Taxi::where('in_shift',1)->get());
@@ -54,7 +56,7 @@ class UserController extends Controller
             $countComments = count(Comment::where('approved',0)->get());
         }
 
-        return View::make('/index',compact('today','routeCount','countCars','countOpenRoutes','countComments','cars'));
+        return View::make('/index',compact('bases','today','routeCount','countCars','countOpenRoutes','countComments','cars'));
     }
 
     /**
