@@ -99,12 +99,12 @@ Route::post('/login', 'Auth\AuthController@postLogin');
 Route::get('/logout', 'Auth\AuthController@getLogout');
 
 //API v1.0 routes
-Route::get('/api/v1/advertisements/{location}/{key}', 'ApiOneController@adsPerLocation');
+Route::post('/api/v1/advertisements'                 , 'ApiOneController@adsPerLocation');
 Route::post('/api/v1/advertisements/increaseclick'  , 'ApiOneController@increaseClickOfAd');
-Route::get('/api/v1/driver/{tablet}/{key}'          , 'ApiOneController@getDriverOffTablet');
-Route::get('/api/v1/routes/{key}'                   , 'ApiOneController@getRoutes');
-Route::get('/api/v1/routes/{taxiId}/{key}'          , 'ApiOneController@getRoutesForTaxi');
-Route::get('/api/v1/newsfeed/{key}'                 , 'ApiOneController@getNewsfeeds');
+Route::post('/api/v1/driver'                        , 'ApiOneController@getDriverOffTablet');
+Route::post('/api/v1/allroutes'                     , 'ApiOneController@getRoutes');
+Route::post('/api/v1/routes'                        , 'ApiOneController@getRoutesForTaxi');
+Route::post('/api/v1/newsfeed'                      , 'ApiOneController@getNewsfeeds');
 Route::post('/api/v1/sos'                           , 'ApiOneController@sendSOS');
 Route::post('/api/v1/tabletlogin'                   , 'ApiOneController@tabletLogin');
 Route::post('/api/v1/postcomment'                   , 'ApiOneController@postComment');
