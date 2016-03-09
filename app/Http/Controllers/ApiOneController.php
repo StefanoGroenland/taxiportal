@@ -84,28 +84,26 @@ class ApiOneController extends Controller
      */
     public function increaseClickOfAd()
     {
-        $id         = Input::get('id');
-        $key        = Input::get('key');
-        $ad         = Ad::find($id);
-        $clicks     = $ad->clicks;
+            $id         = Input::get('id');
+            $key        = Input::get('key');
+            $ad         = Ad::find($id);
+            $clicks     = $ad->clicks;
 
-        if(!empty($id)){
-            $apikey = self::$apikey;
-            if ($key == $apikey) {
-                Ad::where('id', $ad->id)->update(array('clicks' => $clicks + 1));
+            if(!empty($id)){
+                if ($key == self::$apikey) {
+                    Ad::where('id', $ad->id)->update(array('clicks' => $clicks + 1));
+                    return response()->json(array(
+                        'success'   =>  true,
+                        'action'    =>  'increase_ad_click_count'
+                    ));
+                }
+                return response()->json(self::$error, 401);
+            }else{
                 return response()->json(array(
-                    'success'   =>  true,
-                    'action'    =>  'increase_ad_click_count'
-                ));
+                    'success'   =>  false,
+                    'info'      =>  'Check if all parameters are filled in'
+                ),400);
             }
-            return response()->json(self::$error, 401);
-        }else{
-            return response()->json(array(
-                'success'   =>  false,
-                'info'      =>  'Check if all parameters are filled in'
-            ),400);
-        }
-
     }
 
     /**
@@ -153,13 +151,21 @@ class ApiOneController extends Controller
      */
     public function getRoutes()
     {
-        $key    = Input::get('key');
+        $key        = Input::get('key');
+        $today      = date('Y-m-d');
+        $all_routes = RouteR::all();
+        $routeArray = array();
 
         if ($key == self::$apikey) {
-            $routes = Route::all();
-//            return $routes->toJson();
+            foreach($all_routes as $route){
+                if(date('Y-m-d',strtotime($route->pickup_time)) == $today){
+                    $routeArray[] = $route;
+                }
+            }
             return response()->json(array(
-                'routes'    =>  $routes
+                'routes'    =>  $routeArray,
+                'success'   =>  true,
+                'action'    =>  'get_all_routes'
             ),200);
         }
         return response()->json(self::$error, 401);
@@ -175,14 +181,23 @@ class ApiOneController extends Controller
      */
     public function getRoutesForTaxi()
     {
-        $taxiId = Input::get('taxi_id');
-        $key    = Input::get('key');
+        $taxiId     = Input::get('taxi_id');
+        $key        = Input::get('key');
+        $today      = date('Y-m-d');
+        $all_routes = RouteR::where('taxi_id',$taxiId)->get();
+        $routeArray = array();
+
         if(!empty($taxiId)){
             if ($key == self::$apikey) {
-                $routes = Route::where('taxi_id', $taxiId)->get();
-//                return $routes->toJson();
+                foreach($all_routes as $route){
+                    if(date('Y-m-d',strtotime($route->pickup_time)) == $today){
+                        $routeArray[] = $route;
+                    }
+                }
                 return response()->json(array(
-                    'routes'    =>  $routes
+                    'routes'    =>  $routeArray,
+                    'success'   =>  true,
+                    'action'    =>  'get_routes_for_current_taxi'
                 ),200);
             }
             return response()->json(self::$error, 401);

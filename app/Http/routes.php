@@ -98,6 +98,7 @@ Route::get('/login', 'Auth\AuthController@getLogin');
 Route::post('/login', 'Auth\AuthController@postLogin');
 Route::get('/logout', 'Auth\AuthController@getLogout');
 
+
 //API v1.0 routes
 Route::post('/api/v1/advertisements'                 , 'ApiOneController@adsPerLocation');
 Route::post('/api/v1/advertisements/increaseclick'  , 'ApiOneController@increaseClickOfAd');
@@ -108,10 +109,11 @@ Route::post('/api/v1/newsfeed'                      , 'ApiOneController@getNewsf
 Route::post('/api/v1/sos'                           , 'ApiOneController@sendSOS');
 Route::post('/api/v1/tabletlogin'                   , 'ApiOneController@tabletLogin');
 Route::post('/api/v1/postcomment'                   , 'ApiOneController@postComment');
-Route::post('/api/v1/getcomment'                    , 'ApiOneController@getCommentsOffDriver');
+Route::post('/api/v1/getcomments'                   , 'ApiOneController@getCommentsOffDriver');
 Route::get('/api/v1/signalcheck'                    , 'ApiOneController@signalCheck');
 Route::get('/api/v1/emergencies'                    , 'ApiOneController@getSOS');
 Route::post('/api/v1/sendlocation'                  , 'ApiOneController@sendLocation');
 Route::post('/api/v1/toggleshift'                   , 'ApiOneController@toggleShift');
 Route::post('/api/v1/returnrequest'                 , 'ApiOneController@requestReturnRide');
 Route::post('/api/v1/postbase'                      , 'ApiOneController@postBase');
+
