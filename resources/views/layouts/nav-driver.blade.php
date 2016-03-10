@@ -14,7 +14,12 @@
  	                                <div class="btn-group-img btn-group">
  	                                    <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
  	                                        <span>Hallo, {{Auth::user()->firstname}}</span>
- 	                                        <img src="{{URL::asset('../assets/img/avatar1.jpg')}}" alt=""> </button>
+                                            @if(Auth::user()->profile_photo == "")
+                                                <img src="../assets/img/avatars/avatar.png" alt="">
+                                            @else
+                                                <img src="../{{Auth::user()->profile_photo}}" alt="">
+                                            @endif
+                                        </button>
  	                                    <ul class="dropdown-menu-v2" role="menu">
  	                                        <li>
  	                                            <a href="/profiel">
