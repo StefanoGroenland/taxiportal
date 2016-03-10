@@ -115,7 +115,7 @@ class UserController extends Controller
         $id         = Route::current()->getParameter('id');
         $driver     = Driver::with('user')->where('user_id','=',$id)->first();
 
-        $cars       = Taxi::where('driver_id','=','0')->orWhere('driver_id',$id)->get();
+        $cars       = Taxi::where('driver_id','=','0')->orWhere('driver_id',$driver->id)->get();
         $carCount   = count($cars);
 
         return View::make('/chauffeurwijzigen', compact('id','driver','cars','carCount'));  
@@ -438,7 +438,8 @@ class UserController extends Controller
         $driverData = array(
             'user_id'               => $id,
             'drivers_exp'           => $request['driver_exp'],
-            'global_information'    => $request['global_information']
+            'global_information'    => $request['global_information'],
+            'taxi_id'               => $request['car']
         );
 
         Driver::where('user_id', '=', $id)->update($driverData);
