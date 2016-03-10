@@ -630,5 +630,20 @@ class ApiOneController extends Controller
         }
 
     }
+
+     public function getLocations(){
+         $key = Input::get('key');
+         
+        if($key == self::$apikey){
+            $cars = Taxi::all();
+    
+            return response()->json(array(
+                'cars' =>  $cars
+            ),200);
+
+            dd ($cars);
+        }
+     return response()->json(self::$error,401);
+    }
 }
 
