@@ -18,23 +18,7 @@
                 @endforeach
             ];
             
-            function setMarkers(locations) {
             
-                for (var i = 0; i < locations.length; i++) {
-                    var cars = locations[i];
-                    var myLatLng = new google.maps.LatLng(cars[1], cars[2]);
-                    var marker = new google.maps.Marker({
-                        position: myLatLng,
-                        map: map,
-                        animation: google.maps.Animation.DROP,
-                        title: cars[0],
-                        zIndex: cars[3]
-                    });
-                    
-                    // Push marker to markers array
-                    markers.push(marker);
-                }
-            }
             
             function reloadMarkers() {            
 
@@ -46,16 +30,38 @@
                 // Reset the markers/cars array
                 markers = [];
                 cars    = [];
+                var i   = 0;
 
                 $.post('http://test.dev/api/v1/locations', {key:'alpha'}, function(data){
-                    $.each(data, function(i) {
-                        cars[i] = ['',data[i].last_latitude +','+ data[i].last_longtitude];
+
+                    $.each(data.cars, function(key, value) {
+                        
+                        cars[i] = ['', value['last_latitude'], value['last_longtitude']];
+                        i++;
+
                     });
+
+                    setMarkers(cars);
+
                 });
                 // Call set markers to re-add markers
-                setMarkers(cars);
+                
             }
             
+            function setMarkers(locations) {
+                for (var i = 0; i < locations.length; i++) {
+                    var cars = locations[i];
+                    var myLatLng = new google.maps.LatLng(cars[1], cars[2]);
+                    var marker = new google.maps.Marker({
+                        position: myLatLng,
+                        map: map,
+                        zIndex: cars[3]
+                    });
+                    // Push marker to markers array
+                    markers.push(marker);
+                }
+            }
+
             function initialize() {
                 
                 var mapOptions = {
@@ -63,8 +69,6 @@
                     center: new google.maps.LatLng( 52.1396726,5.6019347),
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 }  
-
-                console.log('init');
                 
                 map = new google.maps.Map(document.getElementById('map'), mapOptions);
             
