@@ -21,7 +21,7 @@
  	                                                <i class="icon-user"></i> Mijn profiel
  	                                                {{-- */$driver = \App\User::with('driver')->where('id',Auth::user()->id)->first();/* --}}
  	                                                {{-- */$comments = \App\Comment::where('approved',1)->where('seen',0)->where('driver_id',$driver->driver->id)->get();/* --}}
- 	                                                @if($comments)
+ 	                                                @if(count($comments) > 0)
                                                         <span class="badge badge-danger"> {{count($comments)}} </span>
                                                     @endif
  	                                            </a>

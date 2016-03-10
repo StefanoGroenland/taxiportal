@@ -50,8 +50,9 @@ class UserController extends Controller
             }
         }
         $countOpenRoutes = count(\App\Route::where('processed',0)->get());
+        $driver = Driver::with('user')->where('user_id',Auth::user()->id)->first();
         if(Auth::user()->user_rank != 'admin'){
-            $countComments = count(Comment::where('approved',1)->get());
+            $countComments = count(Comment::where('approved',1)->where('seen',0)->where('driver_id',$driver->id)->get());
         }else{
             $countComments = count(Comment::where('approved',0)->get());
         }

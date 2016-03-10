@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Comment;
+use App\Driver;
 use Route, View;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -21,7 +23,21 @@ class CommentController extends Controller
      */
     public function showComment(){
         $comments = Comment::with('driver')->where('approved','!=',1)->get();
-        $commentsApproved = Comment::with('driver')->where('approved','=',1)->get();
+
+
+        $driver = Driver::with('user')->where('user_id',Auth::user()->id)->first();
+
+        if(Auth::user()->user_rank == 'admin'){
+            $commentsApproved = Comment::with('driver')->where('approved','=',1)->get();
+        }else{
+            $commentsApproved = Comment::with('driver')->where('approved','=',1)->where('driver_id',$driver->id)->get();
+        }
+
+        foreach($commentsApproved as $comment){
+            if($driver){
+                $comment->where('driver_id',$driver->id)->update(['seen' => 1]);
+            }
+        }
 
 		return View::make('/opmerkingen', compact('comments','commentsApproved'));
 	}
