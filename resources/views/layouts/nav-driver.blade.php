@@ -14,13 +14,20 @@
  	                                <div class="btn-group-img btn-group">
  	                                    <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
  	                                        <span>Hallo, {{Auth::user()->firstname}}</span>
- 	                                        <img src="{{URL::asset('../assets/img/avatar1.jpg')}}" alt=""> </button>
+                                            @if(Auth::user()->profile_photo == "")
+                                                <img src="../assets/img/avatars/avatar.png" alt="">
+                                            @else
+                                                <img src="../{{Auth::user()->profile_photo}}" alt="">
+                                            @endif
+                                        </button>
  	                                    <ul class="dropdown-menu-v2" role="menu">
  	                                        <li>
  	                                            <a href="/profiel">
  	                                                <i class="icon-user"></i> Mijn profiel
- 	                                                @if(count(\App\Comment::where('seen','!=',1)->get()) > 0)
-                                                        <span class="badge badge-danger"> {{count(\App\Comment::where('seen','!=',1)->get())}} </span>
+ 	                                                {{-- */$driver = \App\User::with('driver')->where('id',Auth::user()->id)->first();/* --}}
+ 	                                                {{-- */$comments = \App\Comment::where('approved',1)->where('seen',0)->where('driver_id',$driver->driver->id)->get();/* --}}
+ 	                                                @if(count($comments) > 0)
+                                                        <span class="badge badge-danger"> {{count($comments)}} </span>
                                                     @endif
  	                                            </a>
  	                                        </li>

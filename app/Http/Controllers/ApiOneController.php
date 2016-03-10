@@ -40,9 +40,10 @@ class ApiOneController extends Controller
      * Defines the error and current version, if the api key used is invalid
      */
     private static $error = array(
-        'success'        =>  false,
+        'success'       =>  false,
         'error'         => 'api-key-invalid',
-        'api-version'   => '1.0'
+        'api-version'   => '1.0',
+        'status'        => '401'
     );
 
     /**
@@ -64,14 +65,16 @@ class ApiOneController extends Controller
                 return response()->json(array(
                     'advertisements'    =>  $results,
                     'success'           =>  true,
-                    'action'            =>  'get_ads_for_location'
+                    'action'            =>  'get_ads_for_location',
+                    'status'            =>  '200'
                 ),200);
             }
             return response()->json(self::$error, 401);
         }
         return response()->json(array(
             'success'   =>  false,
-            'info'      =>  'Check if all parameters are filled in'
+            'info'      =>  'Check if all parameters are filled in',
+            'status'    =>  '400'
         ),400);
     }
 
@@ -94,14 +97,16 @@ class ApiOneController extends Controller
                     Ad::where('id', $ad->id)->update(array('clicks' => $clicks + 1));
                     return response()->json(array(
                         'success'   =>  true,
-                        'action'    =>  'increase_ad_click_count'
+                        'action'    =>  'increase_ad_click_count',
+                        'status'    =>  '200'
                     ));
                 }
                 return response()->json(self::$error, 401);
             }else{
                 return response()->json(array(
                     'success'   =>  false,
-                    'info'      =>  'Check if all parameters are filled in'
+                    'info'      =>  'Check if all parameters are filled in',
+                    'status'    =>  '400'
                 ),400);
             }
     }
@@ -129,14 +134,16 @@ class ApiOneController extends Controller
                     'driver'    =>  $driver,
                     'user'      =>  $user,
                     'success'   =>  true,
-                    'action'    =>  'get_driver_off_tablet'
+                    'action'    =>  'get_driver_off_tablet',
+                    'status'    =>  '200'
                 ),200);
             }
             return response()->json(self::$error, 401);
         }else{
             return response()->json(array(
                 'success'   =>  false,
-                'info'      =>  'Check if all parameters are filled in'
+                'info'      =>  'Check if all parameters are filled in',
+                'status'    =>  '400'
             ),400);
         }
     }
@@ -165,7 +172,8 @@ class ApiOneController extends Controller
             return response()->json(array(
                 'routes'    =>  $routeArray,
                 'success'   =>  true,
-                'action'    =>  'get_all_routes'
+                'action'    =>  'get_all_routes',
+                'status'    =>  '200'
             ),200);
         }
         return response()->json(self::$error, 401);
@@ -197,14 +205,16 @@ class ApiOneController extends Controller
                 return response()->json(array(
                     'routes'    =>  $routeArray,
                     'success'   =>  true,
-                    'action'    =>  'get_routes_for_current_taxi'
+                    'action'    =>  'get_routes_for_current_taxi',
+                    'status'    =>  '200'
                 ),200);
             }
             return response()->json(self::$error, 401);
         }else{
             return response()->json(array(
                 'success'   =>  false,
-                'info'      =>  'Check if all parameters are filled in'
+                'info'      =>  'Check if all parameters are filled in',
+                'status'    =>  '400'
             ),400);
         }
     }
@@ -223,7 +233,10 @@ class ApiOneController extends Controller
         if ($key == self::$apikey) {
             $news = Newspaper::all();
             return response()->json(array(
-                'news'  =>  $news
+                'news'  =>  $news,
+                'success'   =>  true,
+                'action'    =>  'get_news_feeds',
+                'status'    =>  '200'
             ),200);
         }
         return response()->json(self::$error, 401);
@@ -254,15 +267,17 @@ class ApiOneController extends Controller
                         'last_longtitude' => $last_long
                     ));
                 return response()->json(array(
-                    'success' => true,
-                    'action' => 'emergency_signal_send'
+                    'success'   => true,
+                    'action'    => 'emergency_signal_send',
+                    'status'    =>  '200'
                 ), 200);
             }
             return response()->json(self::$error, 401);
         }else{
             return response()->json(array(
                 'success'   =>  false,
-                'info'      =>  'Check if all parameters are filled in'
+                'info'      =>  'Check if all parameters are filled in',
+                'status'    =>  '400'
             ),400);
         }
     }
@@ -297,20 +312,22 @@ class ApiOneController extends Controller
                     return response()->json(array(
                             'result'    =>  $result,
                             'success'   =>  true,
-                            'action'    =>  'tablet_login'
-                    )
-                );
+                            'action'    =>  'tablet_login',
+                            'status'    =>  '200'
+                    ),200);
                 }
                 return response()->json(array(
-                    'success' => false,
-                    'info'      => 'No tablet found for given name'
+                    'success'   => false,
+                    'info'      => 'No tablet found for given name',
+                    'status'    =>  '404'
                 ),404);
             }
             return response()->json(self::$error, 401);
         }else{
             return response()->json(array(
                 'success'   =>  false,
-                'info'      =>  'Check if all parameters are filled in'
+                'info'      =>  'Check if all parameters are filled in',
+                'status'    =>  '400'
             ),400);
         }
     }
@@ -341,14 +358,16 @@ class ApiOneController extends Controller
 
                 return response()->json(array(
                     'success'   => true,
-                    'action'    => 'comment_posted'
+                    'action'    => 'comment_posted',
+                    'status'    => '200'
                 ), 200);
             }
             return response()->json(self::$error, 401);
         }else{
             return response()->json(array(
                 'success'   =>  false,
-                'info'      =>  'Check if all parameters are filled in'
+                'info'      =>  'Check if all parameters are filled in',
+                'status'    =>  '400'
             ),400);
         }
     }
@@ -417,16 +436,18 @@ class ApiOneController extends Controller
                 $comment = Comment::where('driver_id', $driverID)->where('approved', 1)->get();
                 $result = collect([array('comment' => $comment)]);
                 return response()->json(array(
-                    'comments'    =>  $result,
+                    'comments'  =>  $result,
                     'success'   =>  true,
-                    'action'    =>  'comments_off_driver'
+                    'action'    =>  'comments_off_driver',
+                    'status'    =>  '200'
                 ),200);
             }
             return response()->json(self::$error, 401);
         }else{
             return response()->json(array(
                 'success'   =>  false,
-                'info'      =>  'Check if all parameters are filled in'
+                'info'      =>  'Check if all parameters are filled in',
+                'status'    =>  '400'
             ),400);
         }
     }
@@ -453,14 +474,16 @@ class ApiOneController extends Controller
                 ]);
                 return response()->json(array(
                     'success'   =>  true,
-                    'action'    =>  'current_location_coords_send'
+                    'action'    =>  'current_location_coords_send',
+                    'status'    =>  '200'
                 ),200);
             }
             return response()->json(self::$error, 401);
         }else{
             return response()->json(array(
                 'success'   =>  false,
-                'info'      =>  'Check if all parameters are filled in'
+                'info'      =>  'Check if all parameters are filled in',
+                'status'    =>  '400'
             ),400);
         }
     }
@@ -487,14 +510,16 @@ class ApiOneController extends Controller
                 }
                 return response()->json(array(
                     'success'   =>  true,
-                    'action'    =>  'shift_value_changed'
+                    'action'    =>  'shift_value_changed',
+                    'status'    =>  '200'
                 ),200);
             }
             return response()->json(self::$error, 401);
         }else{
             return response()->json(array(
                 'success'   =>  false,
-                'info'      =>  'Check if all parameters are filled in'
+                'info'      =>  'Check if all parameters are filled in',
+                'status'    =>  '400'
             ),400);
         }
     }
@@ -554,14 +579,16 @@ class ApiOneController extends Controller
                 ]);
                 return response()->json(array(
                     'success'   => true,
-                    'action'    => 'return_ride_requested'
+                    'action'    => 'return_ride_requested',
+                    'status'    => '200'
                 ), 200);
             }
             return response()->json(self::$error, 401);
         }else{
                 return response()->json(array(
                     'success'   =>  false,
-                    'info'      =>  'Check if all parameters are filled in'
+                    'info'      =>  'Check if all parameters are filled in',
+                    'status'    =>  '400'
                 ),400);
             }
     }
@@ -589,14 +616,16 @@ class ApiOneController extends Controller
                 ]);
                 return response()->json(array(
                     'success'   =>      true,
-                    'action'    =>      'base_added'
+                    'action'    =>      'base_added',
+                    'status'    =>      '200'
                 ),200);
             }
             return response()->json(self::$error,401);
         }else{
             return response()->json(array(
                 'success'   =>  false,
-                'info'      =>  'Check if all parameters are filled in'
+                'info'      =>  'Check if all parameters are filled in',
+                'status'    =>  '400'
             ),400);
         }
 

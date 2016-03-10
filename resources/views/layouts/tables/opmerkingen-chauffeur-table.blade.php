@@ -22,7 +22,11 @@
                             <i style="color:gold;" class="fa fa-star"></i>
                         @endfor
                     </td>
-                    <td>{{$comment->comment}}</td>
+                    <td>{{$comment->comment}}
+                    @if($comment->seen == 0)
+                        <div class="badge badge-warning">nieuwe reactie</div>
+                    @endif
+                    </td>
                     <td>{{$comment->created_at->format('d-m-Y H:i')}}</td>
                 </tr>
                 @endif
