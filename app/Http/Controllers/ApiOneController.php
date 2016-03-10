@@ -21,6 +21,7 @@ use App\Emergency;
 use App\Taxi;
 use App\Comment;
 use App\Route as RouteR;
+use Illuminate\Http\Response as Response;
 
 use Illuminate\Support\Facades\Input;
 class ApiOneController extends Controller
@@ -39,28 +40,39 @@ class ApiOneController extends Controller
      * Defines the error and current version, if the api key used is invalid
      */
     private static $error = array(
-        'error' => 'api-key-invalid',
-        'api-version' => '1.0'
+        'success'        =>  false,
+        'error'         => 'api-key-invalid',
+        'api-version'   => '1.0'
     );
 
     /**
      * @author Stefano Groenland
      * @api
      * @version 1.0
-     * @param $location
-     * @param $key
      * @return \Illuminate\Http\JsonResponse
      *
      * Returns information about the given location
      */
-    public function adsPerLocation($location, $key)
+    public function adsPerLocation()
     {
-        $apikey = self::$apikey;
-        if ($key == $apikey) {
-            $results = AdLocation::with('ad')->where('location', '=', $location)->get();
-            return $results->toJson();
+        $location   = Input::get('location');
+        $key        = Input::get('key');
+
+        if(!empty($location)){
+            if ($key == self::$apikey) {
+                $results = AdLocation::with('ad')->where('location', '=', $location)->get();
+                return response()->json(array(
+                    'advertisements'    =>  $results,
+                    'success'           =>  true,
+                    'action'            =>  'get_ads_for_location'
+                ),200);
+            }
+            return response()->json(self::$error, 401);
         }
-        return json_encode(self::$error[0]);
+        return response()->json(array(
+            'success'   =>  false,
+            'info'      =>  'Check if all parameters are filled in'
+        ),400);
     }
 
     /**
@@ -72,97 +84,149 @@ class ApiOneController extends Controller
      */
     public function increaseClickOfAd()
     {
-        $id = Input::get('id');
-        $key = Input::get('key');
-        $ad = Ad::find($id);
-        $clicks = $ad->clicks;
-        $succeed = array('result' => 'success');
-        $apikey = self::$apikey;
-        if ($key == $apikey) {
-            Ad::where('id', $ad->id)->update(array('clicks' => $clicks + 1));
-            return json_encode($succeed);
-        }
-        return json_encode(self::$error[0]);
+            $id         = Input::get('id');
+            $key        = Input::get('key');
+            $ad         = Ad::find($id);
+            $clicks     = $ad->clicks;
+
+            if(!empty($id)){
+                if ($key == self::$apikey) {
+                    Ad::where('id', $ad->id)->update(array('clicks' => $clicks + 1));
+                    return response()->json(array(
+                        'success'   =>  true,
+                        'action'    =>  'increase_ad_click_count'
+                    ));
+                }
+                return response()->json(self::$error, 401);
+            }else{
+                return response()->json(array(
+                    'success'   =>  false,
+                    'info'      =>  'Check if all parameters are filled in'
+                ),400);
+            }
     }
 
     /**
      * @author Stefano Groenland
      * @api
      * @version 1.0
-     * @param $tablet
-     * @param $key
      * @return \Illuminate\Http\JsonResponse
      *
      * Returns the driver associated with the Tablet
      */
-    public function getDriverOffTablet($tablet, $key)
+    public function getDriverOffTablet()
     {
-        $apikey = self::$apikey;
-        if ($key == $apikey) {
-            $user = User::where('tablet_name', '=', $tablet)->first();
-            $tablet = Tablet::with('taxi')->where('user_id', '=', $user->id)->first();
-            $driver = Driver::with('user')->where('user_id', '=', $tablet->taxi->driver_id)->first();
-            return $driver->toJson();
+        $tablet     = Input::get('tablet_name');
+        $key        = Input::get('key');
+
+        if(!empty($tablet)){
+            if ($key == self::$apikey) {
+                $user = User::where('tablet_name', '=', $tablet)->first();
+                $tablet = Tablet::with('taxi')->where('user_id', '=', $user->id)->first();
+                $driver = Driver::where('id', '=', $tablet->taxi->driver_id)->first();
+                $user   = User::where('id',$driver->user_id)->first();
+                return response()->json(array(
+                    'driver'    =>  $driver,
+                    'user'      =>  $user,
+                    'success'   =>  true,
+                    'action'    =>  'get_driver_off_tablet'
+                ),200);
+            }
+            return response()->json(self::$error, 401);
+        }else{
+            return response()->json(array(
+                'success'   =>  false,
+                'info'      =>  'Check if all parameters are filled in'
+            ),400);
         }
-        return json_encode(self::$error);
     }
 
     /**
      * @author Stefano Groenland
      * @api
      * @version 1.0
-     * @param $key
      * @return \Illuminate\Http\JsonResponse
      *
      * Returns all routes from our Database in JSON format
      */
-    public function getRoutes($key)
+    public function getRoutes()
     {
-        $apikey = self::$apikey;
-        if ($key == $apikey) {
-            $routes = Route::all();
-            return $routes->toJson();
+        $key        = Input::get('key');
+        $today      = date('Y-m-d');
+        $all_routes = RouteR::all();
+        $routeArray = array();
+
+        if ($key == self::$apikey) {
+            foreach($all_routes as $route){
+                if(date('Y-m-d',strtotime($route->pickup_time)) == $today){
+                    $routeArray[] = $route;
+                }
+            }
+            return response()->json(array(
+                'routes'    =>  $routeArray,
+                'success'   =>  true,
+                'action'    =>  'get_all_routes'
+            ),200);
         }
-        return json_encode(self::$error);
+        return response()->json(self::$error, 401);
     }
 
     /**
      * @author Stefano Groenland
      * @api
      * @version 1.0
-     * @param $taxiId
-     * @param $key
      * @return \Illuminate\Http\JsonResponse
      *
      * Returns all routes for the specified taxi ID in JSON format
      */
-    public function getRoutesForTaxi($taxiId, $key)
+    public function getRoutesForTaxi()
     {
-        $apikey = self::$apikey;
-        if ($key == $apikey) {
-            $routes = Route::where('taxi_id', $taxiId)->get();
-            return $routes->toJson();
+        $taxiId     = Input::get('taxi_id');
+        $key        = Input::get('key');
+        $today      = date('Y-m-d');
+        $all_routes = RouteR::where('taxi_id',$taxiId)->get();
+        $routeArray = array();
+
+        if(!empty($taxiId)){
+            if ($key == self::$apikey) {
+                foreach($all_routes as $route){
+                    if(date('Y-m-d',strtotime($route->pickup_time)) == $today){
+                        $routeArray[] = $route;
+                    }
+                }
+                return response()->json(array(
+                    'routes'    =>  $routeArray,
+                    'success'   =>  true,
+                    'action'    =>  'get_routes_for_current_taxi'
+                ),200);
+            }
+            return response()->json(self::$error, 401);
+        }else{
+            return response()->json(array(
+                'success'   =>  false,
+                'info'      =>  'Check if all parameters are filled in'
+            ),400);
         }
-        return json_encode(self::$error);
     }
 
     /**
      * @author Stefano Groenland
      * @api
      * @version 1.0
-     * @param $key
      * @return \Illuminate\Http\JsonResponse
      *
      * Returns all newsfeed links in JSON format
      */
-    public function getNewsfeeds($key)
+    public function getNewsfeeds()
     {
-        $apikey = self::$apikey;
-        if ($key == $apikey) {
+        $key = Input::get('key');
+        if ($key == self::$apikey) {
             $news = Newspaper::all();
-            return $news->toJson();
+            return response()->json(array(
+                'news'  =>  $news
+            ),200);
         }
-        return json_encode(self::$error);
+        return response()->json(self::$error, 401);
     }
 
     /**
@@ -181,18 +245,26 @@ class ApiOneController extends Controller
         $last_long = Input::get('longtitude');
         $key = Input::get('key');
 
-        $succeed = array('result' => 'success');
-        $apikey = self::$apikey;
-        if ($key == $apikey) {
-            Emergency::create(array('taxi_id' => $id, 'seen' => '0'));
+        if(!empty($id) && !empty($last_lat) && !empty($last_long)){
+            if ($key == self::$apikey) {
+                Emergency::create(array('taxi_id' => $id, 'seen' => '0'));
 
-            Taxi::where('id', '=', $id)->update(
-                array('last_latitude' => $last_lat,
-                    'last_longtitude' => $last_long
-                ));
-            return json_encode($succeed);
+                Taxi::where('id', '=', $id)->update(
+                    array('last_latitude' => $last_lat,
+                        'last_longtitude' => $last_long
+                    ));
+                return response()->json(array(
+                    'success' => true,
+                    'action' => 'emergency_signal_send'
+                ), 200);
+            }
+            return response()->json(self::$error, 401);
+        }else{
+            return response()->json(array(
+                'success'   =>  false,
+                'info'      =>  'Check if all parameters are filled in'
+            ),400);
         }
-        return json_encode(self::$error);
     }
 
 
@@ -207,24 +279,40 @@ class ApiOneController extends Controller
      */
     public function tabletLogin()
     {
-        $tablet_name = Input::get('tablet_name');
-        $key = Input::get('key');
-        $apikey = self::$apikey;
-        if ($key == $apikey) {
-            $tablet = User::with('tablet')->where('tablet_name', '=', $tablet_name)->first();
-            $exists = count($tablet);
+        $tablet_name    = Input::get('tablet_name');
+        $key            = Input::get('key');
+        if(!empty($tablet_name)) {
+            if ($key == self::$apikey) {
+                $tablet = User::with('tablet')->where('tablet_name', '=', $tablet_name)->first();
+                $exists = count($tablet);
 
-            if ($exists > 0) {
-                $taxi = Taxi::with('driver')->where('id', '=', $tablet->tablet->taxi_id)->first();
-                $result = collect([array('tablet' => $tablet),
-                    array('taxi' => $taxi),
-                    array('taxi_user' => $taxi->driver->user)
-                ]);
-                return json_encode($result);
+                if ($exists > 0) {
+                    $taxi = Taxi::with('driver')->where('id', '=', $tablet->tablet->taxi_id)->first();
+                    $user = User::where('id',$taxi->driver->user_id)->first();
+                    $result = collect([
+                        array('tablet' => $tablet),
+                        array('taxi_with_driver' => $taxi),
+                        array('taxi_user' => $user)
+                    ]);
+                    return response()->json(array(
+                            'result'    =>  $result,
+                            'success'   =>  true,
+                            'action'    =>  'tablet_login'
+                    )
+                );
+                }
+                return response()->json(array(
+                    'success' => false,
+                    'info'      => 'No tablet found for given name'
+                ),404);
             }
-            return json_encode(array('error' => 'no_tablet_found', 'api-version' => '1.0'));
+            return response()->json(self::$error, 401);
+        }else{
+            return response()->json(array(
+                'success'   =>  false,
+                'info'      =>  'Check if all parameters are filled in'
+            ),400);
         }
-        return json_encode(self::$error);
     }
 
     /**
@@ -237,22 +325,32 @@ class ApiOneController extends Controller
      */
     public function postComment()
     {
-        $driver = Input::get('driver_id');
-        $message = Input::get('message');
-        $stars = Input::get('stars');
-        $key = Input::get('key');
-        $apikey = self::$apikey;
-        if ($key == $apikey) {
-            $data = array(
-                'driver_id' => $driver,
-                'comment' => $message,
-                'approved' => 0,
-                'star_rating' => $stars);
+        $driver     = Input::get('driver_id');
+        $message    = Input::get('message');
+        $stars      = Input::get('stars');
+        $key        = Input::get('key');
 
-            $result = Comment::create($data);
-            return json_encode($result);
+        if(!empty($driver) && !empty($message) && !empty($stars)) {
+            if ($key == self::$apikey) {
+                $data = array(
+                    'driver_id'     => $driver,
+                    'comment'       => $message,
+                    'approved'      => 0,
+                    'star_rating'   => $stars);
+                Comment::create($data);
+
+                return response()->json(array(
+                    'success'   => true,
+                    'action'    => 'comment_posted'
+                ), 200);
+            }
+            return response()->json(self::$error, 401);
+        }else{
+            return response()->json(array(
+                'success'   =>  false,
+                'info'      =>  'Check if all parameters are filled in'
+            ),400);
         }
-        return json_encode(self::$error);
     }
 
     /**
@@ -297,9 +395,9 @@ class ApiOneController extends Controller
                         'last_seen' => $sos->taxi->last_seen);
                 }
             }
-            return json_encode($sosArray);
+            return response()->json($sosArray);
         }
-        return json_encode(['sos' => 'false']);
+        return response()->json(['sos' => 'false']);
     }
 
     /**
@@ -311,15 +409,26 @@ class ApiOneController extends Controller
      * Gets all comments for the given driver.
      */
     public function getCommentsOffDriver(){
-        $driverID = Input::get('driver_id');
-        $key = Input::get('key');
-        $apikey = self::$apikey;
-        if ($key == $apikey) {
-            $comment = Comment::where('driver_id',$driverID)->where('approved',1)->get();
-            $result = collect([array('tablet' => $comment)]);
-            return $result->toJson();
+        $driverID   = Input::get('driver_id');
+        $key        = Input::get('key');
+
+        if(!empty($driverID)) {
+            if ($key == self::$apikey) {
+                $comment = Comment::where('driver_id', $driverID)->where('approved', 1)->get();
+                $result = collect([array('comment' => $comment)]);
+                return response()->json(array(
+                    'comments'    =>  $result,
+                    'success'   =>  true,
+                    'action'    =>  'comments_off_driver'
+                ),200);
+            }
+            return response()->json(self::$error, 401);
+        }else{
+            return response()->json(array(
+                'success'   =>  false,
+                'info'      =>  'Check if all parameters are filled in'
+            ),400);
         }
-        return json_encode(self::$error);
     }
 
     /**
@@ -331,20 +440,29 @@ class ApiOneController extends Controller
      * Updates the taxi location with the given params
      */
     public function sendLocation(){
-        $driverID = Input::get('driver_id');
-        $latitude = Input::get('latitude');
+        $driverID   = Input::get('driver_id');
+        $latitude   = Input::get('latitude');
         $longtitude = Input::get('longtitude');
-        $key = Input::get('key');
+        $key        = Input::get('key');
 
-        $apikey = self::$apikey;
-        if ($key == $apikey) {
-            Taxi::where('driver_id',$driverID)->update([
-                'last_latitude'     =>  $latitude,
-                'last_longtitude'   =>  $longtitude
-            ]);
-            return json_encode(['success'   =>  'location_send']);
+        if(!empty($driverID) && !empty($latitude) && !empty($longtitude)) {
+            if ($key == self::$apikey) {
+                Taxi::where('driver_id', $driverID)->update([
+                    'last_latitude'     => $latitude,
+                    'last_longtitude'   => $longtitude
+                ]);
+                return response()->json(array(
+                    'success'   =>  true,
+                    'action'    =>  'current_location_coords_send'
+                ),200);
+            }
+            return response()->json(self::$error, 401);
+        }else{
+            return response()->json(array(
+                'success'   =>  false,
+                'info'      =>  'Check if all parameters are filled in'
+            ),400);
         }
-        return json_encode(self::$error);
     }
 
     /**
@@ -356,16 +474,29 @@ class ApiOneController extends Controller
      * Updates the shift value of the given taxi with the passed value of input.shift
      */
     public function toggleShift(){
-        $taxiID = Input::get('taxi_id');
-        $shiftValue = Input::get('shift');
-        $key = Input::get('key');
+        $taxiID     = Input::get('taxi_id');
+        $key        = Input::get('key');
 
-        $apikey = self::$apikey;
-        if($key == $apikey){
-            Taxi::where('id',$taxiID)->update(['in_shift' => $shiftValue]);
-            return json_encode(['success'   =>  'shift_value_changed']);
+        if(!empty($taxiID)) {
+            if ($key == self::$apikey) {
+                $car = Taxi::where('id', $taxiID)->first();
+                if($car->in_shift == 0){
+                    $car->update(['in_shift' => 1]);
+                }else{
+                    $car->update(['in_shift' => 0]);
+                }
+                return response()->json(array(
+                    'success'   =>  true,
+                    'action'    =>  'shift_value_changed'
+                ),200);
+            }
+            return response()->json(self::$error, 401);
+        }else{
+            return response()->json(array(
+                'success'   =>  false,
+                'info'      =>  'Check if all parameters are filled in'
+            ),400);
         }
-        return json_encode(self::$error);
     }
 
     /**
@@ -380,27 +511,59 @@ class ApiOneController extends Controller
      */
     public function requestReturnRide()
     {
-        $key = Input::get('key');
-        $apikey = self::$apikey;
-        if ($key == $apikey) {
-            RouteR::create([
-                'start_city'        => Input::get('start_city'),
-                'start_zip'         => Input::get('start_zip'),
-                'start_number'      => Input::get('start_number'),
-                'start_street'      => Input::get('start_street'),
+        $key            = Input::get('key');
+        $start_city     = Input::get('start_city');
+        $start_zip      = Input::get('start_zip');
+        $start_numb     = Input::get('start_number');
+        $start_street   = Input::get('start_street');
+        $end_city       = Input::get('end_city');
+        $end_zip        = Input::get('end_zip');
+        $end_numb       = Input::get('end_number');
+        $end_street     = Input::get('end_street');
+        $pickup_time    = Input::get('pickup_time');
+        $phone_cust     = Input::get('phone_customer');
+        $email_cust     = Input::get('email_customer');
 
-                'end_city'          => Input::get('end_city'),
-                'end_zip'           => Input::get('end_zip'),
-                'end_number'        => Input::get('end_number'),
-                'end_street'        => Input::get('end_street'),
+        if( !empty($start_city)     &&
+            !empty($start_zip)      &&
+            !empty($start_numb)     &&
+            !empty($start_street)   &&
+            !empty($end_city)       &&
+            !empty($end_zip)        &&
+            !empty($end_numb)       &&
+            !empty($end_street)     &&
+            !empty($pickup_time)    &&
+            !empty($phone_cust)     &&
+            !empty($email_cust)
+        ) {
+            if ($key == self::$apikey) {
+                RouteR::create([
+                    'start_city' => $start_city,
+                    'start_zip' => $start_zip,
+                    'start_number' => $start_numb,
+                    'start_street' => $start_street,
 
-                'pickup_time'       => Input::get('pickup_time'),
-                'phone_customer'    => Input::get('phone_customer'),
-                'email_customer'    => Input::get('email_customer'),
-            ]);
-            return json_encode(['success' => 'return_ride_request_made']);
-        }
-        return json_encode(self::$error);
+                    'end_city' => $end_city,
+                    'end_zip' => $end_zip,
+                    'end_number' => $end_numb,
+                    'end_street' => $end_street,
+
+                    'pickup_time' => $pickup_time,
+                    'phone_customer' => $phone_cust,
+                    'email_customer' => $email_cust
+                ]);
+                return response()->json(array(
+                    'success'   => true,
+                    'action'    => 'return_ride_requested'
+                ), 200);
+            }
+            return response()->json(self::$error, 401);
+        }else{
+                return response()->json(array(
+                    'success'   =>  false,
+                    'info'      =>  'Check if all parameters are filled in'
+                ),400);
+            }
     }
 
     /**
@@ -412,20 +575,31 @@ class ApiOneController extends Controller
      * Uses the given inputs to create a new location in the DB for the google maps base markers.
      */
     public function postBase(){
-        $key = Input::get('key');
-        $lat = Input::get('latitude');
-        $long= Input::get('longtitude');
-        $name= Input::get('base_name');
-        $apikey = self::$apikey;
-        if($key == $apikey){
-            Taxibase::create([
-                'latitude'      => $lat,
-                'longtitude'    => $long,
-                'base_name'     => $name
-            ]);
-            return json_encode(['success' => 'new_base_confirmed']);
+        $key    = Input::get('key');
+        $lat    = Input::get('latitude');
+        $long   = Input::get('longtitude');
+        $name   = Input::get('base_name');
+
+        if(!empty($lat) && !empty($long) && !empty($name)){
+            if($key == self::$apikey){
+                Taxibase::create([
+                    'latitude'      => $lat,
+                    'longtitude'    => $long,
+                    'base_name'     => $name
+                ]);
+                return response()->json(array(
+                    'success'   =>      true,
+                    'action'    =>      'base_added'
+                ),200);
+            }
+            return response()->json(self::$error,401);
+        }else{
+            return response()->json(array(
+                'success'   =>  false,
+                'info'      =>  'Check if all parameters are filled in'
+            ),400);
         }
-        return json_encode(self::$error);
+
     }
 }
 

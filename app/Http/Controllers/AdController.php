@@ -88,7 +88,7 @@ class AdController extends Controller
         $datLoc = $dataLocation['location'];
         $datLocArray = explode(',',$datLoc);
         for($i = 0; $i < count($datLocArray); $i++){
-            AdLocation::insertLocals($advertisement->id,$datLocArray[$i]);
+            AdLocation::insertLocals($advertisement->id,trim($datLocArray[$i],' '));
         }
         session()->flash('alert-success', 'reclame ' . $advertisement->link.' toegevoegd.');
         return redirect()->route('reclames');
