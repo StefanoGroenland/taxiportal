@@ -2,7 +2,6 @@
     <div class="col-md-6">
              <table class="table table-hover data_table" >
                  <thead>
-                     <th>Reclame nummer</th>
                      <th>Link</th>
                      <th>Locaties</th>
                      <th>Aantal kliks</th>
@@ -12,7 +11,6 @@
                      @foreach($ads as $ad)
                      {{-- */$locations = '';/* --}}
                          <tr data-href="/reclamewijzigen/{{$ad->id}}">
-                             <td>{{$ad->id}}</td>
                              <td>{{$ad->link}}</td>
                              <td>
                              @foreach($ad->adLocation as $key => $value)

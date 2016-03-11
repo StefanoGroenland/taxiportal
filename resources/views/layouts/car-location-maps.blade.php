@@ -32,10 +32,9 @@
                 cars    = [];
                 var i   = 0;
 
-                $.post('http://test.dev/api/v1/locations', {key:'alpha'}, function(data){
+                $.post('http://taxiportaal.dev/api/v1/locations', {key:'alpha'}, function(data){
 
                     $.each(data.cars, function(key, value) {
-                        
                         cars[i] = ['', value['last_latitude'], value['last_longtitude']];
                         i++;
                     });
@@ -61,15 +60,13 @@
             }
 
             function initialize() {
-                
                 var mapOptions = {
                     zoom: 7,
                     center: new google.maps.LatLng( 52.1396726,5.6019347),
                     mapTypeId: google.maps.MapTypeId.ROADMAP
-                }  
+                };
                 
                 map = new google.maps.Map(document.getElementById('map'), mapOptions);
-            
                 setMarkers(cars);
                 
                 // Bind event listener on button to reload markers

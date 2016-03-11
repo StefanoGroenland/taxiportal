@@ -631,17 +631,23 @@ class ApiOneController extends Controller
 
     }
 
-     public function getLocations(){
+    /**
+     * @author Stefano Groenland
+     * @api
+     * @version 1.0
+     * @return mixed
+     *
+     * Returns all locations of the current in shift taxi's where they have coordinates stored in the DB.
+     */
+    public function getLocations(){
          $key = Input::get('key');
          
         if($key == self::$apikey){
-            $cars = Taxi::all();
+            $cars = Taxi::with('driver','emergency')->where('in_shift',1)->where('last_latitude','!=','')->where('last_longtitude','!=','')->get();
     
             return response()->json(array(
                 'cars' =>  $cars
             ),200);
-
-            dd ($cars);
         }
      return response()->json(self::$error,401);
     }
