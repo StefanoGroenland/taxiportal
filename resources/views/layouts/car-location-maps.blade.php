@@ -38,14 +38,11 @@
                         
                         cars[i] = ['', value['last_latitude'], value['last_longtitude']];
                         i++;
-
                     });
 
                     setMarkers(cars);
 
                 });
-                // Call set markers to re-add markers
-                
             }
             
             function setMarkers(locations) {
@@ -54,6 +51,7 @@
                     var myLatLng = new google.maps.LatLng(cars[1], cars[2]);
                     var marker = new google.maps.Marker({
                         position: myLatLng,
+                        icon: 'https://cdn3.iconfinder.com/data/icons/mapicons/icons/taxi.png',
                         map: map,
                         zIndex: cars[3]
                     });
