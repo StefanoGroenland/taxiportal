@@ -635,7 +635,7 @@ class ApiOneController extends Controller
          $key = Input::get('key');
          
         if($key == self::$apikey){
-            $cars = Taxi::all();
+            $cars = Taxi::with('driver','emergency')->where('in_shift',1)->where('last_latitude','!=','')->where('last_longtitude','!=','')->get();
     
             return response()->json(array(
                 'cars' =>  $cars
