@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Newspaper extends Model
 {
@@ -21,6 +22,14 @@ class Newspaper extends Model
      */
     protected $fillable = [
         'name',
-        'link'
+        'link',
+        'logo'
     ];
+
+    public static function uploadPicture($id, $img)
+    {
+        DB::table('newspaper')
+            ->where('id', $id)
+            ->update(['logo' => $img]);
+    }
 }

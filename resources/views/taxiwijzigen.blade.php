@@ -62,7 +62,7 @@
                                                                
                                                                 @if($driverCount > 0)
                                                                     @foreach($drivers as $driver)
-                                                                        @if($driver->user)
+                                                                        @if($driver->user && $user && $user->driver)
                                                                             <option @if($user->driver->id == $driver->id) selected @endif value="{{$driver->id}}">{{ $driver->user->firstname }}</option>  
                                                                         @endif
                                                                     @endforeach

@@ -9,7 +9,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Route, View;
-
+use Image as Image;
 class NewspaperController extends Controller
 {
 
@@ -56,9 +56,10 @@ class NewspaperController extends Controller
      * If all passes it will Create a row for a news group with with the rss feed link and a name.
      */
     public function addNews(Request $request){
+
         $data = array(
-            'name'  =>  $request['name'],
-            'link'  =>  $request['link']
+            'name'              =>  $request['name'],
+            'link'              =>  $request['link'],
         );
         $rules = array(
             'name'  =>  'required|max:50',
@@ -70,10 +71,11 @@ class NewspaperController extends Controller
             return redirect()->route('nieuws')->withErrors($valid)->withInput($data);
         }
         $news = Newspaper::create($data);
+        $this->upload($request,$news->id);
 
         $request->session()->flash('alert-success', 'Nieuwsgroep '.$news->name.' is toegevoegd.');
         return redirect()->route('nieuws');
-    }
+}
 
     /**
      * @author Stefano Groenland
@@ -99,7 +101,9 @@ class NewspaperController extends Controller
         if($valid->fails()){
             return redirect('nieuwswijzigen/'.$id)->withErrors($valid)->withInput($data);
         }
+
         $news->update($data);
+        $this->upload($request,$news->id);
         $request->session()->flash('alert-success', 'Nieuwsgroep '. $request['name'] .' is gewijziged.');
         return redirect('/nieuws');
     }
@@ -115,7 +119,55 @@ class NewspaperController extends Controller
 
         $news = Newspaper::where('id',$id)->first();
         $news->delete();
+        if(!$news->logo == ""){
+            unlink($news->logo);
+        }
         session()->flash('alert-success', 'Nieuwsgroep '.$news->name .' verwijderd.');
         return redirect()->route('nieuws');
     }
+
+    /**
+     * @authors Stefano Groenland
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     *
+     * Grabs the file named 'logo' from the request and uploads it onto the server,
+     * It updates the corresponding newspaper with the link to the uploaded picture as their logo in the Newspaper table.
+     */
+    public function upload(Request $request , $id){
+
+        $x = $request['x'];
+        $y = $request['y'];
+        $h = $request['h'];
+        $w = $request['w'];
+
+        $file = array('logo' => $request->file('logo'));
+        $rules = array('logo' => 'required|mimes:jpeg,bmp,png,jpg',);
+        $validator = Validator::make($file, $rules);
+        if ($validator->fails()) {
+            if ($file) {
+                //$request->session()->flash('alert-danger', 'U heeft geen bestand / geen geldig bestand gekozen om te uploaden, voeg een foto toe.');
+            }
+            return redirect('/nieuws');
+        } else {
+            if ($request->file('logo')->isValid()) {
+                $destinationPath = 'assets/uploads';
+                $extension = $request->file('logo')->getClientOriginalExtension();
+                $fileName = rand(1111, 9999) . '.' . $extension;
+                $request->file('logo')->move($destinationPath, $fileName);
+                $ava = $destinationPath . '/' . $fileName;
+                $img = Image::make($ava)->fit(200)->crop($w, $h, $x, $y)->save();
+                $final = $destinationPath . '/' . $img->basename;
+
+                Newspaper::uploadPicture($id, $final);
+                return redirect('/nieuws');
+
+            } else {
+                $request->session()->flash('alert-danger', 'Er is een fout opgetreden tijdens het uploaden van uw bestand.');
+            }
+        }
+
+    }
+
 }

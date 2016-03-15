@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Ad extends Model
 {
@@ -28,5 +29,11 @@ class Ad extends Model
 
     public function adLocation(){
         return $this->hasMany('App\AdLocation');
+    }
+    public static function uploadPicture($id, $img)
+    {
+        DB::table('ad')
+            ->where('id', $id)
+            ->update(['banner' => $img]);
     }
 }

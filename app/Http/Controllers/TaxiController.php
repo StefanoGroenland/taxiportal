@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Emergency;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -85,6 +86,10 @@ class TaxiController extends Controller
 			return redirect('taxitoevoegen')->withErrors($validator)->withInput($data);
 		}
 		$taxi = Taxi::create($data);
+        Emergency::create(array(
+            'taxi_id'   =>  $taxi->id,
+            'seen'      =>  '1'
+        ));
 		Driver::where('id',$data['driver_id'])->update(['taxi_id' => $taxi->id]);
 		session()->flash('alert-success','De taxi is aangemaakt.');
 		return redirect()->route('taxioverzicht');
@@ -92,6 +97,7 @@ class TaxiController extends Controller
 	public function deletetaxi(){
 		$id = Route::current()->getparameter('id');
 		$find = Taxi::find($id);
+        Emergency::where('taxi_id',$find->id)->delete();
 		$find->delete();
 		session()->flash('alert-success','De Taxi is verwijderd.');
 		return redirect()->route('taxioverzicht');

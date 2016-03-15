@@ -114,10 +114,8 @@ class UserController extends Controller
     public function showDriversEdit(){
         $id         = Route::current()->getParameter('id');
         $driver     = Driver::with('user')->where('user_id','=',$id)->first();
-
         $cars       = Taxi::where('driver_id','=','0')->orWhere('driver_id',$driver->id)->get();
         $carCount   = count($cars);
-
         return View::make('/chauffeurwijzigen', compact('id','driver','cars','carCount'));  
     }
 

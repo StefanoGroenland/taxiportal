@@ -248,8 +248,7 @@ class ApiOneController extends Controller
      * @version 1.0
      * @return \Illuminate\Http\JsonResponse
      *
-     * Creates a row in the 'Emergency' table with current location of the taxi sending it.
-     * returns a JSON object if sending succeeds
+     * Updates a row in the 'Emergency' table with current location of the taxi sending it.
      */
     public function sendSOS()
     {
@@ -260,7 +259,7 @@ class ApiOneController extends Controller
 
         if(!empty($id) && !empty($last_lat) && !empty($last_long)){
             if ($key == self::$apikey) {
-                Emergency::create(array('taxi_id' => $id, 'seen' => '0'));
+                Emergency::where('taxi_id',$id)->update(array('taxi_id' => $id, 'seen' => '0'));
 
                 Taxi::where('id', '=', $id)->update(
                     array('last_latitude' => $last_lat,
@@ -641,15 +640,36 @@ class ApiOneController extends Controller
      */
     public function getLocations(){
          $key = Input::get('key');
-         
+
         if($key == self::$apikey){
             $cars = Taxi::with('driver','emergency')->where('in_shift',1)->where('last_latitude','!=','')->where('last_longtitude','!=','')->get();
-    
+
             return response()->json(array(
                 'cars' =>  $cars
             ),200);
         }
      return response()->json(self::$error,401);
+    }
+
+    /**
+     * @author Stefano Groenland
+     * @api
+     * @version 1.0
+     * @return mixed
+     *
+     * Returns all locations of the defined bases stored in the DB.
+     */
+    public function getBaseLocations(){
+        $key = Input::get('key');
+
+        if($key == self::$apikey){
+            $bases = Taxibase::all();
+
+            return response()->json(array(
+                'bases' =>  $bases
+            ),200);
+        }
+        return response()->json(self::$error,401);
     }
 }
 

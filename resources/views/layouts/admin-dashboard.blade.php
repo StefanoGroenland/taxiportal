@@ -58,7 +58,6 @@
                         </div>
                     </div>
                     <div class="row">
-                    {{--<input type="button" value="Reload markers" id="reloadMarkers">--}}
                     <div class="col-lg-12">
                         <div id="map" style="height: 500px; width: 100%;" class="contact_maps md-shadow-z-2"></div>
                     </div>
