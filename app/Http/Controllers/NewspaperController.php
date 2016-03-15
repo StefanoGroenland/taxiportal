@@ -75,7 +75,7 @@ class NewspaperController extends Controller
 
         $request->session()->flash('alert-success', 'Nieuwsgroep '.$news->name.' is toegevoegd.');
         return redirect()->route('nieuws');
-    }
+}
 
     /**
      * @author Stefano Groenland
@@ -119,8 +119,8 @@ class NewspaperController extends Controller
 
         $news = Newspaper::where('id',$id)->first();
         $news->delete();
-        if(!$news->profile_photo == ""){
-            unlink($news->profile_photo);
+        if(!$news->logo == ""){
+            unlink($news->logo);
         }
         session()->flash('alert-success', 'Nieuwsgroep '.$news->name .' verwijderd.');
         return redirect()->route('nieuws');
@@ -132,8 +132,8 @@ class NewspaperController extends Controller
      * @param $id
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      *
-     * Grabs the file named 'profile_photo' from the request and uploads it onto the server,
-     * It updates the corresponding newspaper with the link to the uploaded picture as their profile_photo in the Newspaper table.
+     * Grabs the file named 'logo' from the request and uploads it onto the server,
+     * It updates the corresponding newspaper with the link to the uploaded picture as their logo in the Newspaper table.
      */
     public function upload(Request $request , $id){
 
@@ -142,27 +142,26 @@ class NewspaperController extends Controller
         $h = $request['h'];
         $w = $request['w'];
 
-        $file = array('profile_photo' => $request->file('profile_photo'));
-        $rules = array('profile_photo' => 'required|mimes:jpeg,bmp,png,jpg',);
+        $file = array('logo' => $request->file('logo'));
+        $rules = array('logo' => 'required|mimes:jpeg,bmp,png,jpg',);
         $validator = Validator::make($file, $rules);
         if ($validator->fails()) {
             if ($file) {
                 //$request->session()->flash('alert-danger', 'U heeft geen bestand / geen geldig bestand gekozen om te uploaden, voeg een foto toe.');
             }
-            return redirect('/chauffeurtoevoegen');
+            return redirect('/nieuws');
         } else {
-            if ($request->file('profile_photo')->isValid()) {
+            if ($request->file('logo')->isValid()) {
                 $destinationPath = 'assets/uploads';
-                $extension = $request->file('profile_photo')->getClientOriginalExtension();
+                $extension = $request->file('logo')->getClientOriginalExtension();
                 $fileName = rand(1111, 9999) . '.' . $extension;
-                $request->file('profile_photo')->move($destinationPath, $fileName);
+                $request->file('logo')->move($destinationPath, $fileName);
                 $ava = $destinationPath . '/' . $fileName;
                 $img = Image::make($ava)->fit(200)->crop($w, $h, $x, $y)->save();
                 $final = $destinationPath . '/' . $img->basename;
 
                 Newspaper::uploadPicture($id, $final);
-                $request->session()->flash('alert-success', 'alert in upload func.');
-                    return redirect('/nieuws');
+                return redirect('/nieuws');
 
             } else {
                 $request->session()->flash('alert-danger', 'Er is een fout opgetreden tijdens het uploaden van uw bestand.');

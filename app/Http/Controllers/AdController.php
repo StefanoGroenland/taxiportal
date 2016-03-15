@@ -8,6 +8,7 @@ use Route, View;
 use App\Ad;
 use App\AdLocation;
 use Illuminate\Support\Facades\Validator;
+use Image as Image;
 
 class AdController extends Controller
 {
@@ -67,8 +68,7 @@ class AdController extends Controller
     public function addAd(Request $request){
        
         $data = array(
-            'link'      => $request['link'],
-            'banner'    => $request['banner']
+            'link'      => $request['link']
         );
 
         $rules = array(
@@ -80,6 +80,8 @@ class AdController extends Controller
             return redirect('reclametoevoegen')->withErrors($validator)->withInput($data);
         }
         $advertisement = Ad::create($data);
+        $this->upload($request,$advertisement->id);
+
         $dataLocation = array(
             'ad_id'     => $advertisement->id,
             'location'  => $request['locatie']
@@ -152,5 +154,49 @@ class AdController extends Controller
 
         $request->session()->flash('alert-success', 'Reclame ' . $request['link'] . ' is veranderd.');
         return redirect()->route('reclames'); 
+    }
+
+    /**
+     * @authors Stefano Groenland
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     *
+     * Grabs the file named 'profile_photo' from the request and uploads it onto the server,
+     * It updates the corresponding newspaper with the link to the uploaded picture as their profile_photo in the Newspaper table.
+     */
+    public function upload(Request $request , $id){
+
+        $x = $request['x'];
+        $y = $request['y'];
+        $h = $request['h'];
+        $w = $request['w'];
+
+        $file = array('banner' => $request->file('banner'));
+        $rules = array('banner' => 'required|mimes:jpeg,bmp,png,jpg',);
+        $validator = Validator::make($file, $rules);
+        if ($validator->fails()) {
+            if ($file) {
+                //$request->session()->flash('alert-danger', 'U heeft geen bestand / geen geldig bestand gekozen om te uploaden, voeg een foto toe.');
+            }
+            return redirect('/reclames');
+        } else {
+            if ($request->file('banner')->isValid()) {
+                $destinationPath = 'assets/uploads';
+                $extension = $request->file('banner')->getClientOriginalExtension();
+                $fileName = rand(1111, 9999) . '.' . $extension;
+                $request->file('banner')->move($destinationPath, $fileName);
+                $ava = $destinationPath . '/' . $fileName;
+                $img = Image::make($ava)->fit(1280, 200)->save();
+                $final = $destinationPath . '/' . $img->basename;
+
+                Ad::uploadPicture($id, $final);
+                return redirect('/reclames');
+
+            } else {
+                $request->session()->flash('alert-danger', 'Er is een fout opgetreden tijdens het uploaden van uw bestand.');
+            }
+        }
+
     }
 }

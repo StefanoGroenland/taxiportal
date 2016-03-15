@@ -23,13 +23,13 @@ class Newspaper extends Model
     protected $fillable = [
         'name',
         'link',
-        'profile_photo'
+        'logo'
     ];
 
     public static function uploadPicture($id, $img)
     {
         DB::table('newspaper')
             ->where('id', $id)
-            ->update(['profile_photo' => $img]);
+            ->update(['logo' => $img]);
     }
 }

@@ -16,7 +16,7 @@ class CreateNewspaperTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('link');
-            $table->string('profile_photo');
+            $table->string('logo');
             $table->timestamps();
         });
     }

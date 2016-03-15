@@ -63,16 +63,16 @@
                                             <div class="fileinput fileinput-new " data-provides="fileinput">
                                                 <div id="jcrop_target" name="avatar" class="fileinput-new thumbnail center-block" style="width: 200px; height: 200px;">
                                                     <img id="jcrop_target" style=" margin-left: auto !important" src="
-                                                    @if(!$news->profile_photo)
+                                                    @if(!$news->logo)
                                                         {{"../assets/img/avatars/avatar.png"}}
                                                     @else
-                                                       ../{{$news->profile_photo}}
+                                                       ../{{$news->logo}}
                                                     @endif" alt="gfxuser" class="img-responsive center-block"/>
                                                     <div class="jcrop-holder" style="width: 100% !important; height: 100%!important;"></div>
                                                 </div>
                                                 <div>
                                                     <span class="btn btn-success" id="verkennerButton" data-toggle="tooltip" title="Kies een foto" onclick="$(this).parent().find('input[type=file]').click();">Verkenner</span>
-                                                    <input name="profile_photo" id="imgInp" onchange="$(this).parent().parent().find('.form-control').html($(this).val().split(/[\\|/]/).pop());readURL(this)" style="display: none;" type="file">
+                                                    <input name="logo" id="imgInp" onchange="$(this).parent().parent().find('.form-control').html($(this).val().split(/[\\|/]/).pop());readURL(this)" style="display: none;" type="file">
                                                 </div>
                                             </div>
                                         </div>
