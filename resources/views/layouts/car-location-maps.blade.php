@@ -30,8 +30,7 @@
             
             
             
-            function reloadMarkers() {            
-                console.log('reloaded');
+            function reloadMarkers() {
                 // Loop through markers and set map to null for each
                 for (var i=0; i<markers.length; i++) {
                     markers[i].setMap(null);
@@ -41,7 +40,6 @@
                 markers = [];
                 cars    = [];
                 var i   = 0;
-                var z   = 0;
                 var x   = 0;
 
                 $.post('http://taxiportaal.dev/api/v1/locations', {key:'alpha'}, function(data){
