@@ -116,5 +116,6 @@ Route::post('/api/v1/sendlocation'                  , 'ApiOneController@sendLoca
 Route::post('/api/v1/toggleshift'                   , 'ApiOneController@toggleShift');
 Route::post('/api/v1/returnrequest'                 , 'ApiOneController@requestReturnRide');
 Route::post('/api/v1/postbase'                      , 'ApiOneController@postBase');
-Route::post('/api/v1/locations'                      , 'ApiOneController@getLocations');
+Route::post('/api/v1/locations'                     , 'ApiOneController@getLocations');
+Route::post('/api/v1/locations/bases'               , 'ApiOneController@getBaseLocations');
 
