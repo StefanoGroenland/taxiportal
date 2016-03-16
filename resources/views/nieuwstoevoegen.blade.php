@@ -34,6 +34,25 @@
                             {!! csrf_field() !!}
                             <div class="form-body">
                                 <div class="row">
+                                    <div class="col-lg-5 col-md-5"></div>
+                                    <div class="col-lg-2 col-md-2 center-block text-center">
+                                        <div class="fileinput fileinput-new " data-provides="fileinput">
+                                            <div id="jcrop_target" class="fileinput-new thumbnail center-block" style="width: 200px; height: 200px;">
+                                                <img id="jcrop_target" style=" height:100%; width:100%;"
+                                                        src="../assets/img/avatars/avatar.png"
+                                                alt="avatar" class="img-responsive center-block"/>
+                                                <div class="jcrop-holder" style="width: 400px !important; height: 200px!important;"></div>
+                                            </div>
+                                            <div>
+                                                <span class="btn btn-success" id="verkennerButton" onclick="$(this).parent().find('input[type=file]').click();">Verkenner</span>
+                                                <input name="banner" id="imgInp" onchange="$(this).parent().parent().find('.form-control').html($(this).val().split(/[\\|/]/).pop());readURL(this)" style="display: none;" type="file">
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="col-lg-5 col-md-5"></div>
+                                </div>
+                                <div class="row">
+                                <div class="col-lg-2 col-md-2"></div>
                                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                         <div class="form-group form-md-line-input">
                                             <div class="input-icon">
@@ -58,24 +77,9 @@
                                         <input type="hidden" id="y" name="y">
                                         <input type="hidden" id="w" name="w">
                                         <input type="hidden" id="h" name="h">
-                                                <div class="row">
-                                                    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12 center-block">
-                                                        <div class="fileinput fileinput-new " data-provides="fileinput">
-                                                            <div id="jcrop_target" class="fileinput-new thumbnail center-block" style="width: 200px; height: 200px;">
-                                                                <img id="jcrop_target" style=" height:100%; width:100%;"
-                                                                        src="../assets/img/avatars/avatar.png"
-                                                                alt="avatar" class="img-responsive center-block"/>
-                                                                <div class="jcrop-holder" style="width: 400px !important; height: 200px!important;"></div>
-                                                            </div>
-                                                            <div>
-                                                                <span class="btn btn-success" id="verkennerButton" onclick="$(this).parent().find('input[type=file]').click();">Verkenner</span>
-                                                                <input name="banner" id="imgInp" onchange="$(this).parent().parent().find('.form-control').html($(this).val().split(/[\\|/]/).pop());readURL(this)" style="display: none;" type="file">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                         </div>
                                     </div>
+                                    <div class="col-lg-2 col-md-2"></div>
                                  </div>
                                 </div>
                                 <div class="row">

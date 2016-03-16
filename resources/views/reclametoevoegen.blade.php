@@ -15,7 +15,27 @@
                         <form role="form" method="POST" action="/addAd" onsubmit="return checkCoords();" files="true" enctype="multipart/form-data">
                             {!! csrf_field() !!}
                             <div class="form-body">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-2"></div>
+                                    <div class="col-lg-8 col-md-8 center-block text-center">
+                                        <div id="imgHolder" class="fileinput-new thumbnail center-block" >
+                                            <img id="blah"
+                                             src="../assets/img/avatars/avatar.png"
+                                             alt="avatar" class="img-responsive center-block"
+                                             style="width: 100% !important; height: 150px !important;"
+                                            />
+                                        </div>
+                                        <div class="fileinput fileinput-new " data-provides="fileinput">
+                                            <div>
+                                                <span class="btn btn-success" id="verkennerButton" onclick="$(this).parent().find('input[type=file]').click();">Verkenner</span>
+                                                <input name="banner" id="imgInp"  style="display: none;" type='file'>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <div class="col-lg-2 col-md-2"></div>
+                            </div>
                                 <div class="row">
+                                <div class="col-lg-2 col-md-2"></div>
                                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                         <div class="form-group form-md-line-input">
                                             <div class="input-icon">
@@ -34,29 +54,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                   <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 center-block text-center">
-                                   <span class="alert alert-warning" >Afbeelding afmeting 1280x200</span>
-                                       <div class="form-group form-md-line-input">
-
-                                               <div class="row">
-                                                   <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12 center-block">
-                                                   <div id="imgHolder" class="fileinput-new thumbnail center-block" >
-                                                           <img id="blah"
-                                                            src="../assets/img/avatars/avatar.png"
-                                                            alt="avatar" class="img-responsive center-block"
-                                                            style="width: 100% !important; height: 150px !important;"
-                                                           />
-                                                       </div>
-                                                       <div class="fileinput fileinput-new " data-provides="fileinput">
-                                                           <div>
-                                                               <span class="btn btn-success" id="verkennerButton" onclick="$(this).parent().find('input[type=file]').click();">Verkenner</span>
-                                                               <input name="banner" id="imgInp"  style="display: none;" type='file'>
-                                                           </div>
-                                                       </div>
-                                                   </div>
-                                               </div>
-                                       </div>
-                                   </div>
+                                   <div class="col-lg-2 col-md-2"></div>
                                 </div>
                             </div>
                             <div class="row">
