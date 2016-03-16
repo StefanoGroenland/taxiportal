@@ -73,7 +73,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="form-group form-md-line-input">
                                             <div class="input-icon">
                                                 <input type="text" class="form-control" id="voornaam" name="firstname" data-validate="required" value="@if(old('firstname')){{old('firstname')}}@else{{$driver->user->firstname}}@endif">
@@ -82,7 +82,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="form-group form-md-line-input">
                                             <div class="input-icon">
                                                 <input type="text" class="form-control" id="achternaam" name="lastname" data-validate="required" value="@if(old('lastname')){{old('lastname')}}@else{{$driver->user->lastname}}@endif">
@@ -93,7 +93,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="form-group form-md-line-input">
                                             <div class="input-icon">
                                                 <input type="password" class="form-control" id="password" name="password" data-validate="same:#password_confirmation" data-name="Wachtwoord">
@@ -102,7 +102,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="form-group form-md-line-input">
                                             <div class="input-icon">
                                                     <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" data-validate="same:#password" data-name="Herhaal wachtwoord">
@@ -112,7 +112,7 @@
                                         </div>
                                     </div>
                                    
-                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <label for="geslacht">Geslacht</label>
                                         <div class="form-group" data-validate="group">
                                             <label class="radio-inline" >
@@ -123,7 +123,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="form-group form-md-line-input ">
                                             <div class="input-icon">
                                                 <input type="number" class="form-control" id="driver_exp" name="driver_exp" data-validate="required|number"  value="@if(old('drivers_exp')){{old('drivers_exp')}}@else{{$driver->drivers_exp}}@endif">
@@ -134,7 +134,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="form-group form-md-line-input ">
                                             <div class="input-icon">
                                                 <textarea class="form-control" id="global_information" rows="1" name="global_information">@if(old('global_information')){{old('global_information')}}@else{{$driver->global_information}}@endif</textarea>
@@ -143,7 +143,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="form-group form-md-line-input ">
                                             <div class="input-icon">
                                                 <select class="form-control" id="car" name="car">
