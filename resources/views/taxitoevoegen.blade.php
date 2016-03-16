@@ -27,7 +27,7 @@
                                 				<div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
 													<div class="form-group form-md-line-input">
                                                         <div class="input-icon">
-                                                            <input type="text" class="form-control" id="license_plate" name="license_plate" value="">
+                                                            <input type="text" class="form-control" id="license_plate" name="license_plate" data-validate="required" value="{{old('license_plate')}}">
                                                             <label for="kenteken">Kenteken</label>
                                                             <i class="fa fa-hashtag"></i>
                                                         </div>
@@ -36,7 +36,7 @@
                                                 <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
 													<div class="form-group form-md-line-input">
                                                         <div class="input-icon">
-                                                            <input type="text" class="form-control" id="car_brand" name="car_brand" value="">
+                                                            <input type="text" class="form-control" id="car_brand" name="car_brand" data-validate="required" value="{{old('car_brand')}}">
                                                             <label for="merk">Merk</label>
                                                             <i class="fa fa-car"></i>
                                                         </div>
@@ -46,7 +46,7 @@
                                            		<div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
 													<div class="form-group form-md-line-input">
                                                         <div class="input-icon">
-                                                            <input type="text" class="form-control" id="car_color" name="car_model" value="">
+                                                            <input type="text" class="form-control" id="car_color" name="car_model" data-validate="required" value="{{old('car_model')}}">
                                                             <label for="model">Model</label>
                                                             <i class="fa fa-car"></i>
                                                         </div>
@@ -55,7 +55,7 @@
                                                 <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
 													<div class="form-group form-md-line-input">
                                                         <div class="input-icon">
-                                                            <input type="text" class="form-control" id="car_model" name="car_color" value="">
+                                                            <input type="text" class="form-control" id="car_model" name="car_color" data-validate="required" value="{{old('car_color')}}">
                                                             <label for="kleur">Kleur</label>
                                                             <i class="fa fa-car"></i>
                                                         </div>
@@ -64,7 +64,7 @@
                                 				<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                                 					<div class="form-group form-md-line-input ">
                                                     	<div class="input-icon">
-                                                            <select class="form-control" id="driver" name="driver">
+                                                            <select class="form-control" id="driver" name="driver" data-validate="required" value="{{old('driver')}}">
                                                                 <option>Niet koppelen</option>
                                                                 @if($driverCount > 0)
                                                                     @foreach($drivers as $driver)
@@ -97,4 +97,15 @@
                         </div>
                     </div>
               	</div>
+@endsection
+@section('scripts')
+    <script src="{{URL::asset('../assets/js/jvalidate.js')}}" type="text/javascript"></script>
+    <script src="{{URL::asset('../assets/js/locale/messages.nl.js')}}" type="text/javascript"></script>
+    <script>
+        $(function() {
+            $('form').jvalidate({ 
+                errorMessage: true
+            });
+        });
+    </script>
 @endsection
