@@ -107,7 +107,10 @@ class AdController extends Controller
     public function deleteAd(){
        $id = Route::current()->getParameter('id');
        $find = Ad::find($id);
-       Ad::where('id','=',$id)->delete();
+       $find->delete();
+       if(!$find->logo == ""){
+           unlink($find->logo);
+       }
        AdLocation::where('ad_id','=',$id)->delete();
        session()->flash('alert-success', 'reclame ' . $find->link.' verwijderd.');
        return redirect()->route('reclames'); 
@@ -126,11 +129,9 @@ class AdController extends Controller
         $id = Route::current()->getParameter('id');
         $data = array(
             'link'      => $request['link'],
-            'banner'    => $request['banner']
         );
          $rules = array(
-            'link'      => 'required',
-            'banner'    => 'required'
+            'link'      => 'required'
         );
 
         $validator = Validator::make($data, $rules);
@@ -139,6 +140,8 @@ class AdController extends Controller
         }
 
         Ad::where('id', '=', $id)->update($data);
+        $this->upload($request,$id);
+
         $dataLocation = array(
             'ad_id'     => $id,
             'location'  => $request['location']
@@ -189,7 +192,6 @@ class AdController extends Controller
                 $ava = $destinationPath . '/' . $fileName;
                 $img = Image::make($ava)->fit(1280, 200)->save();
                 $final = $destinationPath . '/' . $img->basename;
-
                 Ad::uploadPicture($id, $final);
                 return redirect('/reclames');
 

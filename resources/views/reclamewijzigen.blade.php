@@ -12,7 +12,7 @@
                         </div>
                     </div>
                     <div class="portlet-body form">
-                        <form role="form" method="POST" action="/editAd/{{$id}}">
+                        <form role="form" method="POST" action="/editAd/{{$id}}" onsubmit="return checkCoords();" files="true" enctype="multipart/form-data">
                             {!! csrf_field() !!}
                             <input type="hidden" name="_method" value="PUT">
                             <div class="form-body">
@@ -38,10 +38,25 @@
                                     </div>
                                      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                         <div class="form-group form-md-line-input">
-                                            <div class="input-icon">
-                                                <input type="text" name="banner" class="form-control" id="banner" value="{{$obj->banner}}">
-                                                <label for="banner">Banner</label>
-                                                <i class="fa fa-picture-o"></i>
+                                            <span class="alert alert-warning" >Afbeelding afmeting 1280x200</span>
+                                            <div class="form-group form-md-line-input">
+                                                    <div class="row">
+                                                        <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12 center-block">
+                                                        <div id="imgHolder" class="fileinput-new thumbnail center-block" >
+                                                                <img id="blah"
+                                                                 src="../{{$obj->banner}}"
+                                                                 alt="avatar" class="img-responsive center-block"
+                                                                 style="width: 100% !important; height: 150px !important;"
+                                                                />
+                                                            </div>
+                                                            <div class="fileinput fileinput-new " data-provides="fileinput">
+                                                                <div>
+                                                                    <span class="btn btn-success" id="verkennerButton" onclick="$(this).parent().find('input[type=file]').click();">Verkenner</span>
+                                                                    <input name="banner" id="imgInp"  style="display: none;" type='file'>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                             </div>
                                         </div>
                                     </div>
@@ -63,4 +78,34 @@
     </div>
 </div>
 
+@endsection
+@section('scripts')
+<script src="{{URL::asset('../assets/js/jvalidate.js')}}" type="text/javascript"></script>
+<script src="{{URL::asset('../assets/js/locale/messages.nl.js')}}" type="text/javascript"></script>
+
+<script>
+    $(function() {
+        $('form').jvalidate({
+            errorMessage: true
+        });
+    });
+
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#blah').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $("#imgInp").change(function(){
+                readURL(this);
+            });
+
+
+</script>
 @endsection
