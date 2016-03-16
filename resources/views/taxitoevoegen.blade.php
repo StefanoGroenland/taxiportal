@@ -24,7 +24,7 @@
                                         {!! csrf_field() !!}
                                         <div class="form-body">
                                         	<div class="row">
-                                				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                				<div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
 													<div class="form-group form-md-line-input">
                                                         <div class="input-icon">
                                                             <input type="text" class="form-control" id="license_plate" name="license_plate" value="">
@@ -33,7 +33,7 @@
                                                         </div>
                                                     </div>
 												</div>
-                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                                <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
 													<div class="form-group form-md-line-input">
                                                         <div class="input-icon">
                                                             <input type="text" class="form-control" id="car_brand" name="car_brand" value="">
@@ -42,9 +42,8 @@
                                                         </div>
                                                     </div>
 												</div>
-                                           </div>
-                                            <div class="row">
-                                           		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+
+                                           		<div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
 													<div class="form-group form-md-line-input">
                                                         <div class="input-icon">
                                                             <input type="text" class="form-control" id="car_color" name="car_model" value="">
@@ -53,7 +52,7 @@
                                                         </div>
                                                     </div>
 												</div>
-                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                                <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
 													<div class="form-group form-md-line-input">
                                                         <div class="input-icon">
                                                             <input type="text" class="form-control" id="car_model" name="car_color" value="">
@@ -62,7 +61,7 @@
                                                         </div>
                                                     </div>
 												</div>
-                                				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                				<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                                 					<div class="form-group form-md-line-input ">
                                                     	<div class="input-icon">
                                                             <select class="form-control" id="driver" name="driver">
@@ -70,7 +69,7 @@
                                                                 @if($driverCount > 0)
                                                                     @foreach($drivers as $driver)
                                                                     @if($driver->user)
-                                                                        <option value="{{$driver->id}}">{{ $driver->user->firstname }}</option>  
+                                                                        <option value="{{$driver->id}}">{{ $driver->user->firstname .' '. $driver->user->lastname}}</option>
                                                                     @endif
                                                                     @endforeach
                                                                 @else

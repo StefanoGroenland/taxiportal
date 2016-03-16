@@ -68,7 +68,7 @@ class TaxiController extends Controller
 	public function addTaxi(Request $request){
 
 		$data = array(
-			'license_plate' 	=> $request['license_plate'],
+			'license_plate' 	=> strtoupper($request['license_plate']),
 			'car_brand' 		=> $request['car_brand'],
 			'car_color' 		=> $request['car_color'],
 			'car_model' 		=> $request['car_model'],
@@ -105,7 +105,7 @@ class TaxiController extends Controller
 	public function editTaxi(Request $request){
 		$id = Route::current()->getParameter('id');
         $data = array(
-			'license_plate' 	=> $request['license_plate'],
+			'license_plate' 	=> strtoupper($request['license_plate']),
 			'car_brand' 		=> $request['car_brand'],
 			'car_color' 		=> $request['car_color'],
 			'car_model' 		=> $request['car_model'],
