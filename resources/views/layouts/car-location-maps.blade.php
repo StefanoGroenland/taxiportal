@@ -121,7 +121,7 @@
                 setBaseMarkers(bases);
 
                 // Bind event listener on button to reload markers
-                document.getElementById('reloadMarkers').addEventListener('click', reloadMarkers);
+//                document.getElementById('reloadMarkers').addEventListener('click', reloadMarkers);
             }
 
             initialize();

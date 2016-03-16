@@ -190,8 +190,8 @@
                                                              <div class="row">
                                                                 <div class="col-lg-12">
                                                                     <div class="margiv-top-10 pull-right">
-                                                                        <button type="submit" class="btn green-meadow"><i class="fa fa-check"></i> Opslaan</button>
                                                                         <a href="/profielwijzigen#tab_1_3" class="btn default"> Annuleren </a>
+                                                                        <button type="submit" class="btn green-meadow"><i class="fa fa-check"></i> Opslaan</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
