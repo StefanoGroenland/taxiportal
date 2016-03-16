@@ -49,8 +49,8 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-actions noborder pull-right">
-                                            <button type="submit" class="btn green-meadow"><i class="fa fa-plus" ></i>Toevoegen</button>
                                             <a href="/tablets" class="btn default">Annuleren</a>
+                                            <button type="submit" class="btn green-meadow"><i class="fa fa-plus" ></i>Toevoegen</button>
                                         </div>
                                     </div>
                                 </div>

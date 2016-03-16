@@ -90,8 +90,8 @@
                                <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-actions noborder pull-right">
-                                        <button type="submit" class="btn green-meadow"><i class="fa fa-check" ></i>Opslaan</button>
                                         <a href="/opmerkingen" type="button" class="btn default">Annuleren</a>
+                                        <button type="submit" class="btn green-meadow"><i class="fa fa-check" ></i>Opslaan</button>
                                     </div>
                                 </div>
                                 </div>
