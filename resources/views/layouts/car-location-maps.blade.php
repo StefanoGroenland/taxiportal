@@ -123,8 +123,7 @@
                 // Bind event listener on button to reload markers
 //                document.getElementById('reloadMarkers').addEventListener('click', reloadMarkers);
             }
-
-            initialize();
+//            initialize();
             </script>
         @endif
  @endsection
