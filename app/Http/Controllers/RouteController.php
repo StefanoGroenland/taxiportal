@@ -68,17 +68,18 @@ class RouteController extends Controller
 			'end_zip'           => 'required',
 			'end_number'        => 'required|numeric',
 			'end_street'        => 'required',
-			'pickup_time'       => 'required',
+			'pickup_time'       => 'required|date',
 			'phone_customer'    => 'required|numeric|digits:10',
 			'email_customer'    => 'required|email'
 		);
 
-		$data['pickup_time'] = date('Y-m-d H:i', strtotime($data['pickup_time']));
+		
 
 		$validator = Validator::make($data, $rules);
 		if ($validator->fails()){
 			return redirect('rittoevoegen')->withErrors($validator)->withInput($data);
 		}
+		$data['pickup_time'] = date('Y-m-d H:i', strtotime($data['pickup_time']));
 		Route2::create($data);
 		session()->flash('alert-success','De route is aangemaakt.');
 		return redirect()->route('ritten');
@@ -119,7 +120,7 @@ class RouteController extends Controller
 			'end_zip'           => 'required',
 			'end_number'        => 'required|numeric',
 			'end_street'        => 'required',
-			'pickup_time'       => 'required',
+			'pickup_time'       => 'required|date',
 			'phone_customer'    => 'required|numeric|digits:10',
 			'email_customer'    => 'required|email'
         );
