@@ -18,10 +18,12 @@
                         <div class="caption font-grey-gallery">
                             <i class="fa fa-info font-grey-gallery"></i>
                             <span class="caption-subject bold uppercase">Taxi's</span>
+
                         </div>
+                        <a href="/taxitoevoegen" class="btn btn-sm green-meadow pull-right"><i class="fa fa-plus"></i> Taxi toevoegen</a>
                     </div>
                     <div class="portlet-body form">
-                    <a href="/taxitoevoegen" class="btn btn-sm green-meadow margin-bottom-10"><i class="fa fa-plus"></i> Taxi toevoegen</a>
+                    
                         @include('layouts.tables.taxi-table')
                     </div>
                 </div>

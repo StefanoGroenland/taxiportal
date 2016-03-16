@@ -34,7 +34,7 @@
                             @endif 
                         </td>
                         <td class="text-right">
-                            <a class="btn btn-sm green-meadow" href="/taxiwijzigen/{{$taxi->id}}"><i class="fa fa-pencil"></i></a>
+                            <a class="btn btn-sm green-meadow popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Taxi wijzigen" href="/taxiwijzigen/{{$taxi->id}}"><i class="fa fa-pencil"></i></a>
                             <a class="btn btn-sm red-sunglo deleteButton" data-model-id="{{$taxi->id}}" data-toggle="modal" href="#myModel{{$taxi->id}}"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
