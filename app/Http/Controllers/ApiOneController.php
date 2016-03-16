@@ -46,6 +46,12 @@ class ApiOneController extends Controller
         'status'        => '401'
     );
 
+    private static $none = array(
+        'success'       =>  false,
+        'error'         =>  'no_values_found',
+        'status'        =>  '404'
+    );
+
     /**
      * @author Stefano Groenland
      * @api
@@ -62,12 +68,16 @@ class ApiOneController extends Controller
         if(!empty($location)){
             if ($key == self::$apikey) {
                 $results = AdLocation::with('ad')->where('location', '=', $location)->get();
-                return response()->json(array(
-                    'advertisements'    =>  $results,
-                    'success'           =>  true,
-                    'action'            =>  'get_ads_for_location',
-                    'status'            =>  '200'
-                ),200);
+                if($results->isEmpty()){
+                    return response()->json(self::$none, 404);
+                }else{
+                    return response()->json(array(
+                        'advertisements'    =>  $results,
+                        'success'           =>  true,
+                        'action'            =>  'get_ads_for_location',
+                        'status'            =>  '200'
+                    ),200);
+                }
             }
             return response()->json(self::$error, 401);
         }
@@ -130,6 +140,7 @@ class ApiOneController extends Controller
                 $tablet = Tablet::with('taxi')->where('user_id', '=', $user->id)->first();
                 $driver = Driver::where('id', '=', $tablet->taxi->driver_id)->first();
                 $user   = User::where('id',$driver->user_id)->first();
+
                 return response()->json(array(
                     'driver'    =>  $driver,
                     'user'      =>  $user,
@@ -169,12 +180,16 @@ class ApiOneController extends Controller
                     $routeArray[] = $route;
                 }
             }
-            return response()->json(array(
-                'routes'    =>  $routeArray,
-                'success'   =>  true,
-                'action'    =>  'get_all_routes',
-                'status'    =>  '200'
-            ),200);
+            if(count($routeArray) < 1){
+                return response()->json(self::$none, 404);
+            }else{
+                return response()->json(array(
+                    'routes'    =>  $routeArray,
+                    'success'   =>  true,
+                    'action'    =>  'get_all_routes',
+                    'status'    =>  '200'
+                ),200);
+            }
         }
         return response()->json(self::$error, 401);
     }
@@ -202,12 +217,16 @@ class ApiOneController extends Controller
                         $routeArray[] = $route;
                     }
                 }
-                return response()->json(array(
-                    'routes'    =>  $routeArray,
-                    'success'   =>  true,
-                    'action'    =>  'get_routes_for_current_taxi',
-                    'status'    =>  '200'
-                ),200);
+                if(count($routeArray) < 1){
+                    return response()->json(self::$none, 404);
+                }else {
+                    return response()->json(array(
+                        'routes'    => $routeArray,
+                        'success'   => true,
+                        'action'    => 'get_routes_for_current_taxi',
+                        'status' => '200'
+                    ), 200);
+                }
             }
             return response()->json(self::$error, 401);
         }else{
@@ -232,12 +251,16 @@ class ApiOneController extends Controller
         $key = Input::get('key');
         if ($key == self::$apikey) {
             $news = Newspaper::all();
-            return response()->json(array(
-                'news'  =>  $news,
-                'success'   =>  true,
-                'action'    =>  'get_news_feeds',
-                'status'    =>  '200'
-            ),200);
+            if($news->isEmpty()){
+                return response()->json(self::$none, 404);
+            }else{
+                return response()->json(array(
+                    'news'  =>  $news,
+                    'success'   =>  true,
+                    'action'    =>  'get_news_feeds',
+                    'status'    =>  '200'
+                ),200);
+            }
         }
         return response()->json(self::$error, 401);
     }
@@ -308,18 +331,18 @@ class ApiOneController extends Controller
                         array('taxi_with_driver' => $taxi),
                         array('taxi_user' => $user)
                     ]);
-                    return response()->json(array(
+                    if(count($taxi) < 1 || count($user) < 1){
+                        return response()->json(self::$none, 404);
+                    }else{
+                        return response()->json(array(
                             'result'    =>  $result,
                             'success'   =>  true,
                             'action'    =>  'tablet_login',
                             'status'    =>  '200'
-                    ),200);
+                        ),200);
+                    }
                 }
-                return response()->json(array(
-                    'success'   => false,
-                    'info'      => 'No tablet found for given name',
-                    'status'    =>  '404'
-                ),404);
+                return response()->json(self::$none, 404);
             }
             return response()->json(self::$error, 401);
         }else{
@@ -433,13 +456,17 @@ class ApiOneController extends Controller
         if(!empty($driverID)) {
             if ($key == self::$apikey) {
                 $comment = Comment::where('driver_id', $driverID)->where('approved', 1)->get();
-                $result = collect([array('comment' => $comment)]);
-                return response()->json(array(
-                    'comments'  =>  $result,
-                    'success'   =>  true,
-                    'action'    =>  'comments_off_driver',
-                    'status'    =>  '200'
-                ),200);
+                $result = collect([$comment]);
+                if($comment->isEmpty()){
+                    return response()->json(self::$none, 404);
+                }else{
+                    return response()->json(array(
+                        'comments'  =>  $result,
+                        'success'   =>  true,
+                        'action'    =>  'comments_off_driver',
+                        'status'    =>  '200'
+                    ),200);
+                }
             }
             return response()->json(self::$error, 401);
         }else{
@@ -467,10 +494,15 @@ class ApiOneController extends Controller
 
         if(!empty($driverID) && !empty($latitude) && !empty($longtitude)) {
             if ($key == self::$apikey) {
-                Taxi::where('driver_id', $driverID)->update([
-                    'last_latitude'     => $latitude,
-                    'last_longtitude'   => $longtitude
-                ]);
+                    $find = Taxi::where('driver_id', $driverID)->first();
+                    if(count($find) < 1){
+                        return response()->json(self::$none, 404);
+                    }else{
+                        $find->update([
+                            'last_latitude'     => $latitude,
+                            'last_longtitude'   => $longtitude
+                        ]);
+                    }
                 return response()->json(array(
                     'success'   =>  true,
                     'action'    =>  'current_location_coords_send',
@@ -502,16 +534,20 @@ class ApiOneController extends Controller
         if(!empty($taxiID)) {
             if ($key == self::$apikey) {
                 $car = Taxi::where('id', $taxiID)->first();
-                if($car->in_shift == 0){
-                    $car->update(['in_shift' => 1]);
+                if(count($car) < 1){
+                    return response()->json(self::$none, 404);
                 }else{
-                    $car->update(['in_shift' => 0]);
+                    if($car->in_shift == 0){
+                        $car->update(['in_shift' => 1]);
+                    }else{
+                        $car->update(['in_shift' => 0]);
+                    }
+                    return response()->json(array(
+                        'success'   =>  true,
+                        'action'    =>  'shift_value_changed',
+                        'status'    =>  '200'
+                    ),200);
                 }
-                return response()->json(array(
-                    'success'   =>  true,
-                    'action'    =>  'shift_value_changed',
-                    'status'    =>  '200'
-                ),200);
             }
             return response()->json(self::$error, 401);
         }else{
@@ -562,19 +598,19 @@ class ApiOneController extends Controller
         ) {
             if ($key == self::$apikey) {
                 RouteR::create([
-                    'start_city' => $start_city,
-                    'start_zip' => $start_zip,
-                    'start_number' => $start_numb,
-                    'start_street' => $start_street,
+                    'start_city'        => $start_city,
+                    'start_zip'         => $start_zip,
+                    'start_number'      => $start_numb,
+                    'start_street'      => $start_street,
 
-                    'end_city' => $end_city,
-                    'end_zip' => $end_zip,
-                    'end_number' => $end_numb,
-                    'end_street' => $end_street,
+                    'end_city'          => $end_city,
+                    'end_zip'           => $end_zip,
+                    'end_number'        => $end_numb,
+                    'end_street'        => $end_street,
 
-                    'pickup_time' => $pickup_time,
-                    'phone_customer' => $phone_cust,
-                    'email_customer' => $email_cust
+                    'pickup_time'       => $pickup_time,
+                    'phone_customer'    => $phone_cust,
+                    'email_customer'    => $email_cust
                 ]);
                 return response()->json(array(
                     'success'   => true,
