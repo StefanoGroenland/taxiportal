@@ -7,15 +7,19 @@
         </thead>
         <tbody>
         @foreach($tablets as $tablet)
-            @if($tablet->taxi && $tablet->user)
+            @if($tablet->taxi)
                 <tr data-href="/tabletwijzigen/{{$tablet->id}}">
                     <td>{{$tablet->user->tablet_name}}</td>
-                    @if($tablet->taxi->driver)
-                        <td>{{$tablet->taxi->driver->user->firstname .' '. $tablet->taxi->driver->user->surname .' '. $tablet->taxi->driver->user->lastname}}</td>
+                    @if($tablet->taxi->driver && $tablet->taxi->driver->user)
+                        <td>{{$tablet->taxi->driver->user->firstname .' '. $tablet->taxi->driver->user->lastname}}</td>
                     @else
                         <td>Geen chauffeur</td>
                     @endif
+                    @if($tablet->taxi)
                     <td>{{$tablet->taxi->license_plate .', '. $tablet->taxi->car_brand .' '. $tablet->taxi->car_model}} </td>
+                    @else
+                    <td>Geen taxi gekoppeld</td>
+                    @endif
                     <td width="12%" class="text-right">
                         <a class="btn btn-sm green-meadow" href="/tabletwijzigen/{{$tablet->id}}"><i class="fa fa-pencil"></i></a>
                         <a class="btn btn-sm red-sunglo deleteButton" data-model-id="{{$tablet->id}}" data-toggle="modal" href="#myModel{{$tablet->id}}"><i class="fa fa-trash"></i></a>
