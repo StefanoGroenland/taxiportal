@@ -12,7 +12,7 @@
              @foreach($routes as $route)
 
                      <tr data-href="/ritwijzigen/{{$route->id}}">
-                         @if($route->taxi && $route->taxi->driver)
+                         @if($route->taxi && $route->taxi->driver && $route->taxi->driver->user)
                              <td>{{$route->taxi->license_plate}}</td>
                              <td>{{$route->taxi->driver->user->firstname .' '. $route->taxi->driver->user->surname .' '. $route->taxi->driver->user->lastname}}</td>
                          @else
@@ -40,7 +40,7 @@
                          @endif
                          <td class="text-right">
                              <a class="btn btn-sm green-meadow" href="/ritwijzigen/{{$route->id}}"><i class="fa fa-pencil"></i></a>
-                             <a class="btn btn-sm yellow-lemon" href="/toggleRoute/{{$route->id}}"><i class="fa fa-check"></i></a>
+                             <a class="btn btn-sm yellow-lemon" href="/toggleRoute/{{$route->id}}/1"><i class="fa fa-check"></i></a>
                              <a class="btn btn-sm red-sunglo deleteButton" data-model-id="{{$route->id}}" data-toggle="modal" href="#myModel{{$route->id}}"><i class="fa fa-trash"></i></a>
                      </tr>
              @endforeach
