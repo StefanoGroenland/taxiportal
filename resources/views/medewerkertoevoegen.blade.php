@@ -15,7 +15,7 @@
                                 <div class="portlet-title">
                                     <div class="caption font-grey-gallery">
                                         <i class="fa fa-plus font-grey-gallery"></i>
-                                        <span class="caption-subject bold uppercase"> Chauffeur toevoegen</span>
+                                        <span class="caption-subject bold uppercase"> Medewerker toevoegen</span>
                                     </div>
                                 </div>
                                 <form method="POST" class="formulier" onsubmit="return checkCoords();" action="/addAdmin" files="true" enctype="multipart/form-data">
