@@ -123,7 +123,6 @@ tr{
 }
 .rit_begin{
 	padding-top: 16px;
-    padding-left: 44px;
 }
 @media (min-width: 992px){
 	.page-header .navbar-collapse .navbar-nav .more-dropdown .dropdown-menu {

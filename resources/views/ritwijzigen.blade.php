@@ -24,10 +24,14 @@
                             <input type="hidden" name="_method" value="PUT">
                             <div class="form-body">
                                 <div class="row">
-                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 "> 
+                                   	<div class="col-lg-2 col-md-12"></div>
+                                    <div class="col-lg-8 col-md-12"> 
                                         <div id="map" style="height: 400px; width: 100%;" class="contact_maps"></div>
                                     </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <div class="col-lg-2 col-md-12"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group form-md-line-input ">
                                             <div class="input-icon">
                                                 <select class="form-control" id="taxi" name='taxi'>
@@ -45,7 +49,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group form-md-line-input">
                                             <div class="input-icon">
                                                 <input data-toggle="tooltip" title="Ophaal tijd" type="text" name="pickup_time" class="form_datetime form-control date-picker"  value="@if(old('pickup_time')){{old('pickup_time')}}@else{{date('d-m-Y H:i',strtotime($routes->pickup_time))}}@endif" data-rule-maxlength="30">
@@ -54,10 +58,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12">
+                                    <div class="col-lg-1 col-md-12 col-sm-12 col-xs-12">
                                         <h4 class="rit_begin">Begin:</h4>
                                     </div>
-                                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group form-md-line-input">
                                             <div class="input-icon">
                                                 <input type="text" class="form-control" id="start_street" name="start_street" value="@if(old('start_street')){{old('start_street')}}@else{{$routes->start_street}}@endif">
@@ -66,7 +70,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12">
+                                    <div class="col-lg-1 col-md-12 col-sm-6 col-xs-12">
                                         <div class="form-group form-md-line-input">
                                             <div class="input-icon">
                                                 <input type="text" class="form-control" id="start_number" name="start_number" value="@if(old('start_number')){{old('start_number')}}@else{{$routes->start_number}}@endif">
@@ -75,7 +79,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12">
+                                    <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group form-md-line-input">
                                             <div class="input-icon">
                                                 <input type="text" class="form-control" id="start_zip" name="start_zip" value="@if(old('start_zip')){{old('start_zip')}}@else{{$routes->start_zip}}@endif">
@@ -84,7 +88,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                     <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                                     <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group form-md-line-input">
                                             <div class="input-icon">
                                                 <input type="text" class="form-control" id="start_city" name="start_city" value="@if(old('start_city')){{old('start_city')}}@else{{$routes->start_city}}@endif">
@@ -93,10 +97,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12">
+                                    <div class="col-lg-1 col-md-12 col-sm-12 col-xs-12">
                                         <h4 class="rit_begin">Eind:</h4>
                                     </div>
-                                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                     <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group form-md-line-input">
                                             <div class="input-icon">
                                                 <input type="text" class="form-control" id="end_street" name="end_street" value="@if(old('end_street')){{old('end_street')}}@else{{$routes->end_street}}@endif">
@@ -105,7 +109,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12">
+                                    <div class="col-lg-1 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group form-md-line-input">
                                             <div class="input-icon">
                                                 <input type="text" class="form-control" id="end_number" name="end_number" value="@if(old('end_number')){{old('end_number')}}@else{{$routes->end_number}}@endif">
@@ -114,7 +118,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12">
+                                    <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group form-md-line-input">
                                             <div class="input-icon">
                                                 <input type="text" class="form-control" id="end_zip" name="end_zip" value="@if(old('end_zip')){{old('end_zip')}}@else{{$routes->end_zip}}@endif">
@@ -123,7 +127,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                     <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                                     <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group form-md-line-input">
                                             <div class="input-icon">
                                                 <input type="text" class="form-control" id="end_city" name="end_city" value="@if(old('end_city')){{old('end_city')}}@else{{$routes->end_city}}@endif">
@@ -133,7 +137,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group form-md-line-input">
                                             <div class="input-icon">
                                                 <input type="text" class="form-control" id="phone_customer" name="phone_customer" value="@if(old('end_phone_customercity')){{old('phone_customer')}}@else{{$routes->phone_customer}}@endif">
@@ -142,7 +146,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group form-md-line-input">
                                             <div class="input-icon">
                                                 <input type="text" class="form-control" id="email_customer" name="email_customer" value="@if(old('email_customer')){{old('email_customer')}}@else{{$routes->email_customer}}@endif">
@@ -151,17 +155,17 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
-                                    <div class="form-group form-md-line-input ">
-                                        <div class="input-icon">
-                                            <select class="form-control" id="status" name="processed">
-                                                <option @if(old('processed') == 0) selected  @elseif($routes->processed == 0) selected @endif value="0">Niet geaccepteerd</option>
-                                                <option @if(old('processed') == 1) selected  @elseif($routes->processed == 1) selected @endif value="1">Geaccepteerd</option>
-                                            </select>
-                                            <label for="status">Status</label>
-                                            <i class="fa fa-tag"></i>
-                                        </div>
-                                    </div>
+                                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+	                                    <div class="form-group form-md-line-input ">
+	                                        <div class="input-icon">
+	                                            <select class="form-control" id="status" name="processed">
+	                                                <option @if(old('processed') == 0) selected  @elseif($routes->processed == 0) selected @endif value="0">Niet geaccepteerd</option>
+	                                                <option @if(old('processed') == 1) selected  @elseif($routes->processed == 1) selected @endif value="1">Geaccepteerd</option>
+	                                            </select>
+	                                            <label for="status">Status</label>
+	                                            <i class="fa fa-tag"></i>
+	                                        </div>
+	                                    </div>
                                     </div>
                                </div>
                                 <div class="row">
