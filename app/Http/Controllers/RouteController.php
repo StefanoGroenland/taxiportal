@@ -145,15 +145,20 @@ class RouteController extends Controller
      * when it's not processed it will be set to 0, and if it's processed it will be set to 1.
      */
     public function toggleRoute(){
-        $id = Route::current()->getParameter('id');
+        $id         = Route::current()->getParameter('id');
+        $redirect   = Route::current()->getParameter('redir');
+        $msg        = Route2::where('id',$id)->first();
 
-        $msg = Route2::where('id',$id)->first();
         if(!$msg->processed > 0){
             $msg->where('id',$id)->update(['processed' => 1]);
         }else{
             $msg->where('id',$id)->update(['processed' => 0]);
         }
         session()->flash('alert-success', 'Rit status gewijzigd.');
-        return redirect('/ritten/openstaand');
+        if($redirect < 1){
+            return redirect('/ritten');
+        }else{
+            return redirect('/ritten/openstaand');
+        }
     }
 }
