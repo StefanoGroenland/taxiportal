@@ -58,8 +58,7 @@ class RouteController extends Controller
 			'taxi_id'			=> $request['taxi'],
             'processed'         => 1
 		);
-		
-		//todo date format check
+
 		$rules = array(
 			'start_city'        => 'required',
 			'start_zip'         => 'required',
@@ -137,6 +136,14 @@ class RouteController extends Controller
         return redirect()->route('ritten'); 
     }
 
+
+    /**
+     * @author Stefano Groenland
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     *
+     * Looks for a row with the passed ID , upon finding it checks what the 'processed' value is,
+     * when it's not processed it will be set to 0, and if it's processed it will be set to 1.
+     */
     public function toggleRoute(){
         $id = Route::current()->getParameter('id');
 
