@@ -56,7 +56,7 @@
                                                     </div>
 												</div>
                                                 <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12">
-													<h4>Begin:</h4>
+													<h4 class="rit_begin">Begin:</h4>
 												</div>
                                                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 													<div class="form-group form-md-line-input">
@@ -95,7 +95,7 @@
                                                     </div>
 												</div>
                                           		<div class="col-lg-1 col-md-1 col-sm-6 col-xs-12">
-													<h4>Eind:</h4>
+													<h4 class="rit_begin">Eind:</h4>
 												</div>
                                            		 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 													<div class="form-group form-md-line-input">
