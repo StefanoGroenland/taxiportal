@@ -25,7 +25,7 @@
     			<link rel="stylesheet" href="{{URL::asset('../assets/css/morris-0.4.3.min.css')}}">
           <link rel="stylesheet" href="{{URL::asset('../assets/css/bootstrap-datetimepicker.min.css')}}">
 	        <link href="{{URL::asset('../assets/css/custom.css')}}" rel="stylesheet" type="text/css" />
-	        <link rel="shortcut icon" href="favicon.ico" /> 
+	        <link rel="shortcut icon" href="../assets/img/favicon.ico" /> 
 
 	</head>
 	<body class="page-header-fixed page-sidebar-closed-hide-logo page-md">
