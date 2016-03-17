@@ -40,6 +40,7 @@
 	            {{--link chauffeur--}}
 	            @include('layouts.nav-driver')
 	            @endif
+
 	    <div class="container-fluid">
 	    	@yield('content')
 	    </div>
