@@ -19,7 +19,7 @@
                                 				<div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
 													<div class="plate-form">
                                                         <span class="eu"></span>
-                                                        <input type="text" class="kenteken_input" id="license_plate" name="license_plate" data-validate="required|maxlength:8" value="{{old('license_plate')}}">
+                                                        <input type="text" class="kenteken_input" id="license_plate" name="license_plate" data-validate="required|maxlength:8" value="@if(old('license_plate')){{old('license_plate')}}@else{{$taxi->license_plate}}@endif">
                                                     </div>          
 												</div>
                                                 <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
