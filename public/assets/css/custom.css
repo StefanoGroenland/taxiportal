@@ -99,6 +99,9 @@ a{
      padding: 0px 0 0!important; 
      padding-bottom:35px !important;
 }
+.hide{
+    display:none;
+}
 .has-error {
 	border-color: #E53935 !important;
 }
@@ -116,6 +119,7 @@ a{
 }
 
 .jvalidate-error-message {
+    margin-bottom:-50px!important;
 	display: block;
 }
 .profile-userpic img{
