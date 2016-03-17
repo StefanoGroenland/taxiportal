@@ -33,6 +33,9 @@ a{
 .copyright{
 	text-align:center;
 }
+.active{
+    color:#009dc7 !important;
+}
 .login{
     background-color: #607d8b !important;
 }
