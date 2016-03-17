@@ -14,7 +14,7 @@ a{
 }
 .page-header .navbar .navbar-nav>li>a {
     color: #636e77;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 400;
     background: #39424a;
     font-family: Oswald,sans-serif;
@@ -70,13 +70,26 @@ a{
     border-bottom: none;
 }
 .taxi_dropdown{
-	    min-width: 147px !important;
+	min-width: 134px !important;
 }
 .rit_dropdown{
-    min-width: 150px !important;
+    min-width: 135px !important;
+}
+.rit_anchor{
+    padding: 8px 15px!important;
+}
+.ov_dropdown{
+ min-width: 175px !important;
+}
+.ov_anchor{
+    padding: 8px 15px!important;
 }
 .opmerkingen_dropdown{
-    min-width: 205px !important;
+    min-width: 130px !important;
+}
+.opm_anchor{
+    padding: 8px 15px!important;
+    padding-right:8px !important;
 }
 .page-header .navbar .navbar-nav li.selected>a {
     background-color: #fff !important;

@@ -22,8 +22,8 @@
                 @endif
                 </td>
                 <td width="12%" class="text-right">
-                    <a class="btn btn-sm green-meadow" href="/medewerkerwijzigen/{{$admin->id}}"><i class="fa fa-pencil"></i></a>
-                    <a class="btn btn-sm red-sunglo deleteButton" data-model-id="{{$admin->id}}" data-toggle="modal" href="#myModel{{$admin->id}}"><i class="fa fa-trash"></i></a>
+                    <a class="btn btn-sm blue popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Medewerker wijzigen" href="/medewerkerwijzigen/{{$admin->id}}"><i class="fa fa-pencil"></i></a>
+                    <a class="btn btn-sm red-sunglo deleteButton popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Medewerker verwijderen" data-model-id="{{$admin->id}}" data-toggle="modal" href="#myModel{{$admin->id}}"><i class="fa fa-trash"></i></a>
                 </td>
             </tr>
         @endforeach

@@ -26,10 +26,9 @@
                     <i class="fa fa-info font-grey-gallery"></i>
                     <span class="caption-subject bold uppercase">Tablets</span>
                 </div>
+                 <a href="/tablettoevoegen" class="btn btn-sm green-meadow pull-right"><i class="fa fa-plus"></i> Tablet toevoegen</a>
             </div>
-            @if(Auth::user()->user_rank == 'admin')
-             <a href="/tablettoevoegen" class="btn btn-sm green-meadow margin-bottom-10"><i class="fa fa-plus"></i> Tablet toevoegen</a>
-            @endif
+
             <div class="portlet-body form">
                 @include('layouts.tables.tablet-table')
             </div>

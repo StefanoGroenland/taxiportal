@@ -26,11 +26,9 @@
                            <i class="fa fa-info font-grey-gallery"></i>
                            <span class="caption-subject bold uppercase">Nieuws</span>
                        </div>
-                   </div>
+                        <a href="/nieuwstoevoegen" class="btn btn-sm green-meadow pull-right"><i class="fa fa-plus"></i> Nieuws toevoegen</a>
+                       </div>
                    <div class="portlet-body form">
-                   @if(Auth::user()->user_rank == 'admin')
-                    <a href="/nieuwstoevoegen" class="btn btn-sm green-meadow margin-bottom-10"><i class="fa fa-plus"></i> Nieuws toevoegen</a>
-                   @endif
                        @include('layouts.tables.nieuws-table')
                    </div>
                </div>

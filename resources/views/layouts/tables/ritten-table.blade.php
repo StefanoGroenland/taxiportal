@@ -39,9 +39,9 @@
                         <td>Geen taxi gekoppeld</td>
                         @endif
                         <td class="text-right">
-                            <a class="btn btn-sm green-meadow" href="/ritwijzigen/{{$route->id}}"><i class="fa fa-pencil"></i></a>
-                            <a class="btn btn-sm yellow-lemon" href="/toggleRoute/{{$route->id}}/0"><i class="fa fa-remove"></i></a>
-                            <a class="btn btn-sm red-sunglo deleteButton" data-model-id="{{$route->id}}" data-toggle="modal" href="#myModel{{$route->id}}"><i class="fa fa-trash"></i></a>
+                            <a class="btn btn-sm blue popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Rit wijzigen" href="/ritwijzigen/{{$route->id}}"><i class="fa fa-pencil"></i></a>
+                            <a class="btn btn-sm yellow-lemon popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Rit status naar open" href="/toggleRoute/{{$route->id}}/0"><i class="fa fa-remove"></i></a>
+                            <a class="btn btn-sm red-sunglo deleteButton popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Rit verwijderen" data-model-id="{{$route->id}}" data-toggle="modal" href="#myModel{{$route->id}}"><i class="fa fa-trash"></i></a>
                     </tr>
             @endforeach
         </tbody>

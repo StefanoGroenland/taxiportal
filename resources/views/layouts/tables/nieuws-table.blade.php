@@ -12,8 +12,8 @@
               <td>{!! $rss->link !!}</td>
               <td>{{$rss->created_at->format('d-m-Y H:i')}}</td>
                   <td width="12%" class="text-right">
-                      <a class="btn btn-sm green-meadow" href="/nieuwswijzigen/{{$rss->id}}"><i class="fa fa-pencil"></i></a>
-                      <a class="btn btn-sm red-sunglo deleteButton" data-model-id="{{$rss->id}}" data-toggle="modal" href="#myModel{{$rss->id}}"><i class="fa fa-trash"></i></a>
+                      <a class="btn btn-sm blue popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Nieuws wijzigen" href="/nieuwswijzigen/{{$rss->id}}"><i class="fa fa-pencil"></i></a>
+                      <a class="btn btn-sm red-sunglo deleteButton popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Nieuws verwijderen" data-model-id="{{$rss->id}}" data-toggle="modal" href="#myModel{{$rss->id}}"><i class="fa fa-trash"></i></a>
                   </td>
           </tr>
           @endforeach

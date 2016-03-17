@@ -60,12 +60,12 @@
  	                                                                      \Request::route()->getName() == 'taxioverzicht' ||
  	                                                                      \Request::route()->getName() == 'taxiwijzigen' ||
  	                                                                      \Request::route()->getName() == 'taxitoevoegen') active selected @endif" >
- 	                                    <a class="text-uppercase">
+ 	                                    <a href="/taxilocatie" class="text-uppercase">
  	                                        <i class="fa fa-briefcase" ></i> Taxi's
  	                                    </a>
  	                                    <ul class="dropdown-menu taxi_dropdown">
  	                                        <li>
-                                                <a href="/taxilocatie">Taxi's</a>
+                                                <a href="/taxilocatie">Taxi locaties</a>
                                             </li>
  	                                        <li>
  	                                            <a href="/taxioverzicht">Taxi overzicht</a>
@@ -77,31 +77,35 @@
                                                                          \Request::route()->getName() == 'ritwijzigen' ||
                                                                          \Request::route()->getName() == 'rittenopenstaand' ||
                                                                          \Request::route()->getName() == 'rittoevoegen') active selected @endif">
- 	                                    <a class="text-uppercase">
+ 	                                    <a href="/ritten/openstaand" class="text-uppercase">
  	                                        <i class="fa fa-location-arrow"></i> Ritten
  	                                    </a>
  	                                    <ul class="dropdown-menu rit_dropdown">
-                                            <li>
-                                                <a href="/ritten">Alle ritten</a>
+ 	                                        <li>
+                                                <a class="rit_anchor" href="/ritten/openstaand">Open ritten</a>
                                             </li>
                                             <li>
-                                                <a href="/ritten/openstaand">Open ritten</a>
+                                                <a class="rit_anchor" href="/ritten">Verwerkte ritten</a>
                                             </li>
                                         </ul>
 
  	                                </li>
  	                                <li class="dropdown more-dropdown  @if(\Request::route()->getName() == 'opmerkingen' ||
- 	                                                                      \Request::route()->getName() == 'opmerkingwijzigen' ) active selected @endif">
- 	                                    <a class="text-uppercase">
+ 	                                                                      \Request::route()->getName() == 'opmerkingwijzigen' ||
+ 	                                                                       \Request::route()->getName() == 'opmerkingen-openstaand') active selected @endif">
+ 	                                    <a href="/opmerkingen/verwerkt" class="text-uppercase">
  	                                        <i class="fa fa-comments-o"></i> Opmerkingen
  	                                    </a>
  	                                    <ul class="dropdown-menu opmerkingen_dropdown">
                                             <li>
-                                                <a href="/opmerkingen">Alle opmerkingen</a>
+                                               <a class="opm_anchor" href="/opmerkingen/verwerkt">Verwerkte opmerkingen</a>
+                                            </li>
+                                            <li>
+                                                <a class="opm_anchor" href="/opmerkingen">Open opmerkingen</a>
                                             </li>
                                         </ul>
  	                                </li>
- 	                                <li class="dropdown more-dropdown @if(\Request::route()->getName() == 'reclames' ||
+ 	                                <li class="dropdown more-dropdown  @if(\Request::route()->getName() == 'reclames' ||
  	                                                                      \Request::route()->getName() == 'reclametoevoegen' ||
  	                                                                      \Request::route()->getName() == 'reclamewijzigen' ||
  	                                                                      \Request::route()->getName() == 'chauffeurs' ||
@@ -116,25 +120,27 @@
  	                                                                      \Request::route()->getName() == 'nieuwstoevoegen' ||
  	                                                                      \Request::route()->getName() == 'nieuwswijzigen' ||
  	                                                                      \Request::route()->getName() == 'nieuws' ) active selected @endif">
- 	                                    <a class="text-uppercase">
+ 	                                    <a href="/reclames" class="text-uppercase ">
  	                                        <i class="fa fa-briefcase" ></i> Overzichten
  	                                    </a>
- 	                                    <ul class="dropdown-menu">
+ 	                                    <ul class="dropdown-menu ov_dropdown">
  	                                        <li>
- 	                                            <a href="/chauffeurs">Chauffeurs</a>
- 	                                        </li>
- 	                                        <li>
- 	                                            <a href="/tablets">Tablets</a>
- 	                                        </li>
- 	                                        <li>
- 	                                            <a href="/medewerkers">Medewerkers</a>
- 	                                        </li>
- 	                                         <li>
- 	                                            <a href="/reclames">Reclames</a>
- 	                                        </li>
- 	                                        <li>
-                                                <a href="/nieuws">Nieuwsfeeds</a>
+                                         	    <a class="ov_anchor" href="/reclames">Reclames</a>
+                                         	</li>
+                                         	<li>
+                                                <a class="ov_anchor" href="/nieuws">Nieuwsfeeds</a>
                                             </li>
+ 	                                        <li>
+ 	                                            <a class="ov_anchor" href="/tablets">Tablets</a>
+ 	                                        </li>
+ 	                                        <li>
+                                                <a class="ov_anchor" href="/chauffeurs">Chauffeurs</a>
+                                            </li>
+ 	                                        <li>
+ 	                                            <a class="ov_anchor" href="/medewerkers">Medewerkers</a>
+ 	                                        </li>
+
+
  	                                    </ul>
  	                                </li>
  	                            </ul>

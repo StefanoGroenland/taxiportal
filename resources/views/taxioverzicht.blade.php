@@ -23,7 +23,6 @@
                         <a href="/taxitoevoegen" class="btn btn-sm green-meadow pull-right"><i class="fa fa-plus"></i> Taxi toevoegen</a>
                     </div>
                     <div class="portlet-body form">
-                    
                         @include('layouts.tables.taxi-table')
                     </div>
                 </div>

@@ -19,6 +19,7 @@
                         <i class="fa fa-info font-grey-gallery"></i>
                         <span class="caption-subject bold uppercase">Chauffeurs</span>
                     </div>
+                    <a href="/chauffeurtoevoegen" class="btn btn-sm green-meadow pull-right"><i class="fa fa-plus"></i> Chauffeur toevoegen</a>
                 </div>
                 <div class="portlet-body form">
                     @include('layouts.tables.chauffeurs-table')
