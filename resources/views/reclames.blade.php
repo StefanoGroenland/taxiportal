@@ -20,10 +20,10 @@
                     <i class="fa fa-info font-grey-gallery"></i>
                     <span class="caption-subject bold uppercase">Reclames</span>
                 </div>
+                 <a href="/reclametoevoegen" class="btn btn-sm green-meadow pull-right"><i class="fa fa-plus"></i> Reclame toevoegen</a>
             </div>
            
             <div class="portlet-body form">
-             <a href="/reclametoevoegen" class="btn btn-sm green-meadow margin-bottom-10"><i class="fa fa-plus"></i> Reclame toevoegen</a>
                @include('layouts.tables.reclames-table')
             </div>
         </div>

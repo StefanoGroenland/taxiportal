@@ -19,11 +19,9 @@
                 <i class="fa fa-info font-grey-gallery"></i>
                 <span class="caption-subject bold uppercase">Openstaande ritten</span>
             </div>
+                <a href="/rittoevoegen" class="btn btn-sm green-meadow pull-right"><i class="fa fa-plus"></i> Rit toevoegen</a>
         </div>
         <div class="portlet-body form">
-            @if(Auth::user()->user_rank == 'admin')
-            <a href="/rittoevoegen" class="btn btn-sm green-meadow margin-bottom-10"><i class="fa fa-plus"></i> Rit toevoegen</a>
-            @endif
             @include('layouts.tables.ritten-openstaand-table')
         </div>
     </div>

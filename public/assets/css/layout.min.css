@@ -525,7 +525,7 @@ color:#4b5761
 	display: block
 }
 .page-header .navbar-collapse .navbar-nav .more-dropdown>a {
-	padding-right: 57px;
+	padding-right: 60px;
 	position: relative
 }
 .page-header .navbar-collapse .navbar-nav .more-dropdown>a:after {
@@ -555,7 +555,7 @@ color:#4b5761
 	box-shadow: 5px 5px rgba(102,102,102,.1)
 }
 .page-header .navbar-collapse .navbar-nav .more-dropdown .dropdown-menu>li>a {
-	padding: 8px 29px
+	padding: 8px 15px
 }
 .page-header .navbar-collapse .navbar-nav .more-dropdown.open>a:after {
 	color: #2a3239

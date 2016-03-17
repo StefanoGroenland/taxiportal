@@ -21,8 +21,8 @@
                              </td>
                              <td>{{$ad->clicks}}</td>
                              <td width="20%" class="text-right">
-                                 <a class="btn btn-sm green-meadow" href="/reclamewijzigen/{{$ad->id}}"><i class="fa fa-pencil"></i></a>
-                                 <a class="btn btn-sm red-sunglo deleteButton" data-model-id="{{$ad->id}}" data-toggle="modal" href="#myModel{{$ad->id}}"><i class="fa fa-trash"></i></a>
+                                 <a class="btn btn-sm blue popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Reclame wijzigen" href="/reclamewijzigen/{{$ad->id}}"><i class="fa fa-pencil"></i></a>
+                                 <a class="btn btn-sm red-sunglo deleteButton popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Reclame verwijderen" data-model-id="{{$ad->id}}" data-toggle="modal" href="#myModel{{$ad->id}}"><i class="fa fa-trash"></i></a>
                              </td>
                          </tr>
                      @endforeach

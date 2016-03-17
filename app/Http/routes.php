@@ -64,9 +64,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/ritten/openstaand', array('as' => 'rittenopenstaand', 'uses' => 'RouteController@showRoutesOpen'));
         Route::get('/toggleRoute/{id}/{redir}', array('as' => 'ritaccepteren', 'uses' => 'RouteController@toggleRoute'));
 
+        Route::get('/opmerkingen/verwerkt', array('as' => 'opmerkingen-openstaand', 'uses' => 'CommentController@showCommentsApproved'));
         Route::get('/opmerkingwijzigen/{id}', array('as' => 'opmerkingwijzigen', 'uses' => 'CommentController@showCommentEdit'));
         Route::put('/editComment/{id}', 'CommentController@editComment');
-        Route::get('/toggleComment/{id}', 'CommentController@togglesStateComment');
+        Route::get('/toggleComment/{id}/{redir}', 'CommentController@togglesStateComment');
         Route::delete('/deleteComment/{id}', 'CommentController@deleteComment');
 
         Route::get('/tablets', array('as' => 'tablets', 'uses' => 'UserController@showTablet'));

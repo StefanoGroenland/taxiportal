@@ -46,6 +46,17 @@ class CommentController extends Controller
      * @author Stefano Groenland
      * @return mixed
      *
+     * Gets all comments where column 'approved' = 1.
+     */
+    public function showCommentsApproved(){
+        $commentsApproved = Comment::with('driver')->where('approved','=',1)->get();
+        return View::make('/opmerkingen-verwerkt', compact('comments','commentsApproved'));
+    }
+
+    /**
+     * @author Stefano Groenland
+     * @return mixed
+     *
      * Grabs the route parameter ID, Looks for a comment row with that ID and passes them along,
      * when making the 'opmerkingwijzigen view'
      */
@@ -92,16 +103,21 @@ class CommentController extends Controller
      * when it's not approved it will be set to approved, and if it's approved it will be set to not approved.
      */
     public function togglesStateComment(){
-        $id = Route::current()->getParameter('id');
-
-        $msg = Comment::where('id',$id)->first();
+        $id     = Route::current()->getParameter('id');
+        $redir  = Route::current()->getParameter('redir');
+        $msg    = Comment::where('id',$id)->first();
         if(!$msg->approved > 0){
             $msg->where('id',$id)->update(['approved' => 1]);
         }else{
             $msg->where('id',$id)->update(['approved' => 0]);
         }
         session()->flash('alert-success', 'Opmerking status aangepast.');
-        return redirect('/opmerkingen');
+        if($redir < 1){
+            return redirect('/opmerkingen');
+        }else{
+            return redirect('/opmerkingen/verwerkt');
+        }
+
     }
 
     /**

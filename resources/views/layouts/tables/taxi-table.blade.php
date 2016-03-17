@@ -23,9 +23,9 @@
                         @endif
                         <td>{{$taxi->last_latitude .' - '. $taxi->last_longtitude}}</td>
                         <td>@if($taxi->in_shift == 1)
-                                <i class="fa fa-circle" style="color: #41f800;" ></i>
+                                <i class="fa fa-circle online-circle"></i>
                             @else
-                                <i class="fa fa-circle" style="color: #F85200;" ></i> 
+                                <i class="fa fa-circle offline-circle"></i>
                             @endif 
                             @if($taxi->last_seen != '0000-00-00 00:00:00')
                                 <small>{{date('d-m-Y H:i',strtotime($taxi->last_seen))}}</small>
@@ -34,8 +34,8 @@
                             @endif 
                         </td>
                         <td class="text-right">
-                            <a class="btn btn-sm green-meadow popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Taxi wijzigen" href="/taxiwijzigen/{{$taxi->id}}"><i class="fa fa-pencil"></i></a>
-                            <a class="btn btn-sm red-sunglo deleteButton" data-model-id="{{$taxi->id}}" data-toggle="modal" href="#myModel{{$taxi->id}}"><i class="fa fa-trash"></i></a>
+                            <a class="btn btn-sm blue popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Taxi wijzigen" href="/taxiwijzigen/{{$taxi->id}}"><i class="fa fa-pencil"></i></a>
+                            <a class="btn btn-sm red-sunglo deleteButton popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Taxi verwijderen" data-model-id="{{$taxi->id}}" data-toggle="modal" href="#myModel{{$taxi->id}}"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
             @endforeach

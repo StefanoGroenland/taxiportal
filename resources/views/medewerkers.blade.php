@@ -26,9 +26,9 @@
                     <i class="fa fa-info font-grey-gallery"></i>
                     <span class="caption-subject bold uppercase">Medewerkers</span>
                 </div>
+                <a href="/medewerkertoevoegen" class="btn btn-sm green-meadow pull-right"><i class="fa fa-plus"></i> Medewerker toevoegen</a>
             </div>
             <div class="portlet-body form">
-             <a href="/medewerkertoevoegen" class="btn btn-sm green-meadow margin-bottom-10"><i class="fa fa-plus"></i> Medewerker toevoegen</a>
                    @include('layouts.tables.medewerkers-table')
             </div>
         </div>

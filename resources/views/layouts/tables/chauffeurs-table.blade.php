@@ -1,4 +1,4 @@
-<a href="/chauffeurtoevoegen" class="btn btn-sm green-meadow margin-bottom-10"><i class="fa fa-plus"></i> Chauffeur toevoegen</a>
+
 
     <table class="table table-bordered table-hover" id="sample_1">
         <thead>
@@ -46,8 +46,8 @@
                             @endfor
                         </td>
                         <td width="12%" class="text-right">
-                            <a class="btn btn-sm green-meadow" href="/chauffeurwijzigen/{{$driver->user->id}}"><i class="fa fa-pencil"></i></a>
-                            <a class="btn btn-sm red-sunglo deleteButton" data-model-id="{{$driver->user->id}}" data-toggle="modal" href="#myModel{{$driver->user->id}}"><i class="fa fa-trash"></i></a>
+                            <a class="btn btn-sm blue popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Chauffeur wijzigen" href="/chauffeurwijzigen/{{$driver->user->id}}"><i class="fa fa-pencil"></i></a>
+                            <a class="btn btn-sm red-sunglo deleteButton popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Chauffeur verwijderen" data-model-id="{{$driver->user->id}}" data-toggle="modal" href="#myModel{{$driver->user->id}}"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
             @endif

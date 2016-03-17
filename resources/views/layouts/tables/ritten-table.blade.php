@@ -32,16 +32,16 @@
                             $route->end_zip .' '. $route->end_city}}
                         </td>
                         @if($route->taxi)
-                        <td>@if($route->taxi->in_shift == 1)<i class="fa fa-circle" style="color: #41f800;" ></i>
-                            @else<i class="fa fa-circle" style="color: #F85200;" ></i> <small>@endif @if($route->taxi->last_seen != '0000-00-00 00:00:00') {{date('d-m-Y H:i',strtotime($route->taxi->last_seen))}} @else Geen @endif</small>
+                        <td>@if($route->taxi->in_shift == 1)<i class="fa fa-circle online-circle" ></i>
+                            @else<i class="fa fa-circle offline-circle" ></i> <small>@endif @if($route->taxi->last_seen != '0000-00-00 00:00:00') {{date('d-m-Y H:i',strtotime($route->taxi->last_seen))}} @else Geen @endif</small>
                         </td>
                         @else
                         <td>Geen taxi gekoppeld</td>
                         @endif
                         <td class="text-right">
-                            <a class="btn btn-sm green-meadow" href="/ritwijzigen/{{$route->id}}"><i class="fa fa-pencil"></i></a>
-                            <a class="btn btn-sm yellow-lemon" href="/toggleRoute/{{$route->id}}/0"><i class="fa fa-remove"></i></a>
-                            <a class="btn btn-sm red-sunglo deleteButton" data-model-id="{{$route->id}}" data-toggle="modal" href="#myModel{{$route->id}}"><i class="fa fa-trash"></i></a>
+                            <a class="btn btn-sm blue popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Rit wijzigen" href="/ritwijzigen/{{$route->id}}"><i class="fa fa-pencil"></i></a>
+                            <a class="btn btn-sm yellow-lemon popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Rit status naar open" href="/toggleRoute/{{$route->id}}/0"><i class="fa fa-remove"></i></a>
+                            <a class="btn btn-sm red-sunglo deleteButton popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Rit verwijderen" data-model-id="{{$route->id}}" data-toggle="modal" href="#myModel{{$route->id}}"><i class="fa fa-trash"></i></a>
                     </tr>
             @endforeach
         </tbody>

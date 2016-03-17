@@ -21,8 +21,8 @@
                     <td>Geen taxi gekoppeld</td>
                     @endif
                     <td width="12%" class="text-right">
-                        <a class="btn btn-sm green-meadow" href="/tabletwijzigen/{{$tablet->id}}"><i class="fa fa-pencil"></i></a>
-                        <a class="btn btn-sm red-sunglo deleteButton" data-model-id="{{$tablet->id}}" data-toggle="modal" href="#myModel{{$tablet->id}}"><i class="fa fa-trash"></i></a>
+                        <a class="btn btn-sm blue popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Tablet wijzigen" href="/tabletwijzigen/{{$tablet->id}}"><i class="fa fa-pencil"></i></a>
+                        <a class="btn btn-sm red-sunglo deleteButton popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Tablet verwijderen" data-model-id="{{$tablet->id}}" data-toggle="modal" href="#myModel{{$tablet->id}}"><i class="fa fa-trash"></i></a>
                     </td>
                 </tr>
             @endif
