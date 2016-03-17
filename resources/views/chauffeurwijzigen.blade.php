@@ -150,7 +150,7 @@
                                                     <option>Niet koppelen</option>
                                                     @if($carCount > 0)
                                                         @foreach($cars as $car)
-                                                             <option @if($driver->taxi_id) selected  @elseif($driver->taxi_id == $car->id) selected @else @endif  value="{{$car->id}}">{{$car->license_plate}}</option>
+                                                              <option @if(old('taxi_id') == $driver->taxi_id) selected  @elseif($driver->taxi_id == $car->id) selected @endif value="{{$car->id}}">{{$car->license_plate}}</option>
                                                         @endforeach
                                                     @else
                                                         <option>Geen auto's koppelbaar</option>
