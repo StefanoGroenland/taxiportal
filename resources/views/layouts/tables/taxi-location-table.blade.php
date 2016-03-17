@@ -20,8 +20,8 @@
                     <td>Geen chauffeur</td>
                     @endif
                     
-                    <td>@if($taxi->in_shift == 1)<i class="fa fa-circle" style="color: #41f800;" ></i>
-                        @else<i class="fa fa-circle" style="color: #F85200;" ></i> @endif<small>@if($taxi->last_seen !== '0000-00-00 00:00:00') {{date('d-m-Y H:i',strtotime($taxi->last_seen))}} @else Geen @endif</small>
+                    <td>@if($taxi->in_shift == 1)<i class="fa fa-circle online-circle" ></i>
+                        @else<i class="fa fa-circle offline-circle"  ></i> @endif<small>@if($taxi->last_seen !== '0000-00-00 00:00:00') {{date('d-m-Y H:i',strtotime($taxi->last_seen))}} @else Geen @endif</small>
                     </td>
                 </tr>
         @endforeach

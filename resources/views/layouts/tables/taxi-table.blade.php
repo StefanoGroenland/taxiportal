@@ -23,9 +23,9 @@
                         @endif
                         <td>{{$taxi->last_latitude .' - '. $taxi->last_longtitude}}</td>
                         <td>@if($taxi->in_shift == 1)
-                                <i class="fa fa-circle" style="color: #41f800;" ></i>
+                                <i class="fa fa-circle online-circle"></i>
                             @else
-                                <i class="fa fa-circle" style="color: #F85200;" ></i> 
+                                <i class="fa fa-circle offline-circle"></i>
                             @endif 
                             @if($taxi->last_seen != '0000-00-00 00:00:00')
                                 <small>{{date('d-m-Y H:i',strtotime($taxi->last_seen))}}</small>

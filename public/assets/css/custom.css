@@ -36,6 +36,12 @@ a{
 .login{
     background-color: #607d8b !important;
 }
+.online-circle{
+    color: #1BBC9B !important;
+}
+.offline-circle{
+    color: #E43A45 !important;
+}
 .btn-blue{
 	background-color: #009dc7 !important;
 	color: #ffffff !important;
