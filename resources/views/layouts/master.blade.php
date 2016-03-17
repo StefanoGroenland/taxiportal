@@ -116,6 +116,8 @@
 	    <script src="{{URL::asset('../assets/js/layout.min.js')}}" type="text/javascript"></script>
 	    <script src="{{URL::asset('../assets/js/jquery.Jcrop.js')}}" type="text/javascript"></script>
 	    <script src="{{URL::asset('../assets/js/jquery.color.js')}}" type="text/javascript"></script>
+        <script src="{{URL::asset('../assets/js/jquery.geocomplete.min.js')}}" type="text/javascript"></script>
+        <script src="{{URL::asset('../assets/js/logger.js')}}" type="text/javascript"></script>
 
         <script src="{{URL::asset('../assets/js/datatables/datatables.min.js')}}" type="text/javascript"></script>
         <script src="{{URL::asset('../assets/js/datatables/datatables.bootstrap.js')}}" type="text/javascript"></script>

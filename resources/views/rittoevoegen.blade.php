@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-				<div class="page-content">
+                <div class="page-content">
                     @if (count($errors))
                         <ul class="list-unstyled">
                             @foreach($errors->all() as $error)
@@ -22,7 +22,7 @@
                                    <form role="form" method="POST" action="/addRoute">
                                         {!! csrf_field() !!}
                                         <div class="form-body">
-                                        	 <div class="row">
+                                             <div class="row">
                                     <div class="col-lg-2 col-md-12"></div>
                                     <div class="col-lg-8 col-md-12"> 
                                         <div id="map" style="height: 400px; width: 100%;" class="contact_maps"></div>
@@ -48,94 +48,99 @@
                                             </div>
                                         </div>
                                     </div>
-                    				 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-										<div class="form-group form-md-line-input">
+                                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="form-group form-md-line-input">
                                             <div class="input-icon">
                                                 <input data-toggle="tooltip" title="Ophaal tijd" type="text" name="pickup_time" class="form_datetime form-control date-picker"  value="@if(old('pickup_time')){{old('pickup_time')}}@endif" data-rule-maxlength="30">
                                                 <label for="start_tijd">Ophaal tijd</label>
                                                 <i class="fa fa-clock-o"></i>
                                             </div>
                                         </div>
-									</div>
-                                    <div class="col-lg-1 col-md-12 col-sm-12 col-xs-12">
-										<h4 class="rit_begin">Begin:</h4>
-									</div>
-                                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-										<div class="form-group form-md-line-input">
-                                            <div class="input-icon">
-                                                <input type="text" class="form-control" id="start_street" name="start_street" data-validate="required" value="{{old('start_street')}}">
-                                                <label for="start_straat">Straat</label>
-                                                <i class="fa fa-map-marker"></i>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 card card-1">
+                                        <h4>Begin positie:</h4>
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="form-group form-md-line-input">
+                                                    <div class="input-icon">
+                                                        <input type="text" class="form-control" id="start_street" name="start_street" data-validate="required" value="{{old('start_street')}}">
+                                                        <label for="start_straat">Straat</label>
+                                                        <i class="fa fa-map-marker"></i>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-									</div>
-                                    <div class="col-lg-1 col-md-12 col-sm-12 col-xs-12">
-										<div class="form-group form-md-line-input">
-                                            <div class="input-icon">
-                                                <input type="text" class="form-control" id="start_number" name="start_number" data-validate="required" value="{{old('start_number')}}">
-                                                <label for="start_huisnummer">Huisnummer</label>
-                                                <i class="fa fa-map-marker"></i>
+                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="form-group form-md-line-input">
+                                                    <div class="input-icon">
+                                                        <input type="text" class="form-control" id="start_number" name="start_number" data-validate="required" value="{{old('start_number')}}">
+                                                        <label for="start_postcode">Huisnummer</label>
+                                                        <i class="fa fa-map-marker"></i>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-									</div>
-                                    <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
-										<div class="form-group form-md-line-input">
-                                            <div class="input-icon">
-                                                <input type="text" class="form-control" id="start_zip" name="start_zip" data-validate="required" value="{{old('start_zip')}}">
-                                                <label for="start_postcode">Postcode</label>
-                                                <i class="fa fa-map-marker"></i>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="form-group form-md-line-input">
+                                                    <div class="input-icon">
+                                                        <input type="text" class="form-control" id="start_zip" name="start_zip" data-validate="required" value="{{old('start_zip')}}">
+                                                        <label for="start_postcode">Postcode</label>
+                                                        <i class="fa fa-map-marker"></i>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-									</div>
-                                     <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-										<div class="form-group form-md-line-input">
-                                            <div class="input-icon">
-                                                <input type="text" class="form-control" id="start_city" name="start_city" data-validate="required" value="{{old('start_city')}}">
-                                                <label for="start_plaats">Plaats</label>
-                                                <i class="fa fa-map-marker"></i>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="form-group form-md-line-input">
+                                                    <div class="input-icon">
+                                                        <input type="text" class="form-control" id="start_city" name="start_city" data-validate="required" value="{{old('start_city')}}">
+                                                        <label for="start_postcode">Plaats</label>
+                                                        <i class="fa fa-map-marker"></i>
+                                                    </div>
+                                                </div>
                                             </div>
+                                             
                                         </div>
-									</div>
-                              		<div class="col-lg-1 col-md-12 col-sm-12 col-xs-12">
-										<h4 class="rit_begin">Eind:</h4>
-									</div>
-                               		 <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-										<div class="form-group form-md-line-input">
-                                            <div class="input-icon">
-                                                <input type="text" class="form-control" id="end_street" name="end_street" data-validate="required" value="{{old('end_street')}}">
-                                                <label for="eind_straat">Straat</label>
-                                                <i class="fa fa-map-marker"></i>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 card card-1">
+                                        <h4>Eind positie:</h4>
+                                        <div class="row">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="form-group form-md-line-input">
+                                                    <div class="input-icon">
+                                                        <input type="text" class="form-control" id="end_street" name="end_street" data-validate="required" value="{{old('end_street')}}">
+                                                        <label for="start_straat">Straat</label>
+                                                        <i class="fa fa-map-marker"></i>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-									</div>
-                                    <div class="col-lg-1 col-md-12 col-sm-12 col-xs-12">
-										<div class="form-group form-md-line-input">
-                                            <div class="input-icon">
-                                                <input type="text" class="form-control" id="end_number" name="end_number" data-validate="required" value="{{old('end_number')}}">
-                                                <label for="eind_huisnummer">Huisnummer</label>
-                                                <i class="fa fa-map-marker"></i>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="form-group form-md-line-input">
+                                                    <div class="input-icon">
+                                                        <input type="text" class="form-control" id="end_number" name="end_number" data-validate="required" value="{{old('end_number')}}">
+                                                        <label for="start_postcode">Huisnummer</label>
+                                                        <i class="fa fa-map-marker"></i>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-									</div>
-                                    <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
-										<div class="form-group form-md-line-input">
-                                            <div class="input-icon">
-                                                <input type="text" class="form-control" id="end_zip" name="end_zip" data-validate="required" value="{{old('end_zip')}}">
-                                                <label for="eind_postcode">Postcode</label>
-                                                <i class="fa fa-map-marker"></i>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="form-group form-md-line-input">
+                                                    <div class="input-icon">
+                                                        <input type="text" class="form-control" id="end_zip" name="end_zip" data-validate="required" value="{{old('end_zip')}}">
+                                                        <label for="start_postcode">Postcode</label>
+                                                        <i class="fa fa-map-marker"></i>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-									</div>
-                                     <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-										<div class="form-group form-md-line-input">
-                                            <div class="input-icon">
-                                                <input type="text" class="form-control" id="end_city" name="end_city" data-validate="required" value="{{old('end_city')}}">
-                                                <label for="eind_plaats">Plaats</label>
-                                                <i class="fa fa-map-marker"></i>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <div class="form-group form-md-line-input">
+                                                    <div class="input-icon">
+                                                        <input type="text" class="form-control" id="end_city" name="end_city" data-validate="required" value="{{old('end_city')}}">
+                                                        <label for="start_postcode">Plaats</label>
+                                                        <i class="fa fa-map-marker"></i>
+                                                    </div>
+                                                </div>
                                             </div>
+                                             
                                         </div>
-									</div>
-
+                                    </div>
                                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group form-md-line-input">
                                             <div class="input-icon">
@@ -242,5 +247,6 @@
         }
       });
     }
+
     </script>
 @endsection
