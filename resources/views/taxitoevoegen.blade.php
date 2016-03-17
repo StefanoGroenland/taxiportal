@@ -27,16 +27,15 @@
                                         <input type="hidden" id="w" name="w">
                                         <input type="hidden" id="h" name="h">
                                         <div class="form-body">
-                                        	<div class="row">
-                                				<div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
-													<div class="form-group form-md-line-input">
-                                                        <div class="input-icon">
-                                                            <input type="text" class="form-control" id="license_plate" name="license_plate" data-validate="required" value="{{old('license_plate')}}">
-                                                            <label for="kenteken">Kenteken</label>
-                                                            <i class="fa fa-hashtag"></i>
-                                                        </div>
-                                                    </div>
-												</div>
+                                        <div class="row">
+                                			<div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
+                								<div class="form-group form-md-line-input">
+                                                    <div class="plate-form">
+                                                        <span class="eu"></span>
+                                                        <input type="text" class="kenteken_input" id="license_plate" name="license_plate" data-validate="required" value="{{old('license_plate')}}">
+                                                    </div>                        
+                                                </div>
+                							</div>
                                                 <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
 													<div class="form-group form-md-line-input">
                                                         <div class="input-icon">
