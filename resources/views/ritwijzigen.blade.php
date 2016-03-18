@@ -58,85 +58,88 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-1 col-md-12 col-sm-12 col-xs-12">
-                                        <h4 class="rit_begin">Begin:</h4>
-                                    </div>
-                                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="form-group form-md-line-input">
-                                            <div class="input-icon">
-                                                <input type="text" class="form-control" id="start_street" name="start_street" value="@if(old('start_street')){{old('start_street')}}@else{{$routes->start_street}}@endif">
-                                                <label for="start_straat">Straat</label>
-                                                <i class="fa fa-map-marker"></i>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <h4>Begin positie:</h4>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <div class="form-group form-md-line-input">
+                                                    <div class="input-icon">
+                                                        <input type="text" class="form-control" id="start_street" placeholder="" data-geo="route" name="start_street" value="@if(old('start_street')){{old('start_street')}}@else{{$routes->start_street}}@endif">
+                                                        <label for="start_straat">Straat</label>
+                                                        <i class="fa fa-map-marker"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <div class="form-group form-md-line-input">
+                                                    <div class="input-icon">
+                                                        <input type="text" class="form-control" id="start_number" data-geo="street_number" name="start_number" value="@if(old('start_number')){{old('start_number')}}@else{{$routes->start_number}}@endif">
+                                                        <label for="start_huisnummer">Huisnummer</label>
+                                                        <i class="fa fa-map-marker"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <div class="form-group form-md-line-input">
+                                                    <div class="input-icon">
+                                                        <input type="text" class="form-control" id="start_zip" data-geo="postal_code" name="start_zip" value="@if(old('start_zip')){{old('start_zip')}}@else{{$routes->start_zip}}@endif">
+                                                        <label for="start_postcode">Postcode</label>
+                                                        <i class="fa fa-map-marker"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">                                            
+                                                <div class="form-group form-md-line-input">
+                                                    <div class="input-icon">
+                                                        <input type="text" class="form-control" id="start_city" data-geo="locality" name="start_city" value="@if(old('start_city')){{old('start_city')}}@else{{$routes->start_city}}@endif">
+                                                        <label for="start_plaats">Plaats</label>
+                                                        <i class="fa fa-map-marker"></i>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-1 col-md-12 col-sm-6 col-xs-12">
-                                        <div class="form-group form-md-line-input">
-                                            <div class="input-icon">
-                                                <input type="text" class="form-control" id="start_number" name="start_number" value="@if(old('start_number')){{old('start_number')}}@else{{$routes->start_number}}@endif">
-                                                <label for="start_huisnummer">Huisnummer</label>
-                                                <i class="fa fa-map-marker"></i>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <h4>Eind positie:</h4>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <div class="form-group form-md-line-input">
+                                                    <div class="input-icon">
+                                                        <input type="text" class="form-control" id="end_street" data-geo-end="route" name="end_street" value="@if(old('end_street')){{old('end_street')}}@else{{$routes->end_street}}@endif">
+                                                        <label for="eind_straat">Straat</label>
+                                                        <i class="fa fa-map-marker"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <div class="form-group form-md-line-input">
+                                                    <div class="input-icon">
+                                                        <input type="text" class="form-control" id="end_number" data-geo-end="street_number" name="end_number" value="@if(old('end_number')){{old('end_number')}}@else{{$routes->end_number}}@endif">
+                                                        <label for="eind_huisnummer">Huisnummer</label>
+                                                        <i class="fa fa-map-marker"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <div class="form-group form-md-line-input">
+                                                    <div class="input-icon">
+                                                        <input type="text" class="form-control" id="end_zip" data-geo-end="postal_code" name="end_zip" value="@if(old('end_zip')){{old('end_zip')}}@else{{$routes->end_zip}}@endif">
+                                                        <label for="eind_postcode">Postcode</label>
+                                                        <i class="fa fa-map-marker"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <div class="form-group form-md-line-input">
+                                                    <div class="input-icon">
+                                                        <input type="text" class="form-control" id="end_city" data-geo-end="locality" name="end_city" value="@if(old('end_city')){{old('end_city')}}@else{{$routes->end_city}}@endif">
+                                                        <label for="eind_plaats">Plaats</label>
+                                                        <i class="fa fa-map-marker"></i>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="form-group form-md-line-input">
-                                            <div class="input-icon">
-                                                <input type="text" class="form-control" id="start_zip" name="start_zip" value="@if(old('start_zip')){{old('start_zip')}}@else{{$routes->start_zip}}@endif">
-                                                <label for="start_postcode">Postcode</label>
-                                                <i class="fa fa-map-marker"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                     <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="form-group form-md-line-input">
-                                            <div class="input-icon">
-                                                <input type="text" class="form-control" id="start_city" name="start_city" value="@if(old('start_city')){{old('start_city')}}@else{{$routes->start_city}}@endif">
-                                                <label for="start_plaats">Plaats</label>
-                                                <i class="fa fa-map-marker"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-1 col-md-12 col-sm-12 col-xs-12">
-                                        <h4 class="rit_begin">Eind:</h4>
-                                    </div>
-                                     <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="form-group form-md-line-input">
-                                            <div class="input-icon">
-                                                <input type="text" class="form-control" id="end_street" name="end_street" value="@if(old('end_street')){{old('end_street')}}@else{{$routes->end_street}}@endif">
-                                                <label for="eind_straat">Straat</label>
-                                                <i class="fa fa-map-marker"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-1 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="form-group form-md-line-input">
-                                            <div class="input-icon">
-                                                <input type="text" class="form-control" id="end_number" name="end_number" value="@if(old('end_number')){{old('end_number')}}@else{{$routes->end_number}}@endif">
-                                                <label for="eind_huisnummer">Huisnummer</label>
-                                                <i class="fa fa-map-marker"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="form-group form-md-line-input">
-                                            <div class="input-icon">
-                                                <input type="text" class="form-control" id="end_zip" name="end_zip" value="@if(old('end_zip')){{old('end_zip')}}@else{{$routes->end_zip}}@endif">
-                                                <label for="eind_postcode">Postcode</label>
-                                                <i class="fa fa-map-marker"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                     <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="form-group form-md-line-input">
-                                            <div class="input-icon">
-                                                <input type="text" class="form-control" id="end_city" name="end_city" value="@if(old('end_city')){{old('end_city')}}@else{{$routes->end_city}}@endif">
-                                                <label for="eind_plaats">Plaats</label>
-                                                <i class="fa fa-map-marker"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group form-md-line-input">
                                             <div class="input-icon">
@@ -188,12 +191,33 @@
 @section('scripts')
 <script src="{{URL::asset('../assets/js/jvalidate.js')}}" type="text/javascript"></script>
 <script src="{{URL::asset('../assets/js/locale/messages.nl.js')}}" type="text/javascript"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyBuzlPSNhmRIEhIl-3ZUidj3fwXfsDSw&amp;sensor=false&callback=initMap"></script>
 
 <script type="text/javascript" src="{{URL::asset('../assets/js/bootstrap-datetimepicker.min.js')}}" charset="UTF-8"></script>
 <script type="text/javascript" src="{{URL::asset('../assets/js/locale/bootstrap-datetimepicker.nl.js')}}" charset="UTF-8"></script>
 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyBuzlPSNhmRIEhIl-3ZUidj3fwXfsDSw&amp;sensor=false&libraries=places"></script>
+<script type="text/javascript" src="{{URL::asset('/assets/js/jquery.geocomplete.min.js')}}"></script>
+
 <script type="text/javascript"> 
+    // Geocomplete google maps
+         $(function(){
+            $("#start_street").geocomplete({
+              details: "form",
+              detailsAttribute: "data-geo",
+              types: ["geocode", "establishment"],
+            });
+
+
+          });
+          $(function(){
+            $("#end_street").geocomplete({
+              details: "form",
+              detailsAttribute: 'data-geo-end',
+              types: ["geocode", "establishment"],
+            });
+
+          });
+    // end geocomplete google maps
 
     $(function() {
         $('form').jvalidate({ 
@@ -232,6 +256,7 @@
             onChangeHandler();
         });
     }
+    initMap();
 
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     
