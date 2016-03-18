@@ -170,8 +170,10 @@ class TaxiController extends Controller
 		session()->flash('alert-success','De Taxi is verwijderd.');
 		return redirect()->route('taxioverzicht');
 	}
+
 	public function editTaxi(Request $request){
 		$id = Route::current()->getParameter('id');
+
         $data = array(
 			'license_plate' 	=> strtoupper($request['license_plate']),
 			'car_brand' 		=> $request['car_brand'],
@@ -183,15 +185,15 @@ class TaxiController extends Controller
 			'license_plate' 	=> 'required',
 			'car_model'			=> 'required',
 			'car_color'			=> 'required',
-			'car_model'			=> 'required'
 		);
 
 		$validator = Validator::make($data, $rules);
 		if ($validator->fails()){
 			return redirect('taxiwijzigen')->withErrors($validator)->withInput($data);
 		}
-		
-		Taxi::where('id', '=', $id)->update($data);
+		$taxi = Taxi::find($id);
+        $taxi->update($data);
+            Driver::where('id',$taxi->driver_id)->update(['taxi_id' => $taxi->id]);
 		session()->flash('alert-success','De taxi is gewijzigd.');
 		return redirect()->route('taxioverzicht');
     }
