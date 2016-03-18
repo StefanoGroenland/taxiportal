@@ -57,9 +57,9 @@
                                                                
                                                                 @if($driverCount > 0)
                                                                     @foreach($drivers as $driver)
-                                                                        @if($driver->user && $user && $user->driver)
-                                                                            <option @if($user->driver->id == $driver->id) selected @endif value="{{$driver->id}}">{{ $driver->user->firstname .' '. $driver->user->lastname}}</option>
-                                                                        @endif
+
+                                                                            <option @if($driver->user &&  $user->driver) @if($user->driver->id == $driver->id) selected @endif  @endif value="{{$driver->id}}">{{ $driver->user->firstname .' '. $driver->user->lastname}}</option>
+
                                                                     @endforeach
                                                                 @else
                                                                     <option>Geen chauffeur koppelbaar</option>
@@ -96,5 +96,21 @@
                 errorMessage: true
             });
         });
+        $("#license_plate").bind("change", function(e){
+            var x = $("#license_plate").val();
+            var trimOne = x.replace('-','');
+            var trimmed = trimOne.replace('-','');
+
+            $.getJSON("https://api.datamarket.azure.com/opendata.rdw/VRTG.Open.Data/v1/KENT_VRTG_O_DAT('"+ trimmed +"')?$format=json",
+                  function(data){
+                    $.each(data, function(){
+                        console.log(data.d);
+                        $("#license_plate").val(data.d['Kenteken']);
+                        $("#car_brand").val(data.d['Merk']);
+                        $("#car_model").val(data.d['Handelsbenaming']);
+                        $("#car_color").val(data.d['Eerstekleur']);
+                    });
+                  });
+          });
     </script>
 @endsection
