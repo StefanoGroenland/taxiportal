@@ -57,40 +57,40 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 card card-1">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                         <h4>Begin positie:</h4>
                                         <div class="row">
-                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="form-group form-md-line-input">
                                                     <div class="input-icon">
-                                                        <input type="text" class="form-control" id="start_street" name="start_street" data-validate="required" value="{{old('start_street')}}">
+                                                        <input type="text" class="form-control" id="start_street" placeholder="" data-geo="route" name="start_street" data-validate="required" value="{{old('start_street')}}">
                                                         <label for="start_straat">Straat</label>
                                                         <i class="fa fa-map-marker"></i>
                                                     </div>
                                                 </div>
-                                            </div>
-                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+     										</div>
+                                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="form-group form-md-line-input">
                                                     <div class="input-icon">
-                                                        <input type="text" class="form-control" id="start_number" name="start_number" data-validate="required" value="{{old('start_number')}}">
+                                                        <input type="text" class="form-control" id="start_number" data-geo="street_number" name="start_number" data-validate="required" value="{{old('start_number')}}">
                                                         <label for="start_postcode">Huisnummer</label>
                                                         <i class="fa fa-map-marker"></i>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="form-group form-md-line-input">
                                                     <div class="input-icon">
-                                                        <input type="text" class="form-control" id="start_zip" name="start_zip" data-validate="required" value="{{old('start_zip')}}">
+                                                        <input type="text" class="form-control" id="start_zip" data-geo="postal_code" name="start_zip" data-validate="required" value="{{old('start_zip')}}">
                                                         <label for="start_postcode">Postcode</label>
                                                         <i class="fa fa-map-marker"></i>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="form-group form-md-line-input">
                                                     <div class="input-icon">
-                                                        <input type="text" class="form-control" id="start_city" name="start_city" data-validate="required" value="{{old('start_city')}}">
+                                                        <input type="text" class="form-control" id="start_city" data-geo="locality" name="start_city" data-validate="required" value="{{old('start_city')}}">
                                                         <label for="start_postcode">Plaats</label>
                                                         <i class="fa fa-map-marker"></i>
                                                     </div>
@@ -99,40 +99,40 @@
                                              
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 card card-1">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                         <h4>Eind positie:</h4>
                                         <div class="row">
-                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="form-group form-md-line-input">
                                                     <div class="input-icon">
-                                                        <input type="text" class="form-control" id="end_street" name="end_street" data-validate="required" value="{{old('end_street')}}">
+                                                        <input type="text" class="form-control" id="end_street" placeholder="" data-geo-end="route"  name="end_street" data-validate="required" value="{{old('end_street')}}">
                                                         <label for="start_straat">Straat</label>
                                                         <i class="fa fa-map-marker"></i>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="form-group form-md-line-input">
                                                     <div class="input-icon">
-                                                        <input type="text" class="form-control" id="end_number" name="end_number" data-validate="required" value="{{old('end_number')}}">
+                                                        <input type="text" class="form-control" id="end_number" data-geo-end="street_number"  name="end_number" data-validate="required" value="{{old('end_number')}}">
                                                         <label for="start_postcode">Huisnummer</label>
                                                         <i class="fa fa-map-marker"></i>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="form-group form-md-line-input">
                                                     <div class="input-icon">
-                                                        <input type="text" class="form-control" id="end_zip" name="end_zip" data-validate="required" value="{{old('end_zip')}}">
+                                                        <input type="text" class="form-control" id="end_zip" data-geo-end="postal_code" name="end_zip" data-validate="required" value="{{old('end_zip')}}">
                                                         <label for="start_postcode">Postcode</label>
                                                         <i class="fa fa-map-marker"></i>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="form-group form-md-line-input">
                                                     <div class="input-icon">
-                                                        <input type="text" class="form-control" id="end_city" name="end_city" data-validate="required" value="{{old('end_city')}}">
+                                                        <input type="text" class="form-control" id="end_city" data-geo-end="locality" name="end_city" data-validate="required" value="{{old('end_city')}}">
                                                         <label for="start_postcode">Plaats</label>
                                                         <i class="fa fa-map-marker"></i>
                                                     </div>
@@ -181,11 +181,33 @@
 <script src="{{URL::asset('../assets/js/jvalidate.js')}}" type="text/javascript"></script>
 <script src="{{URL::asset('../assets/js/locale/messages.nl.js')}}" type="text/javascript"></script>
 
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyBuzlPSNhmRIEhIl-3ZUidj3fwXfsDSw&amp;sensor=false&callback=initMap"></script>
 <script type="text/javascript" src="{{URL::asset('../assets/js/bootstrap-datetimepicker.min.js')}}" charset="UTF-8"></script>
 <script type="text/javascript" src="{{URL::asset('../assets/js/locale/bootstrap-datetimepicker.nl.js')}}" charset="UTF-8"></script>
 
-    <script type="text/javascript"> 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyBuzlPSNhmRIEhIl-3ZUidj3fwXfsDSw&amp;sensor=false&libraries=places"></script>
+<script type="text/javascript" src="{{URL::asset('/assets/js/jquery.geocomplete.min.js')}}"></script>
+
+
+<script type="text/javascript"> 
+// Geocomplete google maps
+     $(function(){
+        $("#start_street").geocomplete({
+          details: "form",
+          detailsAttribute: "data-geo",
+          types: ["geocode", "establishment"],
+        });
+
+
+      });
+      $(function(){
+        $("#end_street").geocomplete({
+          details: "form",
+          detailsAttribute: 'data-geo-end',
+          types: ["geocode", "establishment"],
+        });
+
+      });
+// end geocomplete google maps
     $(function() {
         $('form').jvalidate({ 
             errorMessage: true
@@ -207,7 +229,8 @@
         var directionsDisplay = new google.maps.DirectionsRenderer;
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 7,
-            center: {lat: 52.1996726, lng: 5.4019347}
+            center: {lat: 52.1996726, lng: 5.4019347},
+            styles: [{"featureType":"poi.business","elementType":"labels.text","stylers":[{"visibility":"on"}]},{"featureType":"poi.business","elementType":"labels.icon","stylers":[{"visibility":"on"}]}]
         });
         directionsDisplay.setMap(map);
 
@@ -220,6 +243,8 @@
             onChangeHandler();
         });
     }
+    
+    initMap();
 
     function calculateAndDisplayRoute(directionsService, directionsDisplay) {
          if ($('#start_street').val().length > 0 && $('#start_number').val().length > 0 && $('#start_zip').val().length > 0 && $('#start_city').val().length > 0) {
@@ -236,17 +261,19 @@
         } 
         var endall = endstreet + ' ' + endnumber + ' ' + endzip + ' ' + endcity;
         var startall = startstreet + ' ' + startnumber + ' ' + startzip + ' ' + startcity;
-
+	
       directionsService.route({
         origin: startall,
         destination: endall,
-        travelMode: google.maps.TravelMode.DRIVING
+        travelMode: google.maps.TravelMode.DRIVING,
+
       }, function(response, status) {
         if (status === google.maps.DirectionsStatus.OK) {
           directionsDisplay.setDirections(response);
         }
       });
     }
+     
 
-    </script>
+</script>
 @endsection
