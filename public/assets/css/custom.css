@@ -34,7 +34,7 @@ a{
 	text-align:center;
 }
 .active{
-    color:#009dc7 !important;
+    color:#fff !important;
 }
 .login{
     background-color: #607d8b !important;
@@ -196,6 +196,11 @@ div.plate-form > span.eu {
     padding: 6px;
     margin: 5px 10px 10px 10px;
     font-size: 20px;
+    background-color: #FFD321;
+    letter-spacing: 2px;
+    border: 0;
+    text-align: center;
+    font-weight: 700;
 }
 /*card op de ritten pagina */
 .card {
