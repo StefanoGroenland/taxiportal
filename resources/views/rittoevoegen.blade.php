@@ -277,13 +277,7 @@
         }
       });
          
-        var location1;
-        var location2;
-        var address1;
-        var address2;
-        var geocoder;
-        var map;
-        var distance;
+     
     
         // The distance and the time form google
             var geocoder = new google.maps.Geocoder(); // creating a new geocode object
@@ -302,7 +296,13 @@
                 } 
             });
     }
-
+   var location1;
+        var location2;
+        var address1;
+        var address2;
+        var geocoder;
+        var map;
+        var distance;
     // creates and shows the map
     function showMap(){
         // show route between the points
