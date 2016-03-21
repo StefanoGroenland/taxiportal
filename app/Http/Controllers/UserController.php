@@ -629,22 +629,35 @@ class UserController extends Controller
         $user = User::where('id',$id)->first();
 
         $data = array(
-            'firstname' =>  $request['firstname'],
-            'lastname' =>  $request['lastname'],
-            'phone_number' =>  $request['phone_number'],
-            'email' =>  $request['email']
+            'firstname'                 =>  $request['firstname'],
+            'lastname'                  =>  $request['lastname'],
+            'phone_number'              =>  $request['phone_number'],
+            'email'                     =>  $request['email'],
+            'password'                  =>  $request['password'],
+            'password_confirmation'     =>  $request['password_confirmation']
         );
         $rules = array(
-            'firstname' =>  'required|min:4|max:50',
-            'lastname' =>  'required|min:4|max:50',
-            'phone_number' =>  'required|numeric|digits:10',
-            'email' =>  'required|email|unique:user,email,' . $user->id
+            'firstname'             =>  'required|min:4|max:50',
+            'lastname'              =>  'required|min:4|max:50',
+            'phone_number'          =>  'required|numeric|digits:10',
+            'email'                 =>  'required|email|unique:user,email,' . $user->id,
+            'password'              =>  'min:4|confirmed',
+            'password_confirmation' =>  'min:4'
         );
 
         $valid = Validator::make($data, $rules);
         if($valid->fails()){
             return redirect('/profielwijzigen')->withErrors($valid)->withInput($data);
         }
+        if(!empty($data['password']) && !empty($data['password_confirmation'])){
+            array_forget($data,'password_confirmation');
+            $data['password'] = Hash::make($data['password']);
+        }else{
+            array_forget($data,'password');
+            array_forget($data,'password_confirmation');
+        }
+
+
         $user->update($data);
 
         $request->session()->flash('alert-success', 'Uw profiel is gewijziged.');
@@ -698,7 +711,7 @@ class UserController extends Controller
         }
         $this->upload($request,$id,2);
         $request->session()->flash('alert-success', 'Uw profielfoto is gewijziged');
-        return redirect('/profielwijzigen#tab_1_2');
+        return redirect('/profielwijzigen');
     }
 }
 

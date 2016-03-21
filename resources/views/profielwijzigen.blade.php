@@ -28,11 +28,36 @@
                                 <div class="portlet light profile-sidebar-portlet bordered">
                                     <!-- SIDEBAR USERPIC -->
                                     <div class="profile-userpic">
-                                        @if(Auth::user()->profile_photo == "")
-                                            <img src="../assets/img/avatars/avatar.png" class="img-responsive" alt=""></div>
-                                        @else
-                                            <img src="../{{Auth::user()->profile_photo}}" class="img-responsive" alt=""></div>
-                                        @endif
+                                        <div>
+                                            <span class="edit-pencil blue btn btn-success pull-right" style="padding-right:12px !important; padding-left:12px !important; margin-right:5px !important;" id="verkennerButton" onclick="$(this).parent().find('input[type=file]').click();"><i class="fa fa-pencil"></i></span>
+                                            <input name="profile_photo" id="imgInp" onchange="$(this).parent().parent().find('.form-control').html($(this).val().split(/[\\|/]/).pop());readURL(this)" style="display: none;" type="file">
+                                        </div>
+                                        <form method="POST" class="formulier" onsubmit="return checkCoords();" action="/editProfilePhoto/{{$id}}" files="true" enctype="multipart/form-data">
+                                            {!! csrf_field() !!}
+                                            <input type="hidden" name="_method" value="PUT">
+                                            <input type="hidden" id="x" name="x">
+                                            <input type="hidden" id="y" name="y">
+                                            <input type="hidden" id="w" name="w">
+                                            <input type="hidden" id="h" name="h">
+                                                            <div class="fileinput fileinput-new text-center" style="margin-top:10px !important;" data-provides="fileinput">
+                                                                <div id="jcrop_target" class="fileinput-new text-center center-block" style="width: 200px; height: 200px;">
+                                                                    <img id="jcrop_target" style=" height:100%; width:100%; "
+                                                                        @if(Auth::user()->profile_photo == "")
+                                                                            src="../assets/img/avatars/avatar.png"
+                                                                        @else
+                                                                           src="../{{Auth::user()->profile_photo}}"
+                                                                        @endif
+                                                                    alt="avatar" class="img-responsive center-block"/>
+                                                                    <div class="jcrop-holder" style="width: 400px !important; height: 200px!important; "></div>
+                                                                </div>
+
+                                                            </div>
+
+                                                        <div class="margin-top-40 text-center">
+                                                            <button id="saveBtn" type="submit" class="btn green-meadow hide"><i class="fa fa-check"></i> Opslaan </button>
+                                                        </div>
+                                            </form>
+                                        </div>
                                     <!-- END SIDEBAR USERPIC -->
                                     <!-- SIDEBAR USER TITLE -->
                                     <div class="profile-usertitle">
@@ -70,17 +95,6 @@
                                                     <i class="icon-globe theme-font hide"></i>
                                                     <span class="caption-subject font-blue-madison bold uppercase">Profiel</span>
                                                 </div>
-                                                <ul class="nav nav-tabs">
-                                                    <li class="active">
-                                                        <a href="#tab_1_1" data-toggle="tab">Verander profiel</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#tab_1_2" data-toggle="tab">Verander profiel foto</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#tab_1_3" data-toggle="tab">Verander wachtwoord</a>
-                                                    </li>
-                                                </ul>
                                             </div>
                                             <div class="portlet-body">
                                                 <div class="tab-content">
@@ -117,86 +131,31 @@
                                                                     <i class="fa fa-envelope-o"></i>
                                                                 </div>
                                                             </div>
+                                                            <div class="form-group form-md-line-input">
+                                                                    <div class="input-icon">
+                                                                          <input type="password" class="form-control" name="password" id="nieuw_wachtwoord" value="" data-validate="same:#password_confirmation" data-name="nieuw wachtwoord">
+                                                                          <label for="nieuw_wachtwoord">Nieuw wachtwoord</label>
+                                                                          <i class="fa fa-key"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group form-md-line-input">
+                                                                    <div class="input-icon">
+                                                                          <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" value="" data-validate="same:#nieuw_wachtwoord" data-name="herhaal nieuw wachtwoord">
+                                                                          <label for="herhaal_nieuw_wachtwoord">Herhaal nieuw wachtwoord</label>
+                                                                          <i class="fa fa-key"></i>
+                                                                    </div>
+                                                                </div>
                                                             <div class="row">
                                                                 <div class="col-lg-12">
                                                                     <div class="margiv-top-10 pull-right">
-                                                                        <button type="submit" class="btn green-meadow"><i class="fa fa-check"></i> Opslaan </button>
                                                                         <a href="/profielwijzigen" class="btn default"> Annuleren </a>
+                                                                        <button type="submit" class="btn green-meadow"><i class="fa fa-check"></i> Opslaan </button>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </form>
                                                     </div>
                                                     <!-- END PERSONAL INFO TAB -->
-                                                    <!-- CHANGE AVATAR TAB -->
-                                                    <div class="tab-pane" id="tab_1_2">
-                                                        <form method="POST" class="formulier" onsubmit="return checkCoords();" action="/editProfilePhoto/{{$id}}" files="true" enctype="multipart/form-data">
-                                                        {!! csrf_field() !!}
-                                                        <input type="hidden" name="_method" value="PUT">
-                                                        <input type="hidden" id="x" name="x">
-                                                        <input type="hidden" id="y" name="y">
-                                                        <input type="hidden" id="w" name="w">
-                                                        <input type="hidden" id="h" name="h">
-                                                                <div class="row">
-                                                                    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12 center-block">
-                                                                        <div class="fileinput fileinput-new " data-provides="fileinput">
-                                                                            <div id="jcrop_target" class="fileinput-new thumbnail center-block" style="width: 200px; height: 200px;">
-                                                                                <img id="jcrop_target" style=" height:100%; width:100%;" 
-                                                                                    @if(Auth::user()->profile_photo == "")
-                                                                                        src="../assets/img/avatars/avatar.png"
-                                                                                    @else
-                                                                                       src="../{{Auth::user()->profile_photo}}" 
-                                                                                    @endif
-                                                                                alt="avatar" class="img-responsive center-block"/>
-                                                                                <div class="jcrop-holder" style="width: 400px !important; height: 200px!important;"></div>
-                                                                            </div>
-                                                                            <div>
-                                                                                <span class="btn btn-success center-block" id="verkennerButton" onclick="$(this).parent().find('input[type=file]').click();">Verkenner</span>
-                                                                                <input name="profile_photo" id="imgInp" onchange="$(this).parent().parent().find('.form-control').html($(this).val().split(/[\\|/]/).pop());readURL(this)" style="display: none;" type="file">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            <div class="row">
-                                                                <div class="col-lg-12">
-                                                                    <div class="margiv-top-10 pull-right">
-                                                                        <button type="submit" class="btn green-meadow"><i class="fa fa-check"></i> Opslaan </button>
-                                                                        <a href="/profielwijzigen#tab_1_2" class="btn default"> Annuleren </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                    <!-- END CHANGE AVATAR TAB -->
-                                                    <!-- CHANGE PASSWORD TAB -->
-                                                    <div class="tab-pane" id="tab_1_3">
-                                                    <form role="form" class="validate" method="POST" action="/editPassword/{{$id}}">
-                                                            {!! csrf_field() !!}
-                                                            <input type="hidden" name="_method" value="PUT">
-                                                            <div class="form-group form-md-line-input">
-                                                                <div class="input-icon">
-                                                                    <input type="password" class="form-control" name="password" id="nieuw_wachtwoord" value="" data-validate="required|minlength:4|same:#password_confirmation" data-name="nieuw wachtwoord">
-                                                                    <label for="nieuw_wachtwoord">Nieuw wachtwoord</label>
-                                                                    <i class="fa fa-key"></i>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group form-md-line-input">
-                                                                <div class="input-icon">
-                                                                    <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" value="" data-validate="required|minlength:4|same:#nieuw_wachtwoord" data-name="herhaal nieuw wachtwoord">
-                                                                    <label for="herhaal_nieuw_wachtwoord">Herhaal nieuw wachtwoord</label>
-                                                                    <i class="fa fa-key"></i>
-                                                                </div>
-                                                            </div>
-                                                             <div class="row">
-                                                                <div class="col-lg-12">
-                                                                    <div class="margiv-top-10 pull-right">
-                                                                        <a href="/profielwijzigen#tab_1_3" class="btn default"> Annuleren </a>
-                                                                        <button type="submit" class="btn green-meadow"><i class="fa fa-check"></i> Opslaan</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -232,9 +191,11 @@ $(function() {
     });
 
     $("#imgInp").change(function(){
+    $("#saveBtn").removeClass('hide');
     console.log("changed!");
         readURL(this);
     });
+
 
 
 
