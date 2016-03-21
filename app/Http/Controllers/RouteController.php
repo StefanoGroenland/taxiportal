@@ -105,6 +105,8 @@ class RouteController extends Controller
 			'end_zip'           => $request['end_zip'],
 			'end_number'        => $request['end_number'],
 			'end_street'        => $request['end_street'],
+			'total_km'        	=> $request['distance_road'],
+			'eta'        		=> $request['time'],
 			'pickup_time'       => $request['pickup_time'],
 			'phone_customer'    => $request['phone_customer'],
 			'email_customer'    => $request['email_customer'],
