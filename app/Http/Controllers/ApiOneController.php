@@ -707,5 +707,27 @@ class ApiOneController extends Controller
         }
         return response()->json(self::$error,401);
     }
+
+    /**
+     * @author Stefano Groenland
+     * @api
+     * @version 1.0
+     * @return mixed
+     *
+     * Returns the given taxi's `in_shift` value
+     */
+    public function getShiftState(){
+        $key = Input::get('key');
+        $taxi_id = Input::get('taxi_id');
+
+        if($key == self::$apikey){
+            $current = Taxi::where('id',$taxi_id)->first();
+            dd($current);
+            return response()->json(array(
+               'shift_val'  =>  $current->in_shift
+            ),200);
+        }
+        return response()->json(self::$error,401);
+    }
 }
 
