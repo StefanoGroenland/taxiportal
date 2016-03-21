@@ -97,7 +97,8 @@
  	                                </li>
  	                                <li class="dropdown more-dropdown  @if(\Request::route()->getName() == 'reclames' ||
  	                                                                      \Request::route()->getName() == 'reclametoevoegen' ||
- 	                                                                      \Request::route()->getName() == 'reclamewijzigen' ||
+                                                                          \Request::route()->getName() == 'reclamewijzigen' ||
+ 	                                                                      \Request::route()->getName() == 'reclameprofiel' ||
  	                                                                      \Request::route()->getName() == 'chauffeurs' ||
  	                                                                      \Request::route()->getName() == 'chauffeurtoevoegen' ||
  	                                                                      \Request::route()->getName() == 'chauffeurwijzigen' ||

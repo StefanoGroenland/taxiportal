@@ -83,6 +83,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('/editAdmin/{id}', 'UserController@editAdmin');
         Route::delete('/deleteAdmin/{id}', 'UserController@deleteAdmin');
         Route::get('/reclames', array('as' => 'reclames', 'uses' => 'AdController@showAds'));
+        Route::get('/reclames/{id}', array('as' => 'reclameprofiel', 'uses' => 'AdController@showAdStats'));
         Route::get('/reclamewijzigen/{id}', array('as' => 'reclamewijzigen', 'uses' => 'AdController@showAdsEdit'));
         Route::get('/reclametoevoegen', array('as' => 'reclametoevoegen', 'uses' => 'AdController@showAdsAdd'));
         Route::post('/addAd', 'AdController@addAd');
