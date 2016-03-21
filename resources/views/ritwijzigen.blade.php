@@ -28,6 +28,9 @@
                                     <div class="col-lg-8 col-md-12"> 
                                         <div id="map" style="height: 400px; width: 100%;" class="contact_maps"></div>
                                     </div>
+                                    <div style="width:100%; height:10%" id="distance_direct"></div>
+                                    <div style="width:100%; height:10%" id="distance_road"></div>
+                                    
                                     <div class="col-lg-2 col-md-12"></div>
                                 </div>
                                 <div class="row">
@@ -283,6 +286,55 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
           directionsDisplay.setDirections(response);
         }
     });
+  // The distance and the time form google
+            var geocoder = new google.maps.Geocoder(); // creating a new geocode object
+            geocoder.geocode( { 'address': startall}, function(results, status){
+                if (status == google.maps.GeocoderStatus.OK){
+                    //location of first address (latitude + longitude)
+                    location1 = results[0].geometry.location;
+                }
+            });
+            geocoder.geocode( { 'address': endall}, function(results, status){
+                if (status == google.maps.GeocoderStatus.OK){
+                    //location of second address (latitude + longitude)
+                    location2 = results[0].geometry.location;
+                    // calling the showMap() function to create and show the map 
+                    showMap();
+                } 
+            });
 }
-    </script>
+var location1;
+var location2;
+var address1;
+var address2;
+var geocoder;
+var map;
+var distance;
+// creates and shows the map
+function showMap(){
+    console.log('jaa');
+    // show route between the points
+    directionsService = new google.maps.DirectionsService();
+    directionsDisplay = new google.maps.DirectionsRenderer({
+        suppressMarkers: true,
+        suppressInfoWindows: true
+    });
+    directionsDisplay.setMap(map);
+    var request = {
+        origin:location1, 
+        destination:location2,
+        travelMode: google.maps.DirectionsTravelMode.DRIVING
+    };
+    directionsService.route(request, function(response, status){ 
+        if (status == google.maps.DirectionsStatus.OK){
+
+            directionsDisplay.setDirections(response);
+            distance = "Afstand: "+response.routes[0].legs[0].distance.text;
+            distance += "<br/>Tijd: "+response.routes[0].legs[0].duration.text;
+            document.getElementById("distance_road").innerHTML = distance;
+        }
+    });
+
+}
+</script>
 @endsection
