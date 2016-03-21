@@ -133,13 +133,28 @@ class ApiOneController extends Controller
     {
         $tablet     = Input::get('tablet_name');
         $key        = Input::get('key');
-
         if(!empty($tablet)){
             if ($key == self::$apikey) {
                 $user = User::where('tablet_name', '=', $tablet)->first();
                 $tablet = Tablet::with('taxi')->where('user_id', '=', $user->id)->first();
                 $driver = Driver::where('id', '=', $tablet->taxi->driver_id)->first();
                 $user   = User::where('id',$driver->user_id)->first();
+
+                $rowCount = 0;
+                $stars = 0;
+                $allComments = Driver::with('comment')->where('id',$driver->id)->get();
+                foreach($allComments as $comm){
+                        foreach($comm->comment as $comment){
+                            if($comment->approved > 0){
+                                $stars += $comment->star_rating;
+                                $rowCount+= count($comment->star_rating);
+                            }
+                        }
+                }
+                if($rowCount > 0){
+                    $driverStars = $stars / $rowCount;
+                    $user->stars = $driverStars;
+                }
 
                 return response()->json(array(
                     'driver'    =>  $driver,
@@ -729,5 +744,6 @@ class ApiOneController extends Controller
         }
         return response()->json(self::$error,401);
     }
+
 }
 
