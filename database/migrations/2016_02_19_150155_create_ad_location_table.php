@@ -26,6 +26,6 @@ class CreateAdLocationTable extends Migration
      */
     public function down()
     {
-        Scherma::drop('ad');
+        Schema::drop('ad');
     }
 }
