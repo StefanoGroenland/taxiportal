@@ -66,7 +66,7 @@ class AdController extends Controller
      * The advertisement will be created.
      */
     public function addAd(Request $request){
-       
+
         $data = array(
             'link'      => $request['link']
         );
@@ -113,7 +113,7 @@ class AdController extends Controller
        }
        AdLocation::where('ad_id','=',$id)->delete();
        session()->flash('alert-success', 'reclame ' . $find->link.' verwijderd.');
-       return redirect()->route('reclames'); 
+       return redirect()->route('reclames');
     }
 
     /**
@@ -156,7 +156,7 @@ class AdController extends Controller
         }
 
         $request->session()->flash('alert-success', 'Reclame ' . $request['link'] . ' is veranderd.');
-        return redirect()->route('reclames'); 
+        return redirect()->route('reclames');
     }
 
     /**
@@ -200,5 +200,26 @@ class AdController extends Controller
             }
         }
 
+    }
+
+    public function getLocationsInRadius($radius,$lat,$lng){
+            $radius = $radius * 0.62137; //km to miles
+            $url = 'http://gd.geobytes.com/GetNearbyCities?radius='.$radius.'&Latitude='.$lat.'&Longitude='.$lng.'&limit=999';
+
+            $response = file_get_contents($url);
+
+//          Test code
+//          $response = $this->getLocationsInRadius(0,51.946228,4.537657);
+//          $response = json_decode($response, false);
+//
+//          foreach($response as $res){
+//              echo $res[1].' City ';
+//              echo $res[7].' KM ';
+//              echo $res[11].' Mi ';
+//              echo $res[8].' lat ';
+//              echo $res[10].'lng<br>';
+//          }
+
+            return $response;
     }
 }

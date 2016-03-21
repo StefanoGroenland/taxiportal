@@ -104,10 +104,6 @@
 													<i class="fa fa-plus font-grey-gallery"></i>
 													<span class="caption-subject bold uppercase"> Chauffeur toevoegen</span>
 													<div class="row margin-top-40">
-														<input type="hidden" id="x" name="x">
-														<input type="hidden" id="y" name="y">
-														<input type="hidden" id="w" name="w">
-														<input type="hidden" id="h" name="h">
 														<div class="profile-sidebar">
 															<div class="profile-sidebar-portlet">
 																<div class="profile-usertitle">
@@ -301,7 +297,6 @@
            });
 
            $("#imgInp").change(function(){
-           console.log("changed!");
                readURL(this);
            });
 
@@ -318,7 +313,7 @@
                    var reader = new FileReader();
                    reader.onload = function (e) {
                        $('.jcrop-holder img').attr('src', e.target.result);
-                   }
+                   };
                    reader.readAsDataURL(input.files[0]);
                }
            }
@@ -337,7 +332,8 @@
                         setSelect:   [ 0, 0, 200, 200 ],
                         bgOpacity:   .4,
                         aspectRatio: 1,
-                        onSelect: updateCoords
+                        onSelect: updateCoords,
+                        onChange: updateCoords
                     });
                  }
                });
