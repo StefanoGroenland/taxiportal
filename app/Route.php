@@ -29,6 +29,8 @@ class Route extends Model
         'end_zip',
         'end_number',
         'end_street',
+        'total_km',
+        'eta',
         'pickup_time',
         'phone_customer',
         'email_customer',
