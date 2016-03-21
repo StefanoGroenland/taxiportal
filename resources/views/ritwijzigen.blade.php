@@ -28,8 +28,11 @@
                                     <div class="col-lg-8 col-md-12"> 
                                         <div id="map" style="height: 400px; width: 100%;" class="contact_maps"></div>
                                     </div>
-                                    <div style="width:100%; height:10%" id="distance_direct"></div>
                                     <div style="width:100%; height:10%" id="distance_road"></div>
+                                    <div style="width:100%; height:10%" id="time"></div>
+
+                                    <input type="hidden" class="distance_road" name="distance_road"></input>
+                                    <input type="hidden" class="time" name="time"></input>
                                     
                                     <div class="col-lg-2 col-md-12"></div>
                                 </div>
@@ -312,7 +315,6 @@ var map;
 var distance;
 // creates and shows the map
 function showMap(){
-    console.log('jaa');
     // show route between the points
     directionsService = new google.maps.DirectionsService();
     directionsDisplay = new google.maps.DirectionsRenderer({
@@ -330,8 +332,13 @@ function showMap(){
 
             directionsDisplay.setDirections(response);
             distance = "Afstand: "+response.routes[0].legs[0].distance.text;
-            distance += "<br/>Tijd: "+response.routes[0].legs[0].duration.text;
+            time = "Tijd: "+response.routes[0].legs[0].duration.text;
+            document.getElementById("time").innerHTML = time;
             document.getElementById("distance_road").innerHTML = distance;
+            var afstand = response.routes[0].legs[0].distance.text;
+            var tijd = response.routes[0].legs[0].duration.text;
+            $('.time').val(tijd);
+            $('.distance_road').val(afstand);
         }
     });
 
