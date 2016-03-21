@@ -23,6 +23,8 @@ class CreateRouteTable extends Migration
             $table->string('end_zip');
             $table->string('end_number');
             $table->string('end_street');
+            $table->string('total_km');
+            $table->string('eta');
             $table->timestamp('pickup_time');
             $table->string('phone_customer');
             $table->string('email_customer');
