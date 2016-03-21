@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="519bf916-5f09-4b43-913d-4efc13c49b43" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/bootstrap-fileinput.css" afterPath="$PROJECT_DIR$/public/assets/css/bootstrap-fileinput.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/custom.css" afterPath="$PROJECT_DIR$/public/assets/css/custom.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/profielwijzigen.blade.php" afterPath="$PROJECT_DIR$/resources/views/profielwijzigen.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/profile.min.css" afterPath="$PROJECT_DIR$/public/assets/css/profile.min.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="898f360f-9443-42ce-bed2-6a84766c6e32" name="New changelist" comment="" />
@@ -33,101 +29,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="taxiwijzigen.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/taxiwijzigen.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.615385" vertical-offset="816" max-vertical-offset="2074">
-              <caret line="78" column="52" selection-start-line="78" selection-start-column="52" selection-end-line="78" selection-end-column="161" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tabletwijzigen.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/tabletwijzigen.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.807693" vertical-offset="918" max-vertical-offset="1683">
-              <caret line="69" column="135" selection-start-line="69" selection-start-column="135" selection-end-line="69" selection-end-column="135" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ritwijzigen.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/ritwijzigen.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.153846" vertical-offset="2856" max-vertical-offset="6001">
-              <caret line="182" column="109" selection-start-line="182" selection-start-column="109" selection-end-line="182" selection-end-column="109" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="reclamewijzigen.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/reclamewijzigen.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.807693" vertical-offset="969" max-vertical-offset="2074">
-              <caret line="72" column="82" selection-start-line="72" selection-start-column="82" selection-end-line="72" selection-end-column="82" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="profielwijzigen.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="profielwijzigen.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/profielwijzigen.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.538462" vertical-offset="2319" max-vertical-offset="4182">
-              <caret line="151" column="164" selection-start-line="151" selection-start-column="164" selection-end-line="151" selection-end-column="164" />
-              <folding />
+            <state vertical-scroll-proportion="0.40334857" vertical-offset="330" max-vertical-offset="4182">
+              <caret line="35" column="46" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
+              <folding>
+                <element signature="e#2085#2182#0#HTML" expanded="true" />
+                <element signature="e#3114#3149#0#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="opmerkingwijzigen.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/opmerkingwijzigen.blade.php">
+      <file leaf-file-name="UserController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.038462" vertical-offset="1224" max-vertical-offset="1921">
-              <caret line="95" column="38" selection-start-line="95" selection-start-column="38" selection-end-line="95" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="nieuwswijzigen.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/nieuwswijzigen.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="47.076923" vertical-offset="1224" max-vertical-offset="2975">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="medewerkerwijzigen.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/medewerkerwijzigen.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="68.65385" vertical-offset="1785" max-vertical-offset="3638">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="chauffeurwijzigen.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/chauffeurwijzigen.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5094637" vertical-offset="2499" max-vertical-offset="4250">
-              <caret line="166" column="75" selection-start-line="165" selection-start-column="59" selection-end-line="166" selection-end-column="75" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bootstrap-fileinput.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/assets/css/bootstrap-fileinput.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="6.678571" vertical-offset="408" max-vertical-offset="1955">
-              <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+            <state vertical-scroll-proportion="-11.384615" vertical-offset="11298" max-vertical-offset="12019">
+              <caret line="698" column="32" selection-start-line="698" selection-start-column="32" selection-end-line="698" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -191,13 +110,13 @@
         <option value="$PROJECT_DIR$/public/assets/css/custom.css" />
         <option value="$PROJECT_DIR$/public/assets/css/bootstrap-fileinput.css" />
         <option value="$PROJECT_DIR$/public/assets/css/profile.min.css" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
         <option value="$PROJECT_DIR$/resources/views/opmerkingwijzigen.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/reclamewijzigen.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/ritwijzigen.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/taxiwijzigen.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/tabletwijzigen.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/profielwijzigen.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
       </list>
     </option>
   </component>
@@ -1625,7 +1544,13 @@
       <option name="project" value="LOCAL" />
       <updated>1458562587402</updated>
     </task>
-    <option name="localTasksCounter" value="135" />
+    <task id="LOCAL-00135" summary="Profielwijzigen zonder tabs. geimplementeerd.">
+      <created>1458567826449</created>
+      <option name="number" value="00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1458567826449</updated>
+    </task>
+    <option name="localTasksCounter" value="136" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1671,7 +1596,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="box-shadow transition op /dashboard" />
     <MESSAGE value="google maps icon markers ?" />
     <MESSAGE value="google maps zonder emergency marker.." />
     <MESSAGE value="google maps markers aangepast. als een taxi een sos melding heeft wordt deze anders op de kaart getoond." />
@@ -1696,7 +1620,8 @@
     <MESSAGE value="noodsignalen in top menu." />
     <MESSAGE value="noodsignalen in top menu. 2/2" />
     <MESSAGE value="migrations syntaxerror gecleaned" />
-    <option name="LAST_COMMIT_MESSAGE" value="migrations syntaxerror gecleaned" />
+    <MESSAGE value="Profielwijzigen zonder tabs. geimplementeerd." />
+    <option name="LAST_COMMIT_MESSAGE" value="Profielwijzigen zonder tabs. geimplementeerd." />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.535" />
   </component>
   <component name="XDebuggerManager">
@@ -1706,13 +1631,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/tables/noodsignaal-table.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35748032" vertical-offset="827" max-vertical-offset="1462">
-          <caret line="62" column="53" selection-start-line="62" selection-start-column="53" selection-end-line="62" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4265403" vertical-offset="10593" max-vertical-offset="58701">
@@ -2020,14 +1938,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.26923" vertical-offset="10992" max-vertical-offset="12019">
-          <caret line="689" column="52" selection-start-line="689" selection-start-column="8" selection-end-line="690" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/css/bootstrap-fileinput.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="6.678571" vertical-offset="408" max-vertical-offset="1955">
@@ -2068,14 +1978,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/profielwijzigen.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.538462" vertical-offset="2319" max-vertical-offset="4182">
-          <caret line="151" column="164" selection-start-line="151" selection-start-column="164" selection-end-line="151" selection-end-column="164" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/opmerkingwijzigen.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-15.038462" vertical-offset="1224" max-vertical-offset="1921">
@@ -2102,9 +2004,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/chauffeurwijzigen.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5094637" vertical-offset="2499" max-vertical-offset="4250">
-          <caret line="166" column="75" selection-start-line="165" selection-start-column="59" selection-end-line="166" selection-end-column="75" />
+        <state vertical-scroll-proportion="-18.961538" vertical-offset="2397" max-vertical-offset="4250">
+          <caret line="170" column="42" selection-start-line="170" selection-start-column="42" selection-end-line="170" selection-end-column="42" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.12982999" vertical-offset="84" max-vertical-offset="1088">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.384615" vertical-offset="11298" max-vertical-offset="12019">
+          <caret line="698" column="32" selection-start-line="698" selection-start-column="32" selection-end-line="698" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/profielwijzigen.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40334857" vertical-offset="330" max-vertical-offset="4182">
+          <caret line="35" column="46" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
+          <folding>
+            <element signature="e#2085#2182#0#HTML" expanded="true" />
+            <element signature="e#3114#3149#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
