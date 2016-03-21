@@ -65,17 +65,21 @@
     <script src="{{URL::asset('../assets/js/morris-0.4.3.min.js')}}" type="text/javascript"></script>
     <script type="text/javascript">
      
-        Morris.Bar({
+         Morris.Bar({
             element: 'grafiek',
             data: [
                 @foreach($ads as $ad)
-                    { data: "{{$ad->link}}", value: "{{$ad->clicks}}"},
+                    { id: "{{$ad->id}}", data: "{{$ad->link}}", value: "{{$ad->clicks}}"},
                 @endforeach
             ],
             xkey: 'data',
             ykeys: ['value'],
-            labels: ['Aantal kliks']
+            labels: ['Aantal kliks vandaag']
+        }).on('click', function(i, row){
+            window.location.href = "reclames/"+row['id'];
         });
+
+
     </script>
 @endsection
 
