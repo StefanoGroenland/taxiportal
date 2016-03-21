@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Route, View;
 use App\Ad;
 use App\AdLocation;
+use App\adClick;
 use Illuminate\Support\Facades\Validator;
 use Image as Image;
 
@@ -221,5 +222,20 @@ class AdController extends Controller
 //          }
 
             return $response;
+    }
+
+    public function showAdStats(){
+        $id = Route::current()->getParameter('id');
+        $ad = Ad::where('id',$id)->first();
+        $clicks = AdClick::where('ad_id', $id)->first();
+
+        $array_maanden = array('01' => 'jan', '02' => 'feb', '03' => 'maa', '04' => 'apr', '05' => 'mei','06' => 'jun','07' => 'jul','08' => 'aug','09' => 'sep','10' => 'okt','11' => 'nov','12' => 'dec');
+
+        foreach($array_maanden as $key => $maand){
+
+            ${$maand.'Clicks'} = count($clicks::whereMonth('created_at','=',$key)->get());
+        }
+
+        return View::make('/reclameprofiel', compact('ad','clicks','janClicks','febClicks','maaClicks','aprClicks','meiClicks','junClicks','julClicks','augClicks','sepClicks','oktClicks','novClicks','decClicks'));
     }
 }
