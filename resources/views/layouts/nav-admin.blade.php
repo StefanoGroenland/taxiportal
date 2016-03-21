@@ -26,16 +26,6 @@
  	                                                <i class="icon-user"></i> Mijn profiel
  	                                            </a>
  	                                        </li>
-
- 	                                        <li>
- 	                                            <a href="/noodsignalen">
- 	                                                <i class="icon-envelope-open"></i> Noodsignalen
- 	                                                @if(count(\App\Emergency::where('seen','!=',1)->get()) > 0)
- 	                                                    <span class="badge badge-danger"> {{count(\App\Emergency::where('seen','!=',1)->get())}} </span>
- 	                                                @endif
- 	                                            </a>
- 	                                        </li>
-
  	                                        <li class="divider"> </li>
 
  	                                        <li>
@@ -139,10 +129,16 @@
  	                                        <li>
  	                                            <a class="ov_anchor" href="/medewerkers">Medewerkers</a>
  	                                        </li>
-
-
  	                                    </ul>
  	                                </li>
+ 	                                <li class="dropdown dropdown-fw @if(\Request::route()->getName() == 'noodsignalen') active open selected @endif">
+ 	                                    <a href="/noodsignalen" class="text-uppercase ">
+                                            <i class="fa fa-envelope-o" ></i> Noodsignalen
+                                            @if(count(\App\Emergency::where('seen','!=',1)->get()) > 0)
+                                                <span class="badge badge-danger"> {{count(\App\Emergency::where('seen','!=',1)->get())}} </span>
+                                            @endif
+                                        </a>
+                                    </li>
  	                            </ul>
  	                        </div>
  	                    </div>

@@ -25,7 +25,12 @@ a{
 .dropdown-menu-v2>li>a:hover {
 	color: #ffffff !important;
 }
-
+.edit-pencil{
+    padding-left:75%;
+    font-size: 22px;
+    float:left;
+    padding-top:12px
+}
 .tabs>li.open, .tabbable-line>.nav-tabs>li:hover {
     background: 0 0;
     border-bottom: 4px solid rgba(0, 157, 199, 0.2) !important;

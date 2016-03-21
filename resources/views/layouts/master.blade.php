@@ -77,7 +77,9 @@
                                         @if($sos && $sos->taxi)
                                             <tr>
                                                 <td>{{$sos->taxi->license_plate}}</td>
+                                                @if($sos->taxi->driver)
                                                 <td>{{$sos->taxi->driver->user->firstname}}</td>
+                                                @endif
                                                 @if($sos->taxi->last_seen != '0000-00-00 00:00:00')
                                                 <td>{{date('d-m-Y H:i:s',strtotime($sos->taxi->last_seen))}}</td>
                                                 @else
