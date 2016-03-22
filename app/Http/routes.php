@@ -102,23 +102,23 @@ Route::get('/logout', 'Auth\AuthController@getLogout');
 
 
 //API v1.0 routes
-Route::post('/api/v1/advertisements'                 , 'ApiOneController@adsPerLocation');
-Route::post('/api/v1/advertisements/increaseclick'  , 'ApiOneController@increaseClickOfAd');
-Route::post('/api/v1/driver'                        , 'ApiOneController@getDriverOffTablet');
-Route::post('/api/v1/allroutes'                     , 'ApiOneController@getRoutes');
-Route::post('/api/v1/routes'                        , 'ApiOneController@getRoutesForTaxi');
-Route::post('/api/v1/newsfeed'                      , 'ApiOneController@getNewsfeeds');
-Route::post('/api/v1/sos'                           , 'ApiOneController@sendSOS');
-Route::post('/api/v1/tabletlogin'                   , 'ApiOneController@tabletLogin');
-Route::post('/api/v1/postcomment'                   , 'ApiOneController@postComment');
-Route::post('/api/v1/getcomments'                   , 'ApiOneController@getCommentsOffDriver');
-Route::get('/api/v1/signalcheck'                    , 'ApiOneController@signalCheck');
-Route::get('/api/v1/emergencies'                    , 'ApiOneController@getSOS');
-Route::post('/api/v1/sendlocation'                  , 'ApiOneController@sendLocation');
-Route::post('/api/v1/toggleshift'                   , 'ApiOneController@toggleShift');
-Route::post('/api/v1/returnrequest'                 , 'ApiOneController@requestReturnRide');
-Route::post('/api/v1/postbase'                      , 'ApiOneController@postBase');
-Route::post('/api/v1/locations'                     , 'ApiOneController@getLocations');
-Route::post('/api/v1/locations/bases'               , 'ApiOneController@getBaseLocations');
-Route::post('/api/v1/shift/state'                   , 'ApiOneController@getShiftstate');
+Route::post('/api/v1/advertisements'                , 'ApiController@adsPerLocation');
+Route::post('/api/v1/advertisements/increaseclick'  , 'ApiController@increaseClickOfAd');
+Route::post('/api/v1/driver'                        , 'ApiController@getDriverOffTablet');
+Route::post('/api/v1/allroutes'                     , 'ApiController@getRoutes');
+Route::post('/api/v1/routes'                        , 'ApiController@getRoutesForTaxi');
+Route::post('/api/v1/newsfeed'                      , 'ApiController@getNewsfeeds');
+Route::post('/api/v1/sos'                           , 'ApiController@sendSOS');
+Route::post('/api/v1/tabletlogin'                   , 'ApiController@tabletLogin');
+Route::post('/api/v1/postcomment'                   , 'ApiController@postComment');
+Route::post('/api/v1/getcomments'                   , 'ApiController@getCommentsOffDriver');
+Route::get('/api/v1/signalcheck'                    , 'ApiController@signalCheck');
+Route::get('/api/v1/emergencies'                    , 'ApiController@getSOS');
+Route::post('/api/v1/sendlocation'                  , 'ApiController@sendLocation');
+Route::post('/api/v1/toggleshift'                   , 'ApiController@toggleShift');
+Route::post('/api/v1/returnrequest'                 , 'ApiController@requestReturnRide');
+Route::post('/api/v1/postbase'                      , 'ApiController@postBase');
+Route::post('/api/v1/locations'                     , 'ApiController@getLocations');
+Route::post('/api/v1/locations/bases'               , 'ApiController@getBaseLocations');
+Route::post('/api/v1/shift/state'                   , 'ApiController@getShiftstate');
 
