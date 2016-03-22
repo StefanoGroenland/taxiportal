@@ -24,7 +24,7 @@ use App\Route as RouteR;
 use Illuminate\Http\Response as Response;
 
 use Illuminate\Support\Facades\Input;
-class ApiOneController extends Controller
+class ApiController extends Controller
 {
     /**
      * @var string
@@ -290,7 +290,7 @@ class ApiOneController extends Controller
      */
     public function sendSOS()
     {
-        $id = Input::get('id');
+        $id = Input::get('taxi_id');
         $last_lat = Input::get('latitude');
         $last_long = Input::get('longtitude');
         $key = Input::get('key');

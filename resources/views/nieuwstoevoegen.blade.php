@@ -34,8 +34,7 @@
                             {!! csrf_field() !!}
                             <div class="form-body">
                                 <div class="row">
-                                    <div class="col-lg-5 col-md-5"></div>
-                                    <div class="col-lg-2 col-md-2 center-block text-center">
+                                    <div class="col-lg-4 col-md-4 center-block text-center">
                                         <div class="fileinput fileinput-new " data-provides="fileinput">
                                             <div id="jcrop_target" class="fileinput-new thumbnail center-block" style="width: 200px; height: 200px;">
                                                 <img id="jcrop_target" style=" height:100%; width:100%;"
@@ -49,10 +48,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                        <div class="col-lg-5 col-md-5"></div>
-                                </div>
-                                <div class="row">
-                                <div class="col-lg-2 col-md-2"></div>
                                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                         <div class="form-group form-md-line-input">
                                             <div class="input-icon">
@@ -71,7 +66,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 center-block text-center">
                                         <div class="form-group form-md-line-input">
                                         <input type="hidden" id="x" name="x">
                                         <input type="hidden" id="y" name="y">
@@ -79,9 +73,7 @@
                                         <input type="hidden" id="h" name="h">
                                         </div>
                                     </div>
-                                    <div class="col-lg-2 col-md-2"></div>
-                                 </div>
-                                </div>
+                                    </div>
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-actions noborder pull-right">
