@@ -28,7 +28,7 @@ class RouteController extends Controller
         return View::make('/ritten-openstaand', compact('routes'));
     }
 	public function showRoutesAdd(){
-		$cars = Taxi::where('driver_id','>','0')->where('in_shift','=','1')->get();
+		$cars = Taxi::where('driver_id','>','0')->get();
         $carCount = count($cars);
 		return View::make('/rittoevoegen', compact('cars','carCount'));
 	}
@@ -36,7 +36,7 @@ class RouteController extends Controller
 		$id = Route::current()->getParameter('id');
 		$routes = Route2::with('taxi')->where('id',$id)->first();
 		
-		$cars = Taxi::where('driver_id','>','0')->where('in_shift','=','1')->get();
+		$cars = Taxi::where('driver_id','>','0')->get();
         $carCount = count($cars);
 
 		return View::make('/ritwijzigen', compact('id','routes','cars','carCount'));

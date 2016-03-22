@@ -56,10 +56,9 @@ class NewspaperController extends Controller
      * If all passes it will Create a row for a news group with with the rss feed link and a name.
      */
     public function addNews(Request $request){
-
         $data = array(
             'name'              =>  $request['name'],
-            'link'              =>  $request['link'],
+            'link'              =>  $request['link']
         );
         $rules = array(
             'name'  =>  'required|max:50',
