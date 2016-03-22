@@ -10,6 +10,7 @@ use App\AdLocation;
 use App\adClick;
 use Illuminate\Support\Facades\Validator;
 use Image as Image;
+use DB;
 
 class AdController extends Controller
 {
@@ -227,15 +228,34 @@ class AdController extends Controller
     public function showAdStats(){
         $id = Route::current()->getParameter('id');
         $ad = Ad::where('id',$id)->first();
-        $clicks = AdClick::where('ad_id', $id)->first();
-
         $array_maanden = array('01' => 'jan', '02' => 'feb', '03' => 'maa', '04' => 'apr', '05' => 'mei','06' => 'jun','07' => 'jul','08' => 'aug','09' => 'sep','10' => 'okt','11' => 'nov','12' => 'dec');
+        $clicks = AdClick::where('ad_id', $id)->get();
+        $clickFirst = AdClick::where('ad_id',$id)->first();
+
+        $clickCount = array();
+
+        foreach($clicks as $click){
+
+            @$clickCount[date('d-m-Y',strtotime($click->created_at))]++;
+
+        }
+
+
+        $list=array();
+        $month = 03;
+        $year = 2016;
+
+        for($d=1; $d<=31; $d++)
+        {
+            $time=mktime(12, 0, 0, $month, $d, $year);          
+            if (date('m', $time)==$month)       
+                $list[]=date('d-m-Y', $time);
+        }
 
         foreach($array_maanden as $key => $maand){
 
-            ${$maand.'Clicks'} = count($clicks::whereMonth('created_at','=',$key)->get());
+           ${$maand.'Clicks'} = count($clickFirst::whereMonth('created_at','=',$key)->get());
         }
-
-        return View::make('/reclameprofiel', compact('ad','clicks','janClicks','febClicks','maaClicks','aprClicks','meiClicks','junClicks','julClicks','augClicks','sepClicks','oktClicks','novClicks','decClicks'));
+        return View::make('/reclameprofiel', compact('id','ad','allClicks','array_dagen','array_maanden','month','list','clickCount','janClicks','febClicks','maaClicks','aprClicks','meiClicks','junClicks','julClicks','augClicks','sepClicks','oktClicks','novClicks','decClicks'));
     }
 }
