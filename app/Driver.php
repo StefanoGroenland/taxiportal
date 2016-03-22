@@ -23,7 +23,8 @@ class Driver extends Model
         'user_id',
         'drivers_exp',
         'global_information',
-        'star_rating'
+        'star_rating',
+        'taxi_id'
     ];
     protected $hidden = ['user_id'];
 
