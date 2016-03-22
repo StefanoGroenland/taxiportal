@@ -7,10 +7,9 @@
         </thead>
         <tbody>
         @foreach($tablets as $tablet)
-            @if($tablet->taxi)
                 <tr data-href="/tabletwijzigen/{{$tablet->id}}">
                     <td>{{$tablet->user->tablet_name}}</td>
-                    @if($tablet->taxi->driver && $tablet->taxi->driver->user)
+                    @if($tablet->taxi && $tablet->taxi->driver && $tablet->taxi->driver->user)
                         <td>{{$tablet->taxi->driver->user->firstname .' '. $tablet->taxi->driver->user->lastname}}</td>
                     @else
                         <td>Geen chauffeur</td>
@@ -25,7 +24,6 @@
                         <a class="btn btn-sm red-sunglo deleteButton popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Tablet verwijderen" data-model-id="{{$tablet->id}}" data-toggle="modal" href="#myModel{{$tablet->id}}"><i class="fa fa-trash"></i></a>
                     </td>
                 </tr>
-            @endif
         @endforeach
         </tbody>
     </table>

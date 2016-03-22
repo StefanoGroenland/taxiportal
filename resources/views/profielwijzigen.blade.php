@@ -28,12 +28,13 @@
                                 <div class="portlet light profile-sidebar-portlet bordered">
                                     <!-- SIDEBAR USERPIC -->
                                     <div class="profile-userpic">
+                                    <form method="POST" class="formulier" onsubmit="return checkCoords();" action="/editProfilePhoto/{{$id}}" files="true" enctype="multipart/form-data">
+                                        {!! csrf_field() !!}
                                         <div>
                                             <span class="edit-pencil blue btn btn-success pull-right" style="padding-right:12px !important; padding-left:12px !important; margin-right:5px !important;" id="verkennerButton" onclick="$(this).parent().find('input[type=file]').click();"><i class="fa fa-pencil"></i></span>
                                             <input name="profile_photo" id="imgInp" onchange="$(this).parent().parent().find('.form-control').html($(this).val().split(/[\\|/]/).pop());readURL(this)" style="display: none;" type="file">
                                         </div>
-                                        <form method="POST" class="formulier" onsubmit="return checkCoords();" action="/editProfilePhoto/{{$id}}" files="true" enctype="multipart/form-data">
-                                            {!! csrf_field() !!}
+
                                             <input type="hidden" name="_method" value="PUT">
                                             <input type="hidden" id="x" name="x">
                                             <input type="hidden" id="y" name="y">
@@ -50,7 +51,6 @@
                                                                     alt="avatar" class="img-responsive center-block"/>
                                                                     <div class="jcrop-holder" style="width: 400px !important; height: 200px!important; "></div>
                                                                 </div>
-
                                                             </div>
 
                                                         <div class="margin-top-40 text-center">

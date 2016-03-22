@@ -45,7 +45,7 @@
                                             </div>
                                             <div>
                                                 <span class="btn btn-success" id="verkennerButton" onclick="$(this).parent().find('input[type=file]').click();">Verkenner</span>
-                                                <input name="banner" id="imgInp" onchange="$(this).parent().parent().find('.form-control').html($(this).val().split(/[\\|/]/).pop());readURL(this)" style="display: none;" type="file">
+                                                <input name="logo" id="imgInp" style="display: none;" type="file">
                                             </div>
                                         </div>
                                     </div>
