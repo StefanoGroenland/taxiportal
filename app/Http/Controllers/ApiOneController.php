@@ -737,10 +737,15 @@ class ApiOneController extends Controller
 
         if($key == self::$apikey){
             $current = Taxi::where('id',$taxi_id)->first();
-            dd($current);
-            return response()->json(array(
-               'shift_val'  =>  $current->in_shift
-            ),200);
+            if(is_null($current)){
+                return response()->json([
+                    'error' =>  'not_found'
+                ],404);
+            }else{
+                return response()->json(array(
+                   'shift_val'  =>  $current->in_shift
+                ),200);
+            }
         }
         return response()->json(self::$error,401);
     }
