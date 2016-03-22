@@ -560,6 +560,7 @@ class ApiController extends Controller
                     return response()->json(array(
                         'success'   =>  true,
                         'action'    =>  'shift_value_changed',
+                        'value'     =>  $car->in_shift,
                         'status'    =>  '200'
                     ),200);
                 }
