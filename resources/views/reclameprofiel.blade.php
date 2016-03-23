@@ -39,8 +39,8 @@
 					<div role="tabpanel" class="tab-pane fade in active" id="jaar">
 						<div class="form-group">
 							<select class="form-control year-select">
-								<option value="1">2016</option>
-								<option value="2">2015</option>
+								<option value="2016">2016</option>
+								<option value="2015">2015</option>
 							</select>	
 						</div>
 						
@@ -84,26 +84,26 @@
 		$('.year-select').on('change', function() {
 			var yearValue = $(this).val();
 			
-			$.post('test.dev/api/v1/statistics/year', yearValue)
+			$.post('/api/v1/statistics/year', {year: yearValue})
 				.done(function(data) { 
 					console.log(data);
-					yearObject = [
 
-						    {"month": {{$janClicks}},"period": "2016-01"},
-						    {"month": {{$febClicks}},"period": "2016-02"},
-						    {"month": {{$maaClicks}},"period": "2016-03"},
-						    {"month": {{$aprClicks}},"period": "2016-04"},
-						    {"month": {{$meiClicks}},"period": "2016-05"},
-						    {"month": {{$junClicks}},"period": "2016-06"},
-						    {"month": {{$julClicks}},"period": "2016-07"},
-						    {"month": {{$augClicks}},"period": "2016-08"},
-						    {"month": {{$sepClicks}},"period": "2016-09"},
-						    {"month": {{$oktClicks}},"period": "2016-10"},
-						    {"month": {{$novClicks}},"period": "2016-11"},
-						    {"month": {{$decClicks}},"period": "2016-12"}
-						  ]
-
-						 jaar.redraw();
+					jaar = new Date(data.date).getMonth();
+					
+					jaar.setData([
+						    {"month": '1',"period": "2015-01"},
+						    {"month": '20',"period": "2015-02"},
+						    {"month": '20',"period": "2015-03"},
+						    {"month": '30',"period": "2015-04"},
+						    {"month": '40',"period": "2015-05"},
+						    {"month": '50',"period": "2015-06"},
+						    {"month": '60',"period": "2015-07"},
+						    {"month": '0',"period":  "2015-08"},
+						    {"month": '72',"period": "2015-09"},
+						    {"month": '80',"period": "2015-10"},
+						    {"month": '90',"period": "2015-11"},
+						    {"month": '10',"period": "2015-12"}
+						  ]);
 
 				});
 
@@ -111,18 +111,18 @@
 
 		var yearObject = [
 
-		    {"month": {{$janClicks}},"period": "2016-01"},
-		    {"month": {{$febClicks}},"period": "2016-02"},
-		    {"month": {{$maaClicks}},"period": "2016-03"},
-		    {"month": {{$aprClicks}},"period": "2016-04"},
-		    {"month": {{$meiClicks}},"period": "2016-05"},
-		    {"month": {{$junClicks}},"period": "2016-06"},
-		    {"month": {{$julClicks}},"period": "2016-07"},
-		    {"month": {{$augClicks}},"period": "2016-08"},
-		    {"month": {{$sepClicks}},"period": "2016-09"},
-		    {"month": {{$oktClicks}},"period": "2016-10"},
-		    {"month": {{$novClicks}},"period": "2016-11"},
-		    {"month": {{$decClicks}},"period": "2016-12"}
+		    {"month": {{$janClicks}},"period": "3001-01"},
+		    {"month": {{$febClicks}},"period": "3001-02"},
+		    {"month": {{$maaClicks}},"period": "3001-03"},
+		    {"month": {{$aprClicks}},"period": "3001-04"},
+		    {"month": {{$meiClicks}},"period": "3001-05"},
+		    {"month": {{$junClicks}},"period": "3001-06"},
+		    {"month": {{$julClicks}},"period": "3001-07"},
+		    {"month": {{$augClicks}},"period": "3001-08"},
+		    {"month": {{$sepClicks}},"period": "3001-09"},
+		    {"month": {{$oktClicks}},"period": "3001-10"},
+		    {"month": {{$novClicks}},"period": "3001-11"},
+		    {"month": {{$decClicks}},"period": "3001-12"}
 		  ]
 
 	// Year graphics
