@@ -21,7 +21,9 @@ class AdLocation extends Model
      */
     protected $fillable = [
         'ad_id',
-        'location'
+        'location',
+        'lat',
+        'lng'
     ];
 
     public $timestamps = false;
@@ -30,21 +32,14 @@ class AdLocation extends Model
         return $this->belongsTo('App\Ad');
     }
     public static function insertLocals($id,$location){
-        return DB::table('ad_location')->insert([
-            'ad_id'     =>  $id,
-            'location'  =>  $location
-        ]);
-    }
-    public static function updateLocals($id,$location){
-        if(!empty($location)){
-            DB::table('ad_location')
-                ->insert([
-                    'ad_id'     =>  $id,
-                    'location'  =>  trim($location)
-                ]);
+        foreach($location as $local){
+            DB::table('ad_location')->insert([
+                'ad_id'     =>  $id,
+                'location'  =>  $local['city'],
+                'lat'       =>  $local['lat'],
+                'lng'       =>  $local['lng'],
+            ]);
         }
-
-
     }
 
     public static function deleteLocals($id){

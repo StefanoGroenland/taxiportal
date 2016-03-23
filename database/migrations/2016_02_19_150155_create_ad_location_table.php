@@ -16,6 +16,8 @@ class CreateAdLocationTable extends Migration
             $table->increments('id');
             $table->integer('ad_id');
             $table->string('location');
+            $table->string('lat');
+            $table->string('lng');
         });
     }
 
