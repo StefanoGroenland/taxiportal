@@ -239,7 +239,7 @@ class AdController extends Controller
 
 
    
-    /**
+    /** 
      * @return mixed
      */
 public function showAdStats(){
