@@ -472,12 +472,11 @@ class ApiController extends Controller
         if(!empty($driverID)) {
             if ($key == self::$apikey) {
                 $comment = Comment::where('driver_id', $driverID)->where('approved', 1)->get();
-                $result = collect([$comment]);
                 if($comment->isEmpty()){
                     return response()->json(self::$none, 404);
                 }else{
                     return response()->json(array(
-                        'comments'  =>  $result,
+                        'comments'  =>  $comment,
                         'success'   =>  true,
                         'action'    =>  'comments_off_driver',
                         'status'    =>  '200'
