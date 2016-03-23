@@ -80,29 +80,35 @@
 @section('scripts')
 <script src="{{URL::asset('../assets/js/jvalidate.js')}}" type="text/javascript"></script>
 <script src="{{URL::asset('../assets/js/locale/messages.nl.js')}}" type="text/javascript"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyBuzlPSNhmRIEhIl-3ZUidj3fwXfsDSw&amp;sensor=false&libraries=places"></script>
+<script type="text/javascript" src="{{URL::asset('/assets/js/jquery.geocomplete.min.js')}}"></script>
 
 <script>
-    $(function() {
-        $('form').jvalidate({
-            errorMessage: true
-        });
+$(function() {
+    $('form').jvalidate({
+        errorMessage: true
     });
+});
 
-            function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
 
-                    reader.onload = function (e) {
-                        $('#blah').attr('src', e.target.result);
-                    }
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
 
-                    reader.readAsDataURL(input.files[0]);
-                }
-            }
+        reader.onload = function (e) {
+            $('#blah').attr('src', e.target.result);
+        };
 
-            $("#imgInp").change(function(){
-                readURL(this);
-            });
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#imgInp").change(function(){
+    readURL(this);
+});
+
+
+
 
 
 </script>
