@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\AdClick;
 use App\Taxibase;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -806,6 +807,17 @@ class ApiController extends Controller
         $response = json_decode($response_json, true);
 
         return $response;
+    }
+
+    public function statisticsData(){
+        $year  = Input::get('year');
+
+        $clicks = AdClick::whereYear('created_at',$year)->get();
+
+        return response()->json(array(
+            'result'    =>  $clicks
+        ));
+
     }
 
 }
