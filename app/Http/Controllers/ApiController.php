@@ -810,8 +810,7 @@ class ApiController extends Controller
     }
 
     public function statisticsData(){
-        $year  = Input::get('year');
-
+        $year   = Input::get('year');
         $clicks = AdClick::whereYear('created_at',$year)->get();
 
         return response()->json(array(
