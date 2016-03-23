@@ -53,14 +53,14 @@ class AdController extends Controller
      * @author Richard Perdaan
      * @return mixed
      *
-     *  TODO : fill in func description
+     * Makes the reclametoevoegen view.
      */
     public function showAdsAdd(){
         return View::make('/reclametoevoegen');
     }
 
     /**
-     * @author Richard Perdaan
+     * @author Richard Perdaan & Stefano Groenland
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      *
@@ -88,12 +88,19 @@ class AdController extends Controller
             'ad_id'     => $advertisement->id,
             'location'  => $request['locatie']
         );
+        $geo = $this->geoCode($dataLocation['location']);
 
-        $datLoc = $dataLocation['location'];
-        $datLocArray = explode(',',$datLoc);
-        for($i = 0; $i < count($datLocArray); $i++){
-            AdLocation::insertLocals($advertisement->id,trim($datLocArray[$i],' '));
+        $in_radius = $this->getLocationsInRadius($request['radius'],$geo[0],$geo[1]);
+
+        foreach($in_radius as $inbound){
+            $cities[] = array(
+              'city'    =>  $inbound[1],
+              'lat'     =>  $inbound[8],
+              'lng'     =>  $inbound[10]
+            );
         }
+        AdLocation::insertLocals($advertisement->id,$cities);
+
         session()->flash('alert-success', 'reclame ' . $advertisement->link.' toegevoegd.');
         return redirect()->route('reclames');
     }
@@ -119,7 +126,7 @@ class AdController extends Controller
     }
 
     /**
-     * @author Richard Perdaan
+     * @author Richard Perdaan & Stefano Groenland
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      *
@@ -142,20 +149,25 @@ class AdController extends Controller
         }
 
         Ad::where('id', '=', $id)->update($data);
+        AdLocation::deleteLocals($id);
         $this->upload($request,$id);
 
         $dataLocation = array(
             'ad_id'     => $id,
             'location'  => $request['location']
         );
-        $datLoc = $dataLocation['location'];
-        $datLocArray = explode(',',$datLoc);
-        for($i = 0; $i < count($datLocArray); $i++){
-            if($i < 1){
-                AdLocation::deleteLocals($id);
-            }
-            AdLocation::updateLocals($id,$datLocArray[$i]);
+        $geo = $this->geoCode($dataLocation['location']);
+
+        $in_radius = $this->getLocationsInRadius($request['radius'],$geo[0],$geo[1]);
+
+        foreach($in_radius as $inbound){
+            $cities[] = array(
+                'city'    =>  $inbound[1],
+                'lat'     =>  $inbound[8],
+                'lng'     =>  $inbound[10]
+            );
         }
+        AdLocation::insertLocals($id,$cities);
 
         $request->session()->flash('alert-success', 'Reclame ' . $request['link'] . ' is veranderd.');
         return redirect()->route('reclames');
@@ -204,27 +216,29 @@ class AdController extends Controller
 
     }
 
+    /**
+     * @author Stefano Groenland
+     * @param $radius
+     * @param $lat
+     * @param $lng
+     * @return string
+     *
+     * Uses the geobyte API for nearby cities in a radius arround the lat & long coords of a given location.
+     */
     public function getLocationsInRadius($radius,$lat,$lng){
-            $radius = $radius * 0.62137; //km to miles
-            $url = 'http://gd.geobytes.com/GetNearbyCities?radius='.$radius.'&Latitude='.$lat.'&Longitude='.$lng.'&limit=999';
+        $radius = $radius * 0.62137; //km to miles
+        $url = 'http://gd.geobytes.com/GetNearbyCities?radius='.$radius.'&Latitude='.$lat.'&Longitude='.$lng.'&limit=999';
 
-            $response = file_get_contents($url);
+        $response_json = file_get_contents($url);
 
-//          Test code
-//          $response = $this->getLocationsInRadius(0,51.946228,4.537657);
-//          $response = json_decode($response, false);
-//
-//          foreach($response as $res){
-//              echo $res[1].' City ';
-//              echo $res[7].' KM ';
-//              echo $res[11].' Mi ';
-//              echo $res[8].' lat ';
-//              echo $res[10].'lng<br>';
-//          }
+        $response = json_decode($response_json, true);
 
-            return $response;
+        return $response;
     }
 
+    /**
+     * @return mixed
+     */
     public function showAdStats(){
         $id = Route::current()->getParameter('id');
         $ad = Ad::where('id',$id)->first();
@@ -257,5 +271,31 @@ class AdController extends Controller
            ${$maand.'Clicks'} = count($clickFirst::whereMonth('created_at','=',$key)->get());
         }
         return View::make('/reclameprofiel', compact('id','ad','allClicks','array_dagen','array_maanden','month','list','clickCount','janClicks','febClicks','maaClicks','aprClicks','meiClicks','junClicks','julClicks','augClicks','sepClicks','oktClicks','novClicks','decClicks'));
+    }
+
+
+    /**
+     * @author Stefano Groenland
+     * @param $adress
+     * @return array
+     *
+     * Uses the Google maps Geocoding API to convert a location to geodata.
+     */
+    public function geoCode($adress){
+        $url = 'https://maps.googleapis.com/maps/api/geocode/json?address='.$adress.',NL&key=AIzaSyAKW-_1s45jicXozxFSRolEJpQIFSmC7NM';
+        $response_json = file_get_contents($url);
+
+        $response = json_decode($response_json, true);
+
+        if($response['status'] == 'OK'){
+            $lat = $response['results'][0]['geometry']['location']['lat'];
+            $lng = $response['results'][0]['geometry']['location']['lng'];
+
+            if(!empty($lat) && !empty($lng)){
+                $result = array();
+                array_push($result,$lat,$lng);
+                return $result;
+            }
+        }
     }
 }
