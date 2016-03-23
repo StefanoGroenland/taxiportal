@@ -4,7 +4,6 @@
           <th>Chauffeur</th>
           <th>Laatst gezien</th>
           <th>Gemeld op</th>
-          <th>Gezien</th>
           <th></th>
       </thead>
       <tbody>
@@ -27,7 +26,6 @@
               <td>Geen datum</td>
               @endif
               <td>{{$sos->created_at->format('d-m-Y H:i:s')}}</td>
-              <td>@if($sos->seen == 1) <i class="fa fa-check" ></i> @else <i class="fa fa-times"></i> @endif</td>
               <td class="text-right">
                   <a class="btn btn-sm yellow-lemon popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Markeer gezien" href="/seenSignal/{{$sos->id}}"><i class="fa fa-check"></i></a>
               </td>

@@ -24,7 +24,7 @@ use App\Route as RouteR;
 use Illuminate\Http\Response as Response;
 
 use Illuminate\Support\Facades\Input;
-class ApiOneController extends Controller
+class ApiController extends Controller
 {
     /**
      * @var string
@@ -290,7 +290,7 @@ class ApiOneController extends Controller
      */
     public function sendSOS()
     {
-        $id = Input::get('id');
+        $id = Input::get('taxi_id');
         $last_lat = Input::get('latitude');
         $last_long = Input::get('longtitude');
         $key = Input::get('key');
@@ -540,9 +540,9 @@ class ApiOneController extends Controller
      * @version 1.0
      * @return \Illuminate\Http\JsonResponse
      *
-     * Updates the shift value of the given taxi with the passed value of input.shift
+     * Updates the shift value of the given taxi, changes it to true so the taxi is in shift.
      */
-    public function toggleShift(){
+    public function inShift(){
         $taxiID     = Input::get('taxi_id');
         $key        = Input::get('key');
 
@@ -552,14 +552,50 @@ class ApiOneController extends Controller
                 if(count($car) < 1){
                     return response()->json(self::$none, 404);
                 }else{
-                    if($car->in_shift == 0){
-                        $car->update(['in_shift' => 1]);
-                    }else{
-                        $car->update(['in_shift' => 0]);
-                    }
+                    $car->update(['in_shift' => 1]);
+
                     return response()->json(array(
                         'success'   =>  true,
                         'action'    =>  'shift_value_changed',
+                        'value'     =>  $car->in_shift,
+                        'status'    =>  '200'
+                    ),200);
+                }
+            }
+            return response()->json(self::$error, 401);
+        }else{
+            return response()->json(array(
+                'success'   =>  false,
+                'info'      =>  'Check if all parameters are filled in',
+                'status'    =>  '400'
+            ),400);
+        }
+    }
+
+    /**
+     * @author Stefano Groenland
+     * @api
+     * @version 1.0
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * Updates the shift value of the given taxi, changes it to false so the taxi is off shift.
+     */
+    public function offShift(){
+        $taxiID     = Input::get('taxi_id');
+        $key        = Input::get('key');
+
+        if(!empty($taxiID)) {
+            if ($key == self::$apikey) {
+                $car = Taxi::where('id', $taxiID)->first();
+                if(count($car) < 1){
+                    return response()->json(self::$none, 404);
+                }else{
+                    $car->update(['in_shift' => 0]);
+
+                    return response()->json(array(
+                        'success'   =>  true,
+                        'action'    =>  'shift_value_changed',
+                        'value'     =>  $car->in_shift,
                         'status'    =>  '200'
                     ),200);
                 }

@@ -16,13 +16,12 @@
                             {!! csrf_field() !!}
                             <div class="form-body">
                             <div class="row">
-                                <div class="col-lg-2 col-md-2"></div>
-                                    <div class="col-lg-8 col-md-8 center-block text-center">
-                                        <div id="imgHolder" class="fileinput-new thumbnail center-block" >
+                                    <div class="col-lg-12 col-md-12 center-block text-center">
+                                        <div id="imgHolder" class="fileinput-new center-block" style="height: 135px !important;">
                                             <img id="blah"
-                                             src="../assets/img/avatars/avatar.png"
+                                             src="https://placeholdit.imgix.net/~text?txtsize=33&txt=1280%C3%97135&w=1280&h=135"
                                              alt="avatar" class="img-responsive center-block"
-                                             style="width: 100% !important; height: 150px !important;"
+                                             style=" width: 75% !important; height: 135px !important; padding-bottom:10px !important;"
                                             />
                                         </div>
                                         <div class="fileinput fileinput-new " data-provides="fileinput">
@@ -32,10 +31,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                <div class="col-lg-2 col-md-2"></div>
                             </div>
                                 <div class="row">
-                                <div class="col-lg-2 col-md-2"></div>
                                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                         <div class="form-group form-md-line-input">
                                             <div class="input-icon">
@@ -49,12 +46,20 @@
                                         <div class="form-group form-md-line-input">
                                             <div class="input-icon">
                                                 <input type="text" class="form-control" id="locatie" name="locatie" value="">
-                                                <label for="locatie">Locatie</label>
+                                                <label for="locatie">Centrale locatie</label>
                                                 <i class="fa fa-map-marker"></i>
                                             </div>
                                         </div>
                                     </div>
-                                   <div class="col-lg-2 col-md-2"></div>
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                        <div class="form-group form-md-line-input">
+                                            <div class="input-icon">
+                                                <input type="number" class="form-control" id="radius" name="radius" value="0">
+                                                <label for="locatie">Straal reclame bereik in kilometers</label>
+                                                <i class="fa fa-map-marker"></i>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">

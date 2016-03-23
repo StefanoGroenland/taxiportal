@@ -192,7 +192,7 @@ class AdController extends Controller
                 $fileName = rand(1111, 9999) . '.' . $extension;
                 $request->file('banner')->move($destinationPath, $fileName);
                 $ava = $destinationPath . '/' . $fileName;
-                $img = Image::make($ava)->fit(1280, 200)->save();
+                $img = Image::make($ava)->fit(1280, 135)->save();
                 $final = $destinationPath . '/' . $img->basename;
                 Ad::uploadPicture($id, $final);
                 return redirect('/reclames');
