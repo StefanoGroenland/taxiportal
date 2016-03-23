@@ -817,7 +817,6 @@ class ApiController extends Controller
         return response()->json(array(
             'result'    =>  $clicks
         ));
-
     }
 
 }
