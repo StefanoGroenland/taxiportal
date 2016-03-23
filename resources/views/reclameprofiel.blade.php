@@ -33,12 +33,25 @@
 	        			    <h4  class="widget-thumb-heading">Jaar</h4>
 	        			</div>
 	           		</div>
-	           		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" data-toggle="collapse" href="#month" aria-expanded="false" aria-controls="collapseGesloten">
+
+	           		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 	        			<div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
 	        			    <h4 class="widget-thumb-heading">Maand</h4>
 	        			</div>
+	        			<form method="POST" action="/reclames{id}">
+	        			<div class="form-group form-md-line-input">
+		                    <div class="input-icon">
+		                        <select class="form-control" name="month" data-toggle="collapse" href="#month" aria-expanded="false" aria-controls="collapseGesloten">>
+		                            <option value="01">Jan</option>
+                                    <option value="03">Feb</option>
+                                </select>
+		                        <label for="car">Taxi</label>
+		                         <i class="fa fa-calendar"></i>
+		                    </div>
+		                </div>
+		                </form>
 	           		</div>
-	           		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+	           		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" data-toggle="collapse" href="#week" aria-expanded="false" aria-controls="collapseGesloten">
 	        			<div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
 	        			    <h4 class="widget-thumb-heading">Week</h4>
 	        			</div>
@@ -50,14 +63,20 @@
 	           		</div>
 	           		<div class="row">
 						<div class="col-lg-12">
-							<div class="collapsed year">
+							<div class="collapse year">
 								<div id="graph"></div>
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-lg-12">
-							<div class="collapsed" id="month">
+							<div class="collapse in" id="month">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="collapse" id="week">
 							</div>
 						</div>
 					</div>
@@ -128,6 +147,30 @@
 	    @endforeach
 	  ],
 	 	xkey: 'day',
+        ykeys: ['clicks'],
+	    hideHover: 'auto',
+        xLabelAngle: 40,
+	    labels: ['Aantal kliks']
+	});
+
+
+// Week graphics
+	Morris.Bar({
+	  element: 'week',
+	  data: [
+	  @foreach($dagen_week as $kee => $value)
+	  	
+	  	{week: '{{$value}}',
+	    	@foreach($clickCount as $key => $val)
+	    		@if($key == $value)   		
+	    			 clicks:'{{$val}}'
+	    		@endif
+	    	@endforeach
+	    	},
+	    @endforeach
+	    	
+	  ],
+	 	xkey: 'week',
         ykeys: ['clicks'],
 	    hideHover: 'auto',
         xLabelAngle: 40,
