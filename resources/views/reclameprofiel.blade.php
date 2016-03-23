@@ -85,7 +85,7 @@
 			var yearValue = $(this).val();
 			
 			$.post('test.dev/api/v1/statistics/year', yearValue)
-				.done(function(data) {
+				.done(function(data) { 
 					console.log(data);
 					yearObject = [
 
