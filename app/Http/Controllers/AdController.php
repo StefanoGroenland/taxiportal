@@ -50,7 +50,7 @@ class AdController extends Controller
     }
 
     /**
-     * @author Stefano Groenland
+     * @author Richard Perdaan
      * @return mixed
      *
      * Makes the reclametoevoegen view.
@@ -60,7 +60,7 @@ class AdController extends Controller
     }
 
     /**
-     * @author Richard Perdaan
+     * @author Richard Perdaan & Stefano Groenland
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      *
@@ -126,7 +126,7 @@ class AdController extends Controller
     }
 
     /**
-     * @author Richard Perdaan
+     * @author Richard Perdaan & Stefano Groenland
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      *
@@ -217,10 +217,13 @@ class AdController extends Controller
     }
 
     /**
+     * @author Stefano Groenland
      * @param $radius
      * @param $lat
      * @param $lng
      * @return string
+     *
+     * Uses the geobyte API for nearby cities in a radius arround the lat & long coords of a given location.
      */
     public function getLocationsInRadius($radius,$lat,$lng){
         $radius = $radius * 0.62137; //km to miles
@@ -272,8 +275,11 @@ class AdController extends Controller
 
 
     /**
+     * @author Stefano Groenland
      * @param $adress
      * @return array
+     *
+     * Uses the Google maps Geocoding API to convert a location to geodata.
      */
     public function geoCode($adress){
         $url = 'https://maps.googleapis.com/maps/api/geocode/json?address='.$adress.',NL&key=AIzaSyAKW-_1s45jicXozxFSRolEJpQIFSmC7NM';
