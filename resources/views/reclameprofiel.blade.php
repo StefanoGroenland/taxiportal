@@ -27,41 +27,32 @@
        	               <span class="caption-subject bold uppercase">Reclame profiel : {{$ad->link}}</span>
        	           </div>     
        	       </div>
-       	      	<div class="row">
-	          		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" data-toggle="collapse" href=".year" aria-expanded="false" aria-controls="collapseGesloten">
-	        			<div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
-	        			    <h4  class="widget-thumb-heading">Jaar</h4>
-	        			</div>
-	           		</div>
-	           		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" data-toggle="collapse" href="#month" aria-expanded="false" aria-controls="collapseGesloten">
-	        			<div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
-	        			    <h4 class="widget-thumb-heading">Maand</h4>
-	        			</div>
-	           		</div>
-	           		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-	        			<div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
-	        			    <h4 class="widget-thumb-heading">Week</h4>
-	        			</div>
-	           		</div>
-	           		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-	        			<div class="widget-thumb widget-bg-color-white text-uppercase margin-bottom-20 bordered">
-	        			    <h4 class="widget-thumb-heading">Dag</h4>
-	        			</div>
-	           		</div>
-	           		<div class="row">
-						<div class="col-lg-12">
-							<div class="collapsed year">
-								<div id="graph"></div>
-							</div>
+
+
+       	        <ul class="nav nav-tabs" role="tablist">
+					<li role="presentation" class="active"><a href="#jaar" aria-controls="year" role="tab" data-toggle="tab">Jaar</a></li>
+					<li role="presentation"><a href="#maand" aria-controls="maand" role="tab" data-toggle="tab">Maand</a></li>
+					<li role="presentation"><a href="#week" aria-controls="week" role="tab" data-toggle="tab">Week</a></li>
+				</ul>
+
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane fade in active" id="jaar">
+						<div class="form-group">
+							<select class="form-control year-select">
+								<option value="1">2016</option>
+								<option value="2">2015</option>
+							</select>	
 						</div>
+						
+						<div id="year"></div>
 					</div>
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="collapsed" id="month">
-							</div>
-						</div>
+					<div role="tabpanel" class="tab-pane fade" id="maand">
+						<div id="month"></div>
 					</div>
-	           	</div>
+					<div role="tabpanel" class="tab-pane fade" id="week">
+						<div id="week">
+					</div>
+				</div>
         	</div>
 
 
@@ -74,10 +65,51 @@
     <script src="{{URL::asset('../assets/js/morris-0.4.3.min.js')}}" type="text/javascript"></script>
 	<script type="text/javascript">
 	
-	// Year graphics
-		Morris.Line({
-          element: 'graph',
-          data: [
+
+		$('a[href="#maand"]').on('shown.bs.tab', function (e) {
+			maand.redraw();
+			$('#month svg').attr('width', '100%');
+		});
+
+		$('a[href="#year"]').on('shown.bs.tab', function (e) {
+			jaar.redraw();
+			$('#year svg').attr('width', '100%');
+		});
+
+		$('a[href="#week"]').on('shown.bs.tab', function (e) {
+			week.redraw();
+			$('#week svg').attr('width', '100%');
+		});
+
+		$('.year-select').on('change', function() {
+			var yearValue = $(this).val();
+			
+			$.post('test.dev/api/v1/statistics/year', yearValue)
+				.done(function(data) {
+					console.log(data);
+					yearObject = [
+
+						    {"month": {{$janClicks}},"period": "2016-01"},
+						    {"month": {{$febClicks}},"period": "2016-02"},
+						    {"month": {{$maaClicks}},"period": "2016-03"},
+						    {"month": {{$aprClicks}},"period": "2016-04"},
+						    {"month": {{$meiClicks}},"period": "2016-05"},
+						    {"month": {{$junClicks}},"period": "2016-06"},
+						    {"month": {{$julClicks}},"period": "2016-07"},
+						    {"month": {{$augClicks}},"period": "2016-08"},
+						    {"month": {{$sepClicks}},"period": "2016-09"},
+						    {"month": {{$oktClicks}},"period": "2016-10"},
+						    {"month": {{$novClicks}},"period": "2016-11"},
+						    {"month": {{$decClicks}},"period": "2016-12"}
+						  ]
+
+						 jaar.redraw();
+
+				});
+
+		});
+
+		var yearObject = [
 
 		    {"month": {{$janClicks}},"period": "2016-01"},
 		    {"month": {{$febClicks}},"period": "2016-02"},
@@ -91,7 +123,12 @@
 		    {"month": {{$oktClicks}},"period": "2016-10"},
 		    {"month": {{$novClicks}},"period": "2016-11"},
 		    {"month": {{$decClicks}},"period": "2016-12"}
-		  ],
+		  ]
+
+	// Year graphics
+		var jaar = Morris.Line({
+          element: 'year',
+          data: yearObject,
           xkey: 'period',
           ykeys: ['month'],
           labels: ['Aantal kliks'],
@@ -113,7 +150,7 @@
       });
 
 	// Month graphics
-	Morris.Bar({
+	var maand = Morris.Bar({
 	  element: 'month',
 	  data: [
 
@@ -131,7 +168,33 @@
         ykeys: ['clicks'],
 	    hideHover: 'auto',
         xLabelAngle: 40,
-	    labels: ['Aantal kliks']
+	    labels: ['Aantal kliks'],
+	    resize: true
+	});
+
+
+// Week graphics
+	var week = Morris.Bar({
+	  element: 'week',
+	  data: [
+	  @foreach($dagen_week as $kee => $value)
+	  	
+	  	{week: '{{$value}}',
+	    	@foreach($clickCount as $key => $val)
+	    		@if($key == $value)   		
+	    			 clicks:'{{$val}}'
+	    		@endif
+	    	@endforeach
+	    	},
+	    @endforeach
+	    	
+	  ],
+	 	xkey: 'week',
+        ykeys: ['clicks'],
+	    hideHover: 'auto',
+        xLabelAngle: 40,
+	    labels: ['Aantal kliks'],
+	    resize: true
 	});
 	</script>
 @endsection
