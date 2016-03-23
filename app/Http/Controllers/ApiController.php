@@ -291,8 +291,8 @@ class ApiController extends Controller
     public function sendSOS()
     {
         $id = Input::get('taxi_id');
-        $last_lat = Input::get('latitude');
-        $last_long = Input::get('longtitude');
+        $last_lat = Input::get('lat');
+        $last_long = Input::get('lng');
         $key = Input::get('key');
 
         if(!empty($id) && !empty($last_lat) && !empty($last_long)){
@@ -503,8 +503,8 @@ class ApiController extends Controller
      */
     public function sendLocation(){
         $driverID   = Input::get('driver_id');
-        $latitude   = Input::get('latitude');
-        $longtitude = Input::get('longtitude');
+        $latitude   = Input::get('lat');
+        $longtitude = Input::get('lng');
         $key        = Input::get('key');
 
         if(!empty($driverID) && !empty($latitude) && !empty($longtitude)) {
@@ -689,8 +689,8 @@ class ApiController extends Controller
      */
     public function postBase(){
         $key    = Input::get('key');
-        $lat    = Input::get('latitude');
-        $long   = Input::get('longtitude');
+        $lat    = Input::get('lat');
+        $long   = Input::get('lng');
         $name   = Input::get('base_name');
 
         if(!empty($lat) && !empty($long) && !empty($name)){
@@ -784,6 +784,28 @@ class ApiController extends Controller
             }
         }
         return response()->json(self::$error,401);
+    }
+
+    /**
+     * @author Stefano Groenland
+     * @return string
+     *
+     * Uses the geobyte API for nearby cities in a radius arround the lat & long coords of a given location.
+     */
+    public function getLocationsInRadius(){
+
+        $radius = Input::get('radius');
+        $lat = Input::get('lat');
+        $lng = Input::get('lng');
+
+        $radius = $radius * 0.62137; //km to miles
+        $url = 'http://gd.geobytes.com/GetNearbyCities?radius='.$radius.'&Latitude='.$lat.'&Longitude='.$lng.'&limit=999';
+
+        $response_json = file_get_contents($url);
+
+        $response = json_decode($response_json, true);
+
+        return $response;
     }
 
 }
