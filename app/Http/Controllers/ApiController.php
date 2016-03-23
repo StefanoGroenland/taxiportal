@@ -809,9 +809,15 @@ class ApiController extends Controller
         return $response;
     }
 
+    /**
+     * @author Stefano Groenland
+     * @return mixed
+     *
+     * Returns all clicks for the given year.
+     */
     public function statisticsData(){
         $year   = Input::get('year');
-        $clicks = AdClick::whereYear('created_at',$year)->get();
+        $clicks = AdClick::whereYear('created_at','=',$year)->get();
 
         return response()->json(array(
             'result'    =>  $clicks
