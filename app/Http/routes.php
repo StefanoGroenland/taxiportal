@@ -115,7 +115,8 @@ Route::post('/api/v1/getcomments'                   , 'ApiController@getComments
 Route::get('/api/v1/signalcheck'                    , 'ApiController@signalCheck');
 Route::get('/api/v1/emergencies'                    , 'ApiController@getSOS');
 Route::post('/api/v1/sendlocation'                  , 'ApiController@sendLocation');
-Route::post('/api/v1/toggleshift'                   , 'ApiController@toggleShift');
+Route::post('/api/v1/inshift'                       , 'ApiController@inShift');
+Route::post('/api/v1/offshift'                      , 'ApiController@offShift');
 Route::post('/api/v1/returnrequest'                 , 'ApiController@requestReturnRide');
 Route::post('/api/v1/postbase'                      , 'ApiController@postBase');
 Route::post('/api/v1/locations'                     , 'ApiController@getLocations');
