@@ -23,7 +23,7 @@ class AdController extends Controller
      * and passes them along when making the view.
      */
     public function showAds(){
-        $ads = Ad::with('adLocation')->get();
+        $ads = Ad::with('adLocation','adClicks')->get();
         return View::make('/reclames', compact('ads'));
     }
 
