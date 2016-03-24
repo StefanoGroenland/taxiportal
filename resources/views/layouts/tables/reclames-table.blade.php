@@ -83,7 +83,7 @@
             ],
             xkey: 'data',
             ykeys: ['value'],
-            labels: ['Aantal kliks vandaag']
+            labels: ['Aantal kliks']
         }).on('click', function(i, row){
             window.location.href = "reclames/"+row['id'];
         });
