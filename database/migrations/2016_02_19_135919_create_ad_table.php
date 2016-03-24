@@ -16,6 +16,8 @@ class CreateAdTable extends Migration
             $table->increments('id');
             $table->string('link');
             $table->string('banner');
+            $table->string('central_location');
+            $table->string('radius');
             $table->timestamps();
         });
     }

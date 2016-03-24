@@ -37,17 +37,7 @@ class AdController extends Controller
     public function showAdsEdit(){
         $id = Route::current()->getParameter('id');
         $obj = Ad::find($id);
-        $objLo = AdLocation::where('ad_id',$obj->id)->get();
-
-        $locations = '';
-        foreach($objLo as $key => $value){
-            $locations .= $value->location.',';
-        }
-
-        $locations = rtrim($locations, ',');
-
-
-        return View::make('/reclamewijzigen', compact('id', 'obj', 'locations'));
+        return View::make('/reclamewijzigen', compact('id', 'obj'));
     }
 
     /**
@@ -71,11 +61,15 @@ class AdController extends Controller
     public function addAd(Request $request){
 
         $data = array(
-            'link'      => $request['link']
+            'link'              => $request['link'],
+            'central_location'  =>  $request['locatie'],
+            'radius'            =>  $request['radius']
         );
 
         $rules = array(
-            'link'      => 'required'
+            'link'              => 'required',
+            'central_location'  => 'required',
+            'radius'            => 'required|numeric'
         );
 
         $validator = Validator::make($data, $rules);
@@ -139,10 +133,15 @@ class AdController extends Controller
     public function editAd(Request $request){
         $id = Route::current()->getParameter('id');
         $data = array(
-            'link'      => $request['link'],
+            'link'              => $request['link'],
+            'central_location'  =>  $request['locatie'],
+            'radius'            =>  $request['radius']
         );
-         $rules = array(
-            'link'      => 'required'
+
+        $rules = array(
+            'link'              => 'required',
+            'central_location'  => 'required',
+            'radius'            => 'required|numeric'
         );
 
         $validator = Validator::make($data, $rules);

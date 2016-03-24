@@ -47,7 +47,7 @@
                                         <div class="form-group form-md-line-input">
                                             <div class="input-icon">
                                                 <input type="text" name="location" class="form-control" id="locatie"
-                                                value="{{$locations}}">
+                                                value="{{$obj->central_location}}">
                                                 <label for="locatie">Locatie</label>
                                                 <i class="fa fa-map-marker"></i>
                                             </div>
@@ -56,7 +56,7 @@
                                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                         <div class="form-group form-md-line-input">
                                             <div class="input-icon">
-                                                <input type="number" class="form-control" id="radius" name="radius" value="0">
+                                                <input type="number" class="form-control" id="radius" name="radius" value="{{$obj->radius}}">
                                                 <label for="locatie">Straal reclame bereik in kilometers</label>
                                                 <i class="fa fa-map-marker"></i>
                                             </div>

@@ -16,7 +16,6 @@ class UserTableSeeder extends Seeder
             'password'      => bcrypt('moodles'),
             'firstname'     => 'Stefano',
             'lastname'      => 'Groenland',
-            'profile_photo' => str_random(5),
             'phone_number'  => str_random(5),
             'user_rank'     => 'admin',
         ]);
