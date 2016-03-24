@@ -102,10 +102,22 @@ class ApiController extends Controller
             $key        = Input::get('key');
             $ad         = Ad::find($id);
             $clicks     = $ad->clicks;
+            $today      = date('Y-m-d');
 
             if(!empty($id)){
                 if ($key == self::$apikey) {
-                    Ad::where('id', $ad->id)->update(array('clicks' => $clicks + 1));
+                    $ad = AdClick::where('ad_id',$ad->id)
+                                    ->whereDate('created_at','=',$today)->first();
+                    if(count($ad) > 0){
+                        $ad->update([
+                            'clicks'    =>  $ad->clicks + 1
+                        ]);
+                    }else{
+                        AdClick::create([
+                            'ad_id'     =>  $ad->id,
+                            'clicks'    =>  1
+                        ]);
+                    }
                     return response()->json(array(
                         'success'   =>  true,
                         'action'    =>  'increase_ad_click_count',
@@ -472,12 +484,11 @@ class ApiController extends Controller
         if(!empty($driverID)) {
             if ($key == self::$apikey) {
                 $comment = Comment::where('driver_id', $driverID)->where('approved', 1)->get();
-                $result = collect([$comment]);
                 if($comment->isEmpty()){
                     return response()->json(self::$none, 404);
                 }else{
                     return response()->json(array(
-                        'comments'  =>  $result,
+                        'comments'  =>  $comment,
                         'success'   =>  true,
                         'action'    =>  'comments_off_driver',
                         'status'    =>  '200'
