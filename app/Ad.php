@@ -24,7 +24,9 @@ class Ad extends Model
         'link',
         'locations',
         'clicks',
-        'banner'
+        'banner',
+        'central_location',
+        'radius'
     ];
 
     public function adLocation(){
