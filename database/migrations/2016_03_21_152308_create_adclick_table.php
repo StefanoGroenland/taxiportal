@@ -15,6 +15,7 @@ class CreateAdclickTable extends Migration
          Schema::create('ad_click', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('ad_id');
+            $table->integer('clicks');
             $table->timestamps();
         });
     }

@@ -89,9 +89,9 @@
 					console.log(data);
 
 					jaar = new Date(data.date).getMonth();
-					
+				
 					jaar.setData([
-						    {"month": '1',"period": "2015-01"},
+						    {"month": '1',"period": "jaar -01"},
 						    {"month": '20',"period": "2015-02"},
 						    {"month": '20',"period": "2015-03"},
 						    {"month": '30',"period": "2015-04"},
