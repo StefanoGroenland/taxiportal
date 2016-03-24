@@ -77,7 +77,11 @@ class CommentController extends Controller
     public function editComment(Request $request){
         $id = Route::current()->getParameter('id');
         $comment = Comment::where('id',$id)->first();
-
+        if($comment->approved == 0){
+            $redir = 1;
+        }else{
+            $redir = 0;
+        }
         $data = array(
             'comment'   =>  $request['comment'],
             'approved'  =>  $request['approved']
@@ -91,7 +95,12 @@ class CommentController extends Controller
         }
         $comment->update($data);
         $request->session()->flash('alert-success', 'Opmerking '. $request['name'] .' is gewijziged.');
-        return redirect('/opmerkingen');
+
+        if($redir == 1){
+            return redirect('/opmerkingen');
+        }
+        return redirect('/opmerkingen/verwerkt');
+
 
     }
 
