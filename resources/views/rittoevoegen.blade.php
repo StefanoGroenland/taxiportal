@@ -270,8 +270,8 @@
         var startall = startstreet + ' ' + startnumber + ' ' + startzip + ' ' + startcity;
 	
       directionsService.route({
-        // origin: startall,
-        // destination: endall,
+        origin: startall,
+        destination: endall,
         travelMode: google.maps.TravelMode.DRIVING,
 
       }, function(response, status) {
