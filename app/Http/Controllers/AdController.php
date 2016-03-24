@@ -122,6 +122,7 @@ class AdController extends Controller
            unlink($find->logo);
        }
        AdLocation::where('ad_id','=',$id)->delete();
+       Adclick::where('ad_id','=',$id)->delete();
        session()->flash('alert-success', 'reclame ' . $find->link.' verwijderd.');
        return redirect()->route('reclames');
     }

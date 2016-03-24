@@ -30,6 +30,10 @@ class Ad extends Model
     public function adLocation(){
         return $this->hasMany('App\AdLocation');
     }
+
+    public function adClicks(){
+        return $this->hasMany('App\AdClick');
+    }
     public static function uploadPicture($id, $img)
     {
         DB::table('ad')

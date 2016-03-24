@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="519bf916-5f09-4b43-913d-4efc13c49b43" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Ad.php" afterPath="$PROJECT_DIR$/app/Ad.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/AdClick.php" afterPath="$PROJECT_DIR$/app/AdClick.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AdController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ApiController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ApiController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Exceptions/Handler.php" afterPath="$PROJECT_DIR$/app/Exceptions/Handler.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="898f360f-9443-42ce-bed2-6a84766c6e32" name="New changelist" comment="" />
@@ -43,11 +47,41 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="AdClick.php" pinned="false" current-in-tab="true">
+          <file leaf-file-name="AdClick.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/AdClick.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.48281017" vertical-offset="0" max-vertical-offset="669">
-                  <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+                <state vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="442">
+                  <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Handler.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/Exceptions/Handler.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-10.384615" vertical-offset="308" max-vertical-offset="1003">
+                  <caret line="38" column="41" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Ad.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/Ad.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-8.730769" vertical-offset="96" max-vertical-offset="816">
+                  <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="AdController.php" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdController.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.52134144" vertical-offset="1545" max-vertical-offset="5474">
+                  <caret line="121" column="31" selection-start-line="121" selection-start-column="31" selection-end-line="121" selection-end-column="31" />
                   <folding />
                 </state>
               </provider>
@@ -60,8 +94,8 @@
           <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-12.038462" vertical-offset="690" max-vertical-offset="2108">
-                  <caret line="68" column="37" selection-start-line="68" selection-start-column="37" selection-end-line="68" selection-end-column="37" />
+                <state vertical-scroll-proportion="-6.923077" vertical-offset="1452" max-vertical-offset="2108">
+                  <caret line="105" column="13" selection-start-line="105" selection-start-column="13" selection-end-line="105" selection-end-column="49" />
                   <folding />
                 </state>
               </provider>
@@ -70,8 +104,8 @@
           <file leaf-file-name="ApiController.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ApiController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.46815288" vertical-offset="1576" max-vertical-offset="14365">
-                  <caret line="110" column="39" selection-start-line="110" selection-start-column="39" selection-end-line="110" selection-end-column="39" />
+                <state vertical-scroll-proportion="0.64634144" vertical-offset="1548" max-vertical-offset="14348">
+                  <caret line="116" column="45" selection-start-line="116" selection-start-column="45" selection-end-line="116" selection-end-column="45" />
                   <folding>
                     <element signature="e#41#57#0#PHP" expanded="true" />
                   </folding>
@@ -95,7 +129,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/public/assets/css/components-md.min.css" />
         <option value="$PROJECT_DIR$/public/assets/css/layout.min.css" />
         <option value="$PROJECT_DIR$/public/assets/css/bootstrap.min.css" />
         <option value="$PROJECT_DIR$/app/Taxi.php" />
@@ -124,7 +157,6 @@
         <option value="$PROJECT_DIR$/resources/views/layouts/admin-dashboard.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/taxilocatie.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TaxiController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/AdController.php" />
         <option value="$PROJECT_DIR$/app/Http/Middleware/ApiCatch.php" />
         <option value="$PROJECT_DIR$/app/Http/Kernel.php" />
         <option value="$PROJECT_DIR$/resources/views/index.blade.php" />
@@ -133,7 +165,6 @@
         <option value="$PROJECT_DIR$/app/Driver.php" />
         <option value="$PROJECT_DIR$/resources/views/opmerkingwijzigen.blade.php" />
         <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/app/Exceptions/Handler.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/nav-admin.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/tables/opmerkingen-chauffeur-table.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/nav-driver.blade.php" />
@@ -144,8 +175,11 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/ApiOneController.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/CommentController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ApiController.php" />
+        <option value="$PROJECT_DIR$/app/Exceptions/Handler.php" />
+        <option value="$PROJECT_DIR$/app/Ad.php" />
         <option value="$PROJECT_DIR$/app/AdClick.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ApiController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/AdController.php" />
       </list>
     </option>
   </component>
@@ -705,7 +739,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="691" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FullScreen" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="api&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/ApiController.php&#10;Comment&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/CommentController.php&#10;ApiContro&#9;null&#9;null&#10;apiC&#9;RUN_CONFIGURATION&#9;ApiOneController.php&#10;na&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/layouts/nav-driver.blade.php&#10;opmerking&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/opmerkingwijzigen.blade.php&#10;Driver&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Driver.php&#10;user&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/UserController.php&#10;taxibase&#9;null&#9;null&#10;locations&#9;null&#9;null&#10;route&#9;null&#9;null&#10;comment&#9;null&#9;null&#10;driver&#9;null&#9;null&#10;usercon&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/UserController.php&#10;profiel&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/profiel.blade.php&#10;opmerkingwij&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/opmerkingwijzigen.blade.php&#10;ritten-t&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/layouts/tables/ritten-table.blade.php&#10;routes&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/routes.php&#10;bootst&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/public/assets/css/bootstrap.min.css&#10;custom&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/public/assets/css/custom.css&#10;session&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/config/session.php&#10;TaxiCon&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/TaxiController.php&#10;UserCon&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/UserController.php&#10;taxi-table&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/layouts/tables/taxi-table.blade.php&#10;compiled&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/bootstrap/cache/compiled.php&#10;profielwij&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/profielwijzigen.blade.php" />
+    <property name="SearchEverywhereHistoryKey" value="AdCo&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/AdController.php&#10;api&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/ApiController.php&#10;Comment&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/CommentController.php&#10;ApiContro&#9;null&#9;null&#10;apiC&#9;RUN_CONFIGURATION&#9;ApiOneController.php&#10;na&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/layouts/nav-driver.blade.php&#10;opmerking&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/opmerkingwijzigen.blade.php&#10;Driver&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Driver.php&#10;user&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/UserController.php&#10;taxibase&#9;null&#9;null&#10;locations&#9;null&#9;null&#10;route&#9;null&#9;null&#10;comment&#9;null&#9;null&#10;driver&#9;null&#9;null&#10;usercon&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/UserController.php&#10;profiel&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/profiel.blade.php&#10;opmerkingwij&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/opmerkingwijzigen.blade.php&#10;ritten-t&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/layouts/tables/ritten-table.blade.php&#10;routes&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/routes.php&#10;bootst&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/public/assets/css/bootstrap.min.css&#10;custom&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/public/assets/css/custom.css&#10;session&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/config/session.php&#10;TaxiCon&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/TaxiController.php&#10;UserCon&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/UserController.php&#10;taxi-table&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/layouts/tables/taxi-table.blade.php&#10;compiled&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/bootstrap/cache/compiled.php&#10;profielwij&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/profielwijzigen.blade.php" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="options.lastSelected" value="preferences.externalTools" />
@@ -1681,7 +1715,13 @@
       <option name="project" value="LOCAL" />
       <updated>1458808377853</updated>
     </task>
-    <option name="localTasksCounter" value="134" />
+    <task id="LOCAL-00134" summary="API increaseAdClick functionaliteit.">
+      <created>1458810287970</created>
+      <option name="number" value="00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1458810287970</updated>
+    </task>
+    <option name="localTasksCounter" value="135" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1727,7 +1767,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="dashboard widgets hover/ navigatie aangepast dat de headers niet linken maar deze in een dropdown komen." />
     <MESSAGE value="box-shadow transition op /dashboard" />
     <MESSAGE value="google maps icon markers ?" />
     <MESSAGE value="google maps zonder emergency marker.." />
@@ -1752,7 +1791,8 @@
     <MESSAGE value="api change for taxi locations" />
     <MESSAGE value="API getComments return geoptimaliseerd." />
     <MESSAGE value="Redirect aangepast voor opmerkingen wijzigen." />
-    <option name="LAST_COMMIT_MESSAGE" value="Redirect aangepast voor opmerkingen wijzigen." />
+    <MESSAGE value="API increaseAdClick functionaliteit." />
+    <option name="LAST_COMMIT_MESSAGE" value="API increaseAdClick functionaliteit." />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.535" />
   </component>
   <component name="XDebuggerManager">
@@ -1762,13 +1802,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/tables/opmerkingen-table.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.769231" vertical-offset="510" max-vertical-offset="2397">
-          <caret line="48" column="28" selection-start-line="0" selection-start-column="0" selection-end-line="135" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/opmerkingen.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.29310346" vertical-offset="0" max-vertical-offset="870">
@@ -1853,13 +1886,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4268585" vertical-offset="0" max-vertical-offset="2652">
-          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1954023" vertical-offset="0" max-vertical-offset="870">
@@ -1934,13 +1960,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Exceptions/Handler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3441358" vertical-offset="355" max-vertical-offset="1003">
-          <caret line="38" column="49" selection-start-line="38" selection-start-column="49" selection-end-line="38" selection-end-column="49" />
         </state>
       </provider>
     </entry>
@@ -2074,14 +2093,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.038462" vertical-offset="690" max-vertical-offset="2108">
-          <caret line="68" column="37" selection-start-line="68" selection-start-column="37" selection-end-line="68" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2016_03_08_141918_create_taxibase_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7631579" vertical-offset="0" max-vertical-offset="646">
@@ -2116,21 +2127,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/AdClick.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48281017" vertical-offset="0" max-vertical-offset="669">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state vertical-scroll-proportion="-6.923077" vertical-offset="1452" max-vertical-offset="2108">
+          <caret line="105" column="13" selection-start-line="105" selection-start-column="13" selection-end-line="105" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Exceptions/Handler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.384615" vertical-offset="308" max-vertical-offset="1003">
+          <caret line="38" column="41" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ApiController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46815288" vertical-offset="1576" max-vertical-offset="14365">
-          <caret line="110" column="39" selection-start-line="110" selection-start-column="39" selection-end-line="110" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.64634144" vertical-offset="1548" max-vertical-offset="14348">
+          <caret line="116" column="45" selection-start-line="116" selection-start-column="45" selection-end-line="116" selection-end-column="45" />
           <folding>
             <element signature="e#41#57#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/AdClick.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="442">
+          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Ad.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.730769" vertical-offset="96" max-vertical-offset="816">
+          <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.52134144" vertical-offset="1545" max-vertical-offset="5474">
+          <caret line="121" column="31" selection-start-line="121" selection-start-column="31" selection-end-line="121" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
