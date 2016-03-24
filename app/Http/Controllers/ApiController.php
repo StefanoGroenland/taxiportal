@@ -100,17 +100,16 @@ class ApiController extends Controller
     {
             $id         = Input::get('id');
             $key        = Input::get('key');
-            $ad         = Ad::find($id);
-            $clicks     = $ad->clicks;
+            $ad         = Ad::with('adClicks')->where('id',$id)->first();
             $today      = date('Y-m-d');
 
             if(!empty($id)){
                 if ($key == self::$apikey) {
-                    $ad = AdClick::where('ad_id',$ad->id)
+                    $adclicks = AdClick::where('ad_id',$ad->id)
                                     ->whereDate('created_at','=',$today)->first();
-                    if(count($ad) > 0){
-                        $ad->update([
-                            'clicks'    =>  $ad->clicks + 1
+                    if(count($adclicks) > 0){
+                        $adclicks->update([
+                            'clicks'    =>  $adclicks->clicks + 1
                         ]);
                     }else{
                         AdClick::create([

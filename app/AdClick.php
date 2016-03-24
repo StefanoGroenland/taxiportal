@@ -10,7 +10,8 @@ class AdClick extends Model
 
 
  	protected $fillable = [
- 		'ad_id'
+ 		'ad_id',
+        'clicks'
  	];
 
  	public function ad(){
