@@ -29,7 +29,7 @@
                              </td>
                              <td class="text-right">
                                  <a class="btn btn-sm yellow-lemon popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Reclame profiel | statistieken" href="/reclames/{{$ad->id}}"><i class="fa fa-bar-chart"></i></a>
-                                 <a class="btn btn-sm blue popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Reclame wijzigen" href="/reclamewijzigen/{{$ad->id}}"><i class="fa fa-pencil"></i></a>
+                                 <a class="btn btn-sm blue popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Reclame wijzigen" href="/reclamewijzigen/{{$ad->id}}/{{$ad->type}}"><i class="fa fa-pencil"></i></a>
                                  <a class="btn btn-sm red-sunglo deleteButton popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Reclame verwijderen" data-model-id="{{$ad->id}}" data-toggle="modal" href="#myModel{{$ad->id}}"><i class="fa fa-trash"></i></a>
                              </td>
                          </tr>
