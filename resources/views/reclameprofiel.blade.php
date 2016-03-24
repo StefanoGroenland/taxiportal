@@ -61,11 +61,8 @@
 @endsection
 @section('scripts')
 
-    <script src="{{URL::asset('../assets/js/raphael-min.js')}}" type="text/javascript"></script>
-    <script src="{{URL::asset('../assets/js/morris-0.4.3.min.js')}}" type="text/javascript"></script>
 	<script type="text/javascript">
 	
-
 		$('a[href="#maand"]').on('shown.bs.tab', function (e) {
 			maand.redraw();
 			$('#month svg').attr('width', '100%');
@@ -88,21 +85,21 @@
 				.done(function(data) { 
 					console.log(data);
 
-					jaar = new Date(data.date).getMonth();
-				
+					var jaar = new Date(data.created_at).getMonth();
+					console.log(jaar);
 					jaar.setData([
-						    {"month": '1',"period": "jaar -01"},
-						    {"month": '20',"period": "2015-02"},
-						    {"month": '20',"period": "2015-03"},
-						    {"month": '30',"period": "2015-04"},
-						    {"month": '40',"period": "2015-05"},
-						    {"month": '50',"period": "2015-06"},
-						    {"month": '60',"period": "2015-07"},
-						    {"month": '0',"period":  "2015-08"},
-						    {"month": '72',"period": "2015-09"},
-						    {"month": '80',"period": "2015-10"},
-						    {"month": '90',"period": "2015-11"},
-						    {"month": '10',"period": "2015-12"}
+						    {"month": '1',"period":  "2016-01"},
+						    {"month": '20',"period": "2016-02"},
+						    {"month": '20',"period": "2016-03"},
+						    {"month": '30',"period": "2016-04"},
+						    {"month": '40',"period": "2016-05"},
+						    {"month": '50',"period": "2016-06"},
+						    {"month": '60',"period": "2016-07"},
+						    {"month": '0',"period":  "2016-08"},
+						    {"month": '72',"period": "2016-09"},
+						    {"month": '80',"period": "2016-10"},
+						    {"month": '90',"period": "2016-11"},
+						    {"month": '10',"period": "2016-12"}
 						  ]);
 
 				});
@@ -111,18 +108,18 @@
 
 		var yearObject = [
 
-		    {"month": {{$janClicks}},"period": "3001-01"},
-		    {"month": {{$febClicks}},"period": "3001-02"},
-		    {"month": {{$maaClicks}},"period": "3001-03"},
-		    {"month": {{$aprClicks}},"period": "3001-04"},
-		    {"month": {{$meiClicks}},"period": "3001-05"},
-		    {"month": {{$junClicks}},"period": "3001-06"},
-		    {"month": {{$julClicks}},"period": "3001-07"},
-		    {"month": {{$augClicks}},"period": "3001-08"},
-		    {"month": {{$sepClicks}},"period": "3001-09"},
-		    {"month": {{$oktClicks}},"period": "3001-10"},
-		    {"month": {{$novClicks}},"period": "3001-11"},
-		    {"month": {{$decClicks}},"period": "3001-12"}
+		    {"month": {{$janClicks}},"period": "2016-01"},
+		    {"month": {{$febClicks}},"period": "2016-02"},
+		    {"month": {{$maaClicks}},"period": "2016-03"},
+		    {"month": {{$aprClicks}},"period": "2016-04"},
+		    {"month": {{$meiClicks}},"period": "2016-05"},
+		    {"month": {{$junClicks}},"period": "2016-06"},
+		    {"month": {{$julClicks}},"period": "2016-07"},
+		    {"month": {{$augClicks}},"period": "2016-08"},
+		    {"month": {{$sepClicks}},"period": "2016-09"},
+		    {"month": {{$oktClicks}},"period": "2016-10"},
+		    {"month": {{$novClicks}},"period": "2016-11"},
+		    {"month": {{$decClicks}},"period": "2016-12"}
 		  ]
 
 	// Year graphics

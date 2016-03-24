@@ -126,7 +126,9 @@
         <script src="{{URL::asset('../assets/js/jquery.geocomplete.min.js')}}" type="text/javascript"></script>
         <script src="{{URL::asset('../assets/js/logger.js')}}" type="text/javascript"></script>
 
-
+        <script src="{{URL::asset('../assets/js/moment.min.js')}}" type="text/javascript"></script>
+        <script src="{{URL::asset('../assets/js/raphael-min.js')}}" type="text/javascript"></script>
+        <script src="{{URL::asset('../assets/js/morris-0.4.3.min.js')}}" type="text/javascript"></script>
 
        <script type="text/javascript">
 
