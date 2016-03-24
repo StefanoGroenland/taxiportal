@@ -15,9 +15,9 @@
  	                                    <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
  	                                        <span>Hallo, {{Auth::user()->firstname}}</span>
  	                                        @if(Auth::user()->profile_photo == "")
-                                                <img src="../assets/img/avatars/avatar.png" alt="">
+                                                <img src="../../assets/img/avatars/avatar.png" alt="">
                                             @else
-                                                <img src="../{{Auth::user()->profile_photo}}" alt="">
+                                                <img src="../../{{Auth::user()->profile_photo}}" alt="">
                                             @endif
  	                                    </button>
  	                                    <ul class="dropdown-menu-v2" role="menu">
@@ -83,15 +83,15 @@
  	                                <li class="dropdown more-dropdown  @if(\Request::route()->getName() == 'opmerkingen' ||
  	                                                                      \Request::route()->getName() == 'opmerkingwijzigen' ||
  	                                                                       \Request::route()->getName() == 'opmerkingen-openstaand') active selected @endif">
- 	                                    <a href="/opmerkingen/verwerkt" class="text-uppercase">
+ 	                                    <a href="/opmerkingen" class="text-uppercase">
  	                                        <i class="fa fa-comments-o"></i> Opmerkingen
  	                                    </a>
  	                                    <ul class="dropdown-menu opmerkingen_dropdown">
                                             <li>
-                                               <a class="opm_anchor" href="/opmerkingen/verwerkt">Verwerkte opmerkingen</a>
+                                                <a class="opm_anchor" href="/opmerkingen">Open opmerkingen</a>
                                             </li>
                                             <li>
-                                                <a class="opm_anchor" href="/opmerkingen">Open opmerkingen</a>
+                                               <a class="opm_anchor" href="/opmerkingen/verwerkt">Verwerkte opmerkingen</a>
                                             </li>
                                         </ul>
  	                                </li>

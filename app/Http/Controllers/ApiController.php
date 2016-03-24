@@ -89,6 +89,43 @@ class ApiController extends Controller
         ),400);
     }
 
+
+    /**
+     * @author Stefano Groenland
+     * @api
+     * @version 1.0
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * Returns the advertisements for the given type
+     */
+    public function adsByType()
+    {
+        $type       = Input::get('type');
+        $key        = Input::get('key');
+        if(!empty($type)){
+            if ($key == self::$apikey) {
+                $results = Ad::with('adLocation')->where('type', '=', $type)->get();
+
+                if($results->isEmpty()){
+                    return response()->json(self::$none, 404);
+                }else{
+                    return response()->json(array(
+                        'advertisements'    =>  $results,
+                        'success'           =>  true,
+                        'action'            =>  'get_ads_for_location',
+                        'status'            =>  '200'
+                    ),200);
+                }
+            }
+            return response()->json(self::$error, 401);
+        }
+        return response()->json(array(
+            'success'   =>  false,
+            'info'      =>  'Check if all parameters are filled in',
+            'status'    =>  '400'
+        ),400);
+    }
+
     /**
      * @author Stefano Groenland
      * @api

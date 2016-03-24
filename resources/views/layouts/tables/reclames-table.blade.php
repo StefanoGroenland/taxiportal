@@ -3,28 +3,37 @@
              <table class="table table-hover data_table" >
                  <thead>
                      <th>Link</th>
-                     <th>Locaties</th>
+                     <th>Centrale locatie | Bereik</th>
                      <th>Aantal kliks</th>
                      <th></th>
                  </thead>
                  <tbody>
                      @foreach($ads as $ad)
                      {{-- */$locations = '';/* --}}
-                         <tr data-href="/reclamewijzigen/{{$ad->id}}">
+                     {{-- */$total = 0;/* --}}
+                         <tr data-href="/reclames/{{$ad->id}}">
                              <td>{{$ad->link}}</td>
                              <td>
                              @foreach($ad->adLocation as $key => $value)
-                                   {{-- */$locations .= $value->location.', ';/* --}}
+                                    {{--*/$locations .= $value->location.', ';/* --}}
                              @endforeach
-                             {{-- */$locations = rtrim($locations,', ');/* --}}
-                             {{$locations}}
+                              {{--*/$locations = rtrim($locations,', ');/* --}}
+                             {{--{{$locations}}--}}
+                             {{$ad->central_location .' | '. $ad->radius .' KM'}}
                              </td>
-                             <td>{{$ad->clicks}}</td>
-                             <td width="20%" class="text-right">
-                                 <a class="btn btn-sm blue popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Reclame wijzigen" href="/reclamewijzigen/{{$ad->id}}"><i class="fa fa-pencil"></i></a>
+                             <td>
+                             @foreach($ad->adClicks as $click)
+                                    {{-- */$total = $total + $click->clicks;/* --}}
+                             @endforeach
+                             {{$total}}
+                             </td>
+                             <td class="text-right">
+                                 <a class="btn btn-sm yellow-lemon popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Reclame profiel | statistieken" href="/reclames/{{$ad->id}}"><i class="fa fa-bar-chart"></i></a>
+                                 <a class="btn btn-sm blue popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Reclame wijzigen" href="/reclamewijzigen/{{$ad->id}}/{{$ad->type}}"><i class="fa fa-pencil"></i></a>
                                  <a class="btn btn-sm red-sunglo deleteButton popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Reclame verwijderen" data-model-id="{{$ad->id}}" data-toggle="modal" href="#myModel{{$ad->id}}"><i class="fa fa-trash"></i></a>
                              </td>
                          </tr>
+                         {{-- */$ad->clicks = $total;/* --}}
                      @endforeach
                  </tbody>
              </table>
@@ -74,7 +83,7 @@
             ],
             xkey: 'data',
             ykeys: ['value'],
-            labels: ['Aantal kliks vandaag']
+            labels: ['Aantal kliks']
         }).on('click', function(i, row){
             window.location.href = "reclames/"+row['id'];
         });

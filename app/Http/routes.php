@@ -83,12 +83,13 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('/editAdmin/{id}', 'UserController@editAdmin');
         Route::delete('/deleteAdmin/{id}', 'UserController@deleteAdmin');
         Route::get('/reclames', array('as' => 'reclames', 'uses' => 'AdController@showAds'));
+        Route::get('/reclames/soort', array('as' => 'reclames', 'uses' => 'AdController@showAdsPanel'));
         Route::get('/reclames/{id}', array('as' => 'reclameprofiel', 'uses' => 'AdController@showAdStats'));
-        Route::get('/reclamewijzigen/{id}', array('as' => 'reclamewijzigen', 'uses' => 'AdController@showAdsEdit'));
-        Route::get('/reclametoevoegen', array('as' => 'reclametoevoegen', 'uses' => 'AdController@showAdsAdd'));
-        Route::post('/addAd', 'AdController@addAd');
+        Route::get('/reclamewijzigen/{id}/{type}', array('as' => 'reclamewijzigen', 'uses' => 'AdController@showAdsEdit'));
+        Route::get('/reclametoevoegen/{type}', array('as' => 'reclametoevoegen', 'uses' => 'AdController@showAdsAdd'));
+        Route::post('/addAd/{type}', 'AdController@addAd');
         Route::delete('/deleteAd/{id}', 'AdController@deleteAd');
-        Route::put('/editAd/{id}', array('as' => 'editAd', 'uses' => 'AdController@editAd'));
+        Route::put('/editAd/{id}/{type}', array('as' => 'editAd', 'uses' => 'AdController@editAd'));
         Route::get('/noodsignalen', array('as' => 'noodsignalen', 'uses' => 'EmergencyController@showSignals'));
         Route::get('/seenSignal/{id}', array('as' => 'signalChange', 'uses' => 'EmergencyController@seenSignal'));
 
@@ -103,6 +104,7 @@ Route::get('/logout', 'Auth\AuthController@getLogout');
 
 //API v1.0 routes
 Route::post('/api/v1/advertisements'                , 'ApiController@adsPerLocation');
+Route::post('/api/v1/advertisements/type'           , 'ApiController@adsByType');
 Route::post('/api/v1/advertisements/increaseclick'  , 'ApiController@increaseClickOfAd');
 Route::post('/api/v1/driver'                        , 'ApiController@getDriverOffTablet');
 Route::post('/api/v1/allroutes'                     , 'ApiController@getRoutes');

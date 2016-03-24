@@ -23,7 +23,7 @@ class AdController extends Controller
      * and passes them along when making the view.
      */
     public function showAds(){
-        $ads = Ad::with('adLocation')->get();
+        $ads = Ad::with('adLocation','adClicks')->get();
         return View::make('/reclames', compact('ads'));
     }
 
@@ -36,10 +36,14 @@ class AdController extends Controller
      */
     public function showAdsEdit(){
         $id = Route::current()->getParameter('id');
+        $type = Route::current()->getParameter('type');
         $obj = Ad::find($id);
-        return View::make('/reclamewijzigen', compact('id', 'obj'));
+        return View::make('/reclamewijzigen', compact('id', 'obj', 'type'));
     }
 
+    public function showAdsPanel(){
+        return View::make('/reclametype');
+    }
     /**
      * @author Richard Perdaan
      * @return mixed
@@ -47,7 +51,8 @@ class AdController extends Controller
      * Makes the reclametoevoegen view.
      */
     public function showAdsAdd(){
-        return View::make('/reclametoevoegen');
+        $type = Route::current()->getParameter('type');
+        return View::make('/reclametoevoegen', compact('type'));
     }
 
     /**
@@ -59,29 +64,32 @@ class AdController extends Controller
      * The advertisement will be created.
      */
     public function addAd(Request $request){
+        $type = Route::current()->getParameter('type');
 
         $data = array(
             'link'              => $request['link'],
-            'central_location'  =>  $request['locatie'],
-            'radius'            =>  $request['radius']
+            'central_location'  =>  $request['location'],
+            'radius'            =>  $request['radius'],
+            'type'              =>  $type,
+            'title'             =>  $request['title']
         );
-
+        if($type !== 'center'){
+            array_forget($data,'title');
+        }
         $rules = array(
             'link'              => 'required',
             'central_location'  => 'required',
             'radius'            => 'required|numeric'
         );
-
         $validator = Validator::make($data, $rules);
         if ($validator->fails()){
-            return redirect('reclametoevoegen')->withErrors($validator)->withInput($data);
+            return redirect('reclametoevoegen'.$type)->withErrors($validator)->withInput($data);
         }
         $advertisement = Ad::create($data);
-        $this->upload($request,$advertisement->id);
-
+        $this->upload($request,$advertisement->id,$type);
         $dataLocation = array(
             'ad_id'     => $advertisement->id,
-            'location'  => $request['locatie']
+            'location'  => $request['location']
         );
         $geo = $this->geoCode($dataLocation['location']);
 
@@ -132,12 +140,16 @@ class AdController extends Controller
      */
     public function editAd(Request $request){
         $id = Route::current()->getParameter('id');
+        $type = Route::current()->getParameter('type');
         $data = array(
             'link'              => $request['link'],
-            'central_location'  =>  $request['locatie'],
-            'radius'            =>  $request['radius']
+            'central_location'  =>  $request['location'],
+            'radius'            =>  $request['radius'],
+            'title'             =>  $request['title']
         );
-
+        if($type !== 'center'){
+            array_forget($data,'title');
+        }
         $rules = array(
             'link'              => 'required',
             'central_location'  => 'required',
@@ -146,12 +158,12 @@ class AdController extends Controller
 
         $validator = Validator::make($data, $rules);
         if ($validator->fails()){
-            return redirect('reclamewijzigen/'.$id)->withErrors($validator)->withInput($data);
+            return redirect('reclamewijzigen/'.$id.'/'.$type)->withErrors($validator)->withInput($data);
         }
 
         Ad::where('id', '=', $id)->update($data);
         AdLocation::deleteLocals($id);
-        $this->upload($request,$id);
+        $this->upload($request,$id, $type);
 
         $dataLocation = array(
             'ad_id'     => $id,
@@ -178,12 +190,29 @@ class AdController extends Controller
      * @authors Stefano Groenland
      * @param Request $request
      * @param $id
+     * @param $type
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      *
-     * Grabs the file named 'profile_photo' from the request and uploads it onto the server,
-     * It updates the corresponding newspaper with the link to the uploaded picture as their profile_photo in the Newspaper table.
+     * Grabs the file named 'banner' from the request and uploads it onto the server,
+     * It updates the corresponding advertisement with the link to the uploaded picture as their banner in the Ad table.
      */
-    public function upload(Request $request , $id){
+    public function upload(Request $request , $id, $type){
+        $fitW = 0;
+        $fitH = 0;
+        switch($type){
+            case "bottom":
+                $fitW   =     1280;
+                $fitH   =     135;
+                break;
+            case "center":
+                $fitW   =     340;
+                $fitH   =     200;
+                break;
+            case "side":
+                $fitW   =     160;
+                $fitH   =     600;
+                break;
+        }
 
         $x = $request['x'];
         $y = $request['y'];
@@ -205,7 +234,7 @@ class AdController extends Controller
                 $fileName = rand(1111, 9999) . '.' . $extension;
                 $request->file('banner')->move($destinationPath, $fileName);
                 $ava = $destinationPath . '/' . $fileName;
-                $img = Image::make($ava)->fit(1280, 135)->save();
+                $img = Image::make($ava)->fit($fitW, $fitH)->save();
                 $final = $destinationPath . '/' . $img->basename;
                 Ad::uploadPicture($id, $final);
                 return redirect('/reclames');
