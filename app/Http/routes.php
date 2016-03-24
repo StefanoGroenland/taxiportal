@@ -104,7 +104,7 @@ Route::get('/logout', 'Auth\AuthController@getLogout');
 
 //API v1.0 routes
 Route::post('/api/v1/advertisements'                , 'ApiController@adsPerLocation');
-Route::post('/api/v1/advertisements/type'           , 'ApiController@adsByTypeLocation');
+Route::post('/api/v1/advertisements/type'           , 'ApiController@adsByType');
 Route::post('/api/v1/advertisements/increaseclick'  , 'ApiController@increaseClickOfAd');
 Route::post('/api/v1/driver'                        , 'ApiController@getDriverOffTablet');
 Route::post('/api/v1/allroutes'                     , 'ApiController@getRoutes');
