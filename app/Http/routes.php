@@ -125,5 +125,6 @@ Route::post('/api/v1/locations'                     , 'ApiController@getLocation
 Route::post('/api/v1/locations/bases'               , 'ApiController@getBaseLocations');
 Route::post('/api/v1/shift/state'                   , 'ApiController@getShiftstate');
 Route::post('/api/v1/geocode/locations'             , 'ApiController@getShiftstate');
-Route::post('/api/v1/statistics/year'               , 'ApiController@statisticsData');
+Route::post('/api/v1/statistics/year'               , 'ApiController@statisticsDataYear');
+Route::post('/api/v1/statistics/month'              , 'ApiController@statisticsDataMonth');
 

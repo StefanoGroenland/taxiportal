@@ -30,13 +30,13 @@
 
 
        	        <ul class="nav nav-tabs" role="tablist">
-					<li role="presentation" class="active"><a href="#jaar" aria-controls="year" role="tab" data-toggle="tab">Jaar</a></li>
-					<li role="presentation"><a href="#maand" aria-controls="maand" role="tab" data-toggle="tab">Maand</a></li>
+					<li role="presentation"><a href="#jaar" aria-controls="year" role="tab" data-toggle="tab">Jaar</a></li>
+					<li role="presentation" class="active"><a href="#maand" aria-controls="maand" role="tab" data-toggle="tab">Maand</a></li>
 					<li role="presentation"><a href="#week" aria-controls="week" role="tab" data-toggle="tab">Week</a></li>
 				</ul>
 
 				<div class="tab-content">
-					<div role="tabpanel" class="tab-pane fade in active" id="jaar">
+					<div role="tabpanel" class="tab-pane fade" id="jaar">
 						<div class="form-group">
 							<select class="form-control year-select">
 								<option value="2016">2016</option>
@@ -44,12 +44,27 @@
 							</select>	
 						</div>
 						
-						<div id="year"></div>
+						<div id="jaar-chart" style="width: 100%; height: 350px;"></div>
 					</div>
-					<div role="tabpanel" class="tab-pane fade" id="maand">
-						<div id="month"></div>
+					<div role="tabpanel" class="tab-pane fade in active" id="maand">
+						<div class="form-group">
+							<select class="form-control month-select">
+								<option value="01">januari</option>
+								<option value="02">februari</option>
+								<option value="03">maart</option>
+								<option value="04">april</option>
+							</select>	
+						</div>
+						<div class="form-group">
+							<select class="form-control yearmonth-select">
+								<option value="2015">2015</option>
+								<option value="2016">2016</option>
+							</select>	
+						</div>
+						
+						<div id="maand-chart" style="width: 100%; height: 350px;"></div>
 					</div>
-					<div role="tabpanel" class="tab-pane fade" id="week">
+					<div role="tabpanel" class="tab-pane fade " id="week">
 						<div id="week">
 					</div>
 				</div>
@@ -61,18 +76,101 @@
 @endsection
 @section('scripts')
 
-    <script src="{{URL::asset('../assets/js/raphael-min.js')}}" type="text/javascript"></script>
-    <script src="{{URL::asset('../assets/js/morris-0.4.3.min.js')}}" type="text/javascript"></script>
 	<script type="text/javascript">
-	
+	// Jaar
+		var jaar = AmCharts.makeChart("jaar-chart", {
+				"type": "serial",
+				"categoryField": "date",
+				"columnWidth": 0,
+				"dataDateFormat": "YYYY-MM",
+				"maxSelectedSeries": 0,
+				"autoMarginOffset": 20,
+				"marginLeft": 40,
+				"marginRight": 40,
+				"color": "#9EACB4",
+				"export": {
+					"enabled": true
+				},
+				"theme": "light",
+				"fontFamily": "Roboto",
+				"fontSize": 13,
+				"categoryAxis": {
+					"parseDates": true,
+					"minPeriod": "MM"
+				},
+				"trendLines": [],
+				"graphs": [
+					{
+						"balloonText": "<span style='font-size:12px;'>[[value]]</span>",
+						"bullet": "round",
+						"bulletBorderAlpha": 0.07,
+						"bulletBorderColor": "#FFFFFF",
+						"bulletBorderThickness": 10,
+						"bulletColor": "#95BB74",
+						
+						"fixedColumnWidth": 0,
+						"hideBulletsCount": 50,
+						"id": "g1",
+						"lineAlpha": 1,
+						"lineColor": "#008000",
+						"negativeLineColor": "#C69F9F",
+						"title": "red line",
+						"topRadius": 0,
+						"useLineColorForBulletBorder": true,
+						"valueField": "value"
+					}
+				],
+				"guides": [],
+				"valueAxes": [
+					{
+						"id": "v1",
+						"zeroGridAlpha": 0,
+						"axisAlpha": 0.1,
+						"gridAlpha": 0,
+						"ignoreAxisWidth": true
+					}
+				],
+				"allLabels": [],
+				"balloon": {
+					"animationDuration": 0,
+					"borderAlpha": 0,
+					"borderColor": "#000000",
+					"borderThickness": 1,
+					"color": "#FFFFFF",
+					"drop": true,
+					"fadeOutDuration": 0,
+					"fillAlpha": 0.66,
+					"fillColor": "#000000",
+					"fixedPosition": false,
+					"shadowAlpha": 0
+				},
+				"titles": [],
+				"dataProvider": [
+					{
+						"date": "2016-08",
+						"value": {{$augClicks}}
+					},
+					{
+						"date": "2016-09",
+						"value": {{$sepClicks}}
+					}
+				]
+			}
+		);
+		
+		jaar.addListener("rendered", handleLoading);
+		
+		function handleLoading(event) {
+			$('.chart-loader-wrapper').hide();
+		}
 
 		$('a[href="#maand"]').on('shown.bs.tab', function (e) {
-			maand.redraw();
+			//maand.redraw();
 			$('#month svg').attr('width', '100%');
 		});
 
 		$('a[href="#year"]').on('shown.bs.tab', function (e) {
-			jaar.redraw();
+			//jaar.redraw();
 			$('#year svg').attr('width', '100%');
 		});
 
@@ -86,116 +184,268 @@
 			
 			$.post('/api/v1/statistics/year', {year: yearValue})
 				.done(function(data) { 
-					console.log(data);
 
-					jaar = new Date(data.date).getMonth();
-				
-					jaar.setData([
-						    {"month": '1',"period": "jaar -01"},
-						    {"month": '20',"period": "2015-02"},
-						    {"month": '20',"period": "2015-03"},
-						    {"month": '30',"period": "2015-04"},
-						    {"month": '40',"period": "2015-05"},
-						    {"month": '50',"period": "2015-06"},
-						    {"month": '60',"period": "2015-07"},
-						    {"month": '0',"period":  "2015-08"},
-						    {"month": '72',"period": "2015-09"},
-						    {"month": '80',"period": "2015-10"},
-						    {"month": '90',"period": "2015-11"},
-						    {"month": '10',"period": "2015-12"}
-						  ]);
+					var maand     = [];
+					var clicks    = [];
+					var jaarArray = [];
+
+					$.each(data.result, function(key, value) {
+						maand.push(moment(value.created_at).format('YYYY-MM'));
+						clicks.push(value.clicks);
+					});
+
+					var result = maand.reduce(function(res, n, i) {
+					    res[n] = (res[n] + +clicks[i]) || +clicks[i];
+					    return res;
+					}, {});
+
+					$.each(result, function(key, value) {
+						jaarArray.push({
+							"date": key,
+							"value": value
+						})
+					});
+
+					jaar.dataProvider = jaarArray;
+					jaar.validateData();
 
 				});
-
 		});
 
-		var yearObject = [
+	//Maand
+	var maand = AmCharts.makeChart("maand-chart", {
+				"type": "serial",
+				"categoryField": "date",
+				"columnWidth": 0,
+				"dataDateFormat": "YYYY-MM-DD",
+				"maxSelectedSeries": 0,
+				"autoMarginOffset": 20,
+				"marginLeft": 40,
+				"marginRight": 40,
+				"color": "#9EACB4",
+				"export": {
+					"enabled": true
+				},
+				"theme": "light",
+				"fontFamily": "Roboto",
+				"fontSize": 13,
+				"categoryAxis": {
+					"parseDates": true,
+					"minPeriod": "DD"
+				},
+				"trendLines": [],
+				"graphs": [
+					{
+						"balloonText": "<span style='font-size:12px;'>[[value]]</span>",
+						"bullet": "round",
+						"bulletBorderAlpha": 0.07,
+						"bulletBorderColor": "#FFFFFF",
+						"bulletBorderThickness": 10,
+						"bulletColor": "#95BB74",
+						
+						"fixedColumnWidth": 0,
+						"hideBulletsCount": 50,
+						"id": "g1",
+						"lineAlpha": 1,
+						"lineColor": "#008000",
+						"negativeLineColor": "#C69F9F",
+						"title": "red line",
+						"topRadius": 0,
+						"useLineColorForBulletBorder": true,
+						"valueField": "value"
+					}
+				],
+				"guides": [],
+				"valueAxes": [
+					{
+						"id": "v1",
+						"zeroGridAlpha": 0,
+						"axisAlpha": 0.1,
+						"gridAlpha": 0,
+						"ignoreAxisWidth": true
+					}
+				],
+				"allLabels": [],
+				"balloon": {
+					"animationDuration": 0,
+					"borderAlpha": 0,
+					"borderColor": "#000000",
+					"borderThickness": 1,
+					"color": "#FFFFFF",
+					"drop": true,
+					"fadeOutDuration": 0,
+					"fillAlpha": 0.66,
+					"fillColor": "#000000",
+					"fixedPosition": false,
+					"shadowAlpha": 0
+				},
+				"titles": [],
+				"dataProvider": [
+					
+					{
+						"date": "2016-08-01",
+						"value": {{$augClicks}}
+					},
+					{
+						"date": "2016-09-01",
+						"value": {{$sepClicks}}
+					}
+				]
+				
+			}
+		);
+		
+		maand.addListener("rendered", handleLoading);
+		
+		function handleLoading(event) {
+			$('.chart-loader-wrapper').hide();
+		}
 
-		    {"month": {{$janClicks}},"period": "3001-01"},
-		    {"month": {{$febClicks}},"period": "3001-02"},
-		    {"month": {{$maaClicks}},"period": "3001-03"},
-		    {"month": {{$aprClicks}},"period": "3001-04"},
-		    {"month": {{$meiClicks}},"period": "3001-05"},
-		    {"month": {{$junClicks}},"period": "3001-06"},
-		    {"month": {{$julClicks}},"period": "3001-07"},
-		    {"month": {{$augClicks}},"period": "3001-08"},
-		    {"month": {{$sepClicks}},"period": "3001-09"},
-		    {"month": {{$oktClicks}},"period": "3001-10"},
-		    {"month": {{$novClicks}},"period": "3001-11"},
-		    {"month": {{$decClicks}},"period": "3001-12"}
-		  ]
+		$('a[href="#maand"]').on('shown.bs.tab', function (e) {
+			//maand.redraw();
+			$('#month svg').attr('width', '100%');
+		});
 
-	// Year graphics
-		var jaar = Morris.Line({
-          element: 'year',
-          data: yearObject,
-          xkey: 'period',
-          ykeys: ['month'],
-          labels: ['Aantal kliks'],
-          hideHover: 'auto',
-          xLabelAngle: 40,
-          xLabelFormat: function (x) {
-                  var IndexToMonth = [ "januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december" ];
-                  var month = IndexToMonth[ x.getMonth() ];
-                  var year = x.getFullYear();
-                  return month;
-              },
-          dateFormat: function (x) {
-                  var IndexToMonth = [ "januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december" ];
-                  var month = IndexToMonth[ new Date(x).getMonth() ];
-                  var year = new Date(x).getFullYear();
-                   return month;
-              },
-          resize: true
-      });
+		$('a[href="#year"]').on('shown.bs.tab', function (e) {
+			//jaar.redraw();
+			$('#year svg').attr('width', '100%');
+		});
 
-	// Month graphics
-	var maand = Morris.Bar({
-	  element: 'month',
-	  data: [
-
-	  	@foreach($list as $kee => $value)
-	  	{day: '{{$value}}',
-	    	@foreach($clickCount as $key => $val)
-	    		@if($key == $value)   		
-	    			 clicks:'{{$val}}'
-	    		@endif
-	    	@endforeach
-	    	},
-	    @endforeach
-	  ],
-	 	xkey: 'day',
-        ykeys: ['clicks'],
-	    hideHover: 'auto',
-        xLabelAngle: 40,
-	    labels: ['Aantal kliks'],
-	    resize: true
-	});
+		$('a[href="#week"]').on('shown.bs.tab', function (e) {
+			//week.redraw();
+			$('#week svg').attr('width', '100%');
+		});
 
 
-// Week graphics
-	var week = Morris.Bar({
-	  element: 'week',
-	  data: [
-	  @foreach($dagen_week as $kee => $value)
+
+
+	$('.month-select, .yearmonth-select').on('change', function() {
+
+			var monthValue = $('.month-select').val();
+			var yearMonthValue = $('.yearmonth-select').val();
+			$.post('/api/v1/statistics/month', {month: monthValue, year: yearMonthValue })
+				.done(function(data) { 
+
+					var dag     = [];
+					var clicks    = [];
+					var maandArray = [];
+
+					$.each(data.result, function(key, value) {
+						dag.push(moment(value.created_at).format('YYYY-MM-DD'));
+						clicks.push(value.clicks);
+					});
+
+					var result = dag.reduce(function(res, n, i) {
+					    res[n] = (res[n] + +clicks[i]) || +clicks[i];
+					    return res;
+					}, {});
+					
+					$.each(result, function(key, value) {
+
+						maandArray.push({
+							"date": key,
+							"value": value
+						})
+
+					});
+
+					maand.dataProvider = maandArray;
+					maand.validateData();
+				});
+		});
+	
+
+
+
+// 		var yearObject = [
+
+// 		    {"month": {{$janClicks}},"period": "2016-01"},
+// 		    {"month": {{$febClicks}},"period": "2016-02"},
+// 		    {"month": {{$maaClicks}},"period": "2016-03"},
+// 		    {"month": {{$aprClicks}},"period": "2016-04"},
+// 		    {"month": {{$meiClicks}},"period": "2016-05"},
+// 		    {"month": {{$junClicks}},"period": "2016-06"},
+// 		    {"month": {{$julClicks}},"period": "2016-07"},
+// 		    {"month": {{$augClicks}},"period": "2016-08"},
+// 		    {"month": {{$sepClicks}},"period": "2016-09"},
+// 		    {"month": {{$oktClicks}},"period": "2016-10"},
+// 		    {"month": {{$novClicks}},"period": "2016-11"},
+// 		    {"month": {{$decClicks}},"period": "2016-12"}
+// 		  ]
+
+// 		  console.log(yearObject);
+
+// 	// Year graphics
+// 		var jaar = Morris.Line({
+//           element: 'year',
+//           data: yearObject,
+//           xkey: 'period',
+//           ykeys: ['month'],
+//           labels: ['Aantal kliks'],
+//           hideHover: 'auto',
+//           xLabelAngle: 40,
+//           xLabelFormat: function (x) {
+//                   var IndexToMonth = [ "september", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december" ];
+//                   var month = IndexToMonth[ x.getMonth() ];
+//                   var year = x.getFullYear();
+//                   return month;
+//               },
+//           dateFormat: function (x) {
+//                   var IndexToMonth = [ "september", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december" ];
+//                   var month = IndexToMonth[ new Date(x).getMonth() ];
+//                   var year = new Date(x).getFullYear();
+//                    return month;
+//               },
+//           resize: true
+//       });
+
+// 	// Month graphics
+// 	var maand = Morris.Bar({
+// 	  element: 'month',
+// 	  data: [
+
+// 	  	@foreach($list as $kee => $value)
+// 	  	{day: '{{$value}}',
+// 	    	@foreach($clickCount as $key => $val)
+// 	    		@if($key == $value)   		
+// 	    			 clicks:'{{$val}}'
+// 	    		@endif
+// 	    	@endforeach
+// 	    	},
+// 	    @endforeach
+// 	  ],
+// 	 	xkey: 'day',
+//         ykeys: ['clicks'],
+// 	    hideHover: 'auto',
+//         xLabelAngle: 40,
+// 	    labels: ['Aantal kliks'],
+// 	    resize: true
+// 	});
+
+
+// // Week graphics
+// 	var week = Morris.Bar({
+// 	  element: 'week',
+// 	  data: [
+// 	  @foreach($dagen_week as $kee => $value)
 	  	
-	  	{week: '{{$value}}',
-	    	@foreach($clickCount as $key => $val)
-	    		@if($key == $value)   		
-	    			 clicks:'{{$val}}'
-	    		@endif
-	    	@endforeach
-	    	},
-	    @endforeach
+// 	  	{week: '{{$value}}',
+// 	    	@foreach($clickCount as $key => $val)
+// 	    		@if($key == $value)   		
+// 	    			 clicks:'{{$val}}'
+// 	    		@endif
+// 	    	@endforeach
+// 	    	},
+// 	    @endforeach
 	    	
-	  ],
-	 	xkey: 'week',
-        ykeys: ['clicks'],
-	    hideHover: 'auto',
-        xLabelAngle: 40,
-	    labels: ['Aantal kliks'],
-	    resize: true
-	});
+// 	  ],
+// 	 	xkey: 'week',
+//         ykeys: ['clicks'],
+// 	    hideHover: 'auto',
+//         xLabelAngle: 40,
+// 	    labels: ['Aantal kliks'],
+// 	    resize: true
+// 	});
 	</script>
 @endsection
 
