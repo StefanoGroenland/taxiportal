@@ -30,13 +30,13 @@
 
 
        	        <ul class="nav nav-tabs" role="tablist">
-					<li role="presentation"><a href="#jaar" aria-controls="year" role="tab" data-toggle="tab">Jaar</a></li>
-					<li role="presentation" class="active"><a href="#maand" aria-controls="maand" role="tab" data-toggle="tab">Maand</a></li>
+					<li role="presentation" class="active"><a href="#jaar" aria-controls="year" role="tab" data-toggle="tab">Jaar</a></li>
+					<li role="presentation"><a href="#maand" aria-controls="maand" role="tab" data-toggle="tab">Maand</a></li>
 					<li role="presentation"><a href="#week" aria-controls="week" role="tab" data-toggle="tab">Week</a></li>
 				</ul>
 
 				<div class="tab-content">
-					<div role="tabpanel" class="tab-pane fade" id="jaar">
+					<div role="tabpanel" class="tab-pane fade in active" id="jaar">
 						<div class="form-group">
 							<select class="form-control year-select">
 								<option value="2016">2016</option>
@@ -46,19 +46,27 @@
 						
 						<div id="jaar-chart" style="width: 100%; height: 350px;"></div>
 					</div>
-					<div role="tabpanel" class="tab-pane fade in active" id="maand">
+					<div role="tabpanel" class="tab-pane fade" id="maand">
 						<div class="form-group">
 							<select class="form-control month-select">
 								<option value="01">januari</option>
 								<option value="02">februari</option>
 								<option value="03">maart</option>
 								<option value="04">april</option>
+								<option value="05">mei</option>
+								<option value="06">juni</option>
+								<option value="07">juli</option>
+								<option value="08">augustus</option>
+								<option value="09">september</option>
+								<option value="10">oktober</option>
+								<option value="11">november</option>
+								<option value="12">december</option>
 							</select>	
 						</div>
 						<div class="form-group">
 							<select class="form-control yearmonth-select">
-								<option value="2015">2015</option>
 								<option value="2016">2016</option>
+								<option value="2015">2015</option>
 							</select>	
 						</div>
 						
@@ -76,10 +84,22 @@
 @endsection
 @section('scripts')
 
+
 	<script type="text/javascript">
+		
+		$(document).ready(function(){
+			var yearNow = (new Date).getFullYear();
+			var monthNow = (new Date).getMonth() + 1;
+			fillYearData(yearNow);
+			fillMonthYearData(monthNow,yearNow);
+		});
+		// waarde van huidige jaar / maand
+		// post call voor eerste graph uitvoeren met als params bovenstaande waardes. als jquery.document ready ofz,
+
 	// Jaar
 		var jaar = AmCharts.makeChart("jaar-chart", {
 				"type": "serial",
+				"language": "nl",
 				"categoryField": "date",
 				"columnWidth": 0,
 				"dataDateFormat": "YYYY-MM",
@@ -87,7 +107,7 @@
 				"autoMarginOffset": 20,
 				"marginLeft": 40,
 				"marginRight": 40,
-				"color": "#9EACB4",
+				"color": "#39424a",
 				"export": {
 					"enabled": true
 				},
@@ -99,6 +119,8 @@
 					"minPeriod": "MM"
 				},
 				"trendLines": [],
+				"language": "nl",
+
 				"graphs": [
 					{
 						"balloonText": "<span style='font-size:12px;'>[[value]]</span>",
@@ -106,13 +128,13 @@
 						"bulletBorderAlpha": 0.07,
 						"bulletBorderColor": "#FFFFFF",
 						"bulletBorderThickness": 10,
-						"bulletColor": "#95BB74",
+						"bulletColor": "#0089ae",
 						
 						"fixedColumnWidth": 0,
 						"hideBulletsCount": 50,
 						"id": "g1",
 						"lineAlpha": 1,
-						"lineColor": "#008000",
+						"lineColor": "#009dc7",
 						"negativeLineColor": "#C69F9F",
 						"title": "red line",
 						"topRadius": 0,
@@ -146,14 +168,7 @@
 				},
 				"titles": [],
 				"dataProvider": [
-					{
-						"date": "2016-08",
-						"value": {{$augClicks}}
-					},
-					{
-						"date": "2016-09",
-						"value": {{$sepClicks}}
-					}
+					
 				]
 			}
 		);
@@ -175,47 +190,23 @@
 		});
 
 		$('a[href="#week"]').on('shown.bs.tab', function (e) {
-			week.redraw();
+			// week.redraw();
 			$('#week svg').attr('width', '100%');
 		});
 
 		$('.year-select').on('change', function() {
+
+				// roep post aan met parameter .year-select.val();
 			var yearValue = $(this).val();
+			fillYearData(yearValue);
 			
-			$.post('/api/v1/statistics/year', {year: yearValue})
-				.done(function(data) { 
-
-					var maand     = [];
-					var clicks    = [];
-					var jaarArray = [];
-
-					$.each(data.result, function(key, value) {
-						maand.push(moment(value.created_at).format('YYYY-MM'));
-						clicks.push(value.clicks);
-					});
-
-					var result = maand.reduce(function(res, n, i) {
-					    res[n] = (res[n] + +clicks[i]) || +clicks[i];
-					    return res;
-					}, {});
-
-					$.each(result, function(key, value) {
-						jaarArray.push({
-							"date": key,
-							"value": value
-						})
-					});
-
-					jaar.dataProvider = jaarArray;
-					jaar.validateData();
-
-				});
 		});
 
 	//Maand
 	var maand = AmCharts.makeChart("maand-chart", {
 				"type": "serial",
 				"categoryField": "date",
+				"language": "nl",
 				"columnWidth": 0,
 				"dataDateFormat": "YYYY-MM-DD",
 				"maxSelectedSeries": 0,
@@ -241,18 +232,19 @@
 						"bulletBorderAlpha": 0.07,
 						"bulletBorderColor": "#FFFFFF",
 						"bulletBorderThickness": 10,
-						"bulletColor": "#95BB74",
+						"bulletColor": "#0089ae",
 						
 						"fixedColumnWidth": 0,
 						"hideBulletsCount": 50,
 						"id": "g1",
 						"lineAlpha": 1,
-						"lineColor": "#008000",
+						"lineColor": "#009dc7",
 						"negativeLineColor": "#C69F9F",
 						"title": "red line",
 						"topRadius": 0,
 						"useLineColorForBulletBorder": true,
 						"valueField": "value"
+					
 					}
 				],
 				"guides": [],
@@ -323,7 +315,43 @@
 
 			var monthValue = $('.month-select').val();
 			var yearMonthValue = $('.yearmonth-select').val();
-			$.post('/api/v1/statistics/month', {month: monthValue, year: yearMonthValue })
+			
+			fillMonthYearData(monthValue,yearMonthValue);
+		});
+	
+
+			function fillYearData(year){
+				$.post('/api/v1/statistics/year', {year: year})
+				.done(function(data) { 
+
+					var maand     = [];
+					var clicks    = [];
+					var jaarArray = [];
+
+					$.each(data.result, function(key, value) {
+						maand.push(moment(value.created_at).format('YYYY-MM'));
+						clicks.push(value.clicks);
+					});
+
+					var result = maand.reduce(function(res, n, i) {
+					    res[n] = (res[n] + +clicks[i]) || +clicks[i];
+					    return res;
+					}, {});
+
+					$.each(result, function(key, value) {
+						jaarArray.push({
+							"date": key,
+							"value": value
+						})
+					});
+
+					jaar.dataProvider = jaarArray;
+					jaar.validateData();
+
+				});
+			}
+			function fillMonthYearData(month,year){
+				$.post('/api/v1/statistics/month', {month: month, year: year })
 				.done(function(data) { 
 
 					var dag     = [];
@@ -352,11 +380,7 @@
 					maand.dataProvider = maandArray;
 					maand.validateData();
 				});
-		});
-	
-
-
-
+			}
 // 		var yearObject = [
 
 // 		    {"month": {{$janClicks}},"period": "2016-01"},
