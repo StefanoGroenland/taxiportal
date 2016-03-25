@@ -85,6 +85,11 @@ class AdController extends Controller
         if ($validator->fails()){
             return redirect('reclametoevoegen'.$type)->withErrors($validator)->withInput($data);
         }
+
+        if($data['radius'] < 10){
+            $data['radius'] = 10;
+        }
+
         $advertisement = Ad::create($data);
         $this->upload($request,$advertisement->id,$type);
         $dataLocation = array(
@@ -93,7 +98,9 @@ class AdController extends Controller
         );
         $geo = $this->geoCode($dataLocation['location']);
 
-        $in_radius = $this->getLocationsInRadius($request['radius'],$geo[0],$geo[1]);
+
+
+        $in_radius = $this->getLocationsInRadius($data['radius'],$geo[0],$geo[1]);
 
         foreach($in_radius as $inbound){
             $cities[] = array(
@@ -161,6 +168,10 @@ class AdController extends Controller
             return redirect('reclamewijzigen/'.$id.'/'.$type)->withErrors($validator)->withInput($data);
         }
 
+        if($data['radius'] < 10){
+            $data['radius'] = 10;
+        }
+
         Ad::where('id', '=', $id)->update($data);
         AdLocation::deleteLocals($id);
         $this->upload($request,$id, $type);
@@ -171,7 +182,7 @@ class AdController extends Controller
         );
         $geo = $this->geoCode($dataLocation['location']);
 
-        $in_radius = $this->getLocationsInRadius($request['radius'],$geo[0],$geo[1]);
+        $in_radius = $this->getLocationsInRadius($data['radius'],$geo[0],$geo[1]);
 
         foreach($in_radius as $inbound){
             $cities[] = array(
@@ -256,6 +267,7 @@ class AdController extends Controller
      * Uses the geobyte API for nearby cities in a radius arround the lat & long coords of a given location.
      */
     public function getLocationsInRadius($radius,$lat,$lng){
+
         $radius = $radius * 0.62137; //km to miles
         $url = 'http://gd.geobytes.com/GetNearbyCities?radius='.$radius.'&Latitude='.$lat.'&Longitude='.$lng.'&limit=999';
 

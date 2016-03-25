@@ -101,18 +101,27 @@ class ApiController extends Controller
     public function adsByType()
     {
         $type       = Input::get('type');
+        $location   = Input::get('location');
         $key        = Input::get('key');
-        if(!empty($type)){
+
+        if(!empty($type) && !empty($location)){
             if ($key == self::$apikey) {
-                $results = Ad::with('adLocation')->where('type', '=', $type)->get();
+                $results = AdLocation::with('ad')->where('location', '=', $location)->get();
+
+                $response[] = array();
+                foreach($results as $key => $value){
+                    if($value->ad->type == $type){
+                        $response[] = $value;
+                    }
+                }
 
                 if($results->isEmpty()){
                     return response()->json(self::$none, 404);
                 }else{
                     return response()->json(array(
-                        'advertisements'    =>  $results,
+                        'advertisements'    =>  $response,
                         'success'           =>  true,
-                        'action'            =>  'get_ads_for_location',
+                        'action'            =>  'get_ads_for_location_and_type',
                         'status'            =>  '200'
                     ),200);
                 }
@@ -841,7 +850,6 @@ class ApiController extends Controller
      * Uses the geobyte API for nearby cities in a radius arround the lat & long coords of a given location.
      */
     public function getLocationsInRadius(){
-
         $radius = Input::get('radius');
         $lat = Input::get('lat');
         $lng = Input::get('lng');
