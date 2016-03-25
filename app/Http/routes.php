@@ -127,4 +127,5 @@ Route::post('/api/v1/shift/state'                   , 'ApiController@getShiftsta
 Route::post('/api/v1/geocode/locations'             , 'ApiController@getShiftstate');
 Route::post('/api/v1/statistics/year'               , 'ApiController@statisticsDataYear');
 Route::post('/api/v1/statistics/month'              , 'ApiController@statisticsDataMonth');
+Route::post('/api/v1/statistics/week'               , 'ApiController@statisticsDataWeek');
 
