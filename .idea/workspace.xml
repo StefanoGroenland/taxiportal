@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="519bf916-5f09-4b43-913d-4efc13c49b43" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/nav-admin.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/nav-admin.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/reclametoevoegen.blade.php" afterPath="$PROJECT_DIR$/resources/views/reclametoevoegen.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/reclamewijzigen.blade.php" afterPath="$PROJECT_DIR$/resources/views/reclamewijzigen.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ApiController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ApiController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Exceptions/Handler.php" afterPath="$PROJECT_DIR$/app/Exceptions/Handler.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="898f360f-9443-42ce-bed2-6a84766c6e32" name="New changelist" comment="" />
@@ -35,8 +33,30 @@
       <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.240741" vertical-offset="995" max-vertical-offset="2159">
-              <caret line="81" column="60" selection-start-line="81" selection-start-column="60" selection-end-line="81" selection-end-column="60" />
+            <state vertical-scroll-proportion="-6.759259" vertical-offset="1097" max-vertical-offset="2159">
+              <caret line="95" column="7" selection-start-line="95" selection-start-column="7" selection-end-line="95" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ApiController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ApiController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.41322315" vertical-offset="1503" max-vertical-offset="15419">
+              <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+              <folding>
+                <element signature="e#41#57#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Handler.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Exceptions/Handler.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-25.076923" vertical-offset="130" max-vertical-offset="1003">
+              <caret line="50" column="8" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -62,11 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reclamewijzigen.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="reclamewijzigen.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/reclamewijzigen.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.37126437" vertical-offset="0" max-vertical-offset="1326">
-              <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+            <state vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="1326">
+              <caret line="7" column="102" selection-start-line="7" selection-start-column="102" selection-end-line="7" selection-end-column="102" />
               <folding />
             </state>
           </provider>
@@ -170,13 +190,13 @@
         <option value="$PROJECT_DIR$/resources/views/layouts/reclame-bottom-add.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AdController.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/reclame-center-edit.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ApiController.php" />
-        <option value="$PROJECT_DIR$/app/Exceptions/Handler.php" />
         <option value="$PROJECT_DIR$/resources/views/profielwijzigen.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/nav-admin.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/reclametoevoegen.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/reclamewijzigen.blade.php" />
+        <option value="$PROJECT_DIR$/app/Exceptions/Handler.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ApiController.php" />
       </list>
     </option>
   </component>
@@ -736,7 +756,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="691" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="FullScreen" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="nav-admin&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/layouts/nav-admin.blade.php&#10;reclames&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/layouts/tables/reclames-table.blade.php&#10;handler&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Exceptions/Handler.php&#10;nav&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/layouts/nav-admin.blade.php&#10;Ad&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Ad.php&#10;userc&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/UserController.php&#10;dashb&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/layouts/admin-dashboard.blade.php&#10;index&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/index.blade.php&#10;reclame&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/reclametoevoegen.blade.php&#10;ad&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Ad.php&#10;nood&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/layouts/tables/noodsignaal-table.blade.php&#10;handl&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Exceptions/Handler.php&#10;reclametoevoegen&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/reclametoevoegen.blade.php&#10;adCo&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/AdController.php&#10;AdCo&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/AdController.php&#10;api&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/ApiController.php&#10;Comment&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/CommentController.php&#10;ApiContro&#9;null&#9;null&#10;apiC&#9;RUN_CONFIGURATION&#9;ApiOneController.php&#10;na&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/layouts/nav-driver.blade.php&#10;opmerking&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/opmerkingwijzigen.blade.php&#10;Driver&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Driver.php&#10;user&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/UserController.php&#10;taxibase&#9;null&#9;null&#10;locations&#9;null&#9;null&#10;route&#9;null&#9;null&#10;comment&#9;null&#9;null&#10;driver&#9;null&#9;null&#10;usercon&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/UserController.php&#10;profiel&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/profiel.blade.php&#10;opmerkingwij&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/opmerkingwijzigen.blade.php&#10;ritten-t&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/layouts/tables/ritten-table.blade.php&#10;routes&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/routes.php&#10;bootst&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/public/assets/css/bootstrap.min.css&#10;custom&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/public/assets/css/custom.css&#10;session&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/config/session.php&#10;TaxiCon&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/TaxiController.php&#10;UserCon&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/UserController.php&#10;taxi-table&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/layouts/tables/taxi-table.blade.php&#10;compiled&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/bootstrap/cache/compiled.php&#10;profielwij&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/profielwijzigen.blade.php" />
+    <property name="SearchEverywhereHistoryKey" value="handl&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Exceptions/Handler.php&#10;api&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/ApiController.php&#10;nav-admin&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/layouts/nav-admin.blade.php&#10;reclames&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/layouts/tables/reclames-table.blade.php&#10;handler&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Exceptions/Handler.php&#10;nav&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/layouts/nav-admin.blade.php&#10;Ad&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Ad.php&#10;userc&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/UserController.php&#10;dashb&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/layouts/admin-dashboard.blade.php&#10;index&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/index.blade.php&#10;reclame&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/reclametoevoegen.blade.php&#10;ad&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Ad.php&#10;nood&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/layouts/tables/noodsignaal-table.blade.php&#10;reclametoevoegen&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/reclametoevoegen.blade.php&#10;adCo&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/AdController.php&#10;AdCo&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/AdController.php&#10;Comment&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/CommentController.php&#10;ApiContro&#9;null&#9;null&#10;apiC&#9;RUN_CONFIGURATION&#9;ApiOneController.php&#10;na&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/layouts/nav-driver.blade.php&#10;opmerking&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/opmerkingwijzigen.blade.php&#10;Driver&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Driver.php&#10;user&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/UserController.php&#10;taxibase&#9;null&#9;null&#10;locations&#9;null&#9;null&#10;route&#9;null&#9;null&#10;comment&#9;null&#9;null&#10;driver&#9;null&#9;null&#10;usercon&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/UserController.php&#10;profiel&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/profiel.blade.php&#10;opmerkingwij&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/opmerkingwijzigen.blade.php&#10;ritten-t&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/layouts/tables/ritten-table.blade.php&#10;routes&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/routes.php&#10;bootst&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/public/assets/css/bootstrap.min.css&#10;custom&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/public/assets/css/custom.css&#10;session&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/config/session.php&#10;TaxiCon&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/TaxiController.php&#10;UserCon&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/app/Http/Controllers/UserController.php&#10;taxi-table&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/layouts/tables/taxi-table.blade.php&#10;compiled&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/bootstrap/cache/compiled.php&#10;profielwij&#9;FILE&#9;file://C:/Users/Stefano/Code/taxiportal/resources/views/profielwijzigen.blade.php" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="options.lastSelected" value="preferences.externalTools" />
@@ -1640,31 +1660,37 @@
       <option name="project" value="LOCAL" />
       <updated>1458829887284</updated>
     </task>
-    <option name="localTasksCounter" value="141" />
+    <task id="LOCAL-00141" summary="Reclame module routes hernoemd zodat er geen verkeerde redirs komen. daarnaast heb ik de xy hw coord inputs in de layouts meegegeven zodat images gecropped kunnen worden : LET OP cropping moet nog verbeterd worden.">
+      <created>1458895305132</created>
+      <option name="number" value="00141" />
+      <option name="project" value="LOCAL" />
+      <updated>1458895305132</updated>
+    </task>
+    <option name="localTasksCounter" value="142" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19349681" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32101372" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21753247" sideWeight="0.5751599" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32575756" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19349681" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24567099" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19349681" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22441365" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19349681" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32575756" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24567099" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3982684" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1686,7 +1712,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="kleine bug fix voor opmerkingen bij /profiel" />
     <MESSAGE value="Controllers nagelopen en wat overbodige code weggehaald." />
     <MESSAGE value="admin and driver dashboard splitted." />
     <MESSAGE value="API functie voor het toevoegen van een taxi centrale locatie op coords en met een base name, toegevoegd. daarnaast wordt er nu op de maps getoond waar de taxis zijn en waar de centrale(s) zijn." />
@@ -1711,7 +1736,8 @@
     <MESSAGE value="Reclame aantal kliks ipv aantal kliks vandaag" />
     <MESSAGE value="Reclame muteren inclusief alle soorten banners toevoegen geimplementeerd + API functie om banners op te halen voor het type." />
     <MESSAGE value="API route functienaam gecorrigeerd en errorreporting uit voor api" />
-    <option name="LAST_COMMIT_MESSAGE" value="API route functienaam gecorrigeerd en errorreporting uit voor api" />
+    <MESSAGE value="Reclame module routes hernoemd zodat er geen verkeerde redirs komen. daarnaast heb ik de xy hw coord inputs in de layouts meegegeven zodat images gecropped kunnen worden : LET OP cropping moet nog verbeterd worden." />
+    <option name="LAST_COMMIT_MESSAGE" value="Reclame module routes hernoemd zodat er geen verkeerde redirs komen. daarnaast heb ik de xy hw coord inputs in de layouts meegegeven zodat images gecropped kunnen worden : LET OP cropping moet nog verbeterd worden." />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.535" />
   </component>
   <component name="XDebuggerManager">
@@ -1845,6 +1871,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1042654" vertical-offset="5629" max-vertical-offset="17340">
           <caret line="335" column="31" selection-start-line="335" selection-start-column="31" selection-end-line="335" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1860,6 +1887,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="6.131579" vertical-offset="0" max-vertical-offset="4879">
           <caret line="237" column="6" selection-start-line="237" selection-start-column="6" selection-end-line="237" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1874,6 +1902,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="272">
           <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1955,24 +1984,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ApiController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1826" max-vertical-offset="15266">
-          <caret line="119" column="5" selection-start-line="119" selection-start-column="5" selection-end-line="119" selection-end-column="5" />
-          <folding>
-            <element signature="e#41#57#0#PHP" expanded="true" />
-            <marker date="1458830698867" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Exceptions/Handler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.73354733" vertical-offset="308" max-vertical-offset="1003">
-          <caret line="49" column="9" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/reclame-center-edit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6445498" vertical-offset="102" max-vertical-offset="1190">
@@ -2022,14 +2033,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.259259" vertical-offset="1560" max-vertical-offset="5950">
           <caret line="128" column="44" selection-start-line="128" selection-start-column="44" selection-end-line="128" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.240741" vertical-offset="995" max-vertical-offset="2159">
-          <caret line="81" column="60" selection-start-line="81" selection-start-column="60" selection-end-line="81" selection-end-column="60" />
           <folding />
         </state>
       </provider>
@@ -2092,9 +2095,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/reclamewijzigen.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37126437" vertical-offset="0" max-vertical-offset="1326">
-          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+        <state vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="1326">
+          <caret line="7" column="102" selection-start-line="7" selection-start-column="102" selection-end-line="7" selection-end-column="102" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Exceptions/Handler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-25.076923" vertical-offset="130" max-vertical-offset="1003">
+          <caret line="50" column="8" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.759259" vertical-offset="1097" max-vertical-offset="2159">
+          <caret line="95" column="7" selection-start-line="95" selection-start-column="7" selection-end-line="95" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ApiController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41322315" vertical-offset="1503" max-vertical-offset="15419">
+          <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+          <folding>
+            <element signature="e#41#57#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
