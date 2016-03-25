@@ -887,6 +887,33 @@ class ApiController extends Controller
         )); 
 
      }
+      /**
+     * @author Richard Perdaan
+     * @return mixed
+     *
+     * Returns all clicks for the given month.
+     */
+     public function statisticsDataWeek(){
+        $week   = Input::get('week');
+        $year   = Input::get('year');
+       
+        $response = array();
+       
+        $clicks = AdClick::whereYear('created_at','=',$year)
+        ->orderBy('created_at', 'asc')
+        ->get();
+
+        foreach ($clicks as $key => $value) {
+
+            if($value->created_at->format('W') == $week){
+                $response[] = $value;
+            }
+        }
+
+        return response()->json(array(
+            'result'    =>  $response
+        )); 
+     }
 
 }
 
