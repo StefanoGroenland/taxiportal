@@ -348,10 +348,10 @@ class ApiController extends Controller
      */
     public function sendSOS()
     {
-        $id = Input::get('taxi_id');
-        $last_lat = Input::get('lat');
-        $last_long = Input::get('lng');
-        $key = Input::get('key');
+        $id         = Input::get('taxi_id');
+        $last_lat   = Input::get('lat');
+        $last_long  = Input::get('lng');
+        $key        = Input::get('key');
 
         if(!empty($id) && !empty($last_lat) && !empty($last_long)){
             if ($key == self::$apikey) {
