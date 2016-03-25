@@ -30,13 +30,13 @@
 
 
        	        <ul class="nav nav-tabs" role="tablist">
-					<li role="presentation"><a href="#jaar" aria-controls="year" role="tab" data-toggle="tab">Jaar</a></li>
+					<li role="presentation" class="active"><a href="#jaar" aria-controls="year" role="tab" data-toggle="tab">Jaar</a></li>
 					<li role="presentation"><a href="#maand" aria-controls="maand" role="tab" data-toggle="tab">Maand</a></li>
-					<li role="presentation"class="active"><a href="#week" aria-controls="week" role="tab" data-toggle="tab">Week</a></li>
+					<li role="presentation"><a href="#week" aria-controls="week" role="tab" data-toggle="tab">Week</a></li>
 				</ul>
 
 				<div class="tab-content">
-					<div role="tabpanel" class="tab-pane fade" id="jaar">
+					<div role="tabpanel" class="tab-pane fade in active" id="jaar">
 						<div class="form-group">
 							<select class="form-control year-select">
 								<option value="2016">2016</option>
@@ -72,7 +72,7 @@
 						
 						<div id="maand-chart" style="width: 100%; height: 350px;"></div>
 					</div>
-					<div role="tabpanel" class="tab-pane fade in active" id="week">
+					<div role="tabpanel" class="tab-pane fade" id="week">
 						<div class="form-group">
 							
 							<select class="form-control yearweek-select">
@@ -354,7 +354,8 @@
 				"fontFamily": "Roboto",
 				"fontSize": 13,
 				"categoryAxis": {
-					"parseDates": true
+					"parseDates": true,
+
 				},
 				"trendLines": [],
 				"language": "nl",
