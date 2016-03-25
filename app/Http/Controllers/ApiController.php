@@ -850,7 +850,6 @@ class ApiController extends Controller
      * Uses the geobyte API for nearby cities in a radius arround the lat & long coords of a given location.
      */
     public function getLocationsInRadius(){
-
         $radius = Input::get('radius');
         $lat = Input::get('lat');
         $lng = Input::get('lng');
