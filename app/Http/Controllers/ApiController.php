@@ -563,7 +563,7 @@ class ApiController extends Controller
         $latitude   = Input::get('lat');
         $longtitude = Input::get('lng');
         $key        = Input::get('key');
-
+        $datetime = date('Y-m-d H:i:s');
         if(!empty($driverID) && !empty($latitude) && !empty($longtitude)) {
             if ($key == self::$apikey) {
                     $find = Taxi::where('driver_id', $driverID)->first();
@@ -572,7 +572,8 @@ class ApiController extends Controller
                     }else{
                         $find->update([
                             'last_latitude'     => $latitude,
-                            'last_longtitude'   => $longtitude
+                            'last_longtitude'   => $longtitude,
+                            'last_seen'         => $datetime
                         ]);
                     }
                 return response()->json(array(
