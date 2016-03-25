@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="519bf916-5f09-4b43-913d-4efc13c49b43" name="Default" comment="AdController als een radius minder is als 10km wordt deze standaard op 10 gezet. minder kan nog wel eens fouten veroorzaken.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AdController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdController.php" />
+    <list default="true" id="519bf916-5f09-4b43-913d-4efc13c49b43" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/ApiController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/ApiController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="898f360f-9443-42ce-bed2-6a84766c6e32" name="New changelist" comment="" />
@@ -39,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ApiController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ApiController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ApiController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.0" vertical-offset="14099" max-vertical-offset="15402">
-              <caret line="837" column="46" selection-start-line="837" selection-start-column="46" selection-end-line="837" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.44394618" vertical-offset="1522" max-vertical-offset="15402">
+              <caret line="107" column="40" selection-start-line="107" selection-start-column="40" selection-end-line="107" selection-end-column="40" />
               <folding>
                 <element signature="e#41#57#0#PHP" expanded="true" />
               </folding>
@@ -51,11 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AdController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6371951" vertical-offset="5345" max-vertical-offset="6222">
-              <caret line="349" column="92" selection-start-line="349" selection-start-column="92" selection-end-line="349" selection-end-column="92" />
+            <state vertical-scroll-proportion="-14.384615" vertical-offset="799" max-vertical-offset="6222">
+              <caret line="79" column="46" selection-start-line="79" selection-start-column="46" selection-end-line="79" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -153,9 +153,9 @@
         <option value="$PROJECT_DIR$/resources/views/layouts/nav-admin.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/reclametoevoegen.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/reclamewijzigen.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ApiController.php" />
         <option value="$PROJECT_DIR$/app/Exceptions/Handler.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AdController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ApiController.php" />
       </list>
     </option>
   </component>
@@ -721,6 +721,11 @@
     <property name="options.lastSelected" value="preferences.externalTools" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -1637,7 +1642,13 @@
       <option name="project" value="LOCAL" />
       <updated>1458900628297</updated>
     </task>
-    <option name="localTasksCounter" value="144" />
+    <task id="LOCAL-00144" summary="AdController geoCode() adress param wordt in een array gegooid en alleen het eerste woord gebruiken we als centrale locatie.">
+      <created>1458905897786</created>
+      <option name="number" value="00144" />
+      <option name="project" value="LOCAL" />
+      <updated>1458905897786</updated>
+    </task>
+    <option name="localTasksCounter" value="145" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1647,7 +1658,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32101372" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21753247" sideWeight="0.5751599" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25692964" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32575756" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19349681" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24567099" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1683,7 +1694,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="API functie voor het toevoegen van een taxi centrale locatie op coords en met een base name, toegevoegd. daarnaast wordt er nu op de maps getoond waar de taxis zijn en waar de centrale(s) zijn." />
     <MESSAGE value="Maps 99.9% zekerheid werkend." />
     <MESSAGE value="Maps 99.99% zekerheid werkend." />
     <MESSAGE value="noodsignaaltable fix" />
@@ -1708,7 +1718,8 @@
     <MESSAGE value="Reclame module routes hernoemd zodat er geen verkeerde redirs komen. daarnaast heb ik de xy hw coord inputs in de layouts meegegeven zodat images gecropped kunnen worden : LET OP cropping moet nog verbeterd worden." />
     <MESSAGE value="API func om ads op te halen dmv locatie en type banner is nu ook uitgewerkt." />
     <MESSAGE value="AdController als een radius minder is als 10km wordt deze standaard op 10 gezet. minder kan nog wel eens fouten veroorzaken." />
-    <option name="LAST_COMMIT_MESSAGE" value="AdController als een radius minder is als 10km wordt deze standaard op 10 gezet. minder kan nog wel eens fouten veroorzaken." />
+    <MESSAGE value="AdController geoCode() adress param wordt in een array gegooid en alleen het eerste woord gebruiken we als centrale locatie." />
+    <option name="LAST_COMMIT_MESSAGE" value="AdController geoCode() adress param wordt in een array gegooid en alleen het eerste woord gebruiken we als centrale locatie." />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.535" />
   </component>
   <component name="XDebuggerManager">
@@ -2064,16 +2075,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ApiController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.0" vertical-offset="14099" max-vertical-offset="15402">
-          <caret line="837" column="46" selection-start-line="837" selection-start-column="46" selection-end-line="837" selection-end-column="46" />
-          <folding>
-            <element signature="e#41#57#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/nav-admin.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.576923" vertical-offset="0" max-vertical-offset="2601">
@@ -2092,9 +2093,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6371951" vertical-offset="5345" max-vertical-offset="6222">
-          <caret line="349" column="92" selection-start-line="349" selection-start-column="92" selection-end-line="349" selection-end-column="92" />
+        <state vertical-scroll-proportion="-14.384615" vertical-offset="799" max-vertical-offset="6222">
+          <caret line="79" column="46" selection-start-line="79" selection-start-column="46" selection-end-line="79" selection-end-column="46" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ApiController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44394618" vertical-offset="1522" max-vertical-offset="15402">
+          <caret line="107" column="40" selection-start-line="107" selection-start-column="40" selection-end-line="107" selection-end-column="40" />
+          <folding>
+            <element signature="e#41#57#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

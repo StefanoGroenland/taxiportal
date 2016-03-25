@@ -108,7 +108,7 @@ class ApiController extends Controller
             if ($key == self::$apikey) {
                 $results = AdLocation::with('ad')->where('location', '=', $location)->get();
 
-                $response[] = array();
+                $response = array();
                 foreach($results as $key => $value){
                     if($value->ad->type == $type){
                         $response[] = $value;
