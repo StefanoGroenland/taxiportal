@@ -381,73 +381,9 @@
 					maand.validateData();
 				});
 			}
-// 		var yearObject = [
-
-// 		    {"month": {{$janClicks}},"period": "2016-01"},
-// 		    {"month": {{$febClicks}},"period": "2016-02"},
-// 		    {"month": {{$maaClicks}},"period": "2016-03"},
-// 		    {"month": {{$aprClicks}},"period": "2016-04"},
-// 		    {"month": {{$meiClicks}},"period": "2016-05"},
-// 		    {"month": {{$junClicks}},"period": "2016-06"},
-// 		    {"month": {{$julClicks}},"period": "2016-07"},
-// 		    {"month": {{$augClicks}},"period": "2016-08"},
-// 		    {"month": {{$sepClicks}},"period": "2016-09"},
-// 		    {"month": {{$oktClicks}},"period": "2016-10"},
-// 		    {"month": {{$novClicks}},"period": "2016-11"},
-// 		    {"month": {{$decClicks}},"period": "2016-12"}
-// 		  ]
-
-// 		  console.log(yearObject);
-
-// 	// Year graphics
-// 		var jaar = Morris.Line({
-//           element: 'year',
-//           data: yearObject,
-//           xkey: 'period',
-//           ykeys: ['month'],
-//           labels: ['Aantal kliks'],
-//           hideHover: 'auto',
-//           xLabelAngle: 40,
-//           xLabelFormat: function (x) {
-//                   var IndexToMonth = [ "september", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december" ];
-//                   var month = IndexToMonth[ x.getMonth() ];
-//                   var year = x.getFullYear();
-//                   return month;
-//               },
-//           dateFormat: function (x) {
-//                   var IndexToMonth = [ "september", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december" ];
-//                   var month = IndexToMonth[ new Date(x).getMonth() ];
-//                   var year = new Date(x).getFullYear();
-//                    return month;
-//               },
-//           resize: true
-//       });
-
-// 	// Month graphics
-// 	var maand = Morris.Bar({
-// 	  element: 'month',
-// 	  data: [
-
-// 	  	@foreach($list as $kee => $value)
-// 	  	{day: '{{$value}}',
-// 	    	@foreach($clickCount as $key => $val)
-// 	    		@if($key == $value)   		
-// 	    			 clicks:'{{$val}}'
-// 	    		@endif
-// 	    	@endforeach
-// 	    	},
-// 	    @endforeach
-// 	  ],
-// 	 	xkey: 'day',
-//         ykeys: ['clicks'],
-// 	    hideHover: 'auto',
-//         xLabelAngle: 40,
-// 	    labels: ['Aantal kliks'],
-// 	    resize: true
-// 	});
 
 
-// // Week graphics
+// Week graphics
 // 	var week = Morris.Bar({
 // 	  element: 'week',
 // 	  data: [
