@@ -14,8 +14,10 @@
                     <div class="portlet-body form">
                     <form role="form" method="POST" action="/addAd/{{$type}}" onsubmit="return checkCoords();" files="true" enctype="multipart/form-data">
                         {!! csrf_field() !!}
-                            Vergeet niet de upload() een param voor type mee te geven!
-                            {{--include check--}}
+                        <input type="hidden" id="x" name="x">
+                        <input type="hidden" id="y" name="y">
+                        <input type="hidden" id="w" name="w">
+                        <input type="hidden" id="h" name="h">
                             @if($type == 'bottom')
                                 @include('layouts.reclame-bottom-add')
                             @elseif($type == 'center')
