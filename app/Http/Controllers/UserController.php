@@ -340,7 +340,7 @@ class UserController extends Controller
             'sex'                   => $request['sex'],
             'drivers_exp'           => $request['driver_exp'],
             'global_information'    => $request['global_information'],
-            'user_rank' => 'driver'
+            'user_rank'             => 'driver'
         );
 
         $userRules = array(
