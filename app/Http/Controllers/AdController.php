@@ -340,14 +340,18 @@ public function showAdStats(){
 
 
     /**
-     * @author Stefano Groenland
+     * @author Stefano Groenland b
      * @param $adress
      * @return array
      *
      * Uses the Google maps Geocoding API to convert a location to geodata.
      */
     public function geoCode($adress){
-        $url = 'https://maps.googleapis.com/maps/api/geocode/json?address='.$adress.',NL&key=AIzaSyAKW-_1s45jicXozxFSRolEJpQIFSmC7NM';
+        //We do not need any person filling in more locations so we build an array of all word.
+        //And only use the first word in the $url
+        $adressArray = str_word_count($adress,1);
+
+        $url = 'https://maps.googleapis.com/maps/api/geocode/json?address='.$adressArray[0].',NL&key=AIzaSyAKW-_1s45jicXozxFSRolEJpQIFSmC7NM';
         $response_json = file_get_contents($url);
 
         $response = json_decode($response_json, true);

@@ -108,7 +108,7 @@ class ApiController extends Controller
             if ($key == self::$apikey) {
                 $results = AdLocation::with('ad')->where('location', '=', $location)->get();
 
-                $response[] = array();
+                $response = array();
                 foreach($results as $key => $value){
                     if($value->ad->type == $type){
                         $response[] = $value;
@@ -348,10 +348,10 @@ class ApiController extends Controller
      */
     public function sendSOS()
     {
-        $id = Input::get('taxi_id');
-        $last_lat = Input::get('lat');
-        $last_long = Input::get('lng');
-        $key = Input::get('key');
+        $id         = Input::get('taxi_id');
+        $last_lat   = Input::get('lat');
+        $last_long  = Input::get('lng');
+        $key        = Input::get('key');
 
         if(!empty($id) && !empty($last_lat) && !empty($last_long)){
             if ($key == self::$apikey) {
@@ -563,7 +563,7 @@ class ApiController extends Controller
         $latitude   = Input::get('lat');
         $longtitude = Input::get('lng');
         $key        = Input::get('key');
-
+        $datetime = date('Y-m-d H:i:s');
         if(!empty($driverID) && !empty($latitude) && !empty($longtitude)) {
             if ($key == self::$apikey) {
                     $find = Taxi::where('driver_id', $driverID)->first();
@@ -572,7 +572,8 @@ class ApiController extends Controller
                     }else{
                         $find->update([
                             'last_latitude'     => $latitude,
-                            'last_longtitude'   => $longtitude
+                            'last_longtitude'   => $longtitude,
+                            'last_seen'         => $datetime
                         ]);
                     }
                 return response()->json(array(

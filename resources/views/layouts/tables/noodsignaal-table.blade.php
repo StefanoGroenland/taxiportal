@@ -9,7 +9,7 @@
       <tbody>
 
           @foreach($emergencies as $sos)
-          <tr data-href="/seenSignal/{{$sos->id}}">
+          <tr>
               @if($sos->taxi)
               <td>{{$sos->taxi->license_plate}}</td>
               @else
