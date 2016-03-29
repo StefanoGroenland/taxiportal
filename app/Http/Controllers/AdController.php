@@ -285,55 +285,9 @@ class AdController extends Controller
      */
 public function showAdStats(){
 
-	 	//data from reclameprofiel
-        $year = "2016";
-        $month = '03';
-        $day= "23";
-
         $id = Route::current()->getParameter('id');
         $ad = Ad::where('id',$id)->first();
-        $array_maanden = array('01' => 'jan', '02' => 'feb', '03' => 'maa', '04' => 'apr', '05' => 'mei','06' => 'jun','07' => 'jul','08' => 'aug','09' => 'sep','10' => 'okt','11' => 'nov','12' => 'dec');
-        $clicks = AdClick::
-        	where('ad_id', $id)
-	        //->whereYear('created_at', '=', $year)
-	        ->whereMonth('created_at', '=', $month)
-	        // ->whereDay('created_at', '=', $day)
-	        ->get();
-        $clickFirst = AdClick::where('ad_id',$id)->first();
-
-        //Years
-        $clickCount = array();
-        foreach($clicks as $click){
-            @$clickCount[date('d-m-Y',strtotime($click->created_at))]++;
-        }
-       
-        //month
-        $list=array();
-
-        for($d=1; $d<=31; $d++)
-        {
-            $time=mktime(12, 0, 0, $month, $d, $year);          
-            if (date('m', $time)==$month)       
-                $list[]=date('d-m-Y', $time);
-        }
-
-        foreach($array_maanden as $key => $maand){
-
-           ${$maand.'Clicks'} = count($clickFirst::whereMonth('created_at','=',$key)->get());
-        }
-
-        //weeks
-		$dt = Carbon::parse($year.'-'.$month.'-'.$day);
-		$week_number = $dt->weekOfYear;
-		$year = $dt->year;
-		$dagen_week=array();
-		for($day=1; $day<=7; $day++)
-		{
-		   $dagen_week[]= date('d-m-Y', strtotime($year."W".$week_number.$day));
-		}
-
-		
-        return View::make('/reclameprofiel', compact('id','ad','allClicks','dagen_week','array_maanden','month','list','clickCount','janClicks','febClicks','maaClicks','aprClicks','meiClicks','junClicks','julClicks','augClicks','sepClicks','oktClicks','novClicks','decClicks'));
+        return View::make('/reclameprofiel', compact('id','ad'));
     }
 
 
