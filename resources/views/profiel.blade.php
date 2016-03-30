@@ -10,16 +10,16 @@
             </ul>
         @endif
         @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-                    @if(Session::has('alert-' . $msg))
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }}
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="fa fa-times"></i></button>
-                                </p>
-                            </div>
-                        </div>
-                    @endif
-                @endforeach
+            @if(Session::has('alert-' . $msg))
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }}
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="fa fa-times"></i></button>
+                        </p>
+                    </div>
+                </div>
+            @endif
+        @endforeach
         <div class="row">
             <div class="col-md-12">
                 <div class="profile-sidebar">

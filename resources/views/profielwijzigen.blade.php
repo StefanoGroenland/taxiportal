@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+
                 <div class="page-content">
                 @if (count($errors))
                         <ul class="list-unstyled">
@@ -14,7 +15,7 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }}
-                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="fa fa-times"></i></button>
+                                               <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="fa fa-times"></i></button>
                                             </p>
                                         </div>
                                     </div>
@@ -28,34 +29,42 @@
                                 <div class="portlet light profile-sidebar-portlet bordered">
                                     <!-- SIDEBAR USERPIC -->
                                     <div class="profile-userpic">
-                                    <form method="POST" class="formulier" onsubmit="return checkCoords();" action="/editProfilePhoto/{{$id}}" files="true" enctype="multipart/form-data">
-                                        {!! csrf_field() !!}
-                                        <div>
-                                            <span class="edit-pencil blue btn btn-success pull-right" style="padding-right:12px !important; padding-left:12px !important; margin-right:5px !important;" id="verkennerButton" onclick="$(this).parent().find('input[type=file]').click();"><i class="fa fa-pencil"></i></span>
+                                        <form method="POST" class="formulier" onsubmit="return checkCoords();" action="/editProfilePhoto/{{$id}}" files="true" enctype="multipart/form-data">
+                                            {!! csrf_field() !!}
+                                            
+                                            @if(Auth::user()->profile_photo == "")
+                                                 <div>
+                                                    <span class="edit-pencil green btn btn-success pull-right" style="padding-right:12px !important; padding-left:12px !important; margin-right:5px !important;" id="verkennerButton" onclick="$(this).parent().find('input[type=file]').click();"><i class="fa fa-plus"></i></span>
                                             <input name="profile_photo" id="imgInp" onchange="$(this).parent().parent().find('.form-control').html($(this).val().split(/[\\|/]/).pop());readURL(this)" style="display: none;" type="file">
-                                        </div>
+                                                </div>
+                                            @else
+                                                <div>
+                                                    <span class="edit-pencil green btn btn-success pull-right" style="padding-right:12px !important; padding-left:12px !important; margin-right:5px !important;" id="verkennerButton" onclick="$(this).parent().find('input[type=file]').click();"><i class="fa fa-plus"></i></span>
+                                                    <input name="profile_photo" id="imgInp" onchange="$(this).parent().parent().find('.form-control').html($(this).val().split(/[\\|/]/).pop());readURL(this)" style="display: none;" type="file">
+                                                </div>
+                                            @endif
 
                                             <input type="hidden" name="_method" value="PUT">
                                             <input type="hidden" id="x" name="x">
                                             <input type="hidden" id="y" name="y">
                                             <input type="hidden" id="w" name="w">
                                             <input type="hidden" id="h" name="h">
-                                                            <div class="fileinput fileinput-new text-center" style="margin-top:10px !important;" data-provides="fileinput">
-                                                                <div id="jcrop_target" class="fileinput-new text-center center-block" style="width: 200px; height: 200px;">
-                                                                    <img id="jcrop_target" style=" height:100%; width:100%; "
-                                                                        @if(Auth::user()->profile_photo == "")
-                                                                            src="../assets/img/avatars/avatar.png"
-                                                                        @else
-                                                                           src="../{{Auth::user()->profile_photo}}"
-                                                                        @endif
-                                                                    alt="avatar" class="img-responsive center-block"/>
-                                                                    <div class="jcrop-holder" style="width: 400px !important; height: 200px!important; "></div>
-                                                                </div>
-                                                            </div>
+                                                <div class="fileinput fileinput-new text-center" style="margin-top:10px !important;" data-provides="fileinput">
+                                                    <div class="fileinput-new text-center center-block">
+                                                        <img id="jcrop_target" 
+                                                            @if(Auth::user()->profile_photo == "")
+                                                                src="../assets/img/avatars/avatar.png"
+                                                            @else
+                                                               src="../assets/uploads/profiel/thumb/{{Auth::user()->profile_photo}}"
+                                                            @endif
+                                                        alt="avatar" class="img-responsive center-block" style="margin-left: 25%;"/>
+                                                        <div class="jcrop-holder"></div>
+                                                    </div>
+                                                </div>
 
-                                                        <div class="margin-top-40 text-center">
-                                                            <button id="saveBtn" type="submit" class="btn green-meadow hide"><i class="fa fa-check"></i> Opslaan </button>
-                                                        </div>
+                                                <div class="margin-top-40 text-center">
+                                                    <button id="saveBtn" type="submit" class="btn green-meadow hide"><i class="fa fa-check"></i> Opslaan </button>
+                                                </div>
                                             </form>
                                         </div>
                                     <!-- END SIDEBAR USERPIC -->
@@ -165,6 +174,8 @@
                         </div>
                     </div>
                 </div>
+
+
                 
 @endsection
 @section('scripts')
@@ -196,15 +207,13 @@ $(function() {
         readURL(this);
     });
 
-
-
-
     function updateCoords(c)
     {
         $('#x').val(c.x);
         $('#y').val(c.y);
         $('#w').val(c.w);
         $('#h').val(c.h);
+        console.log(c);
     };
 
 
@@ -220,22 +229,24 @@ $(function() {
     function checkCoords()
     {
         if (parseInt(jQuery('#w').val())>0) return true;
-        return true;
+        return false;
     };
 
     jQuery(function($) {
         var input = $('#imgInp');
-          $('#imgInp').change(function(){
-          if(input.val() !== ""){
-             $('#jcrop_target').Jcrop({
-                 bgColor:     'transparant',
-                 setSelect:   [ 0, 0, 200, 200 ],
-                 bgOpacity:   .4,
-                 aspectRatio: 1,
-                 onSelect: updateCoords
-             });
+            $('#imgInp').change(function(){
+            if(input.val() !== ""){
+                $('#jcrop_target').Jcrop({
+                     bgColor:     'transparant',
+                     setSelect:   [ 0, 0, 200, 200],
+                     bgOpacity:   .4,
+                     aspectRatio: 1,
+                     onSelect: updateCoords
+                });
             }
-          });
+            });
         });
+       
 </script>
+
 @endsection
