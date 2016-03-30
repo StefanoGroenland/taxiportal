@@ -17,7 +17,7 @@
                                             @if(Auth::user()->profile_photo == "")
                                                 <img src="../assets/img/avatars/avatar.png" alt="">
                                             @else
-                                                <img src="../{{Auth::user()->profile_photo}}" alt="">
+                                                <img src="../assets/uploads/profiel/thumb/{{Auth::user()->profile_photo}}" alt="">
                                             @endif
                                         </button>
  	                                    <ul class="dropdown-menu-v2" role="menu">

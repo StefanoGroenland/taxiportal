@@ -16,7 +16,7 @@ use App\Taxi;
 use App\Comment;
 use App\Tablet;
 use Illuminate\Support\Facades\Hash as Hash;
-use Image as Image;
+use Image;
 use File;
 use App\Http\Controllers\Storage;
 
@@ -86,7 +86,7 @@ class UserController extends Controller
      * @author Richard Perdaan
      * @return mixed
      *
-     *  TODO : fill in func description..
+     *  Grabs the ID of the current user, looks for a user with that ID, and returns the id and making the View.
      */
     public function showProfileEdit(){
         $id = Auth::user()->id;
@@ -498,14 +498,25 @@ class UserController extends Controller
             return redirect('/chauffeurtoevoegen');
         } else {
             if ($request->file('profile_photo')->isValid()) {
-                $destinationPath = 'assets/uploads';
+                
+                $destinationPathOrigineel = 'assets/uploads/profiel/origineel';
+                $destinationPathThumb = 'assets/uploads/profiel/thumb';
+
+
                 $extension = $request->file('profile_photo')->getClientOriginalExtension();
-                $fileName = rand(1111, 9999) . '.' . $extension;
-                $request->file('profile_photo')->move($destinationPath, $fileName);
-                $ava = $destinationPath . '/' . $fileName;
-                $img = Image::make($ava)->fit(200)->crop($w, $h, $x, $y)->save();
-                $final = $destinationPath . '/' . $img->basename;
-                User::uploadPicture($id, $final);
+                $name = $request->file('profile_photo')->getClientOriginalName();
+                $fileName = rand(1111, 9999) .$name;
+
+                $request->file('profile_photo')->move($destinationPathOrigineel, $fileName);
+
+                File::copy($destinationPathOrigineel . '/' . $fileName, $destinationPathThumb . '/' . $fileName);
+
+                $ava = $destinationPathThumb . '/' . $fileName;
+              
+                $crop = Image::make($ava)->fit(149)->crop($w, $h, $x, $y)->save();
+                $final = $destinationPathThumb . '/' . $crop->basename;
+              
+                User::uploadPicture($id, $fileName);
                 if($redirect != 0){
                     $request->session()->flash('alert-success', 'Medewerker toegevoegd');
                     return redirect('/admins');
@@ -513,7 +524,6 @@ class UserController extends Controller
                     $request->session()->flash('alert-success', 'Chauffeur toegevoegd');
                     return redirect('/chauffeurs');
                 }
-
 
             } else {
                 $request->session()->flash('alert-danger', 'Er is een fout opgetreden tijdens het uploaden van uw bestand.');
@@ -528,9 +538,7 @@ class UserController extends Controller
                 }
             }
         }
-
     }
-
 
     /**
      * @author Stefano Groenland
@@ -704,13 +712,15 @@ class UserController extends Controller
      * It also deletes the past profile picture with the unlink() function.
      */
     public function editProfilePhoto(Request $request){
+
         $id = Route::current()->getParameter('id');
         $find = User::find($id);
-        if(!$find->profile_photo == ""){
-            unlink($find->profile_photo);
+        if(!empty($find->profile_photo)) {
+            unlink("assets/uploads/profiel/thumb/".$find->profile_photo);
+            unlink("assets/uploads/profiel/origineel/".$find->profile_photo);
         }
         $this->upload($request,$id,2);
-        $request->session()->flash('alert-success', 'Uw profielfoto is gewijziged');
+        $request->session()->flash('alert-success', 'Uw profielfoto is gewijzigd');
         return redirect('/profielwijzigen');
     }
 }
