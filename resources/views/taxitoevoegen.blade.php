@@ -254,7 +254,6 @@
     $.getJSON("https://opendata.rdw.nl/resource/m9d7-ebf2.json?kenteken="+ final +"",
           function(data){
             $.each(data, function(){
-                console.log(data[0]);
                 $("#license_plate").val(data[0]['kenteken']);
                 $("#car_brand").val(data[0]['merk']);
                 $("#car_model").val(data[0]['handelsbenaming']);
