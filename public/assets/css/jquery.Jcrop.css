@@ -11,9 +11,8 @@
 .jcrop-holder {
   direction: ltr;
   text-align: left;
-    margin-right: auto;
-    margin-left: auto;
-    margin-bottom:15px;
+  /* IE10 touch compatibility */
+  -ms-touch-action: none;
 }
 /* Selection Border */
 .jcrop-vline,

@@ -51,14 +51,14 @@
                                             <input type="hidden" id="h" name="h">
                                                 <div class="fileinput fileinput-new text-center" style="margin-top:10px !important;" data-provides="fileinput">
                                                     <div class="fileinput-new text-center center-block">
-                                                        <img id="jcrop_target" 
+                                                        <img id="jcrop_target"
                                                             @if(Auth::user()->profile_photo == "")
                                                                 src="../assets/img/avatars/avatar.png"
                                                             @else
                                                                src="../assets/uploads/profiel/thumb/{{Auth::user()->profile_photo}}"
                                                             @endif
-                                                        alt="avatar" class="img-responsive center-block" style="margin-left: 25%;"/>
-                                                        <div class="jcrop-holder"></div>
+                                                        alt="avatar" class="img-responsive center-block" style="margin-left: 25%;" />
+                                                        <div class="jcrop-holder" style="margin-left: 25%;"></div>
                                                     </div>
                                                 </div>
 
