@@ -21,7 +21,13 @@
                 <td>Geen chauffeur gevonden</td>
               @endif
               @if($sos->taxi)
-              <td>{{date('d-m-Y H:i:s',strtotime($sos->taxi->last_seen))}}</td>
+              <td>
+              @if($sos->taxi->last_seen != '0000-00-00 00:00:00')
+                  <small>{{date('d-m-Y H:i',strtotime($sos->taxi->last_seen))}}</small>
+              @else
+                  <small>Geen</small>
+              @endif
+              </td>
               @else
               <td>Geen datum</td>
               @endif

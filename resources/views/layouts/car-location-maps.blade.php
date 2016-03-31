@@ -10,6 +10,8 @@
              document.body.appendChild(script);
          });
 
+
+
             var map;
             var markers = []; // Create a marker array to hold your markers
             var cars = [
@@ -19,7 +21,6 @@
                         ['',{{$taxi->last_latitude .','. $taxi->last_longtitude .','. $taxi->emergency->id .','. $taxi->emergency->seen }}],
                         @endif
                     @endforeach
-                        ['',{{$taxi->last_latitude .','. $taxi->last_longtitude}}],
                 @endforeach
             ];
             var bases = [
@@ -28,8 +29,23 @@
                 @endforeach
             ];
             
-            
-            
+            var carContent = [
+                @foreach ($cars as $taxi)
+                    ['<div class="info_content">' +
+                    '<p><i class="fa fa-taxi"></i> '+ '{{$taxi->license_plate }}' +'</p>' +
+                    '<p><i class="fa fa-user"></i> '+ '@if($taxi->driver && $taxi->driver->user){{$taxi->driver->user->firstname}}'+' '+'{{$taxi->driver->user->lastname}}@else Geen chauffeur @endif' +'</p>' +
+                    '</div>'],
+                @endforeach
+            ];
+
+            var baseContent = [
+                @foreach ($bases as $base)
+                    ['<div class="info_content">' +
+                    '<p><i class="fa fa-building"></i> '+ '{{$base->base_name }}' +'</p>' +
+                    '</div>'],
+                @endforeach
+            ];
+
             function reloadMarkers() {
                 // Loop through markers and set map to null for each
                 for (var i=0; i<markers.length; i++) {
@@ -68,7 +84,9 @@
 
             function setBaseMarkers(locations) {
                 for (var i = 0; i < locations.length; i++) {
+                    var infoWindow = new google.maps.InfoWindow();
                     var bases = locations[i];
+                    var x = 0;
                     var myLatLng = new google.maps.LatLng(bases[1], bases[2]);
                     var marker = new google.maps.Marker({
                         position: myLatLng,
@@ -76,13 +94,20 @@
                         map: map,
                         zIndex: bases[3]
                     });
+                    google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                          return function() {
+                            infoWindow.setContent(baseContent[i][0]);
+                            infoWindow.open(map, marker);
+                        }
+                    })(marker, i));
                     // Push marker to markers array
                     markers.push(marker);
                 }
             }
-            
+
             function setMarkers(locations) {
                 for (var i = 0; i < locations.length; i++) {
+                    var infoWindow = new google.maps.InfoWindow();
                     if(locations[i][4] < 1 && locations[i][3] > 0){
                         var cars = locations[i];
                         var myLatLng = new google.maps.LatLng(cars[1], cars[2]);
@@ -92,7 +117,12 @@
                             map: map,
                             zIndex: cars[5]
                         });
-                        // Push marker to markers array
+                        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                              return function() {
+                                infoWindow.setContent(carContent[i][0]);
+                                infoWindow.open(map, marker);
+                            }
+                        })(marker, i));
                     }else{
                         var cars = locations[i];
                         var myLatLng = new google.maps.LatLng(cars[1], cars[2]);
@@ -102,8 +132,13 @@
                             map: map,
                             zIndex: cars[5]
                         });
+                        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                        return function() {
+                                infoWindow.setContent(carContent[i][0]);
+                                infoWindow.open(map, marker);
+                            }
+                        })(marker, i));
                         // Push marker to markers array
-
                     }
                      markers.push(marker);
                 }
@@ -115,7 +150,7 @@
                     center: new google.maps.LatLng( 52.1396726,5.6019347),
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 };
-                
+
                 map = new google.maps.Map(document.getElementById('map'), mapOptions);
                 setMarkers(cars);
                 setBaseMarkers(bases);

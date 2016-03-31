@@ -19,7 +19,7 @@
                                 				<div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
 													<div class="plate-form">
                                                         <span class="eu"></span>
-                                                        <input type="text" class="kenteken_input" id="license_plate" name="license_plate" data-validate="required|maxlength:8" value="@if(old('license_plate')){{old('license_plate')}}@else{{$taxi->license_plate}}@endif">
+                                                        <input type="text" class="kenteken_input popovers" data-container="body" data-trigger="hover" data-placement="top" data-content="Vul een kenteken in. Voertuig informatie wordt opgehaald en ingevoerd." id="license_plate" name="license_plate" data-validate="required|maxlength:8" value="@if(old('license_plate')){{old('license_plate')}}@else{{$taxi->license_plate}}@endif">
                                                     </div>          
 												</div>
                                                 <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
@@ -100,15 +100,15 @@
             var x = $("#license_plate").val();
             var trimOne = x.replace('-','');
             var trimmed = trimOne.replace('-','');
+            var final   = trimmed.toUpperCase();
 
-            $.getJSON("https://api.datamarket.azure.com/opendata.rdw/VRTG.Open.Data/v1/KENT_VRTG_O_DAT('"+ trimmed +"')?$format=json",
-                  function(data){
-                    $.each(data, function(){
-                        console.log(data.d);
-                        $("#license_plate").val(data.d['Kenteken']);
-                        $("#car_brand").val(data.d['Merk']);
-                        $("#car_model").val(data.d['Handelsbenaming']);
-                        $("#car_color").val(data.d['Eerstekleur']);
+            $.getJSON("https://opendata.rdw.nl/resource/m9d7-ebf2.json?kenteken="+ final +"",
+                      function(data){
+                        $.each(data, function(){
+                            $("#license_plate").val(data[0]['kenteken']);
+                            $("#car_brand").val(data[0]['merk']);
+                            $("#car_model").val(data[0]['handelsbenaming']);
+                            $("#car_color").val(data[0]['eerste_kleur']);
                     });
                   });
           });
