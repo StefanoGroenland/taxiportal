@@ -249,15 +249,16 @@
     var x = $("#license_plate").val();
     var trimOne = x.replace('-','');
     var trimmed = trimOne.replace('-','');
+    var final = trimmed.toUpperCase();
 
-    $.getJSON("https://api.datamarket.azure.com/opendata.rdw/VRTG.Open.Data/v1/KENT_VRTG_O_DAT('"+ trimmed +"')?$format=json",
+    $.getJSON("https://opendata.rdw.nl/resource/m9d7-ebf2.json?kenteken="+ final +"",
           function(data){
             $.each(data, function(){
-                console.log(data.d);
-                $("#license_plate").val(data.d['Kenteken']);
-                $("#car_brand").val(data.d['Merk']);
-                $("#car_model").val(data.d['Handelsbenaming']);
-                $("#car_color").val(data.d['Eerstekleur']);
+                console.log(data[0]);
+                $("#license_plate").val(data[0]['kenteken']);
+                $("#car_brand").val(data[0]['merk']);
+                $("#car_model").val(data[0]['handelsbenaming']);
+                $("#car_color").val(data[0]['eerste_kleur']);
             });
           });
         });
