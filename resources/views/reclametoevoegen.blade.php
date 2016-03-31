@@ -45,26 +45,61 @@ $(function() {
     });
 });
 
+ $('#imgInp').change(function(){
+        var input = $('#imgInp');
+        var sendButton = $('.sendButton');
+        if(input === 0){
+            sendButton.attr("disabled", true);
+        }else{
+            sendButton.attr("disabled", false);
+        }
+    });
 
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
+    $("#imgInp").change(function(){
+    $("#saveBtn").removeClass('hide');
+    console.log("changed!");
+        readURL(this);
+    });
 
-        reader.onload = function (e) {
-            $('#blah').attr('src', e.target.result);
-        };
+    function updateCoords(c)
+    {
+        $('#x').val(c.x);
+        $('#y').val(c.y);
+        $('#w').val(c.w);
+        $('#h').val(c.h);
+        console.log(c);
+    };
 
-        reader.readAsDataURL(input.files[0]);
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('.jcrop-holder img').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
     }
-}
+    function checkCoords()
+    {
+        if (parseInt(jQuery('#w').val())>0) return true;
+        return false;
+    };
 
-$("#imgInp").change(function(){
-    readURL(this);
-});
-
-
-
-
+    jQuery(function($) {
+        var input = $('#imgInp');
+            $('#imgInp').change(function(){
+            if(input.val() !== ""){
+                $('#jcrop_target').Jcrop({
+                     bgColor:     'transparant',
+                     setSelect:   [ 0, 0, 200, 200],
+                     bgOpacity:   .4,
+                     aspectRatio: 160/600,
+                     onSelect: updateCoords
+                });
+            }
+            });
+        });
 
 </script>
 @endsection

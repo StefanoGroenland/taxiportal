@@ -2,12 +2,14 @@
     <div class="row">
             <div class="col-lg-3 col-md-12 center-block text-center">
                 <div id="imgHolder" class="fileinput-new center-block" style="height: 300px !important;">
-                    <img id="blah"
+                    <img id="jcrop_target"
                      src="https://placeholdit.imgix.net/~text?txtsize=33&txt=160%C3%97600&w=160&h=600"
                      alt="avatar" class="img-responsive center-block"
                      style=" height: 300px !important; padding-bottom:10px !important;"
                     />
+                    
                 </div>
+
                 <div class="fileinput fileinput-new " data-provides="fileinput">
                     <div>
                         <span class="btn btn-success" id="verkennerButton" onclick="$(this).parent().find('input[type=file]').click();">Verkenner</span>
