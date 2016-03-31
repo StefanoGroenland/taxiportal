@@ -294,7 +294,7 @@ public function showAdStats(){
 
 
     /**
-     * @author Stefano Groenland b
+     * @author Stefano Groenland
      * @param $adress
      * @return array
      *
