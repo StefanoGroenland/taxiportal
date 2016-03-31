@@ -28,13 +28,20 @@ use Illuminate\Support\Facades\Input;
 class ApiController extends Controller
 {
     /**
+     * @author Stefano Groenland
+     * @api
+     * @version 1.0
      * @var string
-     * @return API key in string fromat
+     * @return API key in string format
      *
      * Defines the API key for a security layer
      */
     private static $apikey = "alpha";
+
     /**
+     * @author Stefano Groenland
+     * @api
+     * @version 1.0
      * @var array
      * @return error message and api version
      *
@@ -42,14 +49,22 @@ class ApiController extends Controller
      */
     private static $error = array(
         'success'       =>  false,
-        'error'         => 'api-key-invalid',
+        'error'         => 'Wrong API key used, access denied.',
         'api-version'   => '1.0',
         'status'        => '401'
     );
 
+    /**
+     * @author Stefano Groenland
+     * @api
+     * @version 1.0
+     * @var array
+     *
+     * Defines the none error in other words the Four oh Four.
+     */
     private static $none = array(
         'success'       =>  false,
-        'error'         =>  'no_values_found',
+        'error'         =>  'Whoops, we could not find any.',
         'status'        =>  '404'
     );
 
