@@ -227,6 +227,9 @@ div.plate-form > span.eu {
 .card-1:hover {
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
+.jcrop-holder{
+    margin-left: 25% !important;
+}
 
 @media (min-width: 992px){
 	.page-header .navbar-collapse .navbar-nav .more-dropdown .dropdown-menu {
